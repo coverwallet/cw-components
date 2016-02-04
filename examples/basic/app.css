@@ -16,8 +16,8 @@
 .keyboard .number--0, .keyboard .delete--0 {
     width: 102px;
 }
-.InputKeyboard .form-input {
-    margin: 10px 0px;
+.InputKeyboard .form-input, .NumberInput .form-input {
+    margin: 10px 0;
     background-color: #fff;
     border-radius: 0;
     border: 1px solid #454855;
@@ -35,6 +35,27 @@
 .InputKeyboard {
     width: 156px;
 }
+
+.NumberInput .form-input {
+    width: 190px;
+}
+.NumberInput .form-input {
+    width: 100px;
+    text-align: right;
+}
+.NumberInput .NumberInput__plus, .NumberInput .NumberInput__minus {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+    margin: 5px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: gray;
+    box-sizing: border-box;
+}
+
 body {
     background: #eee;
 }
