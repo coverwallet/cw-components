@@ -12,7 +12,12 @@ let App = React.createClass({
         <InputKeyboard/>
 
         <h2>Number input</h2>
+
+        <h3>Default</h3>
         <NumberInput />
+
+        <h3>Max 20, Min 5, Step 5</h3>
+        <NumberInput min={5} max={20} step={5} />
       </div>
     );
   }
