@@ -80,7 +80,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	Object.defineProperty(exports, '__esModule', {
-	    value: true
+	  value: true
 	});
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -102,57 +102,58 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _keyboard2 = _interopRequireDefault(_keyboard);
 	
 	var InputKeyboard = (function (_React$Component) {
-	    _inherits(InputKeyboard, _React$Component);
+	  _inherits(InputKeyboard, _React$Component);
 	
-	    function InputKeyboard(props) {
-	        _classCallCheck(this, InputKeyboard);
+	  function InputKeyboard(props) {
+	    _classCallCheck(this, InputKeyboard);
 	
-	        _get(Object.getPrototypeOf(InputKeyboard.prototype), 'constructor', this).call(this, props);
-	        this.state = {
-	            value: null
-	        };
+	    _get(Object.getPrototypeOf(InputKeyboard.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      value: this.props.value ? this.props.value : null
+	    };
+	  }
+	
+	  _createClass(InputKeyboard, [{
+	    key: 'handleChange',
+	    value: function handleChange(event) {
+	      this.setState({ value: event.target.value });
+	      this.props.setValue && this.props.setValue(event.target.value);
 	    }
+	  }, {
+	    key: 'pressKey',
+	    value: function pressKey(key) {
+	      var value = this.state.value;
+	      if (!value) {
+	        value = key;
+	      } else {
+	        value = value + '' + key;
+	      }
+	      var nextValue = parseInt(value, 10);
+	      this.setState({ value: nextValue });
+	      this.props.setValue && this.props.setValue(nextValue);
+	    }
+	  }, {
+	    key: 'deleteKey',
+	    value: function deleteKey() {
+	      if (this.state.value && this.state.value.toString().length > 0) {
+	        var nextValue = parseInt(this.state.value.toString().substring(0, this.state.value.toString().length - 1), 0);
+	        this.setState({ value: nextValue });
+	        this.props.setValue && this.props.setValue(nextValue);
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'InputKeyboard' },
+	        _react2['default'].createElement('input', { type: 'number', className: 'form-input', onChange: this.handleChange.bind(this), value: this.state.value }),
+	        _react2['default'].createElement(_keyboard2['default'], { pressKey: this.pressKey.bind(this), deleteKey: this.deleteKey.bind(this) })
+	      );
+	    }
+	  }]);
 	
-	    _createClass(InputKeyboard, [{
-	        key: 'handleChange',
-	        value: function handleChange(event) {
-	            this.setState({ value: event.target.value });
-	        }
-	    }, {
-	        key: 'pressKey',
-	        value: function pressKey(key) {
-	            var value = this.state.value;
-	            if (!value) {
-	                value = key;
-	            } else {
-	                value = value + '' + key;
-	            }
-	            this.setState({
-	                value: parseInt(value, 10)
-	            });
-	        }
-	    }, {
-	        key: 'deleteKey',
-	        value: function deleteKey() {
-	            if (this.state.value && this.state.value.toString().length > 0) {
-	                this.setState({
-	                    value: this.state.value.toString().substring(0, this.state.value.toString().length - 1)
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2['default'].createElement(
-	                'div',
-	                { className: 'InputKeyboard' },
-	                _react2['default'].createElement('input', { type: 'number', className: 'form-input', onChange: this.handleChange.bind(this), value: this.state.value }),
-	                _react2['default'].createElement(_keyboard2['default'], { pressKey: this.pressKey.bind(this), deleteKey: this.deleteKey.bind(this) })
-	            );
-	        }
-	    }]);
-	
-	    return InputKeyboard;
+	  return InputKeyboard;
 	})(_react2['default'].Component);
 	
 	exports['default'] = InputKeyboard;
@@ -281,7 +282,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    _get(Object.getPrototypeOf(NumberInput.prototype), 'constructor', this).call(this, props);
 	    this.state = {
-	      value: this.props.min ? this.props.min : 0
+	      value: this.props.value ? this.props.value : this.props.min ? this.props.min : 0
 	    };
 	  }
 	
@@ -289,7 +290,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'handleChange',
 	    value: function handleChange(e) {
 	      this.setState({ value: e.target.value });
-	      this.props.onChange ? this.props.onChange(e) : null;
+	      this.props.setValue && this.props.setValue(e.target.value);
 	    }
 	  }, {
 	    key: 'handlePlus',
@@ -297,12 +298,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var number = parseInt(this.refs.number.value);
 	      var step = this.props.step ? this.props.step : 1;
 	      var max = this.props.max ? this.props.max : null;
+	      var nextValue = number + step;
 	      if (max) {
 	        if (number + step <= max) {
-	          this.setState({ value: number + step });
+	          this.setState({ value: nextValue });
 	        }
 	      } else {
-	        this.setState({ value: number + step });
+	        this.setState({ value: nextValue });
+	        this.props.setValue && this.props.setValue(nextValue);
 	      }
 	    }
 	  }, {
@@ -312,7 +315,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var step = this.props.step ? this.props.step : 1;
 	      var min = this.props.min ? this.props.min : 0;
 	      if (number - step >= min) {
-	        this.setState({ value: number - step });
+	        var nextValue = number - step;
+	        this.setState({ value: nextValue });
+	        this.props.setValue && this.props.setValue(nextValue);
 	      }
 	    }
 	  }, {

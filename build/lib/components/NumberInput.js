@@ -26,7 +26,7 @@ var NumberInput = (function (_React$Component) {
 
     _get(Object.getPrototypeOf(NumberInput.prototype), 'constructor', this).call(this, props);
     this.state = {
-      value: this.props.min ? this.props.min : 0
+      value: this.props.value ? this.props.value : this.props.min ? this.props.min : 0
     };
   }
 
@@ -34,7 +34,7 @@ var NumberInput = (function (_React$Component) {
     key: 'handleChange',
     value: function handleChange(e) {
       this.setState({ value: e.target.value });
-      this.props.onChange ? this.props.onChange(e) : null;
+      this.props.setValue && this.props.setValue(e.target.value);
     }
   }, {
     key: 'handlePlus',
@@ -42,12 +42,14 @@ var NumberInput = (function (_React$Component) {
       var number = parseInt(this.refs.number.value);
       var step = this.props.step ? this.props.step : 1;
       var max = this.props.max ? this.props.max : null;
+      var nextValue = number + step;
       if (max) {
         if (number + step <= max) {
-          this.setState({ value: number + step });
+          this.setState({ value: nextValue });
         }
       } else {
-        this.setState({ value: number + step });
+        this.setState({ value: nextValue });
+        this.props.setValue && this.props.setValue(nextValue);
       }
     }
   }, {
@@ -57,7 +59,9 @@ var NumberInput = (function (_React$Component) {
       var step = this.props.step ? this.props.step : 1;
       var min = this.props.min ? this.props.min : 0;
       if (number - step >= min) {
-        this.setState({ value: number - step });
+        var nextValue = number - step;
+        this.setState({ value: nextValue });
+        this.props.setValue && this.props.setValue(nextValue);
       }
     }
   }, {
