@@ -60,11 +60,7 @@ var Keyboard = (function (_React$Component) {
           ));
         }
       }
-      numbers.push(_react2['default'].createElement(
-        'div',
-        { key: '10', className: 'delete', onClick: this['delete'].bind(this) },
-        '<'
-      ));
+      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'delete onlyclick-backspace', onClick: this['delete'].bind(this) }));
       return _react2['default'].createElement(
         'div',
         { className: 'keyboard' },

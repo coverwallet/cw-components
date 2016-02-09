@@ -18,82 +18,74 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var NumberInput = (function (_React$Component) {
-  _inherits(NumberInput, _React$Component);
+var _IconRadioInput = require('./IconRadioInput');
 
-  function NumberInput(props) {
-    _classCallCheck(this, NumberInput);
+var _IconRadioInput2 = _interopRequireDefault(_IconRadioInput);
 
-    _get(Object.getPrototypeOf(NumberInput.prototype), 'constructor', this).call(this, props);
+var IconRadioGroup = (function (_React$Component) {
+  _inherits(IconRadioGroup, _React$Component);
+
+  function IconRadioGroup(props) {
+    _classCallCheck(this, IconRadioGroup);
+
+    _get(Object.getPrototypeOf(IconRadioGroup.prototype), 'constructor', this).call(this, props);
     this.state = {
-      value: this.props.value ? this.props.value : this.props.min ? this.props.min : 0
+      value: this.props.value
     };
   }
 
-  _createClass(NumberInput, [{
+  _createClass(IconRadioGroup, [{
     key: 'handleChange',
-    value: function handleChange(e) {
-      this.setState({ value: e.target.value });
-      this.props.setValue && this.props.setValue(e.target.value);
+    value: function handleChange(value) {
+      this.setState({ value: value });
+      this.props.onChange && this.props.onChange(value);
     }
   }, {
-    key: 'handlePlus',
-    value: function handlePlus() {
-      var number = parseInt(this.refs.number.value);
-      var step = this.props.step ? this.props.step : 1;
-      var max = this.props.max ? this.props.max : null;
-      var nextValue = number + step;
-      if (max) {
-        if (number + step <= max) {
-          this.setState({ value: nextValue });
-        }
-      } else {
-        this.setState({ value: nextValue });
-        this.props.setValue && this.props.setValue(nextValue);
+    key: 'getValue',
+    value: function getValue() {
+      var value = this.state.value;
+      if (this.props.getValue) {
+        value = this.props.getValue();
       }
-    }
-  }, {
-    key: 'handleMinus',
-    value: function handleMinus() {
-      var number = parseInt(this.refs.number.value);
-      var step = this.props.step ? this.props.step : 1;
-      var min = this.props.min ? this.props.min : 0;
-      if (number - step >= min) {
-        var nextValue = number - step;
-        this.setState({ value: nextValue });
-        this.props.setValue && this.props.setValue(nextValue);
-      }
+      return value;
     }
   }, {
     key: 'render',
     value: function render() {
       var _this = this;
 
+      var _props = this.props;
+      var options = _props.options;
+      var name = _props.name;
+
+      var radioInputs = options.map(function (option, i) {
+        return _react2['default'].createElement(_IconRadioInput2['default'], {
+          key: i,
+          iconClass: option.iconClass,
+          label: option.label,
+          name: name,
+          value: option.value,
+          checkedValue: _this.getValue(),
+          onChange: _this.handleChange.bind(_this)
+        });
+      });
       return _react2['default'].createElement(
         'div',
-        { className: 'NumberInput' },
-        _react2['default'].createElement('input', {
-          ref: 'number',
-          className: 'form-input NumberInput__input',
-          name: this.props.name,
-          min: this.props.min ? this.props.min : 0,
-          max: this.props.max ? this.props.max : null,
-          step: this.props.step ? this.props.step : 1,
-          type: this.props.type ? this.props.type : 'number',
-          onBlur: function (e) {
-            return _this.props.onBlur ? _this.props.onBlur(e) : null;
-          },
-          onChange: this.handleChange.bind(this),
-          value: this.state.value
-        }),
-        _react2['default'].createElement('span', { className: 'onlyclick-minus', onClick: this.handleMinus.bind(this) }),
-        _react2['default'].createElement('span', { className: 'onlyclick-plus', onClick: this.handlePlus.bind(this) })
+        { className: 'IconRadioGroup' },
+        radioInputs
       );
     }
   }]);
 
-  return NumberInput;
+  return IconRadioGroup;
 })(_react2['default'].Component);
 
-exports['default'] = NumberInput;
+IconRadioGroup.propTypes = {
+  options: _react.PropTypes.arrayOf(_react.PropTypes.object),
+  name: _react.PropTypes.string,
+  value: _react.PropTypes.any,
+  onChange: _react.PropTypes.func
+};
+
+exports['default'] = IconRadioGroup;
 module.exports = exports['default'];

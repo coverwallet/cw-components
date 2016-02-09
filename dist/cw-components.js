@@ -70,8 +70,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _componentsNumberInput2 = _interopRequireDefault(_componentsNumberInput);
 	
+	var _componentsIconRadioGroup = __webpack_require__(5);
+	
+	var _componentsIconRadioGroup2 = _interopRequireDefault(_componentsIconRadioGroup);
+	
+	var _componentsIconRadioInput = __webpack_require__(6);
+	
+	var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
+	
 	exports.InputKeyboard = _componentsInputKeyboard2['default'];
 	exports.NumberInput = _componentsNumberInput2['default'];
+	exports.IconRadioGroup = _componentsIconRadioGroup2['default'];
+	exports.IconRadioInput = _componentsIconRadioInput2['default'];
 
 /***/ },
 /* 1 */
@@ -231,11 +241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          ));
 	        }
 	      }
-	      numbers.push(_react2['default'].createElement(
-	        'div',
-	        { key: '10', className: 'delete', onClick: this['delete'].bind(this) },
-	        '<'
-	      ));
+	      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'delete onlyclick-backspace', onClick: this['delete'].bind(this) }));
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'keyboard' },
@@ -342,8 +348,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onChange: this.handleChange.bind(this),
 	          value: this.state.value
 	        }),
-	        _react2['default'].createElement('span', { className: 'NumberInput__minus', onClick: this.handleMinus.bind(this) }),
-	        _react2['default'].createElement('span', { className: 'NumberInput__plus', onClick: this.handlePlus.bind(this) })
+	        _react2['default'].createElement('span', { className: 'onlyclick-minus', onClick: this.handleMinus.bind(this) }),
+	        _react2['default'].createElement('span', { className: 'onlyclick-plus', onClick: this.handlePlus.bind(this) })
 	      );
 	    }
 	  }]);
@@ -352,6 +358,203 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react2['default'].Component);
 	
 	exports['default'] = NumberInput;
+	module.exports = exports['default'];
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _IconRadioInput = __webpack_require__(6);
+	
+	var _IconRadioInput2 = _interopRequireDefault(_IconRadioInput);
+	
+	var IconRadioGroup = (function (_React$Component) {
+	  _inherits(IconRadioGroup, _React$Component);
+	
+	  function IconRadioGroup(props) {
+	    _classCallCheck(this, IconRadioGroup);
+	
+	    _get(Object.getPrototypeOf(IconRadioGroup.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      value: this.props.value
+	    };
+	  }
+	
+	  _createClass(IconRadioGroup, [{
+	    key: 'handleChange',
+	    value: function handleChange(value) {
+	      this.setState({ value: value });
+	      this.props.onChange && this.props.onChange(value);
+	    }
+	  }, {
+	    key: 'getValue',
+	    value: function getValue() {
+	      var value = this.state.value;
+	      if (this.props.getValue) {
+	        value = this.props.getValue();
+	      }
+	      return value;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this = this;
+	
+	      var _props = this.props;
+	      var options = _props.options;
+	      var name = _props.name;
+	
+	      var radioInputs = options.map(function (option, i) {
+	        return _react2['default'].createElement(_IconRadioInput2['default'], {
+	          key: i,
+	          iconClass: option.iconClass,
+	          label: option.label,
+	          name: name,
+	          value: option.value,
+	          checkedValue: _this.getValue(),
+	          onChange: _this.handleChange.bind(_this)
+	        });
+	      });
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'IconRadioGroup' },
+	        radioInputs
+	      );
+	    }
+	  }]);
+	
+	  return IconRadioGroup;
+	})(_react2['default'].Component);
+	
+	IconRadioGroup.propTypes = {
+	  options: _react.PropTypes.arrayOf(_react.PropTypes.object),
+	  name: _react.PropTypes.string,
+	  value: _react.PropTypes.any,
+	  onChange: _react.PropTypes.func
+	};
+	
+	exports['default'] = IconRadioGroup;
+	module.exports = exports['default'];
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var IconRadioInput = (function (_React$Component) {
+	  _inherits(IconRadioInput, _React$Component);
+	
+	  function IconRadioInput(props) {
+	    _classCallCheck(this, IconRadioInput);
+	
+	    _get(Object.getPrototypeOf(IconRadioInput.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      checked: this.checked(props.value, props.checkedValue)
+	    };
+	  }
+	
+	  _createClass(IconRadioInput, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.setState({ checked: this.checked(nextProps.value, nextProps.checkedValue) });
+	    }
+	  }, {
+	    key: 'checked',
+	    value: function checked(a, b) {
+	      return a === b;
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange() {
+	      this.props.onChange && this.props.onChange(this.props.value);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'label',
+	        { className: 'IconRadioInput ' + (this.state.checked ? 'IconRadioInput--checked' : '') },
+	        this.renderIcon(),
+	        _react2['default'].createElement('input', {
+	          type: 'radio',
+	          name: this.props.name,
+	          className: 'IconRadioInput__input',
+	          onChange: this.handleChange.bind(this),
+	          value: this.props.value,
+	          checked: this.state.checked
+	        }),
+	        _react2['default'].createElement(
+	          'div',
+	          null,
+	          this.props.label
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderIcon',
+	    value: function renderIcon() {
+	      if (this.props.iconClass) {
+	        return _react2['default'].createElement(
+	          'div',
+	          { className: 'IconRadioInput__icon' },
+	          _react2['default'].createElement('span', { className: this.props.iconClass })
+	        );
+	      }
+	      return _react2['default'].createElement('span', null);
+	    }
+	  }]);
+	
+	  return IconRadioInput;
+	})(_react2['default'].Component);
+	
+	IconRadioInput.propTypes = {
+	  iconClass: _react.PropTypes.string,
+	  label: _react.PropTypes.string,
+	  name: _react.PropTypes.string.isRequired,
+	  value: _react.PropTypes.any.isRequired,
+	  onChange: _react.PropTypes.func.isRequired
+	};
+	
+	exports['default'] = IconRadioInput;
 	module.exports = exports['default'];
 
 /***/ }
