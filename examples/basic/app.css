@@ -1,61 +1,53 @@
-.keyboard {
-    background: inherit;
-    width: 160px;
-}
-.keyboard .number, .keyboard .delete {
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    background: #fff;
-    font-size: 20px;
-    margin: 1px;
-    display: inline-block;
-}
-.keyboard .number--0, .keyboard .delete--0 {
-    width: 102px;
-}
-.InputKeyboard .form-input, .NumberInput .form-input {
-    margin: 10px 0;
-    background-color: #fff;
-    border-radius: 0;
-    border: 1px solid #454855;
-    padding-left: 10px;
-    width: 100%;
-    height: 40px;
-    text-align: left;
-    font-size: 1em;
-    color: #333;
-    font-weight: 100;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.InputKeyboard {
-    width: 156px;
+.example {
+    background: #f9f9f9;
 }
 
-.NumberInput .form-input {
-    width: 190px;
+.clearfix::after {
+    clear: both;
+    content: "";
+    display: table;
 }
-.NumberInput .form-input {
+
+.IconRadioGroup::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.IconRadioInput {
+    float: left;
     width: 100px;
-    text-align: right;
-}
-.NumberInput .NumberInput__plus, .NumberInput .NumberInput__minus {
-    display: inline-block;
+    height: 60px;
     text-align: center;
-    vertical-align: middle;
-    padding: 5px;
     margin: 5px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: gray;
-    box-sizing: border-box;
+    color: black;
+    border: 1px solid black;
+    border-radius: 2px;
 }
 
-body {
-    background: #eee;
+.IconRadioInput__icon {
+    font-size: 20px;
+    padding: 3px;
+}
+
+.IconRadioInput__icon span::before {
+    color: black;
+}
+
+.IconRadioInput__input {
+    display: none;
+}
+
+.IconRadioInput--checked {
+    color: deepskyblue;
+    border-color: deepskyblue;
+}
+
+.IconRadioInput__icon {
+    font-size: 20px;
+    padding: 3px;
+}
+
+.IconRadioInput--checked .IconRadioInput__icon span::before {
+    color: deepskyblue;
 }
