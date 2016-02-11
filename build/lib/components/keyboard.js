@@ -49,18 +49,18 @@ var Keyboard = (function (_React$Component) {
         if (i > 0) {
           numbers.push(_react2['default'].createElement(
             'div',
-            { key: i, className: 'number', onClick: this.click.bind(this, i) },
+            { key: i, className: 'keyboard__number', onClick: this.click.bind(this, i) },
             i
           ));
         } else {
           numbers.push(_react2['default'].createElement(
             'div',
-            { key: i, className: 'number number--0', onClick: this.click.bind(this, i) },
+            { key: i, className: 'keyboard__number keyboard__number--0', onClick: this.click.bind(this, i) },
             i
           ));
         }
       }
-      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'delete onlyclick-backspace', onClick: this['delete'].bind(this) }));
+      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'keyboard__delete keyboard__backspace', onClick: this['delete'].bind(this) }));
       return _react2['default'].createElement(
         'div',
         { className: 'keyboard' },

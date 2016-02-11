@@ -71,10 +71,10 @@ var NumberInput = (function (_React$Component) {
 
       return _react2['default'].createElement(
         'div',
-        { className: 'NumberInput' },
+        { className: 'number-input' },
         _react2['default'].createElement('input', {
           ref: 'number',
-          className: 'form-input NumberInput__input',
+          className: 'number-input__input',
           name: this.props.name,
           min: this.props.min ? this.props.min : 0,
           max: this.props.max ? this.props.max : null,
@@ -86,8 +86,8 @@ var NumberInput = (function (_React$Component) {
           onChange: this.handleChange.bind(this),
           value: this.state.value
         }),
-        _react2['default'].createElement('span', { className: 'onlyclick-minus', onClick: this.handleMinus.bind(this) }),
-        _react2['default'].createElement('span', { className: 'onlyclick-plus', onClick: this.handlePlus.bind(this) })
+        _react2['default'].createElement('span', { className: 'number-input__minus', onClick: this.handleMinus.bind(this) }),
+        _react2['default'].createElement('span', { className: 'number-input__plus', onClick: this.handlePlus.bind(this) })
       );
     }
   }]);

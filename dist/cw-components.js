@@ -156,8 +156,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'InputKeyboard' },
-	        _react2['default'].createElement('input', { type: 'number', className: 'form-input', onChange: this.handleChange.bind(this), value: this.state.value }),
+	        { className: 'input-keyboard' },
+	        this.props.currency && _react2['default'].createElement('span', { className: 'input-keyboard__currency' }),
+	        _react2['default'].createElement('input', { type: 'number', className: 'input-keyboard__input', onChange: this.handleChange.bind(this), value: this.state.value }),
 	        _react2['default'].createElement(_keyboard2['default'], { pressKey: this.pressKey.bind(this), deleteKey: this.deleteKey.bind(this) })
 	      );
 	    }
@@ -230,18 +231,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (i > 0) {
 	          numbers.push(_react2['default'].createElement(
 	            'div',
-	            { key: i, className: 'number', onClick: this.click.bind(this, i) },
+	            { key: i, className: 'keyboard__number', onClick: this.click.bind(this, i) },
 	            i
 	          ));
 	        } else {
 	          numbers.push(_react2['default'].createElement(
 	            'div',
-	            { key: i, className: 'number number--0', onClick: this.click.bind(this, i) },
+	            { key: i, className: 'keyboard__number keyboard__number--0', onClick: this.click.bind(this, i) },
 	            i
 	          ));
 	        }
 	      }
-	      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'delete onlyclick-backspace', onClick: this['delete'].bind(this) }));
+	      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'keyboard__delete keyboard__backspace', onClick: this['delete'].bind(this) }));
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'keyboard' },
@@ -333,10 +334,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'NumberInput' },
+	        { className: 'number-input' },
 	        _react2['default'].createElement('input', {
 	          ref: 'number',
-	          className: 'form-input NumberInput__input',
+	          className: 'number-input__input',
 	          name: this.props.name,
 	          min: this.props.min ? this.props.min : 0,
 	          max: this.props.max ? this.props.max : null,
@@ -348,8 +349,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onChange: this.handleChange.bind(this),
 	          value: this.state.value
 	        }),
-	        _react2['default'].createElement('span', { className: 'onlyclick-minus', onClick: this.handleMinus.bind(this) }),
-	        _react2['default'].createElement('span', { className: 'onlyclick-plus', onClick: this.handlePlus.bind(this) })
+	        _react2['default'].createElement('span', { className: 'number-input__minus', onClick: this.handleMinus.bind(this) }),
+	        _react2['default'].createElement('span', { className: 'number-input__plus', onClick: this.handlePlus.bind(this) })
 	      );
 	    }
 	  }]);
@@ -437,7 +438,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'IconRadioGroup' },
+	        { className: 'icons-radio-group' },
 	        radioInputs
 	      );
 	    }
@@ -512,12 +513,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'label',
-	        { className: 'IconRadioInput ' + (this.state.checked ? 'IconRadioInput--checked' : '') },
+	        { className: 'icons-radio-input ' + (this.state.checked ? 'icons-radio-input--checked' : '') },
 	        this.renderIcon(),
 	        _react2['default'].createElement('input', {
 	          type: 'radio',
 	          name: this.props.name,
-	          className: 'IconRadioInput__input',
+	          className: 'icons-radio-input__input',
 	          onChange: this.handleChange.bind(this),
 	          value: this.props.value,
 	          checked: this.state.checked
@@ -535,7 +536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (this.props.iconClass) {
 	        return _react2['default'].createElement(
 	          'div',
-	          { className: 'IconRadioInput__icon' },
+	          { className: 'icons-radio-input__icon' },
 	          _react2['default'].createElement('span', { className: this.props.iconClass })
 	        );
 	      }

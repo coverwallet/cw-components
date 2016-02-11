@@ -27,7 +27,7 @@ let App = React.createClass({
         <h1>cw-components</h1>
         <div className="clearfix">
           <h2>Keyboard input</h2>
-          <InputKeyboard/>
+          <InputKeyboard currency={true}/>
         </div>
 
         <hr/>
