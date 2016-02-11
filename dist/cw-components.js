@@ -525,7 +525,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }),
 	        _react2['default'].createElement(
 	          'div',
-	          null,
+	          { className: 'icons-radio-input__label' },
 	          this.props.label
 	        )
 	      );
