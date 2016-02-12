@@ -582,23 +582,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _react2 = _interopRequireDefault(_react);
 	
 	var Loader = function Loader(props) {
+	  var loader = _react2["default"].createElement(
+	    "div",
+	    { className: "loader" },
+	    _react2["default"].createElement("span", { className: "loader__inner" })
+	  );
 	  if (props.global) {
-	    return _react2["default"].createElement(
+	    loader = _react2["default"].createElement(
 	      "div",
 	      { className: "loader-container" },
-	      _react2["default"].createElement(
-	        "div",
-	        { className: "loader" },
-	        _react2["default"].createElement("span", { className: "loader__inner" })
-	      )
-	    );
-	  } else {
-	    return _react2["default"].createElement(
-	      "div",
-	      { className: "loader" },
-	      _react2["default"].createElement("span", { className: "loader__inner" })
+	      loader
 	    );
 	  }
+	  return loader;
 	};
 	
 	Loader.propTypes = {
