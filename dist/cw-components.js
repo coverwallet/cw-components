@@ -226,22 +226,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this = this;
+	
 	      var numbers = [];
-	      for (var i = 9; i >= 0; i--) {
+	      [7, 8, 9, 6, 4, 5, 1, 2, 3, 0].forEach(function (i) {
 	        if (i > 0) {
 	          numbers.push(_react2['default'].createElement(
 	            'div',
-	            { key: i, className: 'keyboard__number', onClick: this.click.bind(this, i) },
+	            { key: i, className: 'keyboard__number', onClick: _this.click.bind(_this, i) },
 	            i
 	          ));
 	        } else {
 	          numbers.push(_react2['default'].createElement(
 	            'div',
-	            { key: i, className: 'keyboard__number keyboard__number--0', onClick: this.click.bind(this, i) },
+	            { key: i, className: 'keyboard__number keyboard__number--0', onClick: _this.click.bind(_this, i) },
 	            i
 	          ));
 	        }
-	      }
+	      });
 	      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'keyboard__delete keyboard__backspace', onClick: this['delete'].bind(this) }));
 	      return _react2['default'].createElement(
 	        'div',
