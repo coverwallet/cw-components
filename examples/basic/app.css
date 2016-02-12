@@ -1,9 +1,22 @@
-.example {
+body {
     background: #f9f9f9;
+}
+
+.example {
+    width: 1200px;
+    padding: 40px;
+    margin: 0 auto;
 }
 
 .clearfix::after {
     clear: both;
     content: "";
     display: table;
+}
+
+.box  {
+    background: white;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
 }

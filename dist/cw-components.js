@@ -78,10 +78,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
 	
+	var _componentsLoader = __webpack_require__(7);
+	
+	var _componentsLoader2 = _interopRequireDefault(_componentsLoader);
+	
 	exports.InputKeyboard = _componentsInputKeyboard2['default'];
 	exports.NumberInput = _componentsNumberInput2['default'];
 	exports.IconRadioGroup = _componentsIconRadioGroup2['default'];
 	exports.IconRadioInput = _componentsIconRadioInput2['default'];
+	exports.Loader = _componentsLoader2['default'];
 
 /***/ },
 /* 1 */
@@ -559,6 +564,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports['default'] = IconRadioInput;
 	module.exports = exports['default'];
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var Loader = function Loader(props) {
+	  var loader = _react2["default"].createElement(
+	    "div",
+	    { className: "loader" },
+	    _react2["default"].createElement("span", { className: "loader__inner" })
+	  );
+	  if (props.global) {
+	    loader = _react2["default"].createElement(
+	      "div",
+	      { className: "loader-container" },
+	      loader
+	    );
+	  }
+	  return loader;
+	};
+	
+	Loader.propTypes = {
+	  global: _react.PropTypes.bool
+	};
+	
+	exports["default"] = Loader;
+	module.exports = exports["default"];
 
 /***/ }
 /******/ ])

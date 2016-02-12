@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InputKeyboard } from '../../lib/index';
-import { NumberInput } from '../../lib/index';
-import { IconRadioGroup } from '../../lib/index';
+import { InputKeyboard, NumberInput, IconRadioGroup, Loader } from '../../lib/index';
 
 const iconRadioGroupOptions =[
   {
@@ -57,6 +55,16 @@ let App = React.createClass({
             value="Not sure"
             onChange={(value)=> alert("You pick " + value)}
           />
+        </div>
+
+        <hr/>
+
+        <div>
+          <h2>Loader</h2>
+
+          <div className="box">
+            <Loader />
+          </div>
         </div>
       </div>
     );
