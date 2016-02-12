@@ -22,7 +22,12 @@ var _componentsIconRadioInput = require('./components/IconRadioInput');
 
 var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
 
+var _componentsLoader = require('./components/loader');
+
+var _componentsLoader2 = _interopRequireDefault(_componentsLoader);
+
 exports.InputKeyboard = _componentsInputKeyboard2['default'];
 exports.NumberInput = _componentsNumberInput2['default'];
 exports.IconRadioGroup = _componentsIconRadioGroup2['default'];
 exports.IconRadioInput = _componentsIconRadioInput2['default'];
+exports.Loader = _componentsLoader2['default'];
