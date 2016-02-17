@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InputKeyboard, NumberInput, IconRadioGroup, Loader } from '../../lib/index';
+import { InputKeyboard, NumberInput, IconRadioGroup, Loader, OnlyClickOptionsList } from '../../lib/index';
 
 const iconRadioGroupOptions =[
   {
@@ -64,6 +64,19 @@ let App = React.createClass({
 
           <div className="box">
             <Loader />
+          </div>
+        </div>
+
+        <hr/>
+
+        <div>
+          <h2>Only Click Options List</h2>
+
+          <div>
+            <OnlyClickOptionsList
+              options={iconRadioGroupOptions}
+              onClick={(value)=> alert("You choose " + value)}
+            />
           </div>
         </div>
       </div>

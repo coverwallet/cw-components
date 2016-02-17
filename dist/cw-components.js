@@ -78,7 +78,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
 	
-	var _componentsLoader = __webpack_require__(7);
+	var _componentsOnlyClickOptionsList = __webpack_require__(7);
+	
+	var _componentsOnlyClickOptionsList2 = _interopRequireDefault(_componentsOnlyClickOptionsList);
+	
+	var _componentsLoader = __webpack_require__(8);
 	
 	var _componentsLoader2 = _interopRequireDefault(_componentsLoader);
 	
@@ -87,6 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.IconRadioGroup = _componentsIconRadioGroup2['default'];
 	exports.IconRadioInput = _componentsIconRadioInput2['default'];
 	exports.Loader = _componentsLoader2['default'];
+	exports.OnlyClickOptionsList = _componentsOnlyClickOptionsList2['default'];
 
 /***/ },
 /* 1 */
@@ -567,6 +572,54 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var OnlyClickOptionsList = function OnlyClickOptionsList(props) {
+	  var items = props.options.map(function (item, i) {
+	    return _react2['default'].createElement(
+	      'li',
+	      {
+	        key: i,
+	        className: 'oc-options-list__item oc-option',
+	        onClick: props.onClick.bind(null, item.value)
+	      },
+	      _react2['default'].createElement(
+	        'span',
+	        { className: 'oc-option__message' },
+	        item.label
+	      ),
+	      _react2['default'].createElement('span', { className: 'oc-option__next-icon' })
+	    );
+	  });
+	  return _react2['default'].createElement(
+	    'ul',
+	    { className: 'oc-options-list' },
+	    items
+	  );
+	};
+	
+	OnlyClickOptionsList.propTypes = {
+	  options: _react.PropTypes.arrayOf(_react.PropTypes.object),
+	  onClick: _react.PropTypes.func
+	};
+	
+	exports['default'] = OnlyClickOptionsList;
+	module.exports = exports['default'];
+
+/***/ },
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
