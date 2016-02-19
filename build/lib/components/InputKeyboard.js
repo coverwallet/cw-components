@@ -69,7 +69,13 @@ var InputKeyboard = (function (_React$Component) {
         'div',
         { className: 'input-keyboard' },
         this.props.currency && _react2['default'].createElement('span', { className: 'input-keyboard__currency' }),
-        _react2['default'].createElement('input', { type: 'number', className: 'input-keyboard__input', onChange: this.handleChange.bind(this), value: this.state.value }),
+        _react2['default'].createElement('input', {
+          type: 'number',
+          className: 'input-keyboard__input',
+          pattern: '[0-9]*',
+          inputMode: 'numeric',
+          onChange: this.handleChange.bind(this),
+          value: this.state.value }),
         _react2['default'].createElement(_keyboard2['default'], { pressKey: this.pressKey.bind(this), deleteKey: this.deleteKey.bind(this) })
       );
     }

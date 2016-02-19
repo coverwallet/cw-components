@@ -75,11 +75,13 @@ var NumberInput = (function (_React$Component) {
         _react2['default'].createElement('input', {
           ref: 'number',
           className: 'number-input__input',
+          type: 'number',
+          pattern: '[0-9]*',
+          inputMode: 'numeric',
           name: this.props.name,
           min: this.props.min ? this.props.min : 0,
           max: this.props.max ? this.props.max : null,
           step: this.props.step ? this.props.step : 1,
-          type: this.props.type ? this.props.type : 'number',
           onBlur: function (e) {
             return _this.props.onBlur ? _this.props.onBlur(e) : null;
           },

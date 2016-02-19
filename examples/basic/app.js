@@ -76,6 +76,7 @@ let App = React.createClass({
             <OnlyClickOptionsList
               options={iconRadioGroupOptions}
               onClick={(value)=> alert("You choose " + value)}
+              value='Yes'
             />
           </div>
         </div>
