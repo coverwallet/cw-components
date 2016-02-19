@@ -1,6 +1,6 @@
 {
   "name": "cw-components",
-  "version": "0.0.0",
+  "version": "1.4.1",
   "description": "CoverWallet components",
   "main": "./lib/index.js",
   "repository": {
@@ -30,9 +30,16 @@
     "react-dom": "^0.14.3"
   },
   "tags": [
-    "React", "Component", ""
+    "React",
+    "Component",
+    ""
   ],
   "keywords": [
-    "React", "Component", ""
-  ]
+    "React",
+    "Component",
+    ""
+  ],
+  "dependencies": {
+    "classnames": "^2.2.3"
+  }
 }

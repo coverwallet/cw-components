@@ -22,6 +22,10 @@ var _componentsIconRadioInput = require('./components/IconRadioInput');
 
 var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
 
+var _componentsOnlyClickOption = require('./components/OnlyClickOption');
+
+var _componentsOnlyClickOption2 = _interopRequireDefault(_componentsOnlyClickOption);
+
 var _componentsOnlyClickOptionsList = require('./components/OnlyClickOptionsList');
 
 var _componentsOnlyClickOptionsList2 = _interopRequireDefault(_componentsOnlyClickOptionsList);
@@ -36,3 +40,4 @@ exports.IconRadioGroup = _componentsIconRadioGroup2['default'];
 exports.IconRadioInput = _componentsIconRadioInput2['default'];
 exports.Loader = _componentsLoader2['default'];
 exports.OnlyClickOptionsList = _componentsOnlyClickOptionsList2['default'];
+exports.OnlyClickOption = _componentsOnlyClickOption2['default'];

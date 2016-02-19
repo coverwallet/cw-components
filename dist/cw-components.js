@@ -78,11 +78,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
 	
-	var _componentsOnlyClickOptionsList = __webpack_require__(7);
+	var _componentsOnlyClickOption = __webpack_require__(8);
+	
+	var _componentsOnlyClickOption2 = _interopRequireDefault(_componentsOnlyClickOption);
+	
+	var _componentsOnlyClickOptionsList = __webpack_require__(9);
 	
 	var _componentsOnlyClickOptionsList2 = _interopRequireDefault(_componentsOnlyClickOptionsList);
 	
-	var _componentsLoader = __webpack_require__(8);
+	var _componentsLoader = __webpack_require__(10);
 	
 	var _componentsLoader2 = _interopRequireDefault(_componentsLoader);
 	
@@ -92,6 +96,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.IconRadioInput = _componentsIconRadioInput2['default'];
 	exports.Loader = _componentsLoader2['default'];
 	exports.OnlyClickOptionsList = _componentsOnlyClickOptionsList2['default'];
+	exports.OnlyClickOption = _componentsOnlyClickOption2['default'];
 
 /***/ },
 /* 1 */
@@ -168,7 +173,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'div',
 	        { className: 'input-keyboard' },
 	        this.props.currency && _react2['default'].createElement('span', { className: 'input-keyboard__currency' }),
-	        _react2['default'].createElement('input', { type: 'number', className: 'input-keyboard__input', onChange: this.handleChange.bind(this), value: this.state.value }),
+	        _react2['default'].createElement('input', {
+	          type: 'number',
+	          className: 'input-keyboard__input',
+	          pattern: '[0-9]*',
+	          inputMode: 'numeric',
+	          min: this.props.min ? this.props.min : 0,
+	          onChange: this.handleChange.bind(this),
+	          value: this.state.value }),
 	        _react2['default'].createElement(_keyboard2['default'], { pressKey: this.pressKey.bind(this), deleteKey: this.deleteKey.bind(this) })
 	      );
 	    }
@@ -239,7 +251,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this = this;
 	
 	      var numbers = [];
-	      [7, 8, 9, 6, 4, 5, 1, 2, 3, 0].forEach(function (i) {
+	      [7, 8, 9, 4, 5, 6, 1, 2, 3, 0].forEach(function (i) {
 	        if (i > 0) {
 	          numbers.push(_react2['default'].createElement(
 	            'div',
@@ -350,11 +362,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _react2['default'].createElement('input', {
 	          ref: 'number',
 	          className: 'number-input__input',
+	          type: 'number',
+	          pattern: '[0-9]*',
+	          inputMode: 'numeric',
 	          name: this.props.name,
 	          min: this.props.min ? this.props.min : 0,
 	          max: this.props.max ? this.props.max : null,
 	          step: this.props.step ? this.props.step : 1,
-	          type: this.props.type ? this.props.type : 'number',
 	          onBlur: function (e) {
 	            return _this.props.onBlur ? _this.props.onBlur(e) : null;
 	          },
@@ -493,6 +507,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _classnames = __webpack_require__(7);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var IconRadioInput = (function (_React$Component) {
 	  _inherits(IconRadioInput, _React$Component);
 	
@@ -501,7 +519,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    _get(Object.getPrototypeOf(IconRadioInput.prototype), 'constructor', this).call(this, props);
 	    this.state = {
-	      checked: this.checked(props.value, props.checkedValue)
+	      checked: this.checked(props.value, props.checkedValue),
+	      clicked: false
 	    };
 	  }
 	
@@ -521,11 +540,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.props.onChange && this.props.onChange(this.props.value);
 	    }
 	  }, {
+	    key: 'handleClick',
+	    value: function handleClick() {
+	      var _this = this;
+	
+	      this.setState({ clicked: true });
+	      setTimeout(function () {
+	        _this.setState({ clicked: false });
+	      }, 300);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var buttonClass = (0, _classnames2['default'])("icons-radio-input", { 'icons-radio-input--checked': this.state.checked }, { 'icons-radio-input--clicked': this.state.clicked });
 	      return _react2['default'].createElement(
 	        'label',
-	        { className: 'icons-radio-input ' + (this.state.checked ? 'icons-radio-input--checked' : '') },
+	        {
+	          className: buttonClass,
+	          onClick: this.handleClick.bind(this)
+	        },
 	        this.renderIcon(),
 	        _react2['default'].createElement('input', {
 	          type: 'radio',
@@ -574,52 +607,233 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var OnlyClickOptionsList = function OnlyClickOptionsList(props) {
-	  var items = props.options.map(function (item, i) {
-	    return _react2['default'].createElement(
-	      'li',
-	      {
-	        key: i,
-	        className: 'oc-options-list__item oc-option',
-	        onClick: props.onClick.bind(null, item.value)
-	      },
-	      _react2['default'].createElement(
-	        'span',
-	        { className: 'oc-option__message' },
-	        item.label
-	      ),
-	      _react2['default'].createElement('span', { className: 'oc-option__next-icon' })
-	    );
-	  });
-	  return _react2['default'].createElement(
-	    'ul',
-	    { className: 'oc-options-list' },
-	    items
-	  );
+	var _classnames = __webpack_require__(7);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var OnlyClickOption = (function (_React$Component) {
+	  _inherits(OnlyClickOption, _React$Component);
+	
+	  function OnlyClickOption(props) {
+	    _classCallCheck(this, OnlyClickOption);
+	
+	    _get(Object.getPrototypeOf(OnlyClickOption.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      clicked: false
+	    };
+	  }
+	
+	  _createClass(OnlyClickOption, [{
+	    key: 'handleClick',
+	    value: function handleClick() {
+	      var _this = this;
+	
+	      this.setState({ clicked: true });
+	      setTimeout(function () {
+	        _this.setState({ clicked: false });
+	      }, 300);
+	      this.props.onClick && this.props.onClick(this.props.value);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var value = _props.value;
+	      var label = _props.label;
+	      var checkValue = _props.checkValue;
+	
+	      var optionClass = (0, _classnames2['default'])("oc-options-list__item oc-option", { 'oc-option--checked': value === checkValue }, { 'oc-option--checked': this.state.clicked });
+	      return _react2['default'].createElement(
+	        'li',
+	        {
+	          className: optionClass,
+	          onClick: this.handleClick.bind(this)
+	        },
+	        _react2['default'].createElement(
+	          'span',
+	          { className: 'oc-option__message' },
+	          label
+	        ),
+	        _react2['default'].createElement('span', { className: 'oc-option__next-icon' })
+	      );
+	    }
+	  }]);
+	
+	  return OnlyClickOption;
+	})(_react2['default'].Component);
+	
+	;
+	
+	OnlyClickOption.propTypes = {
+	  value: _react.PropTypes.string.isRequired,
+	  label: _react.PropTypes.string.isRequired,
+	  onClick: _react.PropTypes.func
 	};
+	
+	exports['default'] = OnlyClickOption;
+	module.exports = exports['default'];
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(7);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _OnlyClickOption = __webpack_require__(8);
+	
+	var _OnlyClickOption2 = _interopRequireDefault(_OnlyClickOption);
+	
+	var OnlyClickOptionsList = (function (_React$Component) {
+	  _inherits(OnlyClickOptionsList, _React$Component);
+	
+	  function OnlyClickOptionsList(props) {
+	    _classCallCheck(this, OnlyClickOptionsList);
+	
+	    _get(Object.getPrototypeOf(OnlyClickOptionsList.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      value: this.props.value
+	    };
+	  }
+	
+	  _createClass(OnlyClickOptionsList, [{
+	    key: 'handleClick',
+	    value: function handleClick(value) {
+	      this.setState({ value: value });
+	      this.props.onClick && this.props.onClick(value);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this = this;
+	
+	      var items = this.props.options.map(function (item, i) {
+	        return _react2['default'].createElement(_OnlyClickOption2['default'], {
+	          key: i,
+	          value: item.value,
+	          label: item.label,
+	          checkValue: _this.state.value,
+	          onClick: _this.handleClick.bind(_this)
+	        });
+	      });
+	
+	      return _react2['default'].createElement(
+	        'ul',
+	        { className: 'oc-options-list' },
+	        items
+	      );
+	    }
+	  }]);
+	
+	  return OnlyClickOptionsList;
+	})(_react2['default'].Component);
 	
 	OnlyClickOptionsList.propTypes = {
 	  options: _react.PropTypes.arrayOf(_react.PropTypes.object),
-	  onClick: _react.PropTypes.func
+	  onClick: _react.PropTypes.func,
+	  value: _react.PropTypes.string
 	};
 	
 	exports['default'] = OnlyClickOptionsList;
 	module.exports = exports['default'];
 
 /***/ },
-/* 8 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

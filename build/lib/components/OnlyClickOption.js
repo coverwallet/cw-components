@@ -18,61 +18,68 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var Keyboard = (function (_React$Component) {
-  _inherits(Keyboard, _React$Component);
+var _classnames = require('classnames');
 
-  function Keyboard() {
-    _classCallCheck(this, Keyboard);
+var _classnames2 = _interopRequireDefault(_classnames);
 
-    _get(Object.getPrototypeOf(Keyboard.prototype), 'constructor', this).apply(this, arguments);
+var OnlyClickOption = (function (_React$Component) {
+  _inherits(OnlyClickOption, _React$Component);
+
+  function OnlyClickOption(props) {
+    _classCallCheck(this, OnlyClickOption);
+
+    _get(Object.getPrototypeOf(OnlyClickOption.prototype), 'constructor', this).call(this, props);
+    this.state = {
+      clicked: false
+    };
   }
 
-  _createClass(Keyboard, [{
-    key: 'click',
-    value: function click(key) {
-      if (this.props.pressKey) {
-        this.props.pressKey(key);
-      }
-    }
-  }, {
-    key: 'delete',
-    value: function _delete() {
-      if (this.props.deleteKey) {
-        this.props.deleteKey();
-      }
+  _createClass(OnlyClickOption, [{
+    key: 'handleClick',
+    value: function handleClick() {
+      var _this = this;
+
+      this.setState({ clicked: true });
+      setTimeout(function () {
+        _this.setState({ clicked: false });
+      }, 300);
+      this.props.onClick && this.props.onClick(this.props.value);
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this = this;
+      var _props = this.props;
+      var value = _props.value;
+      var label = _props.label;
+      var checkValue = _props.checkValue;
 
-      var numbers = [];
-      [7, 8, 9, 4, 5, 6, 1, 2, 3, 0].forEach(function (i) {
-        if (i > 0) {
-          numbers.push(_react2['default'].createElement(
-            'div',
-            { key: i, className: 'keyboard__number', onClick: _this.click.bind(_this, i) },
-            i
-          ));
-        } else {
-          numbers.push(_react2['default'].createElement(
-            'div',
-            { key: i, className: 'keyboard__number keyboard__number--0', onClick: _this.click.bind(_this, i) },
-            i
-          ));
-        }
-      });
-      numbers.push(_react2['default'].createElement('div', { key: '10', className: 'keyboard__delete keyboard__backspace', onClick: this['delete'].bind(this) }));
+      var optionClass = (0, _classnames2['default'])("oc-options-list__item oc-option", { 'oc-option--checked': value === checkValue }, { 'oc-option--checked': this.state.clicked });
       return _react2['default'].createElement(
-        'div',
-        { className: 'keyboard' },
-        numbers
+        'li',
+        {
+          className: optionClass,
+          onClick: this.handleClick.bind(this)
+        },
+        _react2['default'].createElement(
+          'span',
+          { className: 'oc-option__message' },
+          label
+        ),
+        _react2['default'].createElement('span', { className: 'oc-option__next-icon' })
       );
     }
   }]);
 
-  return Keyboard;
+  return OnlyClickOption;
 })(_react2['default'].Component);
 
-exports['default'] = Keyboard;
+;
+
+OnlyClickOption.propTypes = {
+  value: _react.PropTypes.string.isRequired,
+  label: _react.PropTypes.string.isRequired,
+  onClick: _react.PropTypes.func
+};
+
+exports['default'] = OnlyClickOption;
 module.exports = exports['default'];
