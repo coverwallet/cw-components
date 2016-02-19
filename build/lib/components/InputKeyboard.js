@@ -74,6 +74,7 @@ var InputKeyboard = (function (_React$Component) {
           className: 'input-keyboard__input',
           pattern: '[0-9]*',
           inputMode: 'numeric',
+          min: this.props.min ? this.props.min : 0,
           onChange: this.handleChange.bind(this),
           value: this.state.value }),
         _react2['default'].createElement(_keyboard2['default'], { pressKey: this.pressKey.bind(this), deleteKey: this.deleteKey.bind(this) })
