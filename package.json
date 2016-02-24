@@ -14,13 +14,22 @@
   },
   "scripts": {
     "test": "rackt test --single-run --browsers Firefox",
-    "start": "rackt server"
+    "sass-watch": "node-sass --watch examples/basic/app.scss examples/basic/app.css",
+    "sass": "node-sass examples/basic/app.scss examples/basic/app.css",
+    "start": "npm run styleguide-fonts & npm run sass-watch & rackt server",
+    "copy-fonts": "cp -R node_modules/cw-styleguide/fonts examples/basic",
+    "copy-images": "cp -R node_modules/cw-styleguide/images examples/basic",
+    "styleguide-fonts": "npm run copy-fonts & npm run copy-images",
+    "build": "npm run styleguide-fonts & npm run sass & rackt build",
+    "gh-pages": "rackt pages"
   },
   "authors": [
     "CoverWallet"
   ],
   "license": "MIT",
   "devDependencies": {
+    "cw-styleguide": "git+https://github.com/coverwallet/styleguide.git#v1.8",
+    "node-sass": "^3.4.2",
     "rackt-cli": "^0.4.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
