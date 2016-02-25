@@ -1,6 +1,7 @@
 .keyboard {
   background: inherit;
-  width: 160px;
+  width: 100%;
+  border-collapse: collapse;
 
   @include media($mobile) {
     display: none;
@@ -8,7 +9,7 @@
 
   .keyboard__number, .keyboard__delete {
     cursor: pointer;
-    width: 54px;
+    width: 33.3%;
     height: 54px;
     text-align: center;
     line-height: 50px;
@@ -16,9 +17,10 @@
     background-color: $cwColor-base-white;
     border: 1px solid $cwColor-black-light;
     font-size: 20px;
-    margin: -1px;
-    display: inline-block;
-    float: left;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;
     box-sizing: border-box;
     &:hover {
       background-color: $cwColor-base-blue;
@@ -40,12 +42,7 @@
     }
   }
 
-  .keyboard__number--0, .keyboard__delete--0 {
-    width: 106px;
-  }
-
   .keyboard__backspace {
     @include cw-covericon-before(onlyclick-backspace, 0, $cwColor-black-xmedium);
-    display: inline-block;
   }
 }

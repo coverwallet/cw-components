@@ -24,8 +24,13 @@ let App = React.createClass({
       <div className="example">
         <h1>cw-components</h1>
         <div className="clearfix">
-          <h2>Keyboard input</h2>
+          <h2>Default Keyboard input</h2>
           <InputKeyboard currency={true}/>
+        </div>
+
+        <div className="clearfix">
+          <h2>Long Keyboard input</h2>
+          <InputKeyboard width="100%" />
         </div>
 
         <hr/>
@@ -41,6 +46,11 @@ let App = React.createClass({
           <div className="clearfix">
             <h3>Max 20, Min 5, Step 5</h3>
             <NumberInput min={5} max={20} step={5} />
+          </div>
+
+          <div className="clearfix">
+            <h3>Long</h3>
+            <NumberInput width="100%"/>
           </div>
         </div>
 

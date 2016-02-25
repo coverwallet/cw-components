@@ -31,5 +31,15 @@
     color: $cwColor-base-bluegray;
     font-weight: 100;
     box-sizing: border-box;
+
+    @include media($mobile) {
+      text-align: left;
+    }
+  }
+
+  .input-keyboard__input--currency {
+    @include media($mobile) {
+      padding-left: 35px;
+    }
   }
 }

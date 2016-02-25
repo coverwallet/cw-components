@@ -14,6 +14,10 @@
     height: 27px;
     box-sizing: border-box;
     cursor: pointer;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;
     &:hover {
       &:before {
         color: $cwColor-base-blue;
@@ -30,16 +34,16 @@
   }
   .number-input__minus {
     @include cw-covericon-before(onlyclick-minus, 0, $cwColor-black-xmedium);
-    left: 114px;
+    right: 50px;
   }
 
   .number-input__plus {
     @include cw-covericon-before(onlyclick-plus, 0, $cwColor-black-xmedium);
-    left: 155px;
+    right: 10px;
   }
 
   .number-input__input {
-    width: 100px;
+    width: calc(100% - 90px);
     height: 40px;
     padding-left: 10px;
     text-align: right;
@@ -52,6 +56,7 @@
 
     @include media($mobile) {
       width: 100%;
+      text-align: left;
     }
   }
 }

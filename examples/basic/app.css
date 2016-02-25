@@ -8265,7 +8265,14 @@ Styleguide 9.1
     width: 27px;
     height: 27px;
     box-sizing: border-box;
-    cursor: pointer; }
+    cursor: pointer;
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none; }
     .number-input .number-input__minus:hover:before,
     .number-input .number-input__plus:hover:before {
       color: #438bd7; }
@@ -8274,17 +8281,17 @@ Styleguide 9.1
       .number-input .number-input__plus {
         display: none; } }
   .number-input .number-input__minus {
-    left: 114px; }
+    right: 50px; }
     .number-input .number-input__minus:before {
       padding-right: 0;
       color: #8a8a8a; }
   .number-input .number-input__plus {
-    left: 155px; }
+    right: 10px; }
     .number-input .number-input__plus:before {
       padding-right: 0;
       color: #8a8a8a; }
   .number-input .number-input__input {
-    width: 100px;
+    width: calc(100% - 90px);
     height: 40px;
     padding-left: 10px;
     text-align: right;
@@ -8296,17 +8303,19 @@ Styleguide 9.1
     box-sizing: border-box; }
     @media screen and (max-width: 480px) {
       .number-input .number-input__input {
-        width: 100%; } }
+        width: 100%;
+        text-align: left; } }
 
 .keyboard {
   background: inherit;
-  width: 160px; }
+  width: 100%;
+  border-collapse: collapse; }
   @media screen and (max-width: 480px) {
     .keyboard {
       display: none; } }
   .keyboard .keyboard__number, .keyboard .keyboard__delete {
     cursor: pointer;
-    width: 54px;
+    width: 33.3%;
     height: 54px;
     text-align: center;
     line-height: 50px;
@@ -8314,9 +8323,13 @@ Styleguide 9.1
     background-color: #fff;
     border: 1px solid #d2d2d2;
     font-size: 20px;
-    margin: -1px;
-    display: inline-block;
-    float: left;
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
     box-sizing: border-box; }
     .keyboard .keyboard__number:hover, .keyboard .keyboard__delete:hover {
       background-color: #438bd7;
@@ -8326,13 +8339,9 @@ Styleguide 9.1
     .keyboard .keyboard__delete:hover:before {
       background-color: #438bd7;
       color: #fff; }
-  .keyboard .keyboard__number--0, .keyboard .keyboard__delete--0 {
-    width: 106px; }
-  .keyboard .keyboard__backspace {
-    display: inline-block; }
-    .keyboard .keyboard__backspace:before {
-      padding-right: 0;
-      color: #8a8a8a; }
+  .keyboard .keyboard__backspace:before {
+    padding-right: 0;
+    color: #8a8a8a; }
 
 .input-keyboard {
   position: relative;
@@ -8364,6 +8373,12 @@ Styleguide 9.1
     color: #454855;
     font-weight: 100;
     box-sizing: border-box; }
+    @media screen and (max-width: 480px) {
+      .input-keyboard .input-keyboard__input {
+        text-align: left; } }
+  @media screen and (max-width: 480px) {
+    .input-keyboard .input-keyboard__input--currency {
+      padding-left: 35px; } }
 
 .radio-group {
   display: table; }
@@ -8522,14 +8537,13 @@ body {
   background: #f9f9f9; }
 
 .example {
-  width: 1200px;
+  max-width: 1200px;
   padding: 40px;
   margin: 0 auto; }
-
-@media only screen and (max-width: 480px) {
-  .example {
-    width: 100%;
-    padding: 20px; } }
+  @media screen and (max-width: 1024px) {
+    .example {
+      width: 100%;
+      padding: 20px; } }
 
 .clearfix::after {
   clear: both;
