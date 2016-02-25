@@ -1,36 +1,3 @@
-/*
-  Number Input
-
-  Styleguide 13.1
-
-  Markup:
-    <div class="number-input">
-      <input class="number-input__input" min="0" step="1" type="number" value="0">
-      <span class="number-input__minus"></span>
-      <span class="number-input__plus"></span>
-    </div>
-*/
-/*
-  Inside form group
-
-  Styleguide 13.1.1
-
-  Markup:
-     <form class="form">
-         <div class="form-group form-group--inline form-group--error">
-             <label class="label label--inline label--text">Your label text</label>
-             <div class="input-group input-group--inline">
-                 <div class="number-input">
-                    <input class="number-input__input" min="0" step="1" type="number" value="0">
-                    <span class="number-input__minus"></span>
-                    <span class="number-input__plus"></span>
-                 </div>
-                 <span class="help-block" >Error message</span>
-             </div>
-         </div>
-     </form>
-*/
-
 .number-input {
   position: relative;
   width: 192px;
