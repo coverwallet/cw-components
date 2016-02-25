@@ -736,8 +736,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return OnlyClickOption;
 	})(_react2['default'].Component);
 	
-	;
-	
 	OnlyClickOption.propTypes = {
 	  value: _react.PropTypes.string.isRequired,
 	  label: _react.PropTypes.string.isRequired,
