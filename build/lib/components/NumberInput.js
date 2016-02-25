@@ -71,7 +71,7 @@ var NumberInput = (function (_React$Component) {
 
       return _react2['default'].createElement(
         'div',
-        { className: 'number-input' },
+        { className: 'number-input', style: { width: this.props.width } },
         _react2['default'].createElement('input', {
           ref: 'number',
           className: 'number-input__input',
