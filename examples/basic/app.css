@@ -8251,38 +8251,6 @@ Styleguide 9.1
   padding-right: 0;
   color: #000; }
 
-/*
-  Number Input
-
-  Styleguide 13.1
-
-  Markup:
-    <div class="number-input">
-      <input class="number-input__input" min="0" step="1" type="number" value="0">
-      <span class="number-input__minus"></span>
-      <span class="number-input__plus"></span>
-    </div>
-*/
-/*
-  Inside form group
-
-  Styleguide 13.1.1
-
-  Markup:
-     <form class="form">
-         <div class="form-group form-group--inline form-group--error">
-             <label class="label label--inline label--text">Your label text</label>
-             <div class="input-group input-group--inline">
-                 <div class="number-input">
-                    <input class="number-input__input" min="0" step="1" type="number" value="0">
-                    <span class="number-input__minus"></span>
-                    <span class="number-input__plus"></span>
-                 </div>
-                 <span class="help-block" >Error message</span>
-             </div>
-         </div>
-     </form>
-*/
 .number-input {
   position: relative;
   width: 192px; }
@@ -8366,92 +8334,6 @@ Styleguide 9.1
       padding-right: 0;
       color: #8a8a8a; }
 
-/*
-  Input Keyboard
-
-  Styleguide 13.2
-
-*/
-/*
-
-  Default
-
-  Styleguide 13.2.1
-
-  Markup:
-    <div class="input-keyboard">
-      <input type="number" class="input-keyboard__input">
-      <div class="keyboard">
-        <div class="keyboard__number">9</div>
-        <div class="keyboard__number">8</div>
-        <div class="keyboard__number">7</div>
-        <div class="keyboard__number">6</div>
-        <div class="keyboard__number">5</div>
-        <div class="keyboard__number">4</div>
-        <div class="keyboard__number">3</div>
-        <div class="keyboard__number">2</div>
-        <div class="keyboard__number">1</div>
-        <div class="keyboard__number keyboard__number--0">0</div>
-        <div class="keyboard__delete keyboard__backspace"></div>
-      </div>
-    </div>
-*/
-/*
-  Currencies
-
-  Styleguide 13.2.2
-
-  Markup:
-    <div class="input-keyboard">
-      <span class="input-keyboard__currency"></span>
-      <input type="number" class="input-keyboard__input">
-      <div class="keyboard">
-        <div class="keyboard__number">9</div>
-        <div class="keyboard__number">8</div>
-        <div class="keyboard__number">7</div>
-        <div class="keyboard__number">6</div>
-        <div class="keyboard__number">5</div>
-        <div class="keyboard__number">4</div>
-        <div class="keyboard__number">3</div>
-        <div class="keyboard__number">2</div>
-        <div class="keyboard__number">1</div>
-        <div class="keyboard__number keyboard__number--0">0</div>
-        <div class="keyboard__delete keyboard__backspace"></div>
-      </div>
-    </div>
-*/
-/*
-  Inside form group
-
-  Styleguide 13.2.3
-
-  Markup:
-    <form class="form">
-         <div class="form-group form-group--inline form-group--error">
-             <label class="label label--inline label--text">Your label text</label>
-             <div class="input-group input-group--inline">
-                 <div class="input-keyboard">
-                    <span class="input-keyboard__currency"></span>
-                    <input type="number" class="input-keyboard__input">
-                    <div class="keyboard">
-                      <div class="keyboard__number">9</div>
-                      <div class="keyboard__number">8</div>
-                      <div class="keyboard__number">7</div>
-                      <div class="keyboard__number">6</div>
-                      <div class="keyboard__number">5</div>
-                      <div class="keyboard__number">4</div>
-                      <div class="keyboard__number">3</div>
-                      <div class="keyboard__number">2</div>
-                      <div class="keyboard__number">1</div>
-                      <div class="keyboard__number keyboard__number--0">0</div>
-                      <div class="keyboard__delete keyboard__backspace"></div>
-                    </div>
-                 </div>
-                 <span class="help-block" >Error message</span>
-             </div>
-         </div>
-     </form>
-*/
 .input-keyboard {
   position: relative;
   width: 156px; }
@@ -8483,77 +8365,6 @@ Styleguide 9.1
     font-weight: 100;
     box-sizing: border-box; }
 
-/*
-  Icon Radio Group
-
-  Styleguide 13.3
-
-  Markup:
-    <div class="icons-radio-group">
-      <label class="icons-radio-input">
-        <div class="icons-radio-input__icon">
-          <span class="styleguide-icon-onlyclick-yes"></span>
-        </div>
-        <input type="radio" name="test_radio_input" class="icons-radio-input__input" value="Yes">
-        <div class="icons-radio-input__label">Yes</div>
-      </label>
-      <label class="icons-radio-input icons-radio-input--checked icons-radio-input--clicked">
-        <div class="icons-radio-input__icon">
-          <span class="styleguide-icon-onlyclick-no"></span>
-        </div>
-        <input type="radio" name="test_radio_input" class="icons-radio-input__input" value="No">
-        <div class="icons-radio-input__label">No</div>
-      </label>
-      <label class="icons-radio-input">
-        <div class="icons-radio-input__icon">
-          <span class="styleguide-icon-onlyclick-notsure"></span>
-        </div>
-        <input type="radio" name="test_radio_input" class="icons-radio-input__input" value="Not sure">
-        <div class="icons-radio-input__label">Not sure</div>
-      </label>
-    </div>
-
-*/
-/*
-  Inside radio-group
-
-  Styleguide 13.3.1
-
-  Markup:
-    <form class="form">
-      <div class="radio-group">
-        <div class="form-group form-group--long radio-group__label-container">
-        <label class="label label--inline label--text">Do you need to insure the building?</label>
-        </div>
-        <div class="radio-group__icon-group">
-            <div class="icons-radio-group">
-              <label class="icons-radio-input">
-                <div class="icons-radio-input__icon">
-                  <span class="styleguide-icon-onlyclick-yes"></span>
-                </div>
-                <input type="radio" name="insure_building" class="icons-radio-input__input" value="Yes">
-                <div class="icons-radio-input__label">Yes</div>
-              </label>
-              <label class="icons-radio-input icons-radio-input--checked icons-radio-input--clicked">
-                <div class="icons-radio-input__icon">
-                  <span class="styleguide-icon-onlyclick-no"></span>
-                </div>
-                <input type="radio" name="test_radio_input" class="icons-radio-input__input" value="No">
-                <div class="icons-radio-input__label">No</div>
-              </label>
-              <label class="icons-radio-input">
-                <div class="icons-radio-input__icon">
-                  <span class="styleguide-icon-onlyclick-notsure"></span>
-                </div>
-                <input type="radio" name="test_radio_input" class="icons-radio-input__input" value="Not sure">
-                <div class="icons-radio-input__label">Not sure</div>
-              </label>
-            </div>
-            <div class="radio-group__error-message">Required field</div>
-        </div>
-      </div>
-    </form>
-*/
 .radio-group {
   display: table; }
   @media screen and (max-width: 480px) {
@@ -8626,42 +8437,6 @@ Styleguide 9.1
     .icons-radio-input--checked .icons-radio-input__label {
       color: #fff; }
 
-/*
-  Loader
-
-  Styleguide 12
-*/
-/*
-  Full page loader.
-
-  This is the spinner you see on the front of the page,
-  it prevent you from clicking the links while application is loading important data.
-
-  To close this page click browser 'back' button.
-
-  Styleguide 12.1
-
-  Markup:
-    <div class="loader-container">
-      <div class="loader">
-        <span class="loader__inner"></span>
-      </div>
-    </div>
-*/
-/*
-  In div loader.
-
-  This could be used if we load just some page section.
-
-  Styleguide 12.2
-
-  Markup:
-    <div>
-      <div class="loader" >
-        <span class="loader__inner"></span>
-      </div>
-    </div>
-*/
 .loader {
   position: relative;
   width: 50px;
@@ -8712,52 +8487,6 @@ Styleguide 9.1
   text-align: center;
   z-index: 9999999; }
 
-/*
-  Only Click Options List
-
-  Styleguide 13.4
-
-  Markup:
-    <ul class="oc-options-list">
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">Not sure yet</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">Individual</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">Corporation</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">LLC</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">Limited Partnership</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">Non-profit</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">Partnership</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option">
-        <span class="oc-option__message">Trust</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-      <li class="oc-options-list__item oc-option--checked oc-option">
-        <span class="oc-option__message">Other</span>
-        <span class="oc-option__next-icon"></span>
-      </li>
-    </ul>
-
-*/
 .oc-options-list {
   list-style-type: none;
   padding-left: 0; }
