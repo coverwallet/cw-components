@@ -1,0 +1,47 @@
+.oc-options-list {
+  list-style-type: none;
+  padding-left: 0;
+
+  .oc-options-list__item {
+    padding: 10px 15px;
+    margin: -1px;
+    border: 1px solid $cwColor-black-xmedium;
+    cursor: pointer;
+  }
+}
+
+.oc-option {
+  @include clearfix();
+  background-color: $cwColor-base-white;
+
+  &:hover {
+    background: $cwColor-blue-light;
+  }
+
+  &--checked {
+    background-color: $cwColor-base-blue;
+    color: $cwColor-base-white;
+
+    .oc-option__next-icon {
+      color: $cwColor-base-white;
+      &::before {
+        color: $cwColor-base-white;
+      }
+    }
+  }
+
+  &:focus, &:active, &--clicked {
+    @extend .animated, .pulse;
+  }
+
+  .oc-option__next-icon {
+    @extend .fa, .fa-angle-right;
+    float: right;
+    color: $cwColor-base-blue;
+
+    &::before {
+      font-size: 30px;
+      line-height: 20px;
+    }
+  }
+}
