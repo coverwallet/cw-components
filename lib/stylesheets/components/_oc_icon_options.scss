@@ -1,0 +1,27 @@
+.oc-icon-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  margin: 10px 0;
+
+  .oc-icon-option-container {
+    width: 23%;
+    min-height: 150px;
+    float: left;
+    margin-right: 2%;
+    box-sizing: border-box;
+
+    @include media($tablet) {
+      width: 30%;
+      margin: auto;
+    }
+
+    @include media($mobile) {
+      width: 46%;
+      margin: auto;
+    }
+  }
+}

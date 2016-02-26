@@ -379,7 +379,7 @@ Copyright (c) 2015 Daniel Eden
 .animated, .number-input .number-input__minus:focus, .number-input .number-input__minus:active, .number-input .number-input__minus--clicked,
 .number-input .number-input__plus:focus,
 .number-input .number-input__plus:active,
-.number-input .number-input__plus--clicked, .keyboard .keyboard__number:focus, .keyboard .keyboard__number:active, .keyboard .keyboard__number--clicked, .keyboard .keyboard__delete:focus, .keyboard .keyboard__delete:active, .keyboard .keyboard__delete--clicked, .icons-radio-input:focus, .icons-radio-input:active, .icons-radio-input--clicked, .oc-option:focus, .oc-option:active, .oc-option--clicked {
+.number-input .number-input__plus--clicked, .keyboard .keyboard__number:focus, .keyboard .keyboard__number:active, .keyboard .keyboard__number--clicked, .keyboard .keyboard__delete:focus, .keyboard .keyboard__delete:active, .keyboard .keyboard__delete--clicked, .icons-radio-input:focus, .icons-radio-input:active, .icons-radio-input--clicked, .oc-list-option:focus, .oc-list-option:active, .oc-list-option--clicked, .oc-icon-option:focus, .oc-icon-option:active, .oc-icon-option--clicked {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
@@ -388,30 +388,30 @@ Copyright (c) 2015 Daniel Eden
 .animated.infinite, .number-input .infinite.number-input__minus:focus, .number-input .infinite.number-input__minus:active, .number-input .infinite.number-input__minus--clicked,
 .number-input .infinite.number-input__plus:focus,
 .number-input .infinite.number-input__plus:active,
-.number-input .infinite.number-input__plus--clicked, .keyboard .infinite.keyboard__number:focus, .keyboard .infinite.keyboard__number:active, .keyboard .infinite.keyboard__number--clicked, .keyboard .infinite.keyboard__delete:focus, .keyboard .infinite.keyboard__delete:active, .keyboard .infinite.keyboard__delete--clicked, .infinite.icons-radio-input:focus, .infinite.icons-radio-input:active, .infinite.icons-radio-input--clicked, .infinite.oc-option:focus, .infinite.oc-option:active, .infinite.oc-option--clicked {
+.number-input .infinite.number-input__plus--clicked, .keyboard .infinite.keyboard__number:focus, .keyboard .infinite.keyboard__number:active, .keyboard .infinite.keyboard__number--clicked, .keyboard .infinite.keyboard__delete:focus, .keyboard .infinite.keyboard__delete:active, .keyboard .infinite.keyboard__delete--clicked, .infinite.icons-radio-input:focus, .infinite.icons-radio-input:active, .infinite.icons-radio-input--clicked, .infinite.oc-list-option:focus, .infinite.oc-list-option:active, .infinite.oc-list-option--clicked, .infinite.oc-icon-option:focus, .infinite.oc-icon-option:active, .infinite.oc-icon-option--clicked {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
 .animated.hinge, .number-input .hinge.number-input__minus:focus, .number-input .hinge.number-input__minus:active, .number-input .hinge.number-input__minus--clicked,
 .number-input .hinge.number-input__plus:focus,
 .number-input .hinge.number-input__plus:active,
-.number-input .hinge.number-input__plus--clicked, .keyboard .hinge.keyboard__number:focus, .keyboard .hinge.keyboard__number:active, .keyboard .hinge.keyboard__number--clicked, .keyboard .hinge.keyboard__delete:focus, .keyboard .hinge.keyboard__delete:active, .keyboard .hinge.keyboard__delete--clicked, .hinge.icons-radio-input:focus, .hinge.icons-radio-input:active, .hinge.icons-radio-input--clicked, .hinge.oc-option:focus, .hinge.oc-option:active, .hinge.oc-option--clicked {
+.number-input .hinge.number-input__plus--clicked, .keyboard .hinge.keyboard__number:focus, .keyboard .hinge.keyboard__number:active, .keyboard .hinge.keyboard__number--clicked, .keyboard .hinge.keyboard__delete:focus, .keyboard .hinge.keyboard__delete:active, .keyboard .hinge.keyboard__delete--clicked, .hinge.icons-radio-input:focus, .hinge.icons-radio-input:active, .hinge.icons-radio-input--clicked, .hinge.oc-list-option:focus, .hinge.oc-list-option:active, .hinge.oc-list-option--clicked, .hinge.oc-icon-option:focus, .hinge.oc-icon-option:active, .hinge.oc-icon-option--clicked {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
 .animated.bounceIn, .number-input .bounceIn.number-input__minus:focus, .number-input .bounceIn.number-input__minus:active, .number-input .bounceIn.number-input__minus--clicked,
 .number-input .bounceIn.number-input__plus:focus,
 .number-input .bounceIn.number-input__plus:active,
-.number-input .bounceIn.number-input__plus--clicked, .keyboard .bounceIn.keyboard__number:focus, .keyboard .bounceIn.keyboard__number:active, .keyboard .bounceIn.keyboard__number--clicked, .keyboard .bounceIn.keyboard__delete:focus, .keyboard .bounceIn.keyboard__delete:active, .keyboard .bounceIn.keyboard__delete--clicked, .bounceIn.icons-radio-input:focus, .bounceIn.icons-radio-input:active, .bounceIn.icons-radio-input--clicked, .bounceIn.oc-option:focus, .bounceIn.oc-option:active, .bounceIn.oc-option--clicked, .animated.bounceOut, .number-input .bounceOut.number-input__minus:focus, .number-input .bounceOut.number-input__minus:active, .number-input .bounceOut.number-input__minus--clicked,
+.number-input .bounceIn.number-input__plus--clicked, .keyboard .bounceIn.keyboard__number:focus, .keyboard .bounceIn.keyboard__number:active, .keyboard .bounceIn.keyboard__number--clicked, .keyboard .bounceIn.keyboard__delete:focus, .keyboard .bounceIn.keyboard__delete:active, .keyboard .bounceIn.keyboard__delete--clicked, .bounceIn.icons-radio-input:focus, .bounceIn.icons-radio-input:active, .bounceIn.icons-radio-input--clicked, .bounceIn.oc-list-option:focus, .bounceIn.oc-list-option:active, .bounceIn.oc-list-option--clicked, .bounceIn.oc-icon-option:focus, .bounceIn.oc-icon-option:active, .bounceIn.oc-icon-option--clicked, .animated.bounceOut, .number-input .bounceOut.number-input__minus:focus, .number-input .bounceOut.number-input__minus:active, .number-input .bounceOut.number-input__minus--clicked,
 .number-input .bounceOut.number-input__plus:focus,
 .number-input .bounceOut.number-input__plus:active,
-.number-input .bounceOut.number-input__plus--clicked, .keyboard .bounceOut.keyboard__number:focus, .keyboard .bounceOut.keyboard__number:active, .keyboard .bounceOut.keyboard__number--clicked, .keyboard .bounceOut.keyboard__delete:focus, .keyboard .bounceOut.keyboard__delete:active, .keyboard .bounceOut.keyboard__delete--clicked, .bounceOut.icons-radio-input:focus, .bounceOut.icons-radio-input:active, .bounceOut.icons-radio-input--clicked, .bounceOut.oc-option:focus, .bounceOut.oc-option:active, .bounceOut.oc-option--clicked, .animated.flipOutX, .number-input .flipOutX.number-input__minus:focus, .number-input .flipOutX.number-input__minus:active, .number-input .flipOutX.number-input__minus--clicked,
+.number-input .bounceOut.number-input__plus--clicked, .keyboard .bounceOut.keyboard__number:focus, .keyboard .bounceOut.keyboard__number:active, .keyboard .bounceOut.keyboard__number--clicked, .keyboard .bounceOut.keyboard__delete:focus, .keyboard .bounceOut.keyboard__delete:active, .keyboard .bounceOut.keyboard__delete--clicked, .bounceOut.icons-radio-input:focus, .bounceOut.icons-radio-input:active, .bounceOut.icons-radio-input--clicked, .bounceOut.oc-list-option:focus, .bounceOut.oc-list-option:active, .bounceOut.oc-list-option--clicked, .bounceOut.oc-icon-option:focus, .bounceOut.oc-icon-option:active, .bounceOut.oc-icon-option--clicked, .animated.flipOutX, .number-input .flipOutX.number-input__minus:focus, .number-input .flipOutX.number-input__minus:active, .number-input .flipOutX.number-input__minus--clicked,
 .number-input .flipOutX.number-input__plus:focus,
 .number-input .flipOutX.number-input__plus:active,
-.number-input .flipOutX.number-input__plus--clicked, .keyboard .flipOutX.keyboard__number:focus, .keyboard .flipOutX.keyboard__number:active, .keyboard .flipOutX.keyboard__number--clicked, .keyboard .flipOutX.keyboard__delete:focus, .keyboard .flipOutX.keyboard__delete:active, .keyboard .flipOutX.keyboard__delete--clicked, .flipOutX.icons-radio-input:focus, .flipOutX.icons-radio-input:active, .flipOutX.icons-radio-input--clicked, .flipOutX.oc-option:focus, .flipOutX.oc-option:active, .flipOutX.oc-option--clicked, .animated.flipOutY, .number-input .flipOutY.number-input__minus:focus, .number-input .flipOutY.number-input__minus:active, .number-input .flipOutY.number-input__minus--clicked,
+.number-input .flipOutX.number-input__plus--clicked, .keyboard .flipOutX.keyboard__number:focus, .keyboard .flipOutX.keyboard__number:active, .keyboard .flipOutX.keyboard__number--clicked, .keyboard .flipOutX.keyboard__delete:focus, .keyboard .flipOutX.keyboard__delete:active, .keyboard .flipOutX.keyboard__delete--clicked, .flipOutX.icons-radio-input:focus, .flipOutX.icons-radio-input:active, .flipOutX.icons-radio-input--clicked, .flipOutX.oc-list-option:focus, .flipOutX.oc-list-option:active, .flipOutX.oc-list-option--clicked, .flipOutX.oc-icon-option:focus, .flipOutX.oc-icon-option:active, .flipOutX.oc-icon-option--clicked, .animated.flipOutY, .number-input .flipOutY.number-input__minus:focus, .number-input .flipOutY.number-input__minus:active, .number-input .flipOutY.number-input__minus--clicked,
 .number-input .flipOutY.number-input__plus:focus,
 .number-input .flipOutY.number-input__plus:active,
-.number-input .flipOutY.number-input__plus--clicked, .keyboard .flipOutY.keyboard__number:focus, .keyboard .flipOutY.keyboard__number:active, .keyboard .flipOutY.keyboard__number--clicked, .keyboard .flipOutY.keyboard__delete:focus, .keyboard .flipOutY.keyboard__delete:active, .keyboard .flipOutY.keyboard__delete--clicked, .flipOutY.icons-radio-input:focus, .flipOutY.icons-radio-input:active, .flipOutY.icons-radio-input--clicked, .flipOutY.oc-option:focus, .flipOutY.oc-option:active, .flipOutY.oc-option--clicked {
+.number-input .flipOutY.number-input__plus--clicked, .keyboard .flipOutY.keyboard__number:focus, .keyboard .flipOutY.keyboard__number:active, .keyboard .flipOutY.keyboard__number--clicked, .keyboard .flipOutY.keyboard__delete:focus, .keyboard .flipOutY.keyboard__delete:active, .keyboard .flipOutY.keyboard__delete--clicked, .flipOutY.icons-radio-input:focus, .flipOutY.icons-radio-input:active, .flipOutY.icons-radio-input--clicked, .flipOutY.oc-list-option:focus, .flipOutY.oc-list-option:active, .flipOutY.oc-list-option--clicked, .flipOutY.oc-icon-option:focus, .flipOutY.oc-icon-option:active, .flipOutY.oc-icon-option--clicked {
   -webkit-animation-duration: .75s;
   animation-duration: .75s; }
 
@@ -502,7 +502,7 @@ Copyright (c) 2015 Daniel Eden
 .pulse, .number-input .number-input__minus:focus, .number-input .number-input__minus:active, .number-input .number-input__minus--clicked,
 .number-input .number-input__plus:focus,
 .number-input .number-input__plus:active,
-.number-input .number-input__plus--clicked, .keyboard .keyboard__number:focus, .keyboard .keyboard__number:active, .keyboard .keyboard__number--clicked, .keyboard .keyboard__delete:focus, .keyboard .keyboard__delete:active, .keyboard .keyboard__delete--clicked, .icons-radio-input:focus, .icons-radio-input:active, .icons-radio-input--clicked, .oc-option:focus, .oc-option:active, .oc-option--clicked {
+.number-input .number-input__plus--clicked, .keyboard .keyboard__number:focus, .keyboard .keyboard__number:active, .keyboard .keyboard__number--clicked, .keyboard .keyboard__delete:focus, .keyboard .keyboard__delete:active, .keyboard .keyboard__delete--clicked, .icons-radio-input:focus, .icons-radio-input:active, .icons-radio-input--clicked, .oc-list-option:focus, .oc-list-option:active, .oc-list-option--clicked, .oc-icon-option:focus, .oc-icon-option:active, .oc-icon-option--clicked {
   -webkit-animation-name: pulse;
   animation-name: pulse; }
 
@@ -1595,7 +1595,7 @@ Copyright (c) 2015 Daniel Eden
 .animated.flip, .number-input .flip.number-input__minus:focus, .number-input .flip.number-input__minus:active, .number-input .flip.number-input__minus--clicked,
 .number-input .flip.number-input__plus:focus,
 .number-input .flip.number-input__plus:active,
-.number-input .flip.number-input__plus--clicked, .keyboard .flip.keyboard__number:focus, .keyboard .flip.keyboard__number:active, .keyboard .flip.keyboard__number--clicked, .keyboard .flip.keyboard__delete:focus, .keyboard .flip.keyboard__delete:active, .keyboard .flip.keyboard__delete--clicked, .flip.icons-radio-input:focus, .flip.icons-radio-input:active, .flip.icons-radio-input--clicked, .flip.oc-option:focus, .flip.oc-option:active, .flip.oc-option--clicked {
+.number-input .flip.number-input__plus--clicked, .keyboard .flip.keyboard__number:focus, .keyboard .flip.keyboard__number:active, .keyboard .flip.keyboard__number--clicked, .keyboard .flip.keyboard__delete:focus, .keyboard .flip.keyboard__delete:active, .keyboard .flip.keyboard__delete--clicked, .flip.icons-radio-input:focus, .flip.icons-radio-input:active, .flip.icons-radio-input--clicked, .flip.oc-list-option:focus, .flip.oc-list-option:active, .flip.oc-list-option--clicked, .flip.oc-icon-option:focus, .flip.oc-icon-option:active, .flip.oc-icon-option--clicked {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
   -webkit-animation-name: flip;
@@ -3700,7 +3700,7 @@ form .form-group.form-group--icons .form-icon.form-icon--edit:before, .form .for
 form .form-group.form-group--icons .form-icon.form-icon--save:before, .form .form-group.form-group--icons .form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .form-icon.form-icon--cancel:before, .form.form--light .form-select .cs-placeholder:after,
 form.form--light .form-select .cs-placeholder:after, .form .form-help-icon:before,
-form .form-help-icon:before, ul.list.list--type-1 li:before, ul.list.list--type-1-big li:before, ul.list.list--type-2 li:before, ul.list.list--type-3 li:before, .oc-option .oc-option__next-icon {
+form .form-help-icon:before, ul.list.list--type-1 li:before, ul.list.list--type-1-big li:before, ul.list.list--type-2 li:before, ul.list.list--type-3 li:before, .oc-list-option .oc-option__next-icon, .oc-selected-value .oc-selected-value__close-icon {
   display: inline-block;
   font: normal normal normal 14px / 1 FontAwesome;
   font-size: inherit;
@@ -3767,7 +3767,7 @@ form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--edit:befor
 form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--save:before, .form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--cancel:before, .form.form--light .form-select .fa-pull-left.cs-placeholder:after,
 form.form--light .form-select .fa-pull-left.cs-placeholder:after, .form .fa-pull-left.form-help-icon:before,
-form .fa-pull-left.form-help-icon:before, ul.list.list--type-1 li.fa-pull-left:before, ul.list.list--type-1-big li.fa-pull-left:before, ul.list.list--type-2 li.fa-pull-left:before, ul.list.list--type-3 li.fa-pull-left:before, .oc-option .fa-pull-left.oc-option__next-icon {
+form .fa-pull-left.form-help-icon:before, ul.list.list--type-1 li.fa-pull-left:before, ul.list.list--type-1-big li.fa-pull-left:before, ul.list.list--type-2 li.fa-pull-left:before, ul.list.list--type-3 li.fa-pull-left:before, .oc-list-option .fa-pull-left.oc-option__next-icon, .oc-selected-value .fa-pull-left.oc-selected-value__close-icon {
   margin-right: .3em; }
 
 .fa.fa-pull-right, .form .form-group label .fa-pull-right.form-help-icon:before,
@@ -3780,7 +3780,7 @@ form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--edit:befo
 form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--save:before, .form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--cancel:before, .form.form--light .form-select .fa-pull-right.cs-placeholder:after,
 form.form--light .form-select .fa-pull-right.cs-placeholder:after, .form .fa-pull-right.form-help-icon:before,
-form .fa-pull-right.form-help-icon:before, ul.list.list--type-1 li.fa-pull-right:before, ul.list.list--type-1-big li.fa-pull-right:before, ul.list.list--type-2 li.fa-pull-right:before, ul.list.list--type-3 li.fa-pull-right:before, .oc-option .fa-pull-right.oc-option__next-icon {
+form .fa-pull-right.form-help-icon:before, ul.list.list--type-1 li.fa-pull-right:before, ul.list.list--type-1-big li.fa-pull-right:before, ul.list.list--type-2 li.fa-pull-right:before, ul.list.list--type-3 li.fa-pull-right:before, .oc-list-option .fa-pull-right.oc-option__next-icon, .oc-selected-value .fa-pull-right.oc-selected-value__close-icon {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
@@ -3800,7 +3800,7 @@ form .form-group.form-group--icons .pull-left.form-icon.form-icon--edit:before, 
 form .form-group.form-group--icons .pull-left.form-icon.form-icon--save:before, .form .form-group.form-group--icons .pull-left.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .pull-left.form-icon.form-icon--cancel:before, .form.form--light .form-select .pull-left.cs-placeholder:after,
 form.form--light .form-select .pull-left.cs-placeholder:after, .form .pull-left.form-help-icon:before,
-form .pull-left.form-help-icon:before, ul.list.list--type-1 li.pull-left:before, ul.list.list--type-1-big li.pull-left:before, ul.list.list--type-2 li.pull-left:before, ul.list.list--type-3 li.pull-left:before, .oc-option .pull-left.oc-option__next-icon {
+form .pull-left.form-help-icon:before, ul.list.list--type-1 li.pull-left:before, ul.list.list--type-1-big li.pull-left:before, ul.list.list--type-2 li.pull-left:before, ul.list.list--type-3 li.pull-left:before, .oc-list-option .pull-left.oc-option__next-icon, .oc-selected-value .pull-left.oc-selected-value__close-icon {
   margin-right: .3em; }
 
 .fa.pull-right, .form .form-group label .pull-right.form-help-icon:before,
@@ -3813,7 +3813,7 @@ form .form-group.form-group--icons .pull-right.form-icon.form-icon--edit:before,
 form .form-group.form-group--icons .pull-right.form-icon.form-icon--save:before, .form .form-group.form-group--icons .pull-right.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .pull-right.form-icon.form-icon--cancel:before, .form.form--light .form-select .pull-right.cs-placeholder:after,
 form.form--light .form-select .pull-right.cs-placeholder:after, .form .pull-right.form-help-icon:before,
-form .pull-right.form-help-icon:before, ul.list.list--type-1 li.pull-right:before, ul.list.list--type-1-big li.pull-right:before, ul.list.list--type-2 li.pull-right:before, ul.list.list--type-3 li.pull-right:before, .oc-option .pull-right.oc-option__next-icon {
+form .pull-right.form-help-icon:before, ul.list.list--type-1 li.pull-right:before, ul.list.list--type-1-big li.pull-right:before, ul.list.list--type-2 li.pull-right:before, ul.list.list--type-3 li.pull-right:before, .oc-list-option .pull-right.oc-option__next-icon, .oc-selected-value .pull-right.oc-selected-value__close-icon {
   margin-left: .3em; }
 
 .fa-spin {
@@ -4160,7 +4160,7 @@ form .form-group.form-group--icons .form-icon.form-icon--edit:before {
 .fa-minus-circle:before {
   content: ""; }
 
-.fa-times-circle:before {
+.fa-times-circle:before, .oc-selected-value .oc-selected-value__close-icon:before {
   content: ""; }
 
 .fa-check-circle:before, .form .form-group.form-group--checkbox .form-checkbox input:checked + label:before,
@@ -4638,7 +4638,7 @@ form .form-help-icon:before {
 .fa-angle-left:before {
   content: ""; }
 
-.fa-angle-right:before, .oc-option .oc-option__next-icon:before {
+.fa-angle-right:before, .oc-list-option .oc-option__next-icon:before {
   content: ""; }
 
 .fa-angle-up:before {
@@ -8445,11 +8445,12 @@ Styleguide 9.1
   .icons-radio-input .icons-radio-input__label {
     text-transform: uppercase;
     color: #454855; }
-  .icons-radio-input--checked {
+  .icons-radio-input--checked, .icons-radio-input--checked:hover {
     border: 1px solid #438bd7;
     background-color: #438bd7; }
     .icons-radio-input--checked .icons-radio-input__icon > span::before,
-    .icons-radio-input--checked .icons-radio-input__label {
+    .icons-radio-input--checked .icons-radio-input__label, .icons-radio-input--checked:hover .icons-radio-input__icon > span::before,
+    .icons-radio-input--checked:hover .icons-radio-input__label {
       color: #fff; }
 
 .loader {
@@ -8502,36 +8503,155 @@ Styleguide 9.1
   text-align: center;
   z-index: 9999999; }
 
-.oc-options-list {
-  list-style-type: none;
-  padding-left: 0; }
-  .oc-options-list .oc-options-list__item {
-    padding: 10px 15px;
-    margin: -1px;
-    border: 1px solid #8a8a8a;
-    cursor: pointer; }
-
-.oc-option {
+.oc-list-option {
   background-color: #fff; }
-  .oc-option::after {
+  .oc-list-option::after {
     clear: both;
     content: "";
     display: table; }
-  .oc-option:hover {
+  .oc-list-option:hover {
     background: #d6e6f6; }
-  .oc-option--checked {
+  .oc-list-option--checked {
     background-color: #438bd7;
     color: #fff; }
-    .oc-option--checked .oc-option__next-icon {
+    .oc-list-option--checked .oc-option__next-icon {
       color: #fff; }
-      .oc-option--checked .oc-option__next-icon::before {
+      .oc-list-option--checked .oc-option__next-icon::before {
         color: #fff; }
-  .oc-option .oc-option__next-icon {
+  .oc-list-option:focus, .oc-list-option:active, .oc-list-option--clicked {
+    border: 1px solid #8a8a8a; }
+  .oc-list-option .oc-option__next-icon {
     float: right;
     color: #438bd7; }
-    .oc-option .oc-option__next-icon::before {
+    .oc-list-option .oc-option__next-icon::before {
       font-size: 30px;
       line-height: 20px; }
+
+.oc-list-options {
+  list-style-type: none;
+  padding-left: 0;
+  border: 0 solid #8a8a8a;
+  border-width: 1px 1px 0 0;
+  box-sizing: border-box; }
+  .oc-list-options .oc-options-list__item {
+    padding: 10px 15px;
+    border: 0 solid #8a8a8a;
+    border-width: 0 0 1px 1px;
+    cursor: pointer;
+    box-sizing: border-box; }
+
+.oc-icon-option {
+  display: table;
+  width: 100%;
+  min-height: 150px;
+  text-align: center;
+  margin: 0 20px 20px 0;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  color: #8a8a8a;
+  background: #fff;
+  cursor: pointer;
+  box-sizing: border-box; }
+  @media screen and (max-width: 1024px) {
+    .oc-icon-option .oc-icon-option__label {
+      font-size: 13px; } }
+  .oc-icon-option:hover {
+    border: 1px solid #505050;
+    color: #505050;
+    background-color: #d6e6f6; }
+    .oc-icon-option:hover .oc-icon-option__icon::before {
+      color: #505050; }
+  .oc-icon-option .oc-icon-option__content {
+    display: table-cell;
+    vertical-align: middle; }
+  .oc-icon-option .oc-icon-option__icon::before {
+    font-size: 70px;
+    color: #8a8a8a; }
+  .oc-icon-option--checked {
+    color: #fff;
+    background-color: #438bd7; }
+    .oc-icon-option--checked .oc-icon-option__icon::before {
+      color: #fff; }
+
+.oc-icon-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin: 10px 0; }
+  .oc-icon-options .oc-icon-option-container {
+    width: 23%;
+    min-height: 150px;
+    float: left;
+    margin-right: 2%;
+    box-sizing: border-box; }
+    @media screen and (max-width: 1024px) {
+      .oc-icon-options .oc-icon-option-container {
+        width: 30%;
+        margin: auto; } }
+    @media screen and (max-width: 480px) {
+      .oc-icon-options .oc-icon-option-container {
+        width: 46%;
+        margin: auto; } }
+
+.oc-selected-value {
+  float: left;
+  font-size: 0.9em;
+  color: #fff;
+  background: #438bd7;
+  padding: 2px 4px 2px 7px;
+  margin: 6px 10px 0 0;
+  border-radius: 1px;
+  display: inline-flex; }
+  .oc-selected-value .oc-selected-value__close-icon {
+    padding: 3px 0 0 10px;
+    cursor: pointer; }
+
+.oc-select .oc-list-options {
+  margin-top: 0;
+  border-width: 0 1px 0 0; }
+
+.oc-select .oc-select__search-container::after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.oc-select .oc-select__search {
+  z-index: 1;
+  padding: 1px 8px;
+  border: 1px solid #8a8a8a;
+  background-color: white;
+  cursor: text;
+  position: relative;
+  will-change: transform;
+  flex-wrap: wrap; }
+  .oc-select .oc-select__search .oc-select__input-container {
+    display: inline-flex; }
+  .oc-select .oc-select__search .oc-select__input {
+    padding-right: 20px;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0 none;
+    outline: 0;
+    margin-top: 6px;
+    margin-bottom: 6px; }
+
+.oc-select .oc-select__typeahead-list {
+  border: 1px solid #bfbfbf;
+  max-height: 280px;
+  overflow-y: scroll;
+  font-size: 14px; }
+  .oc-select .oc-select__typeahead-list li {
+    padding: 5px 10px;
+    cursor: pointer; }
+    .oc-select .oc-select__typeahead-list li:hover {
+      background-color: #d6e6f6; }
+    .oc-select .oc-select__typeahead-list li a {
+      color: #272727; }
 
 body {
   background: #f9f9f9; }

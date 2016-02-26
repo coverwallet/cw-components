@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InputKeyboard, NumberInput, IconRadioGroup, Loader, OnlyClickOptionsList } from '../../lib/index';
+import {
+  InputKeyboard,
+  NumberInput,
+  IconRadioGroup,
+  Loader,
+  OnlyClickListOptions,
+  OnlyClickSelect
+} from '../../lib/index';
+import industries from './industries';
 
 const iconRadioGroupOptions =[
   {
@@ -63,7 +71,7 @@ let App = React.createClass({
             options={iconRadioGroupOptions}
             name="test_radio_input"
             value="Not sure"
-            onChange={(value)=> alert("You pick " + value)}
+            onChange={(value)=> console.log("You pick " + value)}
           />
         </div>
 
@@ -80,13 +88,49 @@ let App = React.createClass({
         <hr/>
 
         <div>
-          <h2>Only Click Options List</h2>
+          <h2>Only Click List Options </h2>
 
           <div>
-            <OnlyClickOptionsList
+            <OnlyClickListOptions
               options={iconRadioGroupOptions}
-              onClick={(value)=> alert("You choose " + value)}
-              value='Yes'
+              onClick={(value)=> console.log("You choose " + value)}
+              selectedValues={['Yes']}
+            />
+          </div>
+        </div>
+
+        <hr/>
+
+        <div>
+          <h2>Only Click Select</h2>
+
+          <h4>Icons view</h4>
+
+          <div>
+            <OnlyClickSelect
+              placeholder="Search"
+              type="icons"
+              options={industries.map((industry) => Object.assign({},
+                industry,
+                {label: industry.name, value: industry.name, iconClass: industry.icon_name}
+              ))}
+              onClick={(value)=> console.log("You choose " + value)}
+              onDelete={(value)=> console.log("You remove " + value)}
+            />
+          </div>
+
+          <h4>List view</h4>
+
+          <div>
+            <OnlyClickSelect
+              placeholder="Type something"
+              options={industries[0].subindustries.map(subindustry=> Object.assign({},
+                subindustry,
+                {label: subindustry.name, value: subindustry.name}
+              ))}
+              onClick={(value)=> console.log("You choose " + value)}
+              onDelete={(value)=> console.log("You remove " + value)}
+              values={[industries[0].subindustries[0].name]}
             />
           </div>
         </div>
