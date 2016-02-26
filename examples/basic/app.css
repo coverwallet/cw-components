@@ -8445,12 +8445,11 @@ Styleguide 9.1
   .icons-radio-input .icons-radio-input__label {
     text-transform: uppercase;
     color: #454855; }
-  .icons-radio-input--checked, .icons-radio-input--checked:hover {
+  .icons-radio-input--checked {
     border: 1px solid #438bd7;
     background-color: #438bd7; }
     .icons-radio-input--checked .icons-radio-input__icon > span::before,
-    .icons-radio-input--checked .icons-radio-input__label, .icons-radio-input--checked:hover .icons-radio-input__icon > span::before,
-    .icons-radio-input--checked:hover .icons-radio-input__label {
+    .icons-radio-input--checked .icons-radio-input__label {
       color: #fff; }
 
 .loader {
