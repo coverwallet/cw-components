@@ -34,22 +34,4 @@
       margin-bottom: 6px;
     }
   }
-
-  .oc-select__typeahead-list {
-    border: 1px solid $cwColor-black-medium;
-    max-height: 280px;
-    overflow-y: scroll;
-    font-size: 14px;
-    li{
-      padding: 5px 10px;
-      cursor: pointer;
-      &:hover{
-        background-color: $cwColor-blue-light;
-
-      }
-      a{
-        color: $color-text;
-      }
-    }
-  }
 }
