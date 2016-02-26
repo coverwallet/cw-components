@@ -1,16 +1,4 @@
-.oc-options-list {
-  list-style-type: none;
-  padding-left: 0;
-
-  .oc-options-list__item {
-    padding: 10px 15px;
-    margin: -1px;
-    border: 1px solid $cwColor-black-xmedium;
-    cursor: pointer;
-  }
-}
-
-.oc-option {
+.oc-list-option {
   @include clearfix();
   background-color: $cwColor-base-white;
 
@@ -32,6 +20,7 @@
 
   &:focus, &:active, &--clicked {
     @extend .animated, .pulse;
+    border: 1px solid $cwColor-black-xmedium;
   }
 
   .oc-option__next-icon {

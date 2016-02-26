@@ -51,24 +51,13 @@ var IconRadioInput = (function (_React$Component) {
       this.props.onChange && this.props.onChange(this.props.value);
     }
   }, {
-    key: 'handleClick',
-    value: function handleClick() {
-      var _this = this;
-
-      this.setState({ clicked: true });
-      setTimeout(function () {
-        _this.setState({ clicked: false });
-      }, 300);
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var buttonClass = (0, _classnames2['default'])("icons-radio-input", { 'icons-radio-input--checked': this.state.checked }, { 'icons-radio-input--clicked': this.state.clicked });
+      var buttonClass = (0, _classnames2['default'])('icons-radio-input', { 'icons-radio-input--checked': this.state.checked }, { 'icons-radio-input--clicked': this.state.clicked });
       return _react2['default'].createElement(
         'label',
         {
-          className: buttonClass,
-          onClick: this.handleClick.bind(this)
+          className: buttonClass
         },
         this.renderIcon(),
         _react2['default'].createElement('input', {
