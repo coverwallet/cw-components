@@ -867,16 +867,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    { className: optionClass, onClick: onClick.bind(null, value) },
 	    _react2['default'].createElement(
 	      'div',
-	      { className: 'oc-icon-option__content' },
+	      { className: 'oc-icon-option__content-container' },
 	      _react2['default'].createElement(
 	        'div',
-	        { className: 'oc-icon-option__icon-container' },
-	        _react2['default'].createElement('span', { className: 'oc-icon-option__icon ' + iconClass })
-	      ),
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'oc-icon-option__label' },
-	        label
+	        { className: 'oc-icon-option__content' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'oc-icon-option__icon-container' },
+	          _react2['default'].createElement('span', { className: 'oc-icon-option__icon ' + iconClass })
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'oc-icon-option__label' },
+	          label
+	        )
 	      )
 	    )
 	  );
