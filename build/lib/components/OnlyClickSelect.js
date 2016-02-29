@@ -91,6 +91,7 @@ var OnlyClickSelect = (function (_React$Component) {
       var type = _props.type;
       var options = _props.options;
       var placeholder = _props.placeholder;
+      var onHelpClick = _props.onHelpClick;
 
       var filteredOptions = options.filter(function (option) {
         var regexInput = new RegExp(_this.state.typeValue.toLowerCase());
@@ -135,7 +136,8 @@ var OnlyClickSelect = (function (_React$Component) {
         type == 'icons' ? _react2['default'].createElement(_OnlyClickIconOptions2['default'], {
           options: filteredOptions,
           selectedValues: this.state.values,
-          onClick: this.handleSelect.bind(this)
+          onClick: this.handleSelect.bind(this),
+          onHelpClick: onHelpClick
         }) : _react2['default'].createElement(_OnlyClickListOptions2['default'], {
           options: filteredOptions,
           selectedValues: this.state.values,

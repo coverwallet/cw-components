@@ -3700,7 +3700,7 @@ form .form-group.form-group--icons .form-icon.form-icon--edit:before, .form .for
 form .form-group.form-group--icons .form-icon.form-icon--save:before, .form .form-group.form-group--icons .form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .form-icon.form-icon--cancel:before, .form.form--light .form-select .cs-placeholder:after,
 form.form--light .form-select .cs-placeholder:after, .form .form-help-icon:before,
-form .form-help-icon:before, ul.list.list--type-1 li:before, ul.list.list--type-1-big li:before, ul.list.list--type-2 li:before, ul.list.list--type-3 li:before, .oc-list-option .oc-option__next-icon, .oc-selected-value .oc-selected-value__close-icon {
+form .form-help-icon:before, ul.list.list--type-1 li:before, ul.list.list--type-1-big li:before, ul.list.list--type-2 li:before, ul.list.list--type-3 li:before, .oc-list-option .oc-option__next-icon, .oc-icon-options .oc-icon-options__item .oc-icon-options__item-help-icon:before, .oc-selected-value .oc-selected-value__close-icon {
   display: inline-block;
   font: normal normal normal 14px / 1 FontAwesome;
   font-size: inherit;
@@ -3767,7 +3767,7 @@ form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--edit:befor
 form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--save:before, .form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .fa-pull-left.form-icon.form-icon--cancel:before, .form.form--light .form-select .fa-pull-left.cs-placeholder:after,
 form.form--light .form-select .fa-pull-left.cs-placeholder:after, .form .fa-pull-left.form-help-icon:before,
-form .fa-pull-left.form-help-icon:before, ul.list.list--type-1 li.fa-pull-left:before, ul.list.list--type-1-big li.fa-pull-left:before, ul.list.list--type-2 li.fa-pull-left:before, ul.list.list--type-3 li.fa-pull-left:before, .oc-list-option .fa-pull-left.oc-option__next-icon, .oc-selected-value .fa-pull-left.oc-selected-value__close-icon {
+form .fa-pull-left.form-help-icon:before, ul.list.list--type-1 li.fa-pull-left:before, ul.list.list--type-1-big li.fa-pull-left:before, ul.list.list--type-2 li.fa-pull-left:before, ul.list.list--type-3 li.fa-pull-left:before, .oc-list-option .fa-pull-left.oc-option__next-icon, .oc-icon-options .oc-icon-options__item .fa-pull-left.oc-icon-options__item-help-icon:before, .oc-selected-value .fa-pull-left.oc-selected-value__close-icon {
   margin-right: .3em; }
 
 .fa.fa-pull-right, .form .form-group label .fa-pull-right.form-help-icon:before,
@@ -3780,7 +3780,7 @@ form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--edit:befo
 form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--save:before, .form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .fa-pull-right.form-icon.form-icon--cancel:before, .form.form--light .form-select .fa-pull-right.cs-placeholder:after,
 form.form--light .form-select .fa-pull-right.cs-placeholder:after, .form .fa-pull-right.form-help-icon:before,
-form .fa-pull-right.form-help-icon:before, ul.list.list--type-1 li.fa-pull-right:before, ul.list.list--type-1-big li.fa-pull-right:before, ul.list.list--type-2 li.fa-pull-right:before, ul.list.list--type-3 li.fa-pull-right:before, .oc-list-option .fa-pull-right.oc-option__next-icon, .oc-selected-value .fa-pull-right.oc-selected-value__close-icon {
+form .fa-pull-right.form-help-icon:before, ul.list.list--type-1 li.fa-pull-right:before, ul.list.list--type-1-big li.fa-pull-right:before, ul.list.list--type-2 li.fa-pull-right:before, ul.list.list--type-3 li.fa-pull-right:before, .oc-list-option .fa-pull-right.oc-option__next-icon, .oc-icon-options .oc-icon-options__item .fa-pull-right.oc-icon-options__item-help-icon:before, .oc-selected-value .fa-pull-right.oc-selected-value__close-icon {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
@@ -3800,7 +3800,7 @@ form .form-group.form-group--icons .pull-left.form-icon.form-icon--edit:before, 
 form .form-group.form-group--icons .pull-left.form-icon.form-icon--save:before, .form .form-group.form-group--icons .pull-left.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .pull-left.form-icon.form-icon--cancel:before, .form.form--light .form-select .pull-left.cs-placeholder:after,
 form.form--light .form-select .pull-left.cs-placeholder:after, .form .pull-left.form-help-icon:before,
-form .pull-left.form-help-icon:before, ul.list.list--type-1 li.pull-left:before, ul.list.list--type-1-big li.pull-left:before, ul.list.list--type-2 li.pull-left:before, ul.list.list--type-3 li.pull-left:before, .oc-list-option .pull-left.oc-option__next-icon, .oc-selected-value .pull-left.oc-selected-value__close-icon {
+form .pull-left.form-help-icon:before, ul.list.list--type-1 li.pull-left:before, ul.list.list--type-1-big li.pull-left:before, ul.list.list--type-2 li.pull-left:before, ul.list.list--type-3 li.pull-left:before, .oc-list-option .pull-left.oc-option__next-icon, .oc-icon-options .oc-icon-options__item .pull-left.oc-icon-options__item-help-icon:before, .oc-selected-value .pull-left.oc-selected-value__close-icon {
   margin-right: .3em; }
 
 .fa.pull-right, .form .form-group label .pull-right.form-help-icon:before,
@@ -3813,7 +3813,7 @@ form .form-group.form-group--icons .pull-right.form-icon.form-icon--edit:before,
 form .form-group.form-group--icons .pull-right.form-icon.form-icon--save:before, .form .form-group.form-group--icons .pull-right.form-icon.form-icon--cancel:before,
 form .form-group.form-group--icons .pull-right.form-icon.form-icon--cancel:before, .form.form--light .form-select .pull-right.cs-placeholder:after,
 form.form--light .form-select .pull-right.cs-placeholder:after, .form .pull-right.form-help-icon:before,
-form .pull-right.form-help-icon:before, ul.list.list--type-1 li.pull-right:before, ul.list.list--type-1-big li.pull-right:before, ul.list.list--type-2 li.pull-right:before, ul.list.list--type-3 li.pull-right:before, .oc-list-option .pull-right.oc-option__next-icon, .oc-selected-value .pull-right.oc-selected-value__close-icon {
+form .pull-right.form-help-icon:before, ul.list.list--type-1 li.pull-right:before, ul.list.list--type-1-big li.pull-right:before, ul.list.list--type-2 li.pull-right:before, ul.list.list--type-3 li.pull-right:before, .oc-list-option .pull-right.oc-option__next-icon, .oc-icon-options .oc-icon-options__item .pull-right.oc-icon-options__item-help-icon:before, .oc-selected-value .pull-right.oc-selected-value__close-icon {
   margin-left: .3em; }
 
 .fa-spin {
@@ -4170,7 +4170,7 @@ form .form-group.form-group--checkbox .form-checkbox.form-checkbox--blue input:c
 
 .fa-question-circle:before, .form .form-group label .form-help-icon:before,
 form .form-group label .form-help-icon:before, .form .form-help-icon:before,
-form .form-help-icon:before {
+form .form-help-icon:before, .oc-icon-options .oc-icon-options__item .oc-icon-options__item-help-icon:before {
   content: ""; }
 
 .fa-info-circle:before {
@@ -8596,6 +8596,21 @@ Styleguide 9.1
       .oc-icon-options .oc-icon-option-container {
         width: 46%;
         margin: auto; } }
+  .oc-icon-options .oc-icon-options__item {
+    position: relative; }
+    .oc-icon-options .oc-icon-options__item .oc-icon-options__item-help-icon {
+      position: absolute;
+      cursor: pointer;
+      top: 3px;
+      right: -19px;
+      font-size: 18px;
+      padding-left: 5px; }
+      .oc-icon-options .oc-icon-options__item .oc-icon-options__item-help-icon:before {
+        padding-right: 0;
+        color: #438bd7; }
+      @media screen and (max-width: 1024px) {
+        .oc-icon-options .oc-icon-options__item .oc-icon-options__item-help-icon {
+          display: none; } }
 
 .oc-selected-value {
   display: inline-flex;

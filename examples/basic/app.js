@@ -8,7 +8,8 @@ import {
   OnlyClickListOptions,
   OnlyClickSelect
 } from '../../lib/index';
-import industries from './industries';
+import industries from './catalog_api_json/industries';
+import insuranceTypes from './catalog_api_json/insuranceTypes'
 
 const iconRadioGroupOptions =[
   {
@@ -131,6 +132,22 @@ let App = React.createClass({
               onClick={(value)=> console.log("You choose " + value)}
               onDelete={(value)=> console.log("You remove " + value)}
               values={[industries[0].subindustries[0].name]}
+            />
+          </div>
+
+          <h4>With help icon</h4>
+
+          <div>
+            <OnlyClickSelect
+              placeholder="Search"
+              type="icons"
+              options={insuranceTypes.map((type) => Object.assign({},
+                type,
+                {label: type.name, value: type.name, iconClass: type.icon_name, tooltipKey: type.tooltip_key}
+              ))}
+              onClick={(value)=> console.log("You choose " + value)}
+              onDelete={(value)=> console.log("You remove " + value)}
+              onHelpClick={(key)=> console.log("Some help info for: " + key)}
             />
           </div>
         </div>

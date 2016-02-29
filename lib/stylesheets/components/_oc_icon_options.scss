@@ -29,5 +29,22 @@
     }
   }
 
+  .oc-icon-options__item {
+    position: relative;
+
+    .oc-icon-options__item-help-icon {
+      @include cw-icon-before(question-circle, 0, $cwColor-base-blue);
+      position: absolute;
+      cursor: pointer;
+      top: 3px;
+      right: -19px;
+      font-size: 18px;
+      padding-left: 5px;
+
+      @include media($tablet) {
+        display: none;
+      }
+    }
+  }
 
 }

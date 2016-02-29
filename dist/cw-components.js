@@ -918,6 +918,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function OnlyClickIconOptions(props) {
 	  var selectedValues = props.selectedValues;
 	  var onClick = props.onClick;
+	  var onHelpClick = props.onHelpClick;
 	
 	  return _react2['default'].createElement(
 	    'div',
@@ -929,7 +930,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _react2['default'].createElement(_OnlyClickIconOption2['default'], _extends({
 	          checked: selectedValues.indexOf(option.value) !== -1,
 	          onClick: onClick
-	        }, option))
+	        }, option)),
+	        option.tooltipKey && onHelpClick ? _react2['default'].createElement('span', {
+	          className: 'oc-icon-options__item-help-icon',
+	          onClick: props.onHelpClick.bind(null, option.tooltipKey)
+	        }) : ''
 	      );
 	    })
 	  );
@@ -938,6 +943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	OnlyClickIconOptions.propTypes = {
 	  options: _react.PropTypes.arrayOf(_react.PropTypes.object),
 	  onClick: _react.PropTypes.func,
+	  onHelpClick: _react.PropTypes.func,
 	  selectedValues: _react.PropTypes.arrayOf(_react.PropTypes.string)
 	};
 	
@@ -1041,6 +1047,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var type = _props.type;
 	      var options = _props.options;
 	      var placeholder = _props.placeholder;
+	      var onHelpClick = _props.onHelpClick;
 	
 	      var filteredOptions = options.filter(function (option) {
 	        var regexInput = new RegExp(_this.state.typeValue.toLowerCase());
@@ -1085,7 +1092,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        type == 'icons' ? _react2['default'].createElement(_OnlyClickIconOptions2['default'], {
 	          options: filteredOptions,
 	          selectedValues: this.state.values,
-	          onClick: this.handleSelect.bind(this)
+	          onClick: this.handleSelect.bind(this),
+	          onHelpClick: onHelpClick
 	        }) : _react2['default'].createElement(_OnlyClickListOptions2['default'], {
 	          options: filteredOptions,
 	          selectedValues: this.state.values,
