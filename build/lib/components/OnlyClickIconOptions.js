@@ -19,6 +19,7 @@ var _OnlyClickIconOption2 = _interopRequireDefault(_OnlyClickIconOption);
 function OnlyClickIconOptions(props) {
   var selectedValues = props.selectedValues;
   var onClick = props.onClick;
+  var onHelpClick = props.onHelpClick;
 
   return _react2['default'].createElement(
     'div',
@@ -30,7 +31,11 @@ function OnlyClickIconOptions(props) {
         _react2['default'].createElement(_OnlyClickIconOption2['default'], _extends({
           checked: selectedValues.indexOf(option.value) !== -1,
           onClick: onClick
-        }, option))
+        }, option)),
+        option.tooltipKey && onHelpClick ? _react2['default'].createElement('span', {
+          className: 'oc-icon-options__item-help-icon',
+          onClick: props.onHelpClick.bind(null, option.tooltipKey)
+        }) : ''
       );
     })
   );
@@ -39,6 +44,7 @@ function OnlyClickIconOptions(props) {
 OnlyClickIconOptions.propTypes = {
   options: _react.PropTypes.arrayOf(_react.PropTypes.object),
   onClick: _react.PropTypes.func,
+  onHelpClick: _react.PropTypes.func,
   selectedValues: _react.PropTypes.arrayOf(_react.PropTypes.string)
 };
 
