@@ -1,9 +1,9 @@
 .oc-icon-options {
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
   align-items: stretch;
-  justify-content: flex-start;
+  align-content: space-between;
+  justify-content: space-between;
 
   margin: 10px 0;
 
@@ -11,8 +11,12 @@
     width: 23%;
     min-height: 150px;
     float: left;
-    margin-right: 2%;
     box-sizing: border-box;
+
+    &:last-child:nth-child(2n):not(:nth-child(4n)) {
+      margin-right: auto;
+      margin-left: 2.5%;
+    }
 
     @include media($tablet) {
       width: 30%;
@@ -24,4 +28,6 @@
       margin: auto;
     }
   }
+
+
 }

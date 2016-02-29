@@ -8542,7 +8542,7 @@ Styleguide 9.1
 .oc-icon-option {
   display: table;
   width: 100%;
-  min-height: 150px;
+  height: 150px;
   text-align: center;
   margin: 0 20px 20px 0;
   padding: 10px;
@@ -8576,16 +8576,18 @@ Styleguide 9.1
 .oc-icon-options {
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
   align-items: stretch;
-  justify-content: flex-start;
+  align-content: space-between;
+  justify-content: space-between;
   margin: 10px 0; }
   .oc-icon-options .oc-icon-option-container {
     width: 23%;
     min-height: 150px;
     float: left;
-    margin-right: 2%;
     box-sizing: border-box; }
+    .oc-icon-options .oc-icon-option-container:last-child:nth-child(2n):not(:nth-child(4n)) {
+      margin-right: auto;
+      margin-left: 2.5%; }
     @media screen and (max-width: 1024px) {
       .oc-icon-options .oc-icon-option-container {
         width: 30%;
@@ -8596,14 +8598,14 @@ Styleguide 9.1
         margin: auto; } }
 
 .oc-selected-value {
+  display: inline-flex;
   float: left;
   font-size: 0.9em;
   color: #fff;
   background: #438bd7;
   padding: 2px 4px 2px 7px;
-  margin: 6px 10px 0 0;
-  border-radius: 1px;
-  display: inline-flex; }
+  margin: 6px 10px 6px 0;
+  border-radius: 1px; }
   .oc-selected-value .oc-selected-value__close-icon {
     padding: 3px 0 0 10px;
     cursor: pointer; }
@@ -8618,10 +8620,11 @@ Styleguide 9.1
   display: table; }
 
 .oc-select .oc-select__search {
+  display: flex;
   z-index: 1;
   padding: 1px 8px;
   border: 1px solid #8a8a8a;
-  background-color: white;
+  background-color: #fff;
   cursor: text;
   position: relative;
   will-change: transform;
@@ -8631,6 +8634,7 @@ Styleguide 9.1
   .oc-select .oc-select__search .oc-select__input {
     padding-right: 20px;
     width: 100%;
+    background-color: #fff;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;

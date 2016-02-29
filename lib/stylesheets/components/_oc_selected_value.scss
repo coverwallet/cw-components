@@ -1,12 +1,12 @@
 .oc-selected-value {
+  display: inline-flex;
   float: left;
   font-size: 0.9em;
   color: $cwColor-base-white;
   background: $cwColor-base-blue;
   padding: 2px 4px 2px 7px;
-  margin: 6px 10px 0 0;
+  margin: 6px 10px 6px 0;
   border-radius: 1px;
-  display: inline-flex;
 
   .oc-selected-value__close-icon {
     @extend .fa, .fa-times-circle;
