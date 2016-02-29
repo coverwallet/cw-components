@@ -42,9 +42,18 @@ var OnlyClickSelect = (function (_React$Component) {
   }
 
   _createClass(OnlyClickSelect, [{
+    key: 'propsChanged',
+    value: function propsChanged(nextProps) {
+      return this.props.type !== nextProps.type || this.props.values.length !== nextProps.values.length || this.props.options.length !== nextProps.options.length;
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      this.setState({ values: nextProps.values });
+      var nextState = { values: nextProps.values };
+      if (this.propsChanged(nextProps)) {
+        nextState.typeValue = '';
+      }
+      this.setState(nextState);
     }
   }, {
     key: 'handleFocus',
@@ -115,6 +124,7 @@ var OnlyClickSelect = (function (_React$Component) {
                 className: 'oc-select__input',
                 type: 'text',
                 placeholder: placeholder,
+                value: this.state.typeValue,
                 onChange: function (e) {
                   return _this.setState({ typeValue: e.target.value });
                 }
@@ -140,7 +150,7 @@ var OnlyClickSelect = (function (_React$Component) {
 
 OnlyClickSelect.propTypes = {
   type: _react.PropTypes.string,
-  options: _react.PropTypes.arrayOf(_react.PropTypes.object),
+  options: _react.PropTypes.arrayOf(_react.PropTypes.object).isRequired,
   values: _react.PropTypes.arrayOf(_react.PropTypes.string),
   onClick: _react.PropTypes.func,
   onDelete: _react.PropTypes.func
