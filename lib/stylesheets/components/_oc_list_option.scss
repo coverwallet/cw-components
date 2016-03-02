@@ -1,6 +1,12 @@
 .oc-list-option {
   @include clearfix();
+  display: table;
+  width: 100%;
   background-color: $cwColor-base-white;
+
+  @include media($mobile) {
+    font-size: 15px;
+  }
 
   &:hover {
     background: $cwColor-blue-light;
@@ -23,8 +29,15 @@
     border: 1px solid $cwColor-black-xmedium;
   }
 
+  .oc-option__message {
+    display: table-cell;
+    vertical-align: top;
+  }
+
   .oc-option__next-icon {
+    display: table-cell;
     @extend .fa, .fa-angle-right;
+    padding-left: 5px;
     float: right;
     color: $cwColor-base-blue;
 
