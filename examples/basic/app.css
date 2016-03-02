@@ -8418,12 +8418,6 @@ Styleguide 9.1
   border: 1px solid #d2d2d2;
   border-radius: 4px;
   cursor: pointer; }
-  .icons-radio-input:hover {
-    border: 1px solid #505050;
-    background-color: #d6e6f6; }
-    .icons-radio-input:hover .icons-radio-input__icon > span::before,
-    .icons-radio-input:hover .icons-radio-input__label {
-      color: #505050; }
   @media screen and (max-width: 480px) {
     .icons-radio-input {
       width: 45%; }
@@ -8445,10 +8439,11 @@ Styleguide 9.1
   .icons-radio-input .icons-radio-input__label {
     text-transform: uppercase;
     color: #454855; }
-  .icons-radio-input--checked {
+  .icons-radio-input--no-touch:hover, .icons-radio-input--checked {
     border: 1px solid #438bd7;
     background-color: #438bd7; }
-    .icons-radio-input--checked .icons-radio-input__icon > span::before,
+    .icons-radio-input--no-touch:hover .icons-radio-input__icon > span::before,
+    .icons-radio-input--no-touch:hover .icons-radio-input__label, .icons-radio-input--checked .icons-radio-input__icon > span::before,
     .icons-radio-input--checked .icons-radio-input__label {
       color: #fff; }
 
@@ -8513,7 +8508,7 @@ Styleguide 9.1
   @media screen and (max-width: 480px) {
     .oc-list-option {
       font-size: 15px; } }
-  .oc-list-option:hover {
+  .oc-list-option--no-touch:hover {
     background: #d6e6f6; }
   .oc-list-option--checked {
     background-color: #438bd7;
@@ -8583,10 +8578,10 @@ Styleguide 9.1
   .oc-icon-option .oc-icon-option__icon::before {
     font-size: 70px;
     color: #8a8a8a; }
-  .oc-icon-option:hover, .oc-icon-option--checked {
+  .oc-icon-option--no-touch:hover, .oc-icon-option--checked {
     color: #fff;
     background-color: #438bd7; }
-    .oc-icon-option:hover .oc-icon-option__icon::before, .oc-icon-option--checked .oc-icon-option__icon::before {
+    .oc-icon-option--no-touch:hover .oc-icon-option__icon::before, .oc-icon-option--checked .oc-icon-option__icon::before {
       color: #fff; }
 
 .oc-icon-options {
@@ -8678,20 +8673,7 @@ Styleguide 9.1
     border: 0 none;
     outline: 0;
     margin-top: 6px;
-    margin-bottom: 6px;
-    text-shadow: 0 1px 1px #bfbfbf; }
-    .oc-select .oc-select__search .oc-select__input::-webkit-input-placeholder {
-      color: #bfbfbf;
-      text-shadow: 0 1px 1px #bfbfbf; }
-    .oc-select .oc-select__search .oc-select__input::-moz-placeholder {
-      color: #bfbfbf;
-      text-shadow: 0 1px 1px #bfbfbf; }
-    .oc-select .oc-select__search .oc-select__input:-ms-input-placeholder {
-      color: #bfbfbf;
-      text-shadow: 0 1px 1px #bfbfbf; }
-    .oc-select .oc-select__search .oc-select__input:-moz-placeholder {
-      color: #bfbfbf;
-      text-shadow: 0 1px 1px #bfbfbf; }
+    margin-bottom: 6px; }
 
 body {
   background: #f9f9f9; }

@@ -48,7 +48,7 @@
     color: $cwColor-black-xmedium;
   }
 
-  &:hover, &--checked {
+  &--no-touch:hover, &--checked {
     color: $cwColor-base-white;
     background-color: $cwColor-base-blue;
 
