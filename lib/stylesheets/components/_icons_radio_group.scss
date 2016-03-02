@@ -12,14 +12,6 @@
   border: 1px solid $cwColor-black-light;
   border-radius: 4px;
   cursor: pointer;
-  &:hover {
-    border: 1px solid $cwColor-black-dark;
-    background-color: $cwColor-blue-light;
-    .icons-radio-input__icon > span::before,
-    .icons-radio-input__label {
-      color: $cwColor-black-dark;
-    }
-  }
 
   &:focus, &:active, &--clicked {
     @extend .animated, .pulse;
@@ -58,7 +50,7 @@
     color: $cwColor-base-bluegray;
   }
 
-  &--checked {
+  &--no-touch:hover, &--checked {
     border: 1px solid $cwColor-base-blue;
     background-color: $cwColor-base-blue;
     .icons-radio-input__icon > span::before,

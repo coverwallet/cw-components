@@ -8,8 +8,10 @@
     font-size: 15px;
   }
 
-  &:hover {
-    background: $cwColor-blue-light;
+  &--no-touch {
+    &:hover {
+      background: $cwColor-blue-light;
+    }
   }
 
   &--checked {

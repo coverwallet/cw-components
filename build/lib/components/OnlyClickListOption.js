@@ -14,13 +14,15 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _utilsDeviceDetector = require('../utils/deviceDetector');
+
 function OnlyClickListOption(props) {
   var value = props.value;
   var label = props.label;
   var checked = props.checked;
   var onClick = props.onClick;
 
-  var optionClass = (0, _classnames2['default'])('oc-options-list__item oc-list-option', { 'oc-list-option--checked': checked });
+  var optionClass = (0, _classnames2['default'])('oc-options-list__item oc-list-option', { 'oc-list-option--checked': checked }, { 'oc-list-option--no-touch': (0, _utilsDeviceDetector.isDesktop)() });
   return _react2['default'].createElement(
     'li',
     {

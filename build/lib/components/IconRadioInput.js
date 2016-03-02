@@ -22,6 +22,8 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _utilsDeviceDetector = require('../utils/deviceDetector');
+
 var IconRadioInput = (function (_React$Component) {
   _inherits(IconRadioInput, _React$Component);
 
@@ -30,8 +32,7 @@ var IconRadioInput = (function (_React$Component) {
 
     _get(Object.getPrototypeOf(IconRadioInput.prototype), 'constructor', this).call(this, props);
     this.state = {
-      checked: this.checked(props.value, props.checkedValue),
-      clicked: false
+      checked: this.checked(props.value, props.checkedValue)
     };
   }
 
@@ -53,7 +54,7 @@ var IconRadioInput = (function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var buttonClass = (0, _classnames2['default'])('icons-radio-input', { 'icons-radio-input--checked': this.state.checked }, { 'icons-radio-input--clicked': this.state.clicked });
+      var buttonClass = (0, _classnames2['default'])('icons-radio-input', { 'icons-radio-input--checked': this.state.checked }, { 'icons-radio-input--no-touch': (0, _utilsDeviceDetector.isDesktop)() });
       return _react2['default'].createElement(
         'label',
         {
