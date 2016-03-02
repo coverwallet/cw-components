@@ -109,7 +109,7 @@ let App = React.createClass({
 
           <div>
             <OnlyClickSelect
-              placeholder="Search"
+              placeholder="or type it here"
               type="icons"
               options={industries.map((industry) => Object.assign({},
                 industry,
@@ -124,7 +124,7 @@ let App = React.createClass({
 
           <div>
             <OnlyClickSelect
-              placeholder="Type something"
+              placeholder="Search industry subcategory"
               options={industries[0].subindustries.map(subindustry=> Object.assign({},
                 subindustry,
                 {label: subindustry.name, value: subindustry.name}
