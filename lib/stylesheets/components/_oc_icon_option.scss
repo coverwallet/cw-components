@@ -46,6 +46,10 @@
   .oc-icon-option__icon::before {
     font-size: 70px;
     color: $cwColor-black-xmedium;
+
+    @include media($mobile) {
+      font-size: 40px;
+    }
   }
 
   &--no-touch:hover, &--checked {
