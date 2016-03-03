@@ -54,7 +54,7 @@ var IconRadioInput = (function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var buttonClass = (0, _classnames2['default'])('icons-radio-input', { 'icons-radio-input--checked': this.state.checked }, { 'icons-radio-input--no-touch': (0, _utilsDeviceDetector.isDesktop)() });
+      var buttonClass = (0, _classnames2['default'])('icons-radio-input', { 'icons-radio-input--checked': this.state.checked }, { 'icons-radio-input--no-touch': !(0, _utilsDeviceDetector.isIOS)() });
       return _react2['default'].createElement(
         'label',
         {
