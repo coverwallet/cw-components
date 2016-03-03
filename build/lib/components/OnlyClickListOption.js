@@ -22,7 +22,7 @@ function OnlyClickListOption(props) {
   var checked = props.checked;
   var onClick = props.onClick;
 
-  var optionClass = (0, _classnames2['default'])('oc-options-list__item oc-list-option', { 'oc-list-option--checked': checked }, { 'oc-list-option--no-touch': (0, _utilsDeviceDetector.isDesktop)() });
+  var optionClass = (0, _classnames2['default'])('oc-options-list__item oc-list-option', { 'oc-list-option--checked': checked }, { 'oc-list-option--no-touch': !(0, _utilsDeviceDetector.isIOS)() });
   return _react2['default'].createElement(
     'li',
     {

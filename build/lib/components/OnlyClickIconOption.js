@@ -23,7 +23,7 @@ function OnlyClickIconOption(props) {
   var iconClass = props.iconClass;
   var onClick = props.onClick;
 
-  var optionClass = (0, _classnames2['default'])('oc-icon-option', { 'oc-icon-option--checked': checked }, { 'oc-icon-option--no-touch': (0, _utilsDeviceDetector.isDesktop)() });
+  var optionClass = (0, _classnames2['default'])('oc-icon-option', { 'oc-icon-option--checked': checked }, { 'oc-icon-option--no-touch': !(0, _utilsDeviceDetector.isIOS)() });
   return _react2['default'].createElement(
     'div',
     { className: optionClass, onClick: onClick.bind(null, value) },
