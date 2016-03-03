@@ -8593,25 +8593,22 @@ Styleguide 9.1
   flex-wrap: wrap;
   align-items: stretch;
   align-content: space-between;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 10px 0; }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 480px) {
     .oc-icon-options {
       justify-content: space-around; } }
   .oc-icon-options .oc-icon-option-container {
     display: flex;
     width: 23%;
-    box-sizing: border-box; }
-    @media screen and (min-width: 1025px) {
-      .oc-icon-options .oc-icon-option-container:last-child:nth-child(2n):not(:nth-child(4n)) {
-        margin-right: auto;
-        margin-left: 2.7%; } }
+    box-sizing: border-box;
+    margin-right: 2%; }
     @media screen and (max-width: 1024px) {
       .oc-icon-options .oc-icon-option-container {
-        width: 30%; } }
+        width: 31.3%; } }
     @media screen and (max-width: 480px) {
       .oc-icon-options .oc-icon-option-container {
-        width: 46%; } }
+        width: 47%; } }
   .oc-icon-options .oc-icon-options__item {
     position: relative; }
     .oc-icon-options .oc-icon-options__item .oc-icon-options__item-help-icon {
@@ -8620,7 +8617,8 @@ Styleguide 9.1
       top: 3px;
       right: -19px;
       font-size: 18px;
-      padding-left: 5px; }
+      padding-left: 5px;
+      z-index: 1; }
       .oc-icon-options .oc-icon-options__item .oc-icon-options__item-help-icon:before {
         padding-right: 0;
         color: #438bd7; }
@@ -8643,6 +8641,7 @@ Styleguide 9.1
 
 .oc-select .oc-list-options {
   margin-top: 0;
+  margin-right: 2%;
   border-width: 0 1px 0 0; }
 
 .oc-select .oc-select__search-container::after {
@@ -8659,7 +8658,8 @@ Styleguide 9.1
   cursor: text;
   position: relative;
   will-change: transform;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-right: 2%; }
   @media screen and (max-width: 480px) {
     .oc-select .oc-select__search {
       font-size: 15px; } }

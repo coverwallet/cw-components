@@ -73,14 +73,17 @@ var OnlyClickSelect = (function (_React$Component) {
       this.props.onDelete && this.props.onDelete(value);
     }
   }, {
-    key: 'handleSelect',
-    value: function handleSelect(value) {
+    key: 'handleClick',
+    value: function handleClick(value) {
       var values = this.state.values;
 
       if (values.indexOf(value) === -1) {
         this.setState({ values: [].concat(_toConsumableArray(values), [value]) });
+        this.props.onClick && this.props.onClick(value);
+      } else {
+        this.handleDelete(value);
       }
-      this.props.onClick && this.props.onClick(value);
+      this.handleFocus();
     }
   }, {
     key: 'render',
@@ -136,12 +139,12 @@ var OnlyClickSelect = (function (_React$Component) {
         type == 'icons' ? _react2['default'].createElement(_OnlyClickIconOptions2['default'], {
           options: filteredOptions,
           selectedValues: this.state.values,
-          onClick: this.handleSelect.bind(this),
+          onClick: this.handleClick.bind(this),
           onHelpClick: onHelpClick
         }) : _react2['default'].createElement(_OnlyClickListOptions2['default'], {
           options: filteredOptions,
           selectedValues: this.state.values,
-          onClick: this.handleSelect.bind(this)
+          onClick: this.handleClick.bind(this)
         })
       );
     }
