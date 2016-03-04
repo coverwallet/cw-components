@@ -3,11 +3,11 @@
   flex-wrap: wrap;
   align-items: stretch;
   align-content: space-between;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   margin: 20px 0 10px 0;
 
-  @include media($tablet) {
+  @include media($mobile) {
     justify-content: space-around;
   }
 
@@ -15,25 +15,20 @@
     display: flex;
     width: 23%;
     box-sizing: border-box;
-
-    @include media($desktop) {
-      &:last-child:nth-child(2n):not(:nth-child(4n)) {
-        margin-right: auto;
-        margin-left: 2.7%;
-      }
-    }
+    margin-right: 2%;
 
     @include media($tablet) {
-      width: 30%;
+      width: 31.3%;
     }
 
     @include media($mobile) {
-      width: 46%;
+      width: 47%;
     }
   }
 
   .oc-icon-options__item {
     position: relative;
+
 
     .oc-icon-options__item-help-icon {
       @include cw-icon-before(question-circle, 0, $cwColor-base-blue);
@@ -43,6 +38,7 @@
       right: -19px;
       font-size: 18px;
       padding-left: 5px;
+      z-index: 1;
 
       @include media($tablet) {
         display: none;
