@@ -8682,6 +8682,16 @@ Styleguide 9.1
     margin-top: 6px;
     margin-bottom: 6px; }
 
+.oc-select .oc-select__hint {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 7px 15px;
+  color: #fff;
+  background-color: #454855;
+  border-left: 1px solid #438bd7;
+  border-right: 1px solid #438bd7;
+  border-bottom: 1px solid #438bd7; }
+
 body {
   background: #f9f9f9; }
 

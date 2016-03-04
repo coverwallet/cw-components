@@ -1000,6 +1000,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _smoothscroll = __webpack_require__(15);
+	
+	var _smoothscroll2 = _interopRequireDefault(_smoothscroll);
+	
 	var _OnlyClickListOptions = __webpack_require__(11);
 	
 	var _OnlyClickListOptions2 = _interopRequireDefault(_OnlyClickListOptions);
@@ -1015,6 +1019,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, OnlyClickSelect);
 	
 	    _get(Object.getPrototypeOf(OnlyClickSelect.prototype), 'constructor', this).call(this, props);
+	    this.mobileWidth = 480;
 	    this.state = {
 	      values: this.props.values,
 	      typeValue: ''
@@ -1041,6 +1046,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.refs['text-input'].focus();
 	    }
 	  }, {
+	    key: 'scrollToInput',
+	    value: function scrollToInput() {
+	      var searchBox = this.refs['search-box'];
+	      var input = this.refs['text-input'];
+	      var scrollToPosition = searchBox.getBoundingClientRect().top + window.pageYOffset - 50;
+	      (0, _smoothscroll2['default'])(scrollToPosition, 1000, function () {
+	        return input.focus();
+	      });
+	    }
+	  }, {
 	    key: 'handleDelete',
 	    value: function handleDelete(value) {
 	      var values = this.state.values;
@@ -1063,7 +1078,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        this.handleDelete(value);
 	      }
-	      this.handleFocus();
+	      if (window && window.innerWidth > this.mobileWidth) {
+	        this.scrollToInput();
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -1074,7 +1091,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var type = _props.type;
 	      var options = _props.options;
 	      var placeholder = _props.placeholder;
-	      var onHelpClick = _props.onHelpClick;
+	      var hint = _props.hint;
+	      var onHelpIconClick = _props.onHelpIconClick;
 	
 	      var filteredOptions = options.filter(function (option) {
 	        var regexInput = new RegExp(_this.state.typeValue.toLowerCase());
@@ -1088,7 +1106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          { className: 'oc-select__search-container' },
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'oc-select__search', onClick: this.handleFocus.bind(this) },
+	            { className: 'oc-select__search', ref: 'search-box', onClick: this.handleFocus.bind(this) },
 	            this.state.values.map(function (value) {
 	              return _react2['default'].createElement(
 	                'span',
@@ -1116,16 +1134,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	            )
 	          )
 	        ),
-	        type == 'icons' ? _react2['default'].createElement(_OnlyClickIconOptions2['default'], {
-	          options: filteredOptions,
-	          selectedValues: this.state.values,
-	          onClick: this.handleClick.bind(this),
-	          onHelpClick: onHelpClick
-	        }) : _react2['default'].createElement(_OnlyClickListOptions2['default'], {
-	          options: filteredOptions,
-	          selectedValues: this.state.values,
-	          onClick: this.handleClick.bind(this)
-	        })
+	        hint && _react2['default'].createElement(
+	          'div',
+	          { className: 'oc-select__hint' },
+	          hint
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'oc-select__options-container' },
+	          type == 'icons' ? _react2['default'].createElement(_OnlyClickIconOptions2['default'], {
+	            options: filteredOptions,
+	            selectedValues: this.state.values,
+	            onClick: this.handleClick.bind(this),
+	            onHelpClick: onHelpIconClick
+	          }) : _react2['default'].createElement(_OnlyClickListOptions2['default'], {
+	            options: filteredOptions,
+	            selectedValues: this.state.values,
+	            onClick: this.handleClick.bind(this)
+	          })
+	        )
 	      );
 	    }
 	  }]);
@@ -1147,6 +1174,127 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports['default'] = OnlyClickSelect;
 	module.exports = exports['default'];
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, smoothScroll) {
+	  'use strict';
+	
+	  // Support RequireJS and CommonJS/NodeJS module formats.
+	  // Attach smoothScroll to the `window` when executed as a <script>.
+	
+	  // RequireJS
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (smoothScroll), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	
+	  // CommonJS
+	  } else if (typeof exports === 'object' && typeof module === 'object') {
+	    module.exports = smoothScroll();
+	
+	  } else {
+	    root.smoothScroll = smoothScroll();
+	  }
+	
+	})(this, function(){
+	'use strict';
+	
+	// Do not initialize smoothScroll when running server side, handle it in client:
+	if (typeof window !== 'object') return;
+	
+	// We do not want this script to be applied in browsers that do not support those
+	// That means no smoothscroll on IE9 and below.
+	if(document.querySelectorAll === void 0 || window.pageYOffset === void 0 || history.pushState === void 0) { return; }
+	
+	// Get the top position of an element in the document
+	var getTop = function(element) {
+	    // return value of html.getBoundingClientRect().top ... IE : 0, other browsers : -pageYOffset
+	    if(element.nodeName === 'HTML') return -window.pageYOffset
+	    return element.getBoundingClientRect().top + window.pageYOffset;
+	}
+	// ease in out function thanks to:
+	// http://blog.greweb.fr/2012/02/bezier-curve-based-easing-functions-from-concept-to-implementation/
+	var easeInOutCubic = function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }
+	
+	// calculate the scroll position we should be in
+	// given the start and end point of the scroll
+	// the time elapsed from the beginning of the scroll
+	// and the total duration of the scroll (default 500ms)
+	var position = function(start, end, elapsed, duration) {
+	    if (elapsed > duration) return end;
+	    return start + (end - start) * easeInOutCubic(elapsed / duration); // <-- you can change the easing funtion there
+	    // return start + (end - start) * (elapsed / duration); // <-- this would give a linear scroll
+	}
+	
+	// we use requestAnimationFrame to be called by the browser before every repaint
+	// if the first argument is an element then scroll to the top of this element
+	// if the first argument is numeric then scroll to this location
+	// if the callback exist, it is called when the scrolling is finished
+	// if context is set then scroll that element, else scroll window 
+	var smoothScroll = function(el, duration, callback, context){
+	    duration = duration || 500;
+	    context = context || window;
+	    var start = window.pageYOffset;
+	
+	    if (typeof el === 'number') {
+	      var end = parseInt(el);
+	    } else {
+	      var end = getTop(el);
+	    }
+	
+	    var clock = Date.now();
+	    var requestAnimationFrame = window.requestAnimationFrame ||
+	        window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame ||
+	        function(fn){window.setTimeout(fn, 15);};
+	
+	    var step = function(){
+	        var elapsed = Date.now() - clock;
+	        if (context !== window) {
+	        	context.scrollTop = position(start, end, elapsed, duration);
+	        }
+	        else {
+	        	window.scroll(0, position(start, end, elapsed, duration));
+	        }
+	
+	        if (elapsed > duration) {
+	            if (typeof callback === 'function') {
+	                callback(el);
+	            }
+	        } else {
+	            requestAnimationFrame(step);
+	        }
+	    }
+	    step();
+	}
+	
+	var linkHandler = function(ev) {
+	    ev.preventDefault();
+	
+	    if (location.hash !== this.hash) window.history.pushState(null, null, this.hash)
+	    // using the history api to solve issue #1 - back doesn't work
+	    // most browser don't update :target when the history api is used:
+	    // THIS IS A BUG FROM THE BROWSERS.
+	    // change the scrolling duration in this call
+	    smoothScroll(document.getElementById(this.hash.substring(1)), 500, function(el) {
+	        location.replace('#' + el.id)
+	        // this will cause the :target to be activated.
+	    });
+	}
+	
+	// We look for all the internal links in the documents and attach the smoothscroll function
+	document.addEventListener("DOMContentLoaded", function () {
+	    var internal = document.querySelectorAll('a[href^="#"]:not([href="#"])'), a;
+	    for(var i=internal.length; a=internal[--i];){
+	        a.addEventListener("click", linkHandler, false);
+	    }
+	});
+	
+	// return smoothscroll API
+	return smoothScroll;
+	
+	});
+
 
 /***/ }
 /******/ ])
