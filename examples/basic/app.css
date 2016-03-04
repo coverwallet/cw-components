@@ -8411,8 +8411,8 @@ Styleguide 9.1
 
 .icons-radio-input {
   float: left;
-  width: 140px;
-  height: 60px;
+  width: 120px;
+  height: 65px;
   text-align: center;
   margin: 5px;
   color: #8a8a8a;
@@ -8430,7 +8430,7 @@ Styleguide 9.1
     line-height: 25px; }
     @media screen and (max-width: 1024px) {
       .icons-radio-input .icons-radio-input__icon {
-        font-size: 20px; } }
+        font-size: 30px; } }
     .icons-radio-input .icons-radio-input__icon > span::before {
       display: inline-block;
       margin-top: 2px;
@@ -8438,8 +8438,10 @@ Styleguide 9.1
   .icons-radio-input .icons-radio-input__input {
     display: none; }
   .icons-radio-input .icons-radio-input__label {
+    margin-top: 4px;
     text-transform: uppercase;
-    color: #454855; }
+    color: #454855;
+    font-size: 11px !important; }
   .icons-radio-input--no-touch:hover, .icons-radio-input--checked {
     border: 1px solid #438bd7;
     background-color: #438bd7; }
@@ -8501,6 +8503,9 @@ Styleguide 9.1
 .oc-list-option {
   display: table;
   width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 21px;
   background-color: #fff; }
   .oc-list-option::after {
     clear: both;
@@ -8508,7 +8513,8 @@ Styleguide 9.1
     display: table; }
   @media screen and (max-width: 480px) {
     .oc-list-option {
-      font-size: 15px; } }
+      font-size: 13px;
+      padding: 5px; } }
   .oc-list-option--no-touch:hover {
     background: #d6e6f6; }
   .oc-list-option--checked {
@@ -8539,7 +8545,6 @@ Styleguide 9.1
   border-width: 1px 1px 0 0;
   box-sizing: border-box; }
   .oc-list-options .oc-options-list__item {
-    padding: 10px 15px;
     border: 0 solid #8a8a8a;
     border-width: 0 0 1px 1px;
     cursor: pointer;
@@ -8579,9 +8584,9 @@ Styleguide 9.1
   .oc-icon-option .oc-icon-option__icon::before {
     font-size: 70px;
     color: #8a8a8a; }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 1024px) {
       .oc-icon-option .oc-icon-option__icon::before {
-        font-size: 40px; } }
+        font-size: 55px; } }
   .oc-icon-option--no-touch:hover, .oc-icon-option--checked {
     color: #fff;
     background-color: #438bd7; }
@@ -8594,7 +8599,7 @@ Styleguide 9.1
   align-items: stretch;
   align-content: space-between;
   justify-content: flex-start;
-  margin: 10px 0; }
+  margin: 20px 0 10px 0; }
   @media screen and (max-width: 480px) {
     .oc-icon-options {
       justify-content: space-around; } }
@@ -8641,7 +8646,6 @@ Styleguide 9.1
 
 .oc-select .oc-list-options {
   margin-top: 0;
-  margin-right: 2%;
   border-width: 0 1px 0 0; }
 
 .oc-select .oc-select__search-container::after {
@@ -8652,14 +8656,13 @@ Styleguide 9.1
 .oc-select .oc-select__search {
   display: flex;
   z-index: 1;
-  padding: 1px 8px;
-  border: 1px solid #8a8a8a;
+  padding: 6px 11px;
+  border: 1px solid #438bd7;
   background-color: #fff;
   cursor: text;
   position: relative;
   will-change: transform;
-  flex-wrap: wrap;
-  margin-right: 2%; }
+  flex-wrap: wrap; }
   @media screen and (max-width: 480px) {
     .oc-select .oc-select__search {
       font-size: 15px; } }

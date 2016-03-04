@@ -1,7 +1,6 @@
 .oc-select {
   .oc-list-options {
     margin-top: 0;
-    margin-right: 2%;
     border-width: 0 1px 0 0;
   }
 
@@ -12,14 +11,13 @@
   .oc-select__search {
     display: flex;
     z-index: 1;
-    padding: 1px 8px;
-    border: 1px solid $cwColor-black-xmedium;
+    padding: 6px 11px;
+    border: 1px solid $cwColor-base-blue;
     background-color: $cwColor-base-white;
     cursor: text;
     position: relative;
     will-change: transform;
     flex-wrap: wrap;
-    margin-right: 2%;
 
     @include media($mobile) {
       font-size: 15px;
