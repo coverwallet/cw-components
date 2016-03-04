@@ -8503,6 +8503,9 @@ Styleguide 9.1
 .oc-list-option {
   display: table;
   width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 21px;
   background-color: #fff; }
   .oc-list-option::after {
     clear: both;
@@ -8511,7 +8514,7 @@ Styleguide 9.1
   @media screen and (max-width: 480px) {
     .oc-list-option {
       font-size: 13px;
-      padding: 5px !important; } }
+      padding: 5px; } }
   .oc-list-option--no-touch:hover {
     background: #d6e6f6; }
   .oc-list-option--checked {
@@ -8542,9 +8545,6 @@ Styleguide 9.1
   border-width: 1px 1px 0 0;
   box-sizing: border-box; }
   .oc-list-options .oc-options-list__item {
-    padding: 10px;
-    font-size: 14px;
-    line-height: 21px;
     border: 0 solid #8a8a8a;
     border-width: 0 0 1px 1px;
     cursor: pointer;
