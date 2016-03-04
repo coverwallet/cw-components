@@ -189,6 +189,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        { className: 'input-keyboard', style: { width: this.props.width } },
 	        this.props.currency && _react2['default'].createElement('span', { className: 'input-keyboard__currency' }),
 	        _react2['default'].createElement('input', {
+	          ref: 'input',
 	          type: 'number',
 	          className: 'input-keyboard__input ' + (this.props.currency ? 'input-keyboard__input--currency' : ''),
 	          pattern: '[0-9]*',
@@ -404,7 +405,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'div',
 	        { className: 'number-input', style: { width: this.props.width } },
 	        _react2['default'].createElement('input', {
-	          ref: 'number',
+	          ref: 'input',
 	          className: 'number-input__input',
 	          type: 'number',
 	          pattern: '[0-9]*',
@@ -1050,7 +1051,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function scrollToInput() {
 	      var searchBox = this.refs['search-box'];
 	      var input = this.refs['text-input'];
-	      var scrollToPosition = searchBox.getBoundingClientRect().top + window.pageYOffset - 50;
+	      var scrollTop = this.props.scrollTop || 100;
+	      var scrollToPosition = searchBox.getBoundingClientRect().top + window.pageYOffset - scrollTop;
 	      (0, _smoothscroll2['default'])(scrollToPosition, 1000, function () {
 	        return input.focus();
 	      });
@@ -1068,6 +1070,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.props.onDelete && this.props.onDelete(value);
 	    }
 	  }, {
+	    key: 'shouldScroll',
+	    value: function shouldScroll() {
+	      var searchBox = this.refs['search-box'];
+	      var pixelsToElement = searchBox.getBoundingClientRect().top;
+	      return window && window.innerWidth > this.mobileWidth && pixelsToElement < 0 //user in under search box
+	      ;
+	    }
+	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(value) {
 	      var values = this.state.values;
@@ -1078,7 +1088,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        this.handleDelete(value);
 	      }
-	      if (window && window.innerWidth > this.mobileWidth) {
+	      if (this.shouldScroll()) {
 	        this.scrollToInput();
 	      }
 	    }

@@ -70,6 +70,7 @@ var InputKeyboard = (function (_React$Component) {
         { className: 'input-keyboard', style: { width: this.props.width } },
         this.props.currency && _react2['default'].createElement('span', { className: 'input-keyboard__currency' }),
         _react2['default'].createElement('input', {
+          ref: 'input',
           type: 'number',
           className: 'input-keyboard__input ' + (this.props.currency ? 'input-keyboard__input--currency' : ''),
           pattern: '[0-9]*',

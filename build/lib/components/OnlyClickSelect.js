@@ -70,7 +70,8 @@ var OnlyClickSelect = (function (_React$Component) {
     value: function scrollToInput() {
       var searchBox = this.refs['search-box'];
       var input = this.refs['text-input'];
-      var scrollToPosition = searchBox.getBoundingClientRect().top + window.pageYOffset - 50;
+      var scrollTop = this.props.scrollTop || 100;
+      var scrollToPosition = searchBox.getBoundingClientRect().top + window.pageYOffset - scrollTop;
       (0, _smoothscroll2['default'])(scrollToPosition, 1000, function () {
         return input.focus();
       });
@@ -88,6 +89,14 @@ var OnlyClickSelect = (function (_React$Component) {
       this.props.onDelete && this.props.onDelete(value);
     }
   }, {
+    key: 'shouldScroll',
+    value: function shouldScroll() {
+      var searchBox = this.refs['search-box'];
+      var pixelsToElement = searchBox.getBoundingClientRect().top;
+      return window && window.innerWidth > this.mobileWidth && pixelsToElement < 0 //user in under search box
+      ;
+    }
+  }, {
     key: 'handleClick',
     value: function handleClick(value) {
       var values = this.state.values;
@@ -98,7 +107,7 @@ var OnlyClickSelect = (function (_React$Component) {
       } else {
         this.handleDelete(value);
       }
-      if (window && window.innerWidth > this.mobileWidth) {
+      if (this.shouldScroll()) {
         this.scrollToInput();
       }
     }
