@@ -2,10 +2,14 @@
   @include clearfix();
   display: table;
   width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 21px;
   background-color: $cwColor-base-white;
 
   @include media($mobile) {
-    font-size: 15px;
+    font-size: 13px;
+    padding: 5px;
   }
 
   &--no-touch {
