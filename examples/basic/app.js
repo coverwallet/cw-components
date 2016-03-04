@@ -110,6 +110,7 @@ let App = React.createClass({
           <div>
             <OnlyClickSelect
               placeholder="or type it here"
+              hint="Select your industry"
               type="icons"
               options={industries.map((industry) => Object.assign({},
                 industry,
@@ -125,6 +126,7 @@ let App = React.createClass({
           <div>
             <OnlyClickSelect
               placeholder="Search industry subcategory"
+              hint="Select your industry subcategory"
               options={industries[0].subindustries.map(subindustry=> Object.assign({},
                 subindustry,
                 {label: subindustry.name, value: subindustry.name}
@@ -147,7 +149,7 @@ let App = React.createClass({
               ))}
               onClick={(value)=> console.log("You choose " + value)}
               onDelete={(value)=> console.log("You remove " + value)}
-              onHelpClick={(key)=> console.log("Some help info for: " + key)}
+              onHelpIconClick={(key)=> console.log("Some help info for: " + key)}
             />
           </div>
         </div>

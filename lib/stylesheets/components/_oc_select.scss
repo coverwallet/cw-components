@@ -12,8 +12,8 @@
   .oc-select__search {
     display: flex;
     z-index: 1;
-    padding: 1px 8px;
-    border: 1px solid $cwColor-black-xmedium;
+    padding: 7px 12px;
+    border: 1px solid $cwColor-base-blue;
     background-color: $cwColor-base-white;
     cursor: text;
     position: relative;
@@ -43,5 +43,17 @@
       margin-top: 6px;
       margin-bottom: 6px;
     }
+  }
+
+  .oc-select__hint {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 7px 15px;
+    margin-right: 2%;
+    color: $cwColor-base-white;
+    background-color: $cwColor-base-bluegray;
+    border-left: 1px solid $cwColor-base-blue;
+    border-right: 1px solid $cwColor-base-blue;
+    border-bottom: 1px solid $cwColor-base-blue;
   }
 }
