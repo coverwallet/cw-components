@@ -53,8 +53,8 @@ let App = React.createClass({
           </div>
 
           <div className="clearfix">
-            <h3>Max 20, Min 5, Step 5</h3>
-            <NumberInput min={5} max={20} step={5} />
+            <h3>Max 20, Min -5, Step 5</h3>
+            <NumberInput min={-5} max={20} step={5} />
           </div>
 
           <div className="clearfix">

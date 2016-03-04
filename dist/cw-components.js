@@ -358,7 +358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    _get(Object.getPrototypeOf(NumberInput.prototype), 'constructor', this).call(this, props);
 	    this.state = {
-	      value: this.props.value ? this.props.value : this.props.min ? this.props.min : 0
+	      value: this.props.value ? this.props.value : this.props.min ? this.props.min : ''
 	    };
 	  }
 	
@@ -371,7 +371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'handlePlus',
 	    value: function handlePlus() {
-	      var number = parseInt(this.refs.number.value);
+	      var number = parseInt(this.refs.input.value) || 0;
 	      var step = this.props.step ? this.props.step : 1;
 	      var max = this.props.max ? this.props.max : null;
 	      var nextValue = number + step;
@@ -387,7 +387,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'handleMinus',
 	    value: function handleMinus() {
-	      var number = parseInt(this.refs.number.value);
+	      var number = parseInt(this.refs.input.value) || 0;
 	      var step = this.props.step ? this.props.step : 1;
 	      var min = this.props.min ? this.props.min : 0;
 	      if (number - step >= min) {
