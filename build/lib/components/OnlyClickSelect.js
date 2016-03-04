@@ -20,6 +20,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _smoothscroll = require('smoothscroll');
+
+var _smoothscroll2 = _interopRequireDefault(_smoothscroll);
+
 var _OnlyClickListOptions = require('./OnlyClickListOptions');
 
 var _OnlyClickListOptions2 = _interopRequireDefault(_OnlyClickListOptions);
@@ -35,6 +39,7 @@ var OnlyClickSelect = (function (_React$Component) {
     _classCallCheck(this, OnlyClickSelect);
 
     _get(Object.getPrototypeOf(OnlyClickSelect.prototype), 'constructor', this).call(this, props);
+    this.mobileWidth = 480;
     this.state = {
       values: this.props.values,
       typeValue: ''
@@ -61,6 +66,16 @@ var OnlyClickSelect = (function (_React$Component) {
       this.refs['text-input'].focus();
     }
   }, {
+    key: 'scrollToInput',
+    value: function scrollToInput() {
+      var searchBox = this.refs['search-box'];
+      var input = this.refs['text-input'];
+      var scrollToPosition = searchBox.getBoundingClientRect().top + window.pageYOffset - 50;
+      (0, _smoothscroll2['default'])(scrollToPosition, 1000, function () {
+        return input.focus();
+      });
+    }
+  }, {
     key: 'handleDelete',
     value: function handleDelete(value) {
       var values = this.state.values;
@@ -83,7 +98,9 @@ var OnlyClickSelect = (function (_React$Component) {
       } else {
         this.handleDelete(value);
       }
-      this.handleFocus();
+      if (window && window.innerWidth > this.mobileWidth) {
+        this.scrollToInput();
+      }
     }
   }, {
     key: 'render',
@@ -94,7 +111,8 @@ var OnlyClickSelect = (function (_React$Component) {
       var type = _props.type;
       var options = _props.options;
       var placeholder = _props.placeholder;
-      var onHelpClick = _props.onHelpClick;
+      var hint = _props.hint;
+      var onHelpIconClick = _props.onHelpIconClick;
 
       var filteredOptions = options.filter(function (option) {
         var regexInput = new RegExp(_this.state.typeValue.toLowerCase());
@@ -108,7 +126,7 @@ var OnlyClickSelect = (function (_React$Component) {
           { className: 'oc-select__search-container' },
           _react2['default'].createElement(
             'div',
-            { className: 'oc-select__search', onClick: this.handleFocus.bind(this) },
+            { className: 'oc-select__search', ref: 'search-box', onClick: this.handleFocus.bind(this) },
             this.state.values.map(function (value) {
               return _react2['default'].createElement(
                 'span',
@@ -136,16 +154,25 @@ var OnlyClickSelect = (function (_React$Component) {
             )
           )
         ),
-        type == 'icons' ? _react2['default'].createElement(_OnlyClickIconOptions2['default'], {
-          options: filteredOptions,
-          selectedValues: this.state.values,
-          onClick: this.handleClick.bind(this),
-          onHelpClick: onHelpClick
-        }) : _react2['default'].createElement(_OnlyClickListOptions2['default'], {
-          options: filteredOptions,
-          selectedValues: this.state.values,
-          onClick: this.handleClick.bind(this)
-        })
+        hint && _react2['default'].createElement(
+          'div',
+          { className: 'oc-select__hint' },
+          hint
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'oc-select__options-container' },
+          type == 'icons' ? _react2['default'].createElement(_OnlyClickIconOptions2['default'], {
+            options: filteredOptions,
+            selectedValues: this.state.values,
+            onClick: this.handleClick.bind(this),
+            onHelpClick: onHelpIconClick
+          }) : _react2['default'].createElement(_OnlyClickListOptions2['default'], {
+            options: filteredOptions,
+            selectedValues: this.state.values,
+            onClick: this.handleClick.bind(this)
+          })
+        )
       );
     }
   }]);
