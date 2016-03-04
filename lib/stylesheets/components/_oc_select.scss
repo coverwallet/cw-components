@@ -18,7 +18,7 @@
     position: relative;
     will-change: transform;
     flex-wrap: wrap;
-    
+
     @include media($mobile) {
       font-size: 15px;
     }
