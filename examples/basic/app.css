@@ -8521,7 +8521,12 @@ Styleguide 9.1
       font-size: 13px;
       padding: 5px !important; } }
   .oc-list-option--no-touch:hover {
-    background: #d6e6f6; }
+    background: #d6e6f6;
+    color: #505050;
+  }
+  .oc-list-option--checked:hover .oc-option__next-icon::before {
+      color: #438bd7;
+  }
   .oc-list-option--checked {
     background-color: #438bd7;
     color: #fff; }
@@ -8596,10 +8601,10 @@ Styleguide 9.1
       .oc-icon-option .oc-icon-option__icon::before {
         font-size: 55px; } }
   .oc-icon-option--no-touch:hover, .oc-icon-option--checked {
-    color: #fff;
-    background-color: #438bd7; }
+    color: #505050;
+    background-color: #d6e6f6; }
     .oc-icon-option--no-touch:hover .oc-icon-option__icon::before, .oc-icon-option--checked .oc-icon-option__icon::before {
-      color: #fff; }
+      color: #505050; }
 
 .oc-icon-options {
   display: flex;
