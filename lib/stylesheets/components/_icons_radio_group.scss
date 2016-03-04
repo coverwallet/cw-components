@@ -4,8 +4,8 @@
 
 .icons-radio-input {
   float: left;
-  width: 140px;
-  height: 60px;
+  width: 120px;
+  height: 65px;
   text-align: center;
   margin: 5px;
   color: $cwColor-black-xmedium;
@@ -31,7 +31,7 @@
     line-height: 25px;
 
     @include media($tablet) {
-      font-size: 20px;
+      font-size: 30px;
     }
 
     > span::before {
@@ -46,8 +46,10 @@
   }
 
   .icons-radio-input__label {
+    margin-top: 4px;
     text-transform: uppercase;
     color: $cwColor-base-bluegray;
+    font-size: 11px !important;
   }
 
   &--no-touch:hover, &--checked {

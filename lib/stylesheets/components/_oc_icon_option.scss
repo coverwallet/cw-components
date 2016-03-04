@@ -47,8 +47,8 @@
     font-size: 70px;
     color: $cwColor-black-xmedium;
 
-    @include media($mobile) {
-      font-size: 40px;
+    @include media($tablet) {
+      font-size: 55px;
     }
   }
 
