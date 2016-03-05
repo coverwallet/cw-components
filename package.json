@@ -20,7 +20,7 @@
     "copy-images": "cp -R node_modules/cw-styleguide/images examples/basic",
     "styleguide-fonts": "npm run copy-fonts & npm run copy-images",
     "build": "npm run styleguide-fonts & babel -d build/lib ./lib",
-    "gh-pages": "rackt pages"
+    "gh-pages": "./scripts/gh-pages.sh"
   },
   "authors": [
     "CoverWallet"
