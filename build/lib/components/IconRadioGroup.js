@@ -1,18 +1,10 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
@@ -22,16 +14,26 @@ var _IconRadioInput = require('./IconRadioInput');
 
 var _IconRadioInput2 = _interopRequireDefault(_IconRadioInput);
 
-var IconRadioGroup = (function (_React$Component) {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var IconRadioGroup = function (_React$Component) {
   _inherits(IconRadioGroup, _React$Component);
 
   function IconRadioGroup(props) {
     _classCallCheck(this, IconRadioGroup);
 
-    _get(Object.getPrototypeOf(IconRadioGroup.prototype), 'constructor', this).call(this, props);
-    this.state = {
-      value: this.props.value
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(IconRadioGroup).call(this, props));
+
+    _this.state = {
+      value: _this.props.value
     };
+    return _this;
   }
 
   _createClass(IconRadioGroup, [{
@@ -52,24 +54,24 @@ var IconRadioGroup = (function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       var _props = this.props;
       var options = _props.options;
       var name = _props.name;
 
       var radioInputs = options.map(function (option, i) {
-        return _react2['default'].createElement(_IconRadioInput2['default'], {
+        return _react2.default.createElement(_IconRadioInput2.default, {
           key: i,
           iconClass: option.iconClass,
           label: option.label,
           name: name,
           value: option.value,
-          checkedValue: _this.getValue(),
-          onChange: _this.handleChange.bind(_this)
+          checkedValue: _this2.getValue(),
+          onChange: _this2.handleChange.bind(_this2)
         });
       });
-      return _react2['default'].createElement(
+      return _react2.default.createElement(
         'div',
         { className: 'icons-radio-group' },
         radioInputs
@@ -78,7 +80,7 @@ var IconRadioGroup = (function (_React$Component) {
   }]);
 
   return IconRadioGroup;
-})(_react2['default'].Component);
+}(_react2.default.Component);
 
 IconRadioGroup.propTypes = {
   options: _react.PropTypes.arrayOf(_react.PropTypes.object),
@@ -87,5 +89,4 @@ IconRadioGroup.propTypes = {
   onChange: _react.PropTypes.func
 };
 
-exports['default'] = IconRadioGroup;
-module.exports = exports['default'];
+exports.default = IconRadioGroup;

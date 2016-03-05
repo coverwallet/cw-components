@@ -1,58 +1,59 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.OnlyClickSelect = exports.OnlyClickIconOptions = exports.OnlyClickIconOption = exports.OnlyClickListOptions = exports.OnlyClickListOption = exports.Loader = exports.IconRadioInput = exports.IconRadioGroup = exports.NumberInput = exports.InputKeyboard = undefined;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _InputKeyboard = require('./components/InputKeyboard');
 
-var _componentsInputKeyboard = require('./components/InputKeyboard');
+var _InputKeyboard2 = _interopRequireDefault(_InputKeyboard);
 
-var _componentsInputKeyboard2 = _interopRequireDefault(_componentsInputKeyboard);
+var _NumberInput = require('./components/NumberInput');
 
-var _componentsNumberInput = require('./components/NumberInput');
+var _NumberInput2 = _interopRequireDefault(_NumberInput);
 
-var _componentsNumberInput2 = _interopRequireDefault(_componentsNumberInput);
+var _IconRadioGroup = require('./components/IconRadioGroup');
 
-var _componentsIconRadioGroup = require('./components/IconRadioGroup');
+var _IconRadioGroup2 = _interopRequireDefault(_IconRadioGroup);
 
-var _componentsIconRadioGroup2 = _interopRequireDefault(_componentsIconRadioGroup);
+var _IconRadioInput = require('./components/IconRadioInput');
 
-var _componentsIconRadioInput = require('./components/IconRadioInput');
+var _IconRadioInput2 = _interopRequireDefault(_IconRadioInput);
 
-var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
+var _loader = require('./components/loader');
 
-var _componentsLoader = require('./components/loader');
+var _loader2 = _interopRequireDefault(_loader);
 
-var _componentsLoader2 = _interopRequireDefault(_componentsLoader);
+var _OnlyClickListOption = require('./components/OnlyClickListOption');
 
-var _componentsOnlyClickListOption = require('./components/OnlyClickListOption');
+var _OnlyClickListOption2 = _interopRequireDefault(_OnlyClickListOption);
 
-var _componentsOnlyClickListOption2 = _interopRequireDefault(_componentsOnlyClickListOption);
+var _OnlyClickListOptions = require('./components/OnlyClickListOptions');
 
-var _componentsOnlyClickListOptions = require('./components/OnlyClickListOptions');
+var _OnlyClickListOptions2 = _interopRequireDefault(_OnlyClickListOptions);
 
-var _componentsOnlyClickListOptions2 = _interopRequireDefault(_componentsOnlyClickListOptions);
+var _OnlyClickIconOption = require('./components/OnlyClickIconOption');
 
-var _componentsOnlyClickIconOption = require('./components/OnlyClickIconOption');
+var _OnlyClickIconOption2 = _interopRequireDefault(_OnlyClickIconOption);
 
-var _componentsOnlyClickIconOption2 = _interopRequireDefault(_componentsOnlyClickIconOption);
+var _OnlyClickIconOptions = require('./components/OnlyClickIconOptions');
 
-var _componentsOnlyClickIconOptions = require('./components/OnlyClickIconOptions');
+var _OnlyClickIconOptions2 = _interopRequireDefault(_OnlyClickIconOptions);
 
-var _componentsOnlyClickIconOptions2 = _interopRequireDefault(_componentsOnlyClickIconOptions);
+var _OnlyClickSelect = require('./components/OnlyClickSelect');
 
-var _componentsOnlyClickSelect = require('./components/OnlyClickSelect');
+var _OnlyClickSelect2 = _interopRequireDefault(_OnlyClickSelect);
 
-var _componentsOnlyClickSelect2 = _interopRequireDefault(_componentsOnlyClickSelect);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.InputKeyboard = _componentsInputKeyboard2['default'];
-exports.NumberInput = _componentsNumberInput2['default'];
-exports.IconRadioGroup = _componentsIconRadioGroup2['default'];
-exports.IconRadioInput = _componentsIconRadioInput2['default'];
-exports.Loader = _componentsLoader2['default'];
-exports.OnlyClickListOption = _componentsOnlyClickListOption2['default'];
-exports.OnlyClickListOptions = _componentsOnlyClickListOptions2['default'];
-exports.OnlyClickIconOption = _componentsOnlyClickIconOption2['default'];
-exports.OnlyClickIconOptions = _componentsOnlyClickIconOptions2['default'];
-exports.OnlyClickSelect = _componentsOnlyClickSelect2['default'];
+exports.InputKeyboard = _InputKeyboard2.default;
+exports.NumberInput = _NumberInput2.default;
+exports.IconRadioGroup = _IconRadioGroup2.default;
+exports.IconRadioInput = _IconRadioInput2.default;
+exports.Loader = _loader2.default;
+exports.OnlyClickListOption = _OnlyClickListOption2.default;
+exports.OnlyClickListOptions = _OnlyClickListOptions2.default;
+exports.OnlyClickIconOption = _OnlyClickIconOption2.default;
+exports.OnlyClickIconOptions = _OnlyClickIconOptions2.default;
+exports.OnlyClickSelect = _OnlyClickSelect2.default;

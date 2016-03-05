@@ -1,10 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _react = require('react');
 
@@ -14,7 +12,9 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _utilsDeviceDetector = require('../utils/deviceDetector');
+var _deviceDetector = require('../utils/deviceDetector');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function OnlyClickListOption(props) {
   var value = props.value;
@@ -22,19 +22,19 @@ function OnlyClickListOption(props) {
   var checked = props.checked;
   var onClick = props.onClick;
 
-  var optionClass = (0, _classnames2['default'])('oc-options-list__item oc-list-option', { 'oc-list-option--checked': checked }, { 'oc-list-option--no-touch': !(0, _utilsDeviceDetector.isIOS)() });
-  return _react2['default'].createElement(
+  var optionClass = (0, _classnames2.default)('oc-options-list__item oc-list-option', { 'oc-list-option--checked': checked }, { 'oc-list-option--no-touch': !(0, _deviceDetector.isIOS)() });
+  return _react2.default.createElement(
     'li',
     {
       className: optionClass,
       onClick: onClick.bind(null, value)
     },
-    _react2['default'].createElement(
+    _react2.default.createElement(
       'span',
       { className: 'oc-option__message' },
       label
     ),
-    _react2['default'].createElement('span', { className: 'oc-option__next-icon' })
+    _react2.default.createElement('span', { className: 'oc-option__next-icon' })
   );
 }
 
@@ -45,5 +45,4 @@ OnlyClickListOption.propTypes = {
   onClick: _react.PropTypes.func
 };
 
-exports['default'] = OnlyClickListOption;
-module.exports = exports['default'];
+exports.default = OnlyClickListOption;

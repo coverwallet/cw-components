@@ -1,23 +1,23 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var Loader = function Loader(props) {
-  var loader = _react2['default'].createElement(
+  var loader = _react2.default.createElement(
     'div',
     { className: 'loader' },
-    _react2['default'].createElement('span', { className: 'loader__inner' })
+    _react2.default.createElement('span', { className: 'loader__inner' })
   );
   if (props.global) {
-    loader = _react2['default'].createElement(
+    loader = _react2.default.createElement(
       'div',
       { className: 'loader-container' },
       loader
@@ -30,5 +30,4 @@ Loader.propTypes = {
   global: _react.PropTypes.bool
 };
 
-exports['default'] = Loader;
-module.exports = exports['default'];
+exports.default = Loader;

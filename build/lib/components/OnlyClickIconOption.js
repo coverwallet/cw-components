@@ -1,10 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _react = require('react');
 
@@ -14,7 +12,9 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _utilsDeviceDetector = require('../utils/deviceDetector');
+var _deviceDetector = require('../utils/deviceDetector');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function OnlyClickIconOption(props) {
   var value = props.value;
@@ -23,22 +23,22 @@ function OnlyClickIconOption(props) {
   var iconClass = props.iconClass;
   var onClick = props.onClick;
 
-  var optionClass = (0, _classnames2['default'])('oc-icon-option', { 'oc-icon-option--checked': checked }, { 'oc-icon-option--no-touch': !(0, _utilsDeviceDetector.isIOS)() });
-  return _react2['default'].createElement(
+  var optionClass = (0, _classnames2.default)('oc-icon-option', { 'oc-icon-option--checked': checked }, { 'oc-icon-option--no-touch': !(0, _deviceDetector.isIOS)() });
+  return _react2.default.createElement(
     'div',
     { className: optionClass, onClick: onClick.bind(null, value) },
-    _react2['default'].createElement(
+    _react2.default.createElement(
       'div',
       { className: 'oc-icon-option__content-container' },
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'div',
         { className: 'oc-icon-option__content' },
-        _react2['default'].createElement(
+        _react2.default.createElement(
           'div',
           { className: 'oc-icon-option__icon-container' },
-          _react2['default'].createElement('span', { className: 'oc-icon-option__icon ' + iconClass })
+          _react2.default.createElement('span', { className: 'oc-icon-option__icon ' + iconClass })
         ),
-        _react2['default'].createElement(
+        _react2.default.createElement(
           'div',
           { className: 'oc-icon-option__label' },
           label
@@ -56,5 +56,4 @@ OnlyClickIconOption.propTypes = {
   onClick: _react.PropTypes.func
 };
 
-exports['default'] = OnlyClickIconOption;
-module.exports = exports['default'];
+exports.default = OnlyClickIconOption;
