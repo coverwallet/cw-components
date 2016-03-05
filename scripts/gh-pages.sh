@@ -35,6 +35,3 @@ git add .
 git commit -m "updating gh-pages"
 git push -f origin gh-pages
 git checkout $BRANCH
-
-# restore node modules
-npm install
