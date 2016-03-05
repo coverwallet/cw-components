@@ -22,11 +22,6 @@ git push origin :gh-pages
 # build examples
 ./node_modules/.bin/webpack --config ./webpack.config.js -p
 
-# remove superfluous files
-find . -type f | egrep -v ".git/|examples/" | xargs rm
-find . -type d -empty -delete
-rm -rf node_modules
-
 # move example files to root
 mv examples/* ./
 rm -rf examples/
@@ -36,7 +31,6 @@ echo "include: [__build__]" > _config.yml
 
 # create gh-pages branch
 git checkout -b gh-pages
-git rm -rf .
 git add .
 git commit -m "updating gh-pages"
 git push -f origin gh-pages
