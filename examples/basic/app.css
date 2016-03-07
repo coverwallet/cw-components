@@ -8434,7 +8434,7 @@ Styleguide 9.1
         margin-left: 26%; } }
   .icons-radio-input .icons-radio-input__icon {
     font-size: 25px;
-    padding-top: 5px;
+    padding-top: 7px;
     line-height: 25px; }
     @media screen and (max-width: 1024px) {
       .icons-radio-input .icons-radio-input__icon {
@@ -8450,13 +8450,25 @@ Styleguide 9.1
     text-transform: uppercase;
     color: #454855;
     font-size: 11px !important; }
-  .icons-radio-input--no-touch:hover, .icons-radio-input--checked {
+  .icons-radio-input--no-touch:hover {
+    border: 1px solid #d2d2d2;
+    background-color: #d6e6f6; }
+    .icons-radio-input--no-touch:hover .icons-radio-input__icon > span::before,
+    .icons-radio-input--no-touch:hover .icons-radio-input__label {
+      color: #505050; }
+  .icons-radio-input--checked {
     border: 1px solid #438bd7;
     background-color: #438bd7; }
-    .icons-radio-input--no-touch:hover .icons-radio-input__icon > span::before,
-    .icons-radio-input--no-touch:hover .icons-radio-input__label, .icons-radio-input--checked .icons-radio-input__icon > span::before,
+    .icons-radio-input--checked .icons-radio-input__icon > span::before,
     .icons-radio-input--checked .icons-radio-input__label {
       color: #fff; }
+    .icons-radio-input--checked:hover {
+      border: 1px solid #438bd7;
+      color: #fff;
+      background-color: #438bd7; }
+      .icons-radio-input--checked:hover .icons-radio-input__icon > span::before,
+      .icons-radio-input--checked:hover .icons-radio-input__label {
+        color: #fff; }
 
 .loader {
   position: relative;
@@ -8593,16 +8605,23 @@ Styleguide 9.1
       .oc-icon-option .oc-icon-option__label {
         font-size: 13px; } }
   .oc-icon-option .oc-icon-option__icon::before {
-    font-size: 70px;
+    font-size: 55px;
     color: #8a8a8a; }
-    @media screen and (max-width: 1024px) {
-      .oc-icon-option .oc-icon-option__icon::before {
-        font-size: 55px; } }
-  .oc-icon-option--no-touch:hover, .oc-icon-option--checked {
+  .oc-icon-option--no-touch:hover {
     color: #505050;
     background-color: #d6e6f6; }
-    .oc-icon-option--no-touch:hover .oc-icon-option__icon::before, .oc-icon-option--checked .oc-icon-option__icon::before {
+    .oc-icon-option--no-touch:hover .oc-icon-option__icon::before {
       color: #505050; }
+  .oc-icon-option--checked {
+    color: #fff;
+    background-color: #438bd7; }
+    .oc-icon-option--checked .oc-icon-option__icon::before {
+      color: #fff; }
+    .oc-icon-option--checked:hover {
+      color: #fff;
+      background-color: #438bd7; }
+      .oc-icon-option--checked:hover .oc-icon-option__icon::before {
+        color: #fff; }
 
 .oc-icon-options {
   display: flex;

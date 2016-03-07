@@ -44,20 +44,29 @@
   }
 
   .oc-icon-option__icon::before {
-    font-size: 70px;
+    font-size: 55px;
     color: $cwColor-black-xmedium;
-
-    @include media($tablet) {
-      font-size: 55px;
-    }
   }
 
-  &--no-touch:hover, &--checked {
+  &--no-touch:hover {
     color: $cwColor-black-dark;
     background-color: $cwColor-blue-light;
-
     .oc-icon-option__icon::before {
       color: $cwColor-black-dark;
+    }
+  }
+  &--checked {
+    color: $cwColor-base-white;
+    background-color: $cwColor-base-blue;
+    .oc-icon-option__icon::before {
+      color: $cwColor-base-white;
+    }
+    &:hover {
+      color: $cwColor-base-white;
+      background-color: $cwColor-base-blue;
+      .oc-icon-option__icon::before {
+        color: $cwColor-base-white;
+      }
     }
   }
 }
