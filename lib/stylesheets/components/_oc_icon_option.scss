@@ -53,11 +53,11 @@
   }
 
   &--no-touch:hover, &--checked {
-    color: $cwColor-base-white;
-    background-color: $cwColor-base-blue;
+    color: $cwColor-black-dark;
+    background-color: $cwColor-blue-light;
 
     .oc-icon-option__icon::before {
-      color: $cwColor-base-white;
+      color: $cwColor-black-dark;
     }
   }
 }
