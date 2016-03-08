@@ -5,24 +5,26 @@
   align-content: space-between;
   justify-content: flex-start;
 
-  margin: 20px 0 10px 0;
+  margin: 14px 0 10px 0;
 
   @include media($mobile) {
     justify-content: space-around;
   }
 
   .oc-icon-option-container {
-    display: flex;
-    width: 23%;
-    box-sizing: border-box;
-    margin-right: 2%;
+      display: flex;
+      width: 23.4444444%;
+      box-sizing: border-box;
+      margin: 0 0.7777777%;
 
     @include media($tablet) {
       width: 31.3%;
+      margin: 0 1%;
     }
 
     @include media($mobile) {
       width: 47%;
+      margin: 0 1%;
     }
   }
 
