@@ -63,7 +63,7 @@ let App = React.createClass({
           </div>
 
           <div className="clearfix">
-            <h3>Long</h3>
+            <h3>Long with commas</h3>
             <NumberInput width="100%" commas/>
           </div>
         </div>
