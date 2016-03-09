@@ -93,8 +93,7 @@ var OnlyClickSelect = (function (_React$Component) {
     value: function shouldScroll() {
       var searchBox = this.refs['search-box'];
       var pixelsToElement = searchBox.getBoundingClientRect().top;
-      return window && window.innerWidth > this.mobileWidth && pixelsToElement < 0 //user in under search box
-      ;
+      return pixelsToElement < 0;
     }
   }, {
     key: 'handleClick',
@@ -109,6 +108,8 @@ var OnlyClickSelect = (function (_React$Component) {
       }
       if (this.shouldScroll()) {
         this.scrollToInput();
+      } else if (window && window.innerWidth > this.mobileWidth) {
+        this.handleFocus();
       }
     }
   }, {

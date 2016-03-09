@@ -18,6 +18,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var NumberInput = (function (_React$Component) {
   _inherits(NumberInput, _React$Component);
 
@@ -31,59 +35,76 @@ var NumberInput = (function (_React$Component) {
   }
 
   _createClass(NumberInput, [{
+    key: 'setNextValue',
+    value: function setNextValue(value) {
+      if (this.props.commas) {
+        var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
+        this.setState({ value: nextValue.toLocaleString('US') });
+      } else {
+        this.setState({ value: value });
+      }
+      this.props.setValue && this.props.setValue(value);
+    }
+  }, {
     key: 'handleChange',
     value: function handleChange(e) {
-      this.setState({ value: e.target.value });
-      this.props.setValue && this.props.setValue(e.target.value);
+      this.setNextValue(e.target.value);
     }
   }, {
     key: 'handlePlus',
     value: function handlePlus() {
-      var number = parseInt(this.refs.input.value) || 0;
+      var number = parseInt(String(this.refs.input.value).replace(/,/g, "")) || 0;
       var step = this.props.step ? this.props.step : 1;
       var max = this.props.max ? this.props.max : null;
       var nextValue = number + step;
       if (max) {
         if (number + step <= max) {
-          this.setState({ value: nextValue });
+          this.setNextValue(nextValue);
         }
       } else {
-        this.setState({ value: nextValue });
-        this.props.setValue && this.props.setValue(nextValue);
+        this.setNextValue(nextValue);
       }
     }
   }, {
     key: 'handleMinus',
     value: function handleMinus() {
-      var number = parseInt(this.refs.input.value) || 0;
+      var number = parseInt(String(this.refs.input.value).replace(/,/g, "")) || 0;
       var step = this.props.step ? this.props.step : 1;
       var min = this.props.min ? this.props.min : 0;
       if (number - step >= min) {
         var nextValue = number - step;
-        this.setState({ value: nextValue });
-        this.props.setValue && this.props.setValue(nextValue);
+        this.setNextValue(nextValue);
       }
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this = this;
+      var _props = this.props;
+      var name = _props.name;
+      var min = _props.min;
+      var max = _props.max;
+      var step = _props.step;
+      var commas = _props.commas;
+      var width = _props.width;
+      var onBlur = _props.onBlur;
 
+      var inputClass = (0, _classnames2['default'])('number-input__input', { 'number-input__input--with-commas': commas });
       return _react2['default'].createElement(
         'div',
-        { className: 'number-input', style: { width: this.props.width } },
+        { className: 'number-input', style: { width: width } },
         _react2['default'].createElement('input', {
           ref: 'input',
-          className: 'number-input__input',
-          type: 'number',
-          pattern: '[0-9]*',
+          className: inputClass,
+          type: commas ? 'text' : 'number',
+          pattern: commas ? '[0-9\,]*' : '[0-9]*',
           inputMode: 'numeric',
-          name: this.props.name,
-          min: this.props.min ? this.props.min : 0,
-          max: this.props.max ? this.props.max : null,
-          step: this.props.step ? this.props.step : 1,
+          lang: 'en',
+          name: name,
+          min: min ? min : 0,
+          max: max,
+          step: step ? step : 1,
           onBlur: function (e) {
-            return _this.props.onBlur ? _this.props.onBlur(e) : null;
+            return onBlur ? onBlur(e) : null;
           },
           onChange: this.handleChange.bind(this),
           value: this.state.value

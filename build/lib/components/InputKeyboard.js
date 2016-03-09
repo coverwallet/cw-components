@@ -18,6 +18,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _keyboard = require('./keyboard');
 
 var _keyboard2 = _interopRequireDefault(_keyboard);
@@ -30,54 +34,71 @@ var InputKeyboard = (function (_React$Component) {
 
     _get(Object.getPrototypeOf(InputKeyboard.prototype), 'constructor', this).call(this, props);
     this.state = {
-      value: this.props.value ? this.props.value : null
+      value: this.props.value ? this.props.value : ''
     };
   }
 
   _createClass(InputKeyboard, [{
     key: 'handleChange',
-    value: function handleChange(event) {
-      this.setState({ value: event.target.value });
-      this.props.setValue && this.props.setValue(event.target.value);
+    value: function handleChange(e) {
+      this.setNextValue(e.target.value);
+    }
+  }, {
+    key: 'setNextValue',
+    value: function setNextValue(value) {
+      if (this.props.commas) {
+        var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
+        this.setState({ value: nextValue.toLocaleString('US') });
+      } else {
+        this.setState({ value: value });
+      }
+      this.props.setValue && this.props.setValue(value);
     }
   }, {
     key: 'pressKey',
     value: function pressKey(key) {
-      var value = this.state.value;
+      var value = String(this.state.value).replace(/,/g, "");
       if (!value) {
         value = key;
       } else {
         value = value + '' + key;
       }
-      var nextValue = parseInt(value, 10);
-      this.setState({ value: nextValue });
-      this.props.setValue && this.props.setValue(nextValue);
+      this.setNextValue(value);
     }
   }, {
     key: 'deleteKey',
     value: function deleteKey() {
-      if (this.state.value && this.state.value.toString().length > 0) {
-        var nextValue = parseInt(this.state.value.toString().substring(0, this.state.value.toString().length - 1), 0);
-        this.setState({ value: nextValue });
-        this.props.setValue && this.props.setValue(nextValue);
+      var value = String(this.state.value).replace(/,/g, "");
+      if (value && value.length > 0) {
+        var nextValue = parseInt(value.substring(0, value.toString().length - 1), 0) || '';
+        this.setNextValue(nextValue);
       }
     }
   }, {
     key: 'render',
     value: function render() {
+      var _props = this.props;
+      var min = _props.min;
+      var currency = _props.currency;
+      var commas = _props.commas;
+      var width = _props.width;
+
+      var inputClass = (0, _classnames2['default'])('input-keyboard__input', { 'input-keyboard__input--currency': currency }, { 'input-keyboard__input--with-commas': commas });
       return _react2['default'].createElement(
         'div',
-        { className: 'input-keyboard', style: { width: this.props.width } },
-        this.props.currency && _react2['default'].createElement('span', { className: 'input-keyboard__currency' }),
+        { className: 'input-keyboard', style: { width: width } },
+        currency && _react2['default'].createElement('span', { className: 'input-keyboard__currency' }),
         _react2['default'].createElement('input', {
           ref: 'input',
-          type: 'number',
-          className: 'input-keyboard__input ' + (this.props.currency ? 'input-keyboard__input--currency' : ''),
-          pattern: '[0-9]*',
+          type: commas ? 'text' : 'number',
+          className: inputClass,
+          pattern: commas ? '[0-9\,]*' : '[0-9]*',
           inputMode: 'numeric',
-          min: this.props.min ? this.props.min : 0,
+          lang: 'en',
+          min: min ? min : 0,
           onChange: this.handleChange.bind(this),
-          value: this.state.value }),
+          value: this.state.value
+        }),
         _react2['default'].createElement(_keyboard2['default'], { pressKey: this.pressKey.bind(this), deleteKey: this.deleteKey.bind(this) })
       );
     }
