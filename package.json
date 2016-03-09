@@ -28,7 +28,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "cw-styleguide": "git+https://github.com/coverwallet/styleguide.git#v1.9.4",
+    "cw-styleguide": "git+https://github.com/coverwallet/styleguide.git#v1.9.5",
     "node-sass": "^3.4.2",
     "rackt-cli": "^0.4.0",
     "react": "^0.14.3",
