@@ -35,11 +35,15 @@
     @include media($mobile) {
       text-align: left;
     }
-  }
 
-  .input-keyboard__input--currency {
-    @include media($mobile) {
-      padding-left: 35px;
+    &--with-commas {
+      padding-right: 10px;
+    }
+
+    &--currency {
+      @include media($mobile) {
+        padding-left: 35px;
+      }
     }
   }
 }
