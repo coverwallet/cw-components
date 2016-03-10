@@ -15,6 +15,7 @@
   &--no-touch {
     &:hover {
       background: $cwColor-blue-light;
+      color: $cwColor-black-dark;
     }
   }
 
@@ -22,6 +23,11 @@
     background-color: $cwColor-base-blue;
     color: $cwColor-base-white;
 
+    &:hover {
+      .oc-option__next-icon:before {
+        color: $cwColor-base-blue;
+      }
+    }
     .oc-option__next-icon {
       color: $cwColor-base-white;
       &::before {

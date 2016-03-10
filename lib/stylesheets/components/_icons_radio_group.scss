@@ -27,7 +27,7 @@
 
   .icons-radio-input__icon {
     font-size: 25px;
-    padding-top: 5px;
+    padding-top: 7px;
     line-height: 25px;
 
     @include media($tablet) {
@@ -52,12 +52,29 @@
     font-size: 11px !important;
   }
 
-  &--no-touch:hover, &--checked {
+  &--no-touch:hover {
+    border: 1px solid $cwColor-black-light;
+    background-color: $cwColor-blue-light;
+    .icons-radio-input__icon > span::before,
+    .icons-radio-input__label {
+      color: $cwColor-black-dark;
+    }
+  }
+  &--checked {
     border: 1px solid $cwColor-base-blue;
     background-color: $cwColor-base-blue;
     .icons-radio-input__icon > span::before,
     .icons-radio-input__label {
       color: $cwColor-base-white;
+    }
+    &:hover {
+      border: 1px solid $cwColor-base-blue;
+      color: $cwColor-base-white;
+      background-color: $cwColor-base-blue;
+      .icons-radio-input__icon > span::before,
+      .icons-radio-input__label {
+        color: $cwColor-base-white;
+      }
     }
   }
 }

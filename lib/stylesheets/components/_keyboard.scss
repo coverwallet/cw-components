@@ -23,8 +23,8 @@
     user-select: none;
     box-sizing: border-box;
     &:hover {
-      background-color: $cwColor-base-blue;
-      color: $cwColor-base-white;
+      background-color: $cwColor-blue-light;
+      color: $cwColor-base-bluegray;
     }
 
     &:focus, &:active, &--clicked {
@@ -36,8 +36,8 @@
     line-height: 57px;
     &:hover {
       &:before {
-        background-color: $cwColor-base-blue;
-        color: $cwColor-base-white;
+        background-color: $cwColor-blue-light;
+        color: $cwColor-base-bluegray;
       }
     }
   }
