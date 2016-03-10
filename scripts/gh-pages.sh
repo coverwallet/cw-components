@@ -22,8 +22,8 @@ git push origin :gh-pages
 # build examples
 ./node_modules/.bin/webpack --config ./webpack.pages.js -p
 
-# add jekyll config
-echo "source: [gh-pages]" > _config.yml
+# move example files to root
+mv gh-pages/* ./
 
 # create gh-pages branch
 git checkout -b gh-pages
