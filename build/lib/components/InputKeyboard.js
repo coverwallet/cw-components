@@ -26,6 +26,10 @@ var _keyboard = require('./keyboard');
 
 var _keyboard2 = _interopRequireDefault(_keyboard);
 
+var _utilsNumberWithCommas = require('../utils/numberWithCommas');
+
+var _utilsNumberWithCommas2 = _interopRequireDefault(_utilsNumberWithCommas);
+
 var InputKeyboard = (function (_React$Component) {
   _inherits(InputKeyboard, _React$Component);
 
@@ -33,8 +37,12 @@ var InputKeyboard = (function (_React$Component) {
     _classCallCheck(this, InputKeyboard);
 
     _get(Object.getPrototypeOf(InputKeyboard.prototype), 'constructor', this).call(this, props);
+    var value = this.props.value ? this.props.value : '';
+    if (this.props.commas) {
+      value = (0, _utilsNumberWithCommas2['default'])(value);
+    }
     this.state = {
-      value: this.props.value ? this.props.value : ''
+      value: value
     };
   }
 
@@ -46,13 +54,13 @@ var InputKeyboard = (function (_React$Component) {
   }, {
     key: 'setNextValue',
     value: function setNextValue(value) {
+      var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
       if (this.props.commas) {
-        var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
-        this.setState({ value: nextValue.toLocaleString('US') });
+        this.setState({ value: (0, _utilsNumberWithCommas2['default'])(nextValue) });
       } else {
-        this.setState({ value: value });
+        this.setState({ value: nextValue });
       }
-      this.props.setValue && this.props.setValue(value);
+      this.props.setValue && this.props.setValue(nextValue);
     }
   }, {
     key: 'pressKey',

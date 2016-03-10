@@ -66,39 +66,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _componentsInputKeyboard2 = _interopRequireDefault(_componentsInputKeyboard);
 	
-	var _componentsNumberInput = __webpack_require__(5);
+	var _componentsNumberInput = __webpack_require__(6);
 	
 	var _componentsNumberInput2 = _interopRequireDefault(_componentsNumberInput);
 	
-	var _componentsIconRadioGroup = __webpack_require__(6);
+	var _componentsIconRadioGroup = __webpack_require__(7);
 	
 	var _componentsIconRadioGroup2 = _interopRequireDefault(_componentsIconRadioGroup);
 	
-	var _componentsIconRadioInput = __webpack_require__(7);
+	var _componentsIconRadioInput = __webpack_require__(8);
 	
 	var _componentsIconRadioInput2 = _interopRequireDefault(_componentsIconRadioInput);
 	
-	var _componentsLoader = __webpack_require__(9);
+	var _componentsLoader = __webpack_require__(10);
 	
 	var _componentsLoader2 = _interopRequireDefault(_componentsLoader);
 	
-	var _componentsOnlyClickListOption = __webpack_require__(10);
+	var _componentsOnlyClickListOption = __webpack_require__(11);
 	
 	var _componentsOnlyClickListOption2 = _interopRequireDefault(_componentsOnlyClickListOption);
 	
-	var _componentsOnlyClickListOptions = __webpack_require__(11);
+	var _componentsOnlyClickListOptions = __webpack_require__(12);
 	
 	var _componentsOnlyClickListOptions2 = _interopRequireDefault(_componentsOnlyClickListOptions);
 	
-	var _componentsOnlyClickIconOption = __webpack_require__(12);
+	var _componentsOnlyClickIconOption = __webpack_require__(13);
 	
 	var _componentsOnlyClickIconOption2 = _interopRequireDefault(_componentsOnlyClickIconOption);
 	
-	var _componentsOnlyClickIconOptions = __webpack_require__(13);
+	var _componentsOnlyClickIconOptions = __webpack_require__(14);
 	
 	var _componentsOnlyClickIconOptions2 = _interopRequireDefault(_componentsOnlyClickIconOptions);
 	
-	var _componentsOnlyClickSelect = __webpack_require__(14);
+	var _componentsOnlyClickSelect = __webpack_require__(15);
 	
 	var _componentsOnlyClickSelect2 = _interopRequireDefault(_componentsOnlyClickSelect);
 	
@@ -145,6 +145,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _keyboard2 = _interopRequireDefault(_keyboard);
 	
+	var _utilsNumberWithCommas = __webpack_require__(5);
+	
+	var _utilsNumberWithCommas2 = _interopRequireDefault(_utilsNumberWithCommas);
+	
 	var InputKeyboard = (function (_React$Component) {
 	  _inherits(InputKeyboard, _React$Component);
 	
@@ -152,8 +156,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, InputKeyboard);
 	
 	    _get(Object.getPrototypeOf(InputKeyboard.prototype), 'constructor', this).call(this, props);
+	    var value = this.props.value ? this.props.value : '';
+	    if (this.props.commas) {
+	      value = (0, _utilsNumberWithCommas2['default'])(value);
+	    }
 	    this.state = {
-	      value: this.props.value ? this.props.value : ''
+	      value: value
 	    };
 	  }
 	
@@ -165,13 +173,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'setNextValue',
 	    value: function setNextValue(value) {
+	      var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
 	      if (this.props.commas) {
-	        var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
-	        this.setState({ value: nextValue.toLocaleString('US') });
+	        this.setState({ value: (0, _utilsNumberWithCommas2['default'])(nextValue) });
 	      } else {
-	        this.setState({ value: value });
+	        this.setState({ value: nextValue });
 	      }
-	      this.props.setValue && this.props.setValue(value);
+	      this.props.setValue && this.props.setValue(nextValue);
 	    }
 	  }, {
 	    key: 'pressKey',
@@ -403,6 +411,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = numberWithCommas;
+	
+	function numberWithCommas(x) {
+	  return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
+	module.exports = exports["default"];
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -429,6 +454,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	var _utilsNumberWithCommas = __webpack_require__(5);
+	
+	var _utilsNumberWithCommas2 = _interopRequireDefault(_utilsNumberWithCommas);
+	
 	var NumberInput = (function (_React$Component) {
 	  _inherits(NumberInput, _React$Component);
 	
@@ -436,21 +465,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, NumberInput);
 	
 	    _get(Object.getPrototypeOf(NumberInput.prototype), 'constructor', this).call(this, props);
+	    var value = this.props.value ? this.props.value : this.props.min ? this.props.min : '';
+	    if (this.props.commas) {
+	      value = (0, _utilsNumberWithCommas2['default'])(value);
+	    }
 	    this.state = {
-	      value: this.props.value ? this.props.value : this.props.min ? this.props.min : ''
+	      value: value
 	    };
 	  }
 	
 	  _createClass(NumberInput, [{
 	    key: 'setNextValue',
 	    value: function setNextValue(value) {
+	      var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
 	      if (this.props.commas) {
-	        var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
-	        this.setState({ value: nextValue.toLocaleString('US') });
+	        this.setState({ value: (0, _utilsNumberWithCommas2['default'])(nextValue) });
 	      } else {
-	        this.setState({ value: value });
+	        this.setState({ value: nextValue });
 	      }
-	      this.props.setValue && this.props.setValue(value);
+	      this.props.setValue && this.props.setValue(nextValue);
 	    }
 	  }, {
 	    key: 'handleChange',
@@ -529,7 +562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -552,7 +585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _IconRadioInput = __webpack_require__(7);
+	var _IconRadioInput = __webpack_require__(8);
 	
 	var _IconRadioInput2 = _interopRequireDefault(_IconRadioInput);
 	
@@ -625,7 +658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -652,7 +685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _utilsDeviceDetector = __webpack_require__(8);
+	var _utilsDeviceDetector = __webpack_require__(9);
 	
 	var IconRadioInput = (function (_React$Component) {
 	  _inherits(IconRadioInput, _React$Component);
@@ -735,7 +768,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -750,7 +783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -789,7 +822,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -808,7 +841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _utilsDeviceDetector = __webpack_require__(8);
+	var _utilsDeviceDetector = __webpack_require__(9);
 	
 	function OnlyClickListOption(props) {
 	  var value = props.value;
@@ -843,7 +876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -864,7 +897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _OnlyClickListOption = __webpack_require__(10);
+	var _OnlyClickListOption = __webpack_require__(11);
 	
 	var _OnlyClickListOption2 = _interopRequireDefault(_OnlyClickListOption);
 	
@@ -896,7 +929,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -915,7 +948,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _utilsDeviceDetector = __webpack_require__(8);
+	var _utilsDeviceDetector = __webpack_require__(9);
 	
 	function OnlyClickIconOption(props) {
 	  var value = props.value;
@@ -961,7 +994,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -978,7 +1011,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _OnlyClickIconOption = __webpack_require__(12);
+	var _OnlyClickIconOption = __webpack_require__(13);
 	
 	var _OnlyClickIconOption2 = _interopRequireDefault(_OnlyClickIconOption);
 	
@@ -1018,7 +1051,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1043,15 +1076,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _smoothscroll = __webpack_require__(15);
+	var _smoothscroll = __webpack_require__(16);
 	
 	var _smoothscroll2 = _interopRequireDefault(_smoothscroll);
 	
-	var _OnlyClickListOptions = __webpack_require__(11);
+	var _OnlyClickListOptions = __webpack_require__(12);
 	
 	var _OnlyClickListOptions2 = _interopRequireDefault(_OnlyClickListOptions);
 	
-	var _OnlyClickIconOptions = __webpack_require__(13);
+	var _OnlyClickIconOptions = __webpack_require__(14);
 	
 	var _OnlyClickIconOptions2 = _interopRequireDefault(_OnlyClickIconOptions);
 	
@@ -1229,7 +1262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, smoothScroll) {

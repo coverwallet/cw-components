@@ -22,6 +22,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _utilsNumberWithCommas = require('../utils/numberWithCommas');
+
+var _utilsNumberWithCommas2 = _interopRequireDefault(_utilsNumberWithCommas);
+
 var NumberInput = (function (_React$Component) {
   _inherits(NumberInput, _React$Component);
 
@@ -29,21 +33,25 @@ var NumberInput = (function (_React$Component) {
     _classCallCheck(this, NumberInput);
 
     _get(Object.getPrototypeOf(NumberInput.prototype), 'constructor', this).call(this, props);
+    var value = this.props.value ? this.props.value : this.props.min ? this.props.min : '';
+    if (this.props.commas) {
+      value = (0, _utilsNumberWithCommas2['default'])(value);
+    }
     this.state = {
-      value: this.props.value ? this.props.value : this.props.min ? this.props.min : ''
+      value: value
     };
   }
 
   _createClass(NumberInput, [{
     key: 'setNextValue',
     value: function setNextValue(value) {
+      var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
       if (this.props.commas) {
-        var nextValue = parseInt(String(value).replace(/,/g, "")) || '';
-        this.setState({ value: nextValue.toLocaleString('US') });
+        this.setState({ value: (0, _utilsNumberWithCommas2['default'])(nextValue) });
       } else {
-        this.setState({ value: value });
+        this.setState({ value: nextValue });
       }
-      this.props.setValue && this.props.setValue(value);
+      this.props.setValue && this.props.setValue(nextValue);
     }
   }, {
     key: 'handleChange',
