@@ -68,5 +68,12 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]
+  ],
+  resolve: {
+    fallback: [path.join(__dirname, 'node_modules')]
+  },
+  // Same issue, for loaders like babel
+  resolveLoader: {
+    fallback: [path.join(__dirname, 'node_modules')]
+  },
 };
