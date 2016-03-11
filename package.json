@@ -13,8 +13,7 @@
     "example": "examples"
   },
   "scripts": {
-    "postinstall": "node ./scripts/postinstall.js",
-    "bla": "node ./scripts/postinstall.js",
+    "postinstall": "babel ./lib -d build/lib",
     "test": "rackt test --single-run --browsers Firefox",
     "start": "npm run build & webpack-dev-server --inline --content-base examples/ --port 8002",
     "build": "babel ./lib -d build/lib",
