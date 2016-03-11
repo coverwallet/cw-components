@@ -26,39 +26,26 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
     path: 'examples/__build__',
-    publicPath: '/__build__/'
+    publicPath: process.env.PAGES ? 'http://coverwallet.github.io/cw-components/__build__/' : '/__build__/'
   },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['babel-loader']
+      loader: 'babel-loader'
     }, {
-      test: /\.jsx$/,
-      loaders: ['babel-loader']
-    }, {
-      test: /\.css$/,
+      test: /\.s?css$/,
       loader: 'style-loader!css-loader!sass-loader',
       exclude: /node_modules/
     }, {
-      test: /\.scss$/,
-      loader: 'style-loader!css-loader!sass-loader',
-      exclude: /node_modules/
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: "url-loader?limit=10000&minetype=application/font-woff"
     }, {
-      test: /\.woff/,
-      loader: 'url?limit=10000&mimetype=application/font-woff'
-    }, {
-      test: /\.ttf/,
-      loader: 'file'
-    }, {
-      test: /\.eot/,
-      loader: 'file'
-    }, {
-      test: /\.svg/,
-      loader: 'file'
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: "file-loader"
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url?limit=25000'
     }]
   }
-}
+};

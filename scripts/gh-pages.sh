@@ -20,7 +20,7 @@ git branch -D gh-pages
 git push origin :gh-pages
 
 # build examples
-./node_modules/.bin/webpack --config ./webpack.config.js -p
+PAGES=true ./node_modules/.bin/webpack --config ./webpack.config.js -p
 
 # move example files to root
 mv examples/* ./
@@ -31,7 +31,6 @@ echo "include: [__build__]" > _config.yml
 
 # create gh-pages branch
 git checkout -b gh-pages
-git rm -rf .
 git add .
 git commit -m "updating gh-pages"
 git push -f origin gh-pages
