@@ -13,10 +13,11 @@
     "example": "examples"
   },
   "scripts": {
-    "postinstall": "npm run build",
+    "postinstall": "node ./scripts/postinstall.js",
+    "bla": "node ./scripts/postinstall.js",
     "test": "rackt test --single-run --browsers Firefox",
     "start": "npm run build & webpack-dev-server --inline --content-base examples/ --port 8002",
-    "build": "babel -d build/lib ./lib",
+    "build": "babel ./lib -d build/lib",
     "build-watch": "npm run styleguide-fonts & babel -w -d build/lib ./lib",
     "copy-fonts": "cp -R node_modules/cw-styleguide/fonts examples/basic",
     "copy-images": "cp -R node_modules/cw-styleguide/images examples/basic",
