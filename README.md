@@ -20,6 +20,11 @@ CoverWallet components
 4. ```cd path-to-other-project/project-name```
 5. ```npm link cw-components```
 
+#### To use actual package.json cw-components lib version instead of npm link just do:
+
+1. ```cd path-to-other-project/project-name```
+2. ```npm unlink cw-components```
+
 ### Next time, for example after pc reboot you will need only to:
 
 1. ```cd path-to-local/cw-components```

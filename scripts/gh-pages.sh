@@ -24,7 +24,6 @@ PAGES=true ./node_modules/.bin/webpack --config ./webpack.config.js -p
 
 # move example files to root
 mv examples/* ./
-rm -rf examples/
 
 # add jekyll config
 echo "include: [__build__]" > _config.yml
