@@ -9,7 +9,9 @@ import {
   OnlyClickSelect
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
-import insuranceTypes from './catalog_api_json/insuranceTypes'
+import insuranceTypes from './catalog_api_json/insuranceTypes';
+
+import './app.scss';
 
 const iconRadioGroupOptions =[
   {
