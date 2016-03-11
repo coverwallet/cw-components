@@ -20,14 +20,14 @@ git branch -D gh-pages
 git push origin :gh-pages
 
 # build examples
-./node_modules/.bin/webpack --config ./webpack.pages.js -p
+./node_modules/.bin/webpack --config ./webpack.config.js -p
 
-# remove superfluous files
-find . -type f | egrep -v ".git/|examples/|.idea/|node_modules/" | xargs rm
-find . -type d -empty -delete
+# move example files to root
+mv examples/* ./
+rm -rf examples/
 
 # add jekyll config
-echo "source: [gh-pages]" > _config.yml
+echo "include: [__build__]" > _config.yml
 
 # create gh-pages branch
 git checkout -b gh-pages

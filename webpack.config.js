@@ -1,5 +1,3 @@
-'use strict';
-
 var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
@@ -11,7 +9,7 @@ function buildEntries() {
       return entries;
     }
 
-    var isDraft = dir.charAt(0) === '_';
+    var isDraft = dir === 'build';
     var isDirectory = fs.lstatSync(path.join(EXAMPLES_DIR, dir)).isDirectory();
 
     if (!isDraft && isDirectory) {
@@ -23,7 +21,6 @@ function buildEntries() {
 }
 
 module.exports = {
-  devtool: 'inline-source-map',
   entry: buildEntries(),
   output: {
     filename: '[name].js',
@@ -37,8 +34,8 @@ module.exports = {
       exclude: /node_modules/,
       loaders: ['babel-loader']
     }, {
-        test: /\.jsx$/,
-        loaders: ['babel-loader']
+      test: /\.jsx$/,
+      loaders: ['babel-loader']
     }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader!sass-loader',
@@ -63,10 +60,5 @@ module.exports = {
       test: /\.(png|jpg)$/,
       loader: 'url?limit=25000'
     }]
-  },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
-};
+  }
+}
