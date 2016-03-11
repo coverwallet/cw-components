@@ -13,7 +13,7 @@
     "example": "examples"
   },
   "scripts": {
-    "postinstall": "babel ./lib -d build/lib",
+    "postinstall": "postinstall-build build/lib 'npm run build'",
     "test": "rackt test --single-run --browsers Firefox",
     "start": "npm run build & webpack-dev-server --inline --content-base examples/ --port 8002",
     "build": "babel ./lib -d build/lib",
@@ -64,6 +64,7 @@
   ],
   "dependencies": {
     "classnames": "^2.2.3",
+    "postinstall-build": "^0.2.1",
     "smoothscroll": "^0.2.2"
   }
 }
