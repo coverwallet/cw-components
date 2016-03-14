@@ -1,6 +1,6 @@
 .oc-icon-option {
   width: 100%;
-  margin-bottom: 14px;
+  margin: 7px 0;
   padding: 10px;
   border: 1px solid $cwColor-black-light;
   border-radius: 10px;
@@ -8,6 +8,7 @@
   background: $cwColor-base-white;
   cursor: pointer;
   box-sizing: border-box;
+  font-size: 14px;
 
   &:focus, &:active, &--clicked {
     @extend .animated, .pulse;
