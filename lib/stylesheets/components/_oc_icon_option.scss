@@ -1,7 +1,6 @@
 .oc-icon-option {
   width: 100%;
   margin: 7px 0;
-  padding: 10px;
   border: 1px solid $cwColor-black-light;
   border-radius: 10px;
   color: $cwColor-black-xmedium;
@@ -24,8 +23,7 @@
   }
 
   .oc-icon-option__content {
-    display: table-cell;
-    vertical-align: middle;
+    padding: 10px 5px
   }
 
   .oc-icon-option__label {
