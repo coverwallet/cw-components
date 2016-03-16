@@ -112,7 +112,7 @@ let App = React.createClass({
         <div>
           <h2>Only Click Select</h2>
 
-          <h4>Icons view</h4>
+          <h4>Icons view with auto focus</h4>
 
           <div>
             <OnlyClickSelect
@@ -125,10 +125,11 @@ let App = React.createClass({
               ))}
               onClick={(value)=> console.log("You choose " + value)}
               onDelete={(value)=> console.log("You remove " + value)}
+              autoFocus
             />
           </div>
 
-          <h4>List view</h4>
+          <h4>List view with auto scroll</h4>
 
           <div>
             <OnlyClickSelect
@@ -141,6 +142,7 @@ let App = React.createClass({
               onClick={(value)=> console.log("You choose " + value)}
               onDelete={(value)=> console.log("You remove " + value)}
               values={[industries[0].subindustries[0].name]}
+              autoScroll
             />
           </div>
 
