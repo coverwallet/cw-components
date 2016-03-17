@@ -1,6 +1,6 @@
 {
   "name": "cw-components",
-  "version": "1.9.0",
+  "version": "1.9.7",
   "description": "CoverWallet components",
   "main": "./build/lib/index.js",
   "repository": {
@@ -14,7 +14,6 @@
   },
   "scripts": {
     "postinstall": "postinstall-build build/lib 'npm run build'",
-    "test": "rackt test --single-run --browsers Firefox",
     "start": "npm run build & webpack-dev-server --inline --content-base examples/ --port 8002",
     "build": "babel ./lib -d build/lib",
     "build-watch": "npm run styleguide-fonts & babel -w -d build/lib ./lib",
@@ -22,7 +21,7 @@
     "copy-images": "cp -R node_modules/cw-styleguide/images examples/basic",
     "styleguide-fonts": "npm run copy-fonts & npm run copy-images",
     "gh-pages": "./scripts/gh-pages.sh",
-    "bower": "rackt build"
+    "bower": "./scripts/bower.sh"
   },
   "authors": [
     "CoverWallet"
@@ -39,7 +38,6 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.10.0",
     "node-sass": "^3.4.2",
-    "rackt-cli": "^0.4.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "sass-loader": "^3.1.2",
