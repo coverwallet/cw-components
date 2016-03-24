@@ -35,13 +35,13 @@ let App = React.createClass({
       <div className="example">
         <h1>cw-components</h1>
         <div className="clearfix">
-          <h2>Default Keyboard input</h2>
-          <InputKeyboard />
+          <h2>Default Keyboard input with text type</h2>
+          <InputKeyboard type="text" value={0} />
         </div>
 
         <div className="clearfix">
           <h2>Currency with commas Keyboard input</h2>
-          <InputKeyboard currency commas/>
+          <InputKeyboard currency commas />
         </div>
 
         <div className="clearfix">
