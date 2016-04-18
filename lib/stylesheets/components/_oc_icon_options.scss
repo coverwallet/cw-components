@@ -12,10 +12,10 @@
   }
 
   .oc-icon-option-container {
-      display: flex;
-      width: 15.31111%;
-      box-sizing: border-box;
-      margin: 0 0.6777777%;
+    display: flex;
+    width: 15.31111%;
+    box-sizing: border-box;
+    margin: 0 0.6777777%;
 
     @include media($tablet) {
       width: 31.3%;
@@ -25,12 +25,20 @@
     @include media($mobile) {
       width: 47%;
       margin: 0 1%;
+
+      height: auto;
+      min-height: 130px;
+      max-height: 150px;
+      float: left;
+
+      &:nth-child(2){
+        float: right;
+      }
     }
   }
 
   .oc-icon-options__item {
     position: relative;
-
 
     .oc-icon-options__item-help-icon {
       @include cw-icon-before(question-circle, 0, $cwColor-base-blue);
