@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import objectAssign from 'object-assign';
 import {
   InputKeyboard,
   NumberInput,
@@ -119,7 +120,7 @@ let App = React.createClass({
               placeholder="or type it here"
               hint="Select your industry"
               type="icons"
-              options={industries.map((industry) => Object.assign({},
+              options={industries.map((industry) => objectAssign({},
                 industry,
                 {label: industry.name, value: industry.name, iconClass: industry.icon_name}
               ))}
@@ -135,7 +136,7 @@ let App = React.createClass({
             <OnlyClickSelect
               placeholder="Search industry subcategory"
               hint="Select your industry subcategory"
-              options={industries[0].subindustries.map(subindustry=> Object.assign({},
+              options={industries[0].subindustries.map(subindustry=> objectAssign({},
                 subindustry,
                 {label: subindustry.name, value: subindustry.name}
               ))}
@@ -152,7 +153,7 @@ let App = React.createClass({
             <OnlyClickSelect
               placeholder="Search"
               type="icons"
-              options={insuranceTypes.map((type) => Object.assign({},
+              options={insuranceTypes.map((type) => objectAssign({},
                 type,
                 {label: type.name, value: type.name, iconClass: type.icon_name, tooltipKey: type.tooltip_key}
               ))}
