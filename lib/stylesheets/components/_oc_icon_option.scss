@@ -23,7 +23,9 @@
   }
 
   .oc-icon-option__content {
-    padding: 10px 5px
+    padding: 10px 5px;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   .oc-icon-option__label {
@@ -47,8 +49,10 @@
   &--no-touch:hover {
     color: $cwColor-black-dark;
     background-color: $cwColor-blue-light;
-    .oc-icon-option__icon::before {
-      color: $cwColor-black-dark;
+
+    .oc-icon-option__icon:before,
+    .oc-icon-option__label {
+      color: $cwColor-base-white;
     }
   }
   &--checked {

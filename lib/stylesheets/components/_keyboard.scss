@@ -24,7 +24,7 @@
     box-sizing: border-box;
     &:hover {
       background-color: $cwColor-blue-light;
-      color: $cwColor-base-bluegray;
+      color: $cwColor-base-white;
     }
 
     &:focus, &:active, &--clicked {
@@ -37,7 +37,7 @@
     &:hover {
       &:before {
         background-color: $cwColor-blue-light;
-        color: $cwColor-base-bluegray;
+        color: $cwColor-base-white;
       }
     }
   }

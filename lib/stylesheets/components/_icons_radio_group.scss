@@ -53,11 +53,11 @@
   }
 
   &--no-touch:hover {
-    border: 1px solid $cwColor-black-light;
+    border: 1px solid $cwColor-blue-light;
     background-color: $cwColor-blue-light;
     .icons-radio-input__icon > span::before,
     .icons-radio-input__label {
-      color: $cwColor-black-dark;
+      color: $cwColor-base-white;
     }
   }
   &--checked {
