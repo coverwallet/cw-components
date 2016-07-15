@@ -4,6 +4,7 @@ import objectAssign from 'object-assign';
 import {
   InputKeyboard,
   NumberInput,
+  BoxRadioGroup,
   IconRadioGroup,
   Loader,
   OnlyClickListOptions,
@@ -14,20 +15,70 @@ import insuranceTypes from './catalog_api_json/insuranceTypes';
 
 import './app.scss';
 
-const iconRadioGroupOptions =[
+const iconRadioGroupOptions = [
   {
     label: 'Yes',
     value: 'Yes',
-    iconClass: 'styleguide-icon-onlyclick-yes'
+    iconClass: 'styleguide-icon-onlyclick-yes',
   }, {
     label: 'No',
     value: 'No',
-    iconClass: 'styleguide-icon-onlyclick-no'
+    iconClass: 'styleguide-icon-onlyclick-no',
   }, {
     label: 'Not sure',
     value: 'Not sure',
-    iconClass: 'styleguide-icon-onlyclick-notsure'
+    iconClass: 'styleguide-icon-onlyclick-notsure',
   }
+];
+
+const BoxRadioGroupYearsOptions = [
+  {
+    label: '2016',
+    value: '2016',
+  }, {
+    label: '2017',
+    value: '2017',
+  }
+];
+
+const BoxRadioGroupMonthsOptions = [
+  {
+    label: 'Jan',
+    value: 'Jan',
+  }, {
+    label: 'Feb',
+    value: 'Feb',
+  }, {
+    label: 'Mar',
+    value: 'Mar',
+  }, {
+    label: 'Spr',
+    value: 'Spr',
+  }, {
+    label: 'May',
+    value: 'May',
+  }, {
+    label: 'Jun',
+    value: 'Jun',
+  }, {
+    label: 'Jul',
+    value: 'Jul',
+  }, {
+    label: 'Aug',
+    value: 'Aug',
+  }, {
+    label: 'Sep',
+    value: 'Sep',
+  }, {
+    label: 'Oct',
+    value: 'Oct',
+  }, {
+    label: 'Nov',
+    value: 'Nov',
+  }, {
+    label: 'Dec',
+    value: 'Dec',
+  },
 ];
 
 let App = React.createClass({
@@ -69,6 +120,29 @@ let App = React.createClass({
             <h3>Long with commas</h3>
             <NumberInput width="100%" commas/>
           </div>
+        </div>
+
+        <hr/>
+
+        <div>
+          <h2>Box Radio Group</h2>
+
+          <BoxRadioGroup
+            options={BoxRadioGroupMonthsOptions}
+            rows={2}
+            name="test_radio_input"
+            value="Not sure"
+            style={{ width: 360 }}
+            onChange={(value)=> console.log("You pick " + value)}
+          />
+
+          <BoxRadioGroup
+            options={BoxRadioGroupYearsOptions}
+            name="test_radio_input"
+            value="Not sure"
+            style={{ width: 360 }}
+            onChange={(value)=> console.log("You pick " + value)}
+          />
         </div>
 
         <hr/>
