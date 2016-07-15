@@ -31,14 +31,15 @@ const iconRadioGroupOptions = [
   }
 ];
 
+const currentYear = new Date().getFullYear();
 const BoxRadioGroupYearsOptions = [
   {
-    label: '2016',
-    value: '2016',
+    label: `${currentYear}`,
+    value: `${currentYear}`,
   }, {
-    label: '2017',
-    value: '2017',
-  }
+    label: `${currentYear + 1}`,
+    value: `${currentYear + 1}`,
+  },
 ];
 
 const BoxRadioGroupMonthsOptions = [
