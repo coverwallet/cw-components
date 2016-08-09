@@ -20,10 +20,6 @@
 
   @include media($mobile) {
     width: 45%;
-
-    &:last-child:nth-child(odd) {
-      margin-left: 26%
-    }
   }
 
   .box-radio-input__input {
