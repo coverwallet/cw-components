@@ -1,6 +1,7 @@
 .oc-list-option {
   @include clearfix();
   display: table;
+  position: relative;
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -49,6 +50,25 @@
   .oc-option__message {
     display: table-cell;
     vertical-align: top;
+
+    &--with-addition {
+      padding-bottom: 6px;
+
+      @include media($mobile) {
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .oc-option__addition {
+    font-size: 11px;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+
+    @include media($mobile) {
+      left: 4px;
+    }
   }
 
   .oc-option__next-icon {
