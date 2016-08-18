@@ -220,7 +220,7 @@ const App = function App() {
           />
         </div>
 
-        <h4>List view with auto scroll, highlight and adition</h4>
+        <h4>List view with auto scroll, highlight and adition, 10 max visible</h4>
 
         <div>
           <OnlyClickSelect
@@ -230,9 +230,11 @@ const App = function App() {
               subindustry,
               { label: subindustry.name, value: subindustry.name, addition: subindustry.name }
             ))}
+            onChange={(value) => console.log('You typed ', value)}
             onClick={(value) => console.log('You choose ', value)}
             onDelete={(value) => console.log('You remove ', value)}
             values={[industries[0].subindustries[0].name]}
+            maxVisible={10}
             autoScroll
             highlight
           />
