@@ -235,6 +235,7 @@ const App = function App() {
             onDelete={(value) => console.log('You remove ', value)}
             values={[industries[0].subindustries[0].name]}
             maxVisible={10}
+            disableFilter
             autoScroll
             highlight
           />

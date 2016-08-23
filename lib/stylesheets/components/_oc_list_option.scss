@@ -58,14 +58,7 @@
 
   .oc-option__addition {
     font-size: 11px;
-    position: relative;
     display: block;
-    bottom: 0;
-    left: -3px;
-
-    @include media($mobile) {
-      left: -1px;
-    }
   }
 
   .oc-option__next-icon {
@@ -79,5 +72,10 @@
       font-size: 30px;
       line-height: 20px;
     }
+  }
+
+  .oc-option__search-term {
+    font-weight: bold;
+    background: transparent;
   }
 }
