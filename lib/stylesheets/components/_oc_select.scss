@@ -1,5 +1,5 @@
 .oc-select {
-  
+
   .oc-list-options {
     margin-top: 0;
     border-width: 0 1px 0 0;
@@ -50,5 +50,10 @@
     padding: 7px 15px;
     color: $cwColor-base-white;
     background-color: $cwColor-base-bluegray;
+  }
+
+  .oc-select__error {
+    color: #f00;
+    margin: 10px 0;
   }
 }

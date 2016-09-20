@@ -220,12 +220,12 @@ const App = function App() {
           />
         </div>
 
-        <h4>List view with auto scroll, highlight and adition, 10 max visible</h4>
+      <h4>List view with auto scroll, highlight and adition, 10 max visible and error message</h4>
 
         <div>
           <OnlyClickSelect
             placeholder="Search industry subcategory"
-            hint="Select your industry subcategory"
+            errorMessage="Required"
             options={industries[0].subindustries.map(subindustry => objectAssign({},
               subindustry,
               { label: subindustry.name, value: subindustry.name, addition: subindustry.name }
