@@ -1,6 +1,6 @@
 {
   "name": "cw-components",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "CoverWallet components",
   "main": "./build/lib/index.js",
   "repository": {
