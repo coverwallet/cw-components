@@ -5,8 +5,8 @@
 
 .box-radio-input {
   float: left;
-  height: 46px;
-  line-height: 35px;
+  height: 52px;
+  line-height: 40px;
   text-align: center;
   margin: 3px;
   color: $cwColor-black-xmedium;
@@ -28,9 +28,8 @@
 
   .box-radio-input__label {
     margin-top: 4px;
-    text-transform: uppercase;
     color: $cwColor-base-bluegray;
-    font-size: 11px !important;
+    font-size: 14px;
   }
 
   &--no-touch:hover {

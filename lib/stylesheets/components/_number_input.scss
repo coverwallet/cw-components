@@ -8,7 +8,6 @@
   .number-input__minus,
   .number-input__plus {
     position: absolute;
-    font-size: 1.6em;
     top: 5px;
     width: 27px;
     height: 27px;
@@ -23,7 +22,6 @@
         color: $cwColor-base-blue;
       }
     }
-
     &:focus, &:active, &--clicked {
       @extend .animated, .pulse;
     }
@@ -33,13 +31,24 @@
     }
   }
   .number-input__minus {
-    @include cw-covericon-before(onlyclick-minus, 0, $cwColor-black-xmedium);
+    font-size: 28px;
+    line-height: 30px;
+  }
+  .number-input__plus {
+    font-size: 36px;
+    &:before {
+      vertical-align: top;
+      line-height: 29px;
+    }
+  }
+  .number-input__minus {
+    @include cw-covericon-before(onlyclick-less, 0, $cwColor-black-xmedium);
     right: 50px;
   }
 
   .number-input__plus {
-    @include cw-covericon-before(onlyclick-plus, 0, $cwColor-black-xmedium);
-    right: 10px;
+    @include cw-covericon-before(insurance-type-more, 0, $cwColor-black-xmedium);
+    right: 15px;
   }
 
   .number-input__input {
@@ -47,7 +56,7 @@
     height: 40px;
     padding-left: 10px;
     text-align: right;
-    font-size: 1em;
+    font-size: 14px;
     color: $cwColor-base-bluegray;
     background-color: $cwColor-base-white;
     border: 1px solid $cwColor-black-light;

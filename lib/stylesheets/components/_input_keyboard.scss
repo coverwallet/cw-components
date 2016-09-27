@@ -27,9 +27,8 @@
     width: 100%;
     height: 40px !important;
     text-align: right;
-    font-size: 1em;
+    font-size: 14px;
     color: $cwColor-base-bluegray;
-    font-weight: 100;
     box-sizing: border-box;
 
     @include media($mobile) {

@@ -10,13 +10,13 @@
   .keyboard__number, .keyboard__delete {
     cursor: pointer;
     width: 33.3%;
-    height: 54px;
+    height: 51px;
     text-align: center;
     line-height: 50px;
     color: $cwColor-base-bluegray;
     background-color: $cwColor-base-white;
     border: 1px solid $cwColor-black-light;
-    font-size: 20px;
+    font-size: 16px;
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
@@ -33,7 +33,8 @@
   }
 
   .keyboard__delete {
-    line-height: 57px;
+    font-size: 24px;
+    line-height: 47px;
     &:hover {
       &:before {
         background-color: $cwColor-blue-light;
@@ -43,6 +44,9 @@
   }
 
   .keyboard__backspace {
-    @include cw-covericon-before(onlyclick-backspace, 0, $cwColor-black-xmedium);
+    @include cw-covericon-before(onlyclick-backspace, 0, $cwColor-black-light);
+    &:before {
+      line-height: 49px;
+    }
   }
 }
