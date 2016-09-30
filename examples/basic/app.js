@@ -123,7 +123,7 @@ const App = function App() {
             step={10}
             min={0}
             max={100}
-            value="0"
+            value={0}
             setValue={(value) => console.log('Changed to ', value)}
             percents
           />
