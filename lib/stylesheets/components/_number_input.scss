@@ -71,5 +71,23 @@
     &--nan {
       padding-right: 10px;
     }
+
+    &--percents {
+      padding-right: 18px;
+    }
+  }
+
+  &__percents {
+    position: relative;
+    right: 17px;
+    top: 2px;
+    pointer-events: none;
+
+    @include media($mobile) {
+      position: absolute;
+      right: 8px;
+      top: 10px;
+      pointer-events: none;
+    }
   }
 }
