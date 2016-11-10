@@ -8,11 +8,6 @@
   line-height: 20px;
   background-color: $cwColor-base-white;
 
-  @include media($mobile) {
-    font-size: 13px;
-    padding: 5px;
-  }
-
   &--no-touch {
     &:hover {
       background: $cwColor-blue-light;
@@ -43,7 +38,11 @@
   }
 
   &--with-addition {
-    padding: 6px 10px 2px 10px;
+    padding: 7px 10px;
+
+    @include media($mobile) {
+      padding: 10px;
+    }
   }
 
   &:focus, &:active, &--clicked {
