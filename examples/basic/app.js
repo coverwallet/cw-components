@@ -117,6 +117,19 @@ const App = function App() {
         </div>
 
         <div className="clearfix">
+          <h3>Percents</h3>
+          <NumberInput
+            type="text"
+            step={10}
+            min={0}
+            max={100}
+            value={0}
+            setValue={(value) => console.log('Changed to ', value)}
+            percents
+          />
+        </div>
+
+        <div className="clearfix">
           <h3>Long with commas</h3>
           <NumberInput width="100%" commas />
         </div>
