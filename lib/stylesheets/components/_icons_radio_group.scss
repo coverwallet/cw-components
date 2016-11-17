@@ -18,11 +18,8 @@
   }
 
   @include media($mobile) {
-    width: 45%;
-
-    &:last-child:nth-child(odd) {
-      margin-left: 26%
-    }
+    width: 31.333333%;
+    margin: 1%;
   }
 
   .icons-radio-input__icon {
@@ -49,6 +46,10 @@
     margin-top: 4px;
     color: $cwColor-black-dark;
     font-size: 12px !important;
+
+    @include media($mobile) {
+      font-size: 10px !important;
+    }
   }
 
   &--no-touch:hover {
