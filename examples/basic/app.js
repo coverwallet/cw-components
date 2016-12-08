@@ -24,10 +24,6 @@ const iconRadioGroupOptions = [
     label: 'No',
     value: 'No',
     iconClass: 'styleguide-icon-onlyclick-no',
-  }, {
-    label: 'Not sure',
-    value: 'Not sure',
-    iconClass: 'styleguide-icon-onlyclick-notsure',
   },
 ];
 
@@ -161,10 +157,25 @@ const App = function App() {
       <hr />
 
       <div>
-        <h2>Icon Radio Group</h2>
+        <h2>Icon Radio Group 2 options</h2>
 
         <IconRadioGroup
           options={iconRadioGroupOptions}
+          name="test_radio_input"
+          value="Not sure"
+          onChange={(value) => console.log('You pick ', value)}
+        />
+      </div>
+
+      <div>
+        <h2>Icon Radio Group 3 options</h2>
+
+        <IconRadioGroup
+          options={[...iconRadioGroupOptions, {
+            label: 'Not sure',
+            value: 'Not sure',
+            iconClass: 'styleguide-icon-onlyclick-notsure',
+          }]}
           name="test_radio_input"
           value="Not sure"
           onChange={(value) => console.log('You pick ', value)}
