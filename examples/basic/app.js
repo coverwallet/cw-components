@@ -24,10 +24,6 @@ const iconRadioGroupOptions = [
     label: 'No',
     value: 'No',
     iconClass: 'styleguide-icon-onlyclick-no',
-  }, {
-    label: 'Not sure',
-    value: 'Not sure',
-    iconClass: 'styleguide-icon-onlyclick-notsure',
   },
 ];
 
@@ -117,6 +113,19 @@ const App = function App() {
         </div>
 
         <div className="clearfix">
+          <h3>Percents</h3>
+          <NumberInput
+            type="text"
+            step={10}
+            min={0}
+            max={100}
+            value={0}
+            setValue={(value) => console.log('Changed to ', value)}
+            percents
+          />
+        </div>
+
+        <div className="clearfix">
           <h3>Long with commas</h3>
           <NumberInput width="100%" commas />
         </div>
@@ -148,10 +157,25 @@ const App = function App() {
       <hr />
 
       <div>
-        <h2>Icon Radio Group</h2>
+        <h2>Icon Radio Group 2 options</h2>
 
         <IconRadioGroup
           options={iconRadioGroupOptions}
+          name="test_radio_input"
+          value="Not sure"
+          onChange={(value) => console.log('You pick ', value)}
+        />
+      </div>
+
+      <div>
+        <h2>Icon Radio Group 3 options</h2>
+
+        <IconRadioGroup
+          options={[...iconRadioGroupOptions, {
+            label: 'Not sure',
+            value: 'Not sure',
+            iconClass: 'styleguide-icon-onlyclick-notsure',
+          }]}
           name="test_radio_input"
           value="Not sure"
           onChange={(value) => console.log('You pick ', value)}

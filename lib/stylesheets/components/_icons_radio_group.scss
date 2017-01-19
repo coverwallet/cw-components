@@ -1,13 +1,21 @@
 .icons-radio-group {
   @include clearfix();
+
+  @include media($mobile) {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
 }
 
 .icons-radio-input {
   float: left;
-  width: 112px;
+  width: 105px;
   height: 65px;
   text-align: center;
-  margin: 5px;
+  margin: 2px;
+  background-color: $cwColor-base-white;
   color: $cwColor-black-xmedium;
   border: 1px solid $cwColor-black-light;
   border-radius: 4px;
@@ -18,11 +26,8 @@
   }
 
   @include media($mobile) {
-    width: 45%;
-
-    &:last-child:nth-child(odd) {
-      margin-left: 26%
-    }
+    width: 31.333333%;
+    margin: 1%;
   }
 
   .icons-radio-input__icon {
@@ -48,7 +53,11 @@
   .icons-radio-input__label {
     margin-top: 4px;
     color: $cwColor-black-dark;
-    font-size: 12px !important;
+    font-size: 11px;
+
+    @include media($mobile) {
+      font-size: 10px;
+    }
   }
 
   &--no-touch:hover {

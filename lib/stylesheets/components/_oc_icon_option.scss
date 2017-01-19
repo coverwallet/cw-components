@@ -31,6 +31,8 @@
   .oc-icon-option__label {
     margin: 0;
     font-size: 13px;
+    word-break: break-word;
+    @include hyphens(auto);
   }
 
   .oc-icon-option__icon::before {
