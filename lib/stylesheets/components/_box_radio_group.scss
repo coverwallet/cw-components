@@ -9,6 +9,7 @@
   line-height: 40px;
   text-align: center;
   margin: 3px;
+  background-color: $cwColor-base-white;
   color: $cwColor-black-xmedium;
   border: 1px solid $cwColor-black-light;
   box-sizing: border-box;
@@ -29,7 +30,7 @@
   .box-radio-input__label {
     margin-top: 4px;
     color: $cwColor-base-bluegray;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   &--no-touch:hover {

@@ -56,7 +56,7 @@
     height: 40px;
     padding-left: 10px;
     text-align: right;
-    font-size: 14px;
+    font-size: 13px;
     color: $cwColor-base-bluegray;
     background-color: $cwColor-base-white;
     border: 1px solid $cwColor-black-light;
@@ -80,7 +80,8 @@
   &__percents {
     position: relative;
     right: 19px;
-    top: 2px;
+    top: 1px;
+    font-size: 15px;
     pointer-events: none;
 
     @include media($mobile) {

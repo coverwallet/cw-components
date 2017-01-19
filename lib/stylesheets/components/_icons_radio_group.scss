@@ -11,10 +11,11 @@
 
 .icons-radio-input {
   float: left;
-  width: 112px;
+  width: 105px;
   height: 65px;
   text-align: center;
-  margin: 5px;
+  margin: 2px;
+  background-color: $cwColor-base-white;
   color: $cwColor-black-xmedium;
   border: 1px solid $cwColor-black-light;
   border-radius: 4px;
@@ -52,10 +53,10 @@
   .icons-radio-input__label {
     margin-top: 4px;
     color: $cwColor-black-dark;
-    font-size: 12px !important;
+    font-size: 11px;
 
     @include media($mobile) {
-      font-size: 10px !important;
+      font-size: 10px;
     }
   }
 
