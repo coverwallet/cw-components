@@ -25,6 +25,16 @@
     @extend .animated, .pulse;
   }
 
+  &--small {
+    height: 33px;
+    padding: 4px;
+    width: 85px;
+    @include media($mobile) {
+      width: 22.333333%;
+      margin: 1%;
+    }
+  }
+
   @include media($mobile) {
     width: 31.333333%;
     margin: 1%;

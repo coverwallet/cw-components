@@ -27,6 +27,18 @@ const iconRadioGroupOptions = [
   },
 ];
 
+const radioGroupOptions = [
+  {
+    label: '$500,000',
+    value: '$500,000',
+    iconClass: null,
+  }, {
+    label: '$100,000',
+    value: '$100,000',
+    iconClass: null,
+  },
+];
+
 const currentYear = new Date().getFullYear();
 const BoxRadioGroupYearsOptions = [
   {
@@ -178,6 +190,22 @@ const App = function App() {
           }]}
           name="test_radio_input"
           value="Not sure"
+          onChange={(value) => console.log('You pick ', value)}
+        />
+      </div>
+
+      <div>
+        <h2>Small Icon Radio Group 3 options without icons</h2>
+
+        <IconRadioGroup
+          options={[...radioGroupOptions, {
+            label: '$50,000',
+            value: '$50,000',
+            iconClass: null,
+          }]}
+          name="test_radio_input"
+          value="Not sure"
+          size="small"
           onChange={(value) => console.log('You pick ', value)}
         />
       </div>
