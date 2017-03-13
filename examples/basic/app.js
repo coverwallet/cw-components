@@ -9,6 +9,7 @@ import {
   Loader,
   OnlyClickListOptions,
   OnlyClickSelect,
+  CurrencyInput
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -90,6 +91,11 @@ const App = function App() {
       <div className="clearfix">
         <h2>Currency with commas Keyboard input</h2>
         <InputKeyboard currency commas />
+      </div>
+
+      <div className="clearfix">
+        <h2>Currency Input</h2>
+        <CurrencyInput/>
       </div>
 
       <div className="clearfix">
