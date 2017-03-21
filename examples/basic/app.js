@@ -141,6 +141,11 @@ const App = function App() {
           <h3>Long with commas</h3>
           <NumberInput width="100%" commas />
         </div>
+
+        <div className="clearfix">
+          <h3>Currency</h3>
+          <NumberInput width="25%" currency />
+        </div>
       </div>
 
       <hr />
