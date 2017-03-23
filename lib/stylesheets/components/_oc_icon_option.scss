@@ -9,6 +9,21 @@
   box-sizing: border-box;
   font-size: 14px;
 
+  @include media($mobile) {
+    margin: 3px 0;
+    border-radius: 4px;
+  }
+
+  &:after {
+    content: '\36';
+    font-family: "coverwallet" !important;
+    font-size: 30px;
+    color: $cwColor-base-white;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   &:focus, &:active, &--clicked {
     @extend .animated, .pulse;
   }
@@ -20,12 +35,20 @@
     min-height: 100px;
     text-align: center;
     margin: 0 auto;
+
+    @include media($mobile) {
+      min-height: 0;
+    }
   }
 
   .oc-icon-option__content {
     padding: 10px 5px;
     display: table-cell;
     vertical-align: middle;
+
+    @include media($mobile) {
+      padding: 5px;
+    }
   }
 
   .oc-icon-option__label {
@@ -33,11 +56,19 @@
     font-size: 13px;
     word-break: break-word;
     @include hyphens(auto);
+
+    @include media($mobile) {
+      font-size: 14px;
+    }
   }
 
   .oc-icon-option__icon::before {
     font-size: 45px;
     color: $cwColor-black-xmedium;
+
+    @include media($mobile) {
+      font-size: 38px;
+    }
   }
 
   &--no-touch:hover {
@@ -61,6 +92,20 @@
       .oc-icon-option__icon::before {
         color: $cwColor-base-white;
       }
+    }
+
+    @include media($mobile) {
+      position: relative;
+    }
+
+    &:after {
+      content: '\36';
+      font-family: 'coverwallet' !important;
+      font-size: 30px;
+      color: $cwColor-base-white;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 }

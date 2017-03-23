@@ -23,16 +23,17 @@
     }
 
     @include media($mobile) {
-      width: 47%;
+      width: 100%;
       margin: 0 1%;
 
       height: auto;
-      min-height: 130px;
-      max-height: 150px;
-      float: left;
+      display: table;
 
-      &:nth-child(2){
-        float: right;
+      .oc-icon-option__icon-container,
+      .oc-icon-option__label {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 5px;
       }
     }
 
