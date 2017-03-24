@@ -1,5 +1,5 @@
 .oc-icon-options {
-  display: flex;
+  @include flexbox();
   flex-wrap: wrap;
   align-items: stretch;
   align-content: space-between;
@@ -12,7 +12,7 @@
   }
 
   .oc-icon-option-container {
-    display: flex;
+    @include flexbox();
     width: 15.31111%;
     box-sizing: border-box;
     margin: 0 0.6777777%;

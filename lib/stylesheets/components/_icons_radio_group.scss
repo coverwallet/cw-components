@@ -2,7 +2,7 @@
   @include clearfix();
 
   @include media($mobile) {
-    display: flex;
+    @include flexbox();
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
