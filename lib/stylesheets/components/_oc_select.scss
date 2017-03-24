@@ -10,7 +10,7 @@
   }
 
   .oc-select__search {
-    display: flex;
+    @include flexbox();
     z-index: 1;
     padding: 6px 11px;
     border: 1px solid $cwColor-base-blue;
