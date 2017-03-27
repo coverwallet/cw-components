@@ -1,5 +1,5 @@
 .oc-selected-value {
-  display: inline-flex;
+  @include display(inline-flex);
   float: left;
   font-size: 0.9em;
   color: $cwColor-base-white;

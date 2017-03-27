@@ -3,9 +3,9 @@
 
   @include media($mobile) {
     @include flexbox();
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
+    @include flex-wrap(wrap);
+    @include align-content(center);
+    @include justify-content(center);
   }
 }
 

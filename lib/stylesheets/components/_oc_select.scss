@@ -11,6 +11,7 @@
 
   .oc-select__search {
     @include flexbox();
+    @include flex-wrap(wrap);
     z-index: 1;
     padding: 6px 11px;
     border: 1px solid $cwColor-base-blue;
@@ -18,14 +19,13 @@
     cursor: text;
     position: relative;
     will-change: transform;
-    flex-wrap: wrap;
 
     @include media($mobile) {
       font-size: 15px;
     }
 
     .oc-select__input-container {
-      display: inline-flex;
+      @include display(inline-flex);
       width: 250px;
       max-width: 100%;
     }
