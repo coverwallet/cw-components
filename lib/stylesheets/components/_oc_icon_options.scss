@@ -1,9 +1,9 @@
 .oc-icon-options {
   @include flexbox();
-  flex-wrap: wrap;
-  align-items: stretch;
-  align-content: space-between;
-  justify-content: flex-start;
+  @include flex-wrap(wrap);
+  @include align-items(stretch);
+  @include align-content(space-between);
+  @include justify-content(flex-start);
 
   margin: 10px 0 0;
 
