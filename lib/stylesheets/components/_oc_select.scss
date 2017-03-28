@@ -10,7 +10,7 @@
   }
 
   .oc-select__search {
-    @include flexbox();
+    @include display(flex);
     @include flex-wrap(wrap);
     z-index: 1;
     padding: 6px 11px;
