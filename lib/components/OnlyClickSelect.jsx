@@ -4,6 +4,11 @@ import _ from 'lodash';
 import OnlyClickOptionsList from './OnlyClickListOptions';
 import OnlyClickIconOptions from './OnlyClickIconOptions';
 
+const filterOption = (option, typedValue) => {
+  const regexInput = new RegExp(typedValue.toLowerCase());
+  return regexInput.test(option.value.toLowerCase());
+};
+
 class OnlyClickSelect extends React.Component {
   constructor(props) {
     super(props);
@@ -25,14 +30,9 @@ class OnlyClickSelect extends React.Component {
       if (this.props.filterOption) {
         return this.props.filterOption(option, typedValue);
       }
-      return this.filterOption(option, typedValue);
+      return filterOption(option, typedValue);
     }).take(maxVisible)
       .value();
-  }
-
-  filterOption(option, typedValue) {
-    const regexInput = new RegExp(typedValue.toLowerCase());
-    return regexInput.test(option.value.toLowerCase());
   }
 
   propsChanged(nextProps) {
@@ -47,7 +47,7 @@ class OnlyClickSelect extends React.Component {
     const searchBox = this.refs['search-box'];
     const input = this.refs['text-input'];
     const scrollTop = this.props.scrollTop || 100;
-    const scrollToPosition = searchBox.getBoundingClientRect().top + window.pageYOffset - scrollTop;
+    const scrollToPosition = searchBox.getBoundingClientRect().top + (window.pageYOffset - scrollTop);
     smoothScroll(scrollToPosition, 1000, () => {
       if (this.props.autoFocus) {
         input.focus();
@@ -72,7 +72,9 @@ class OnlyClickSelect extends React.Component {
   handleChange = (e) => {
     const value = e.target.value;
     this.setState({ typedValue: value }, () => {
-      this.props.onChange && this.props.onChange(value);
+      if (this.props.onChange) {
+        this.props.onChange(value);
+      }
     });
   };
 
@@ -80,7 +82,9 @@ class OnlyClickSelect extends React.Component {
     const { values } = this.state;
     if (values.indexOf(value) === -1) {
       this.setState({ values: [...values, value] });
-      this.props.onClick && this.props.onClick(value);
+      if (this.props.onClick) {
+        this.props.onClick(value);
+      }
     } else {
       this.handleDelete(value);
     }
@@ -98,7 +102,9 @@ class OnlyClickSelect extends React.Component {
         values: values.filter(val => value !== val),
       });
     }
-    this.props.onDelete && this.props.onDelete(value);
+    if (this.props.onDelete) {
+      this.props.onDelete(value);
+    }
   }
 
   render() {
