@@ -45,17 +45,16 @@
   }
 
   .oc-select__hint {
-    @include clearfix();
-    padding: 10px 1px 10px;
-    font-size: 14px;
-    line-height: 16px;
-    color: $cwColor-black-medium;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 7px 15px;
+    color: $cwColor-base-white;
+    background-color: $cwColor-base-bluegray;
   }
-
 
   .oc-select__error {
     margin: 7px 0;
-    color: $cwColor-base-red;
+    color: #f00;
     font-size: 14px;
   }
 }
