@@ -4,8 +4,7 @@
   @include align-items(stretch);
   @include align-content(space-between);
   @include justify-content(flex-start);
-
-  margin: 10px 0 0;
+  margin: 5px -10px 0 -10px;
 
   @include media($mobile) {
     justify-content: space-around;
