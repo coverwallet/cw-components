@@ -41,9 +41,10 @@ class IconRadioInput extends React.Component {
       { 'icons-radio-input--small': size === 'small' },
     );
     return (
-      <label className={buttonClass} htmlFor={name}>
+      <label className={buttonClass} htmlFor={`${name}${value}`}>
         {this.renderIcon()}
         <input
+          id={`${name}${value}`}
           type="radio"
           name={name}
           className="icons-radio-input__input"
