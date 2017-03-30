@@ -40,10 +40,12 @@ class IconRadioInput extends React.Component {
       { 'icons-radio-input--no-touch': !isIOS() },
       { 'icons-radio-input--small': size === 'small' },
     );
+    const inputId = `${name}${value}`;
     return (
-      <label className={buttonClass} htmlFor={name}>
+      <label className={buttonClass} htmlFor={inputId}>
         {this.renderIcon()}
         <input
+          id={inputId}
           type="radio"
           name={name}
           className="icons-radio-input__input"

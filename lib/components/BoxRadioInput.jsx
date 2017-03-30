@@ -28,9 +28,11 @@ class IconRadioInput extends React.Component {
       { 'box-radio-input--checked': checked },
       { 'box-radio-input--no-touch': !isIOS() }
     );
+    const inputId = `${name}${value}`;
     return (
-      <label className={buttonClass} style={{ width }} htmlFor={name}>
+      <label className={buttonClass} style={{ width }} htmlFor={inputId}>
         <input
+          id={inputId}
           type="radio"
           name={name}
           className="box-radio-input__input"
