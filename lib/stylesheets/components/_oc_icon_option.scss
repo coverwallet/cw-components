@@ -12,16 +12,23 @@
   @include media($mobile) {
     margin: 3px 0;
     border-radius: 4px;
+
+
+    &:after {
+      content: '\e089';
+      font-family: 'coverwallet' !important;
+      font-size: 24px;
+      color: $cwColor-black-xmedium;
+      position: absolute;
+      right: 18px;
+      top: 20px;
+    }
   }
 
-  &:after {
-    content: '\36';
-    font-family: "coverwallet" !important;
-    font-size: 30px;
-    color: $cwColor-base-white;
-    position: absolute;
-    right: 0;
-    top: 0;
+  &:hover {
+    &:after {
+      color: $cwColor-base-white;
+    }
   }
 
   &:focus, &:active, &--clicked {
@@ -58,6 +65,8 @@
     @include hyphens(auto);
 
     @include media($mobile) {
+      padding-right: 40px !important;
+      text-align: left;
       font-size: 14px;
     }
   }
@@ -99,13 +108,13 @@
     }
 
     &:after {
-      content: '\36';
+      content: '\e08b';
       font-family: 'coverwallet' !important;
-      font-size: 30px;
+      font-size: 26px;
       color: $cwColor-base-white;
       position: absolute;
-      right: 0;
-      top: 0;
+      right: 18px;
+      top: 18px;
     }
   }
 }
