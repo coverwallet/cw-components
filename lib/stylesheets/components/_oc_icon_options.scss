@@ -22,16 +22,16 @@
     }
 
     @include media($mobile) {
-      width: 100%;
+      width: 47%;
       margin: 0 1%;
-      height: auto;
-      display: table;
 
-      .oc-icon-option__icon-container,
-      .oc-icon-option__label {
-        display: table-cell;
-        vertical-align: middle;
-        padding: 5px;
+      height: auto;
+      min-height: 130px;
+      max-height: 150px;
+      float: left;
+
+      &:nth-child(2){
+        float: right;
       }
     }
 
@@ -61,4 +61,5 @@
       }
     }
   }
+
 }

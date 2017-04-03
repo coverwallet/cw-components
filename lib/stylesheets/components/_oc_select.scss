@@ -20,6 +20,9 @@
     position: relative;
     will-change: transform;
 
+    @include media($mobile) {
+      font-size: 15px;
+    }
 
     .oc-select__input-container {
       @include display(inline-flex);
@@ -28,6 +31,7 @@
     }
 
     .oc-select__input {
+      padding-right: 20px;
       width: 100%;
       background-color: $cwColor-base-white;
       -moz-box-sizing: border-box;
@@ -53,31 +57,5 @@
     margin: 7px 0;
     color: $cwColor-base-red;
     font-size: 14px;
-  }
-}
-
-/* Transparency at the end of the field */
-@include media($desktop) {
-  .oc-select {
-    .oc-select__search {
-      position: relative;
-
-      .oc-select__input-container {
-        width: 100%;
-
-        &:after {
-          content: '';
-          position: absolute;
-          top: 1px;
-          right: 1px;
-          width: 65px;
-          height: 41px;
-          @include linear-gradient(to right, rgba(255, 255, 255, .1), rgba(255, 255, 255, .9));
-        }
-      }
-    }
-    .oc-selected-value + .oc-select__input-container {
-      width: 400px;
-    }
   }
 }
