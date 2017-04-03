@@ -2,10 +2,10 @@
   @include clearfix();
 
   @include media($mobile) {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include align-content(center);
+    @include justify-content(center);
   }
 }
 

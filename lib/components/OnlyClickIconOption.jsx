@@ -1,22 +1,22 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
-import {isIOS} from '../utils/deviceDetector';
+import { isIOS } from '../utils/deviceDetector';
 
 function OnlyClickIconOption(props) {
-  let {value, label, checked, iconClass, onClick} = props;
-  var optionClass = classNames(
+  const { value, label, checked, iconClass, onClick } = props;
+  const optionClass = classNames(
     'oc-icon-option',
-    {'oc-icon-option--checked': checked},
-    {'oc-icon-option--no-touch': !isIOS()}
+    { 'oc-icon-option--checked': checked },
+    { 'oc-icon-option--no-touch': !isIOS() }
   );
   return (
-    <div className={optionClass} onClick={onClick.bind(null, value)}>
+    <div className={optionClass} onClick={() => onClick(value)}>
       <div className="oc-icon-option__content-container">
         <div className="oc-icon-option__content">
-          <div className='oc-icon-option__icon-container'>
+          <div className="oc-icon-option__icon-container">
             <span className={`oc-icon-option__icon ${iconClass}`} />
           </div>
-          <div className='oc-icon-option__label'>
+          <div className="oc-icon-option__label">
             {label}
           </div>
         </div>
@@ -30,7 +30,7 @@ OnlyClickIconOption.propTypes = {
   label: PropTypes.string.isRequired,
   checked: PropTypes.bool,
   iconClass: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default OnlyClickIconOption;

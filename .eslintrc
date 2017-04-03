@@ -1,4 +1,19 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "jsx-a11y/no-static-element-interactions": 0,
+  "globals": {
+    "window": true,
+    "describe": true,
+    "equal": true,
+    "expect": true,
+    "it": true
+  },
+  "rules": {
+    "max-len": [1, 140, 2],
+    "no-unused-vars": 0,
+    "react/forbid-prop-types": 0,
+    "react/no-string-refs": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+  }
 }

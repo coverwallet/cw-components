@@ -10,7 +10,8 @@
   }
 
   .oc-select__search {
-    display: flex;
+    @include display(flex);
+    @include flex-wrap(wrap);
     z-index: 1;
     padding: 6px 11px;
     border: 1px solid $cwColor-base-blue;
@@ -18,14 +19,13 @@
     cursor: text;
     position: relative;
     will-change: transform;
-    flex-wrap: wrap;
 
     @include media($mobile) {
       display: none;
     }
 
     .oc-select__input-container {
-      display: inline-flex;
+      @include display(inline-flex);
       width: 250px;
       max-width: 100%;
     }
@@ -43,13 +43,14 @@
     }
   }
 
-  .oc-select__hint {
-    display: inline-block;
+  .oc-select__hint
+    @include clearfix();
     padding: 10px 1px 10px;
     font-size: 14px;
     line-height: 16px;
-    color: #aaa;
+    color: $cwColor-black-medium;
   }
+
 
   .oc-select__error {
     margin: 7px 0;

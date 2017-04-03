@@ -22,11 +22,15 @@ function buildEntries() {
 
 module.exports = {
   entry: buildEntries(),
+  devtool: 'cheap-eval-source-map',
   output: {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
     path: 'examples/__build__',
     publicPath: process.env.PAGES ? 'http://coverwallet.github.io/cw-components/__build__/' : '/__build__/'
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
   module: {
     loaders: [{

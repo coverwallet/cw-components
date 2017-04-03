@@ -5,7 +5,7 @@ class IconRadioGroup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value
+      value: props.value,
     };
   }
 
@@ -19,7 +19,9 @@ class IconRadioGroup extends React.Component {
 
   handleChange = (value) => {
     this.setState({ value });
-    if (this.props.onChange) this.props.onChange(value);
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
   };
 
   render() {

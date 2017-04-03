@@ -3,43 +3,43 @@ import classNames from 'classnames';
 import numberWithCommas from '../utils/numberWithCommas';
 import exists from '../utils/exists';
 
+const convertNextValue = (value, props) => {
+  let nextValue = value;
+  nextValue = String(nextValue).replace(/[,%]/g, '');
+  nextValue = nextValue.indexOf('0') !== -1 ? nextValue : nextValue || '';
+  nextValue = props.type === 'number' && nextValue !== '' ? parseInt(nextValue, 10) : nextValue;
+  if (props.max && parseInt(nextValue, 10) > props.max) {
+    nextValue = props.max;
+  }
+  if (parseInt(nextValue, 10) <= props.min) {
+    nextValue = props.min;
+  }
+  nextValue = (props.commas || props.currency) ? numberWithCommas(nextValue) : nextValue;
+  return nextValue;
+};
+
 class NumberInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.convertNextValue(exists(props.value) ? props.value : '', props),
+      value: convertNextValue(exists(props.value) ? props.value : '', props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.value !== nextProps.value) {
       this.setState({
-        value: this.convertNextValue(exists(nextProps.value) ? nextProps.value : '', nextProps),
+        value: convertNextValue(exists(nextProps.value) ? nextProps.value : '', nextProps),
       });
     }
   }
 
   setNextValue(value) {
-    const nextValue = this.convertNextValue(value, this.props);
+    const nextValue = convertNextValue(value, this.props);
     this.setState({ value: nextValue });
     if (this.props.setValue) {
       this.props.setValue(nextValue);
     }
-  }
-
-  convertNextValue(value, props) {
-    let nextValue = value;
-    nextValue = String(nextValue).replace(/[,%]/g, '');
-    nextValue = nextValue.indexOf('0') !== -1 ? nextValue : nextValue || '';
-    nextValue = props.type === 'number' && nextValue !== '' ? parseInt(nextValue, 10) : nextValue;
-    if (props.max && parseInt(nextValue, 10) > props.max) {
-      nextValue = props.max;
-    }
-    if (parseInt(nextValue, 10) <= props.min) {
-      nextValue = props.min;
-    }
-    nextValue = (props.commas || props.currency) ? numberWithCommas(nextValue) : nextValue;
-    return nextValue;
   }
 
   handleChange = (e) => {
@@ -71,8 +71,8 @@ class NumberInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, step, commas, percents, currency, type, width, onBlur } = this.props;
-    let inputClass = classNames(
+    const { name, min, max, step, commas, percents, currency, type, width, onBlur, autoFocus } = this.props;
+    const inputClass = classNames(
       'number-input__input',
       { 'number-input__input--nan number-input__input--currency': currency },
       { 'number-input__input--nan': commas || type !== 'number' },
@@ -80,7 +80,7 @@ class NumberInput extends React.Component {
     );
     return (
       <div className="number-input" style={{ width }}>
-        {currency && <span className='number-input__span--currency'/>}
+        {currency && <span className="number-input__span--currency" />}
         <input
           ref="input"
           className={inputClass}
@@ -92,12 +92,14 @@ class NumberInput extends React.Component {
           min={min}
           max={max}
           step={step}
-          onBlur={(e) => (onBlur ? onBlur(e) : null)}
+          onBlur={e => (onBlur ? onBlur(e) : null)}
           onChange={this.handleChange}
-          value={this.state.value}/>
-        { percents && <span className="number-input__percents">%</span> }
-        { !currency && <span className="number-input__minus" onClick={this.handleMinus} /> }
-        { !currency && <span className="number-input__plus" onClick={this.handlePlus} /> }
+          value={this.state.value}
+          autoFocus={autoFocus}
+        />
+        {percents && <span className="number-input__percents">%</span> }
+        {!currency && <span className="number-input__minus" onClick={this.handleMinus} />}
+        {!currency && <span className="number-input__plus" onClick={this.handlePlus} />}
       </div>
     );
   }
@@ -113,9 +115,10 @@ NumberInput.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,
-  currency: PropTypes.string,
+  currency: PropTypes.bool,
   commas: PropTypes.bool,
   percents: PropTypes.bool,
+  autoFocus: PropTypes.bool,
   onBlur: PropTypes.func,
   setValue: PropTypes.func,
   width: PropTypes.oneOfType([

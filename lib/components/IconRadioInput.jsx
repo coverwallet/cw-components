@@ -6,16 +6,12 @@ class IconRadioInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: this.checked(props.value, props.checkedValue)
+      checked: props.value === props.checkedValue,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ checked: this.checked(nextProps.value, nextProps.checkedValue) });
-  }
-
-  checked(a, b) {
-    return a === b;
+    this.setState({ checked: nextProps.value === nextProps.checkedValue });
   }
 
   handleChange = () => {
@@ -36,22 +32,26 @@ class IconRadioInput extends React.Component {
   }
 
   render() {
+    const { name, value, label, size } = this.props;
+    const { checked } = this.state;
     const buttonClass = classNames(
       'icons-radio-input',
-      { 'icons-radio-input--checked': this.state.checked },
+      { 'icons-radio-input--checked': checked },
       { 'icons-radio-input--no-touch': !isIOS() },
-      { 'icons-radio-input--small': this.props.size === 'small' },
+      { 'icons-radio-input--small': size === 'small' },
     );
+    const inputId = `${name}${value}`;
     return (
-      <label className={buttonClass}>
+      <label className={buttonClass} htmlFor={inputId}>
         {this.renderIcon()}
         <input
+          id={inputId}
           type="radio"
-          name={this.props.name}
+          name={name}
           className="icons-radio-input__input"
           onChange={this.handleChange}
-          value={this.props.value}
-          checked={this.state.checked}
+          value={value}
+          checked={checked}
         />
         <div className="icons-radio-input__label">{this.props.label}</div>
       </label>

@@ -2,7 +2,6 @@
 
 CoverWallet components
 
-
 ## Package usage
 
 ### To start local server
@@ -34,20 +33,10 @@ CoverWallet components
 ## To push your changes to Github pages
 This still have some bug with fonts on coverwallet.github.io
 
-1. Make gh-pages push script executable
-```chmod +x ./scripts/gh-pages.sh```
-this step is required only on first time
+1. Run ```npm run gh-pages```
+2. Open http://coverwallet.github.io/cw-components/basic/
 
-2. Run ```npm run gh-pages```
-
-3. Open http://coverwallet.github.io/cw-components/basic/
-
-
-## To build bower compatible min js run:
-
-1. ```npm run bower```
-
-## To publish new version to npm 
+## To publish new version to npm
 
 1. Create a user at www.npmjs.com, if you haven't yet
 2. Make ```npm login```

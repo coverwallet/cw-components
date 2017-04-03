@@ -6,20 +6,18 @@ class IconRadioInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: this.checked(props.value, props.checkedValue)
+      checked: props.value === props.checkedValue,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({checked: this.checked(nextProps.value, nextProps.checkedValue)})
-  }
-
-  checked(a, b) {
-    return a === b;
+    this.setState({ checked: nextProps.value === nextProps.checkedValue });
   }
 
   handleChange = () => {
-    this.props.onChange && this.props.onChange(this.props.value);
+    if (this.props.onChange) {
+      this.props.onChange(this.props.value);
+    }
   };
 
   render() {
@@ -27,23 +25,22 @@ class IconRadioInput extends React.Component {
     const { checked } = this.state;
     const buttonClass = classNames(
       'box-radio-input',
-      {'box-radio-input--checked': this.state.checked},
-      {'box-radio-input--no-touch': !isIOS()}
+      { 'box-radio-input--checked': checked },
+      { 'box-radio-input--no-touch': !isIOS() }
     );
+    const inputId = `${name}${value}`;
     return (
-      <label
-        className={buttonClass}
-        style={{ width }}
-      >
+      <label className={buttonClass} style={{ width }} htmlFor={inputId}>
         <input
-          type='radio'
+          id={inputId}
+          type="radio"
           name={name}
-          className='box-radio-input__input'
+          className="box-radio-input__input"
           onChange={this.handleChange}
           value={value}
           checked={checked}
         />
-        <div className='box-radio-input__label'>{label}</div>
+        <div className="box-radio-input__label">{label}</div>
       </label>
     );
   }
@@ -51,8 +48,16 @@ class IconRadioInput extends React.Component {
 
 IconRadioInput.propTypes = {
   label: PropTypes.string,
+  width: PropTypes.string,
   name: PropTypes.string.isRequired,
-  value: PropTypes.any.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  checkedValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   onChange: PropTypes.func.isRequired,
 };
 
