@@ -20,14 +20,8 @@
       font-size: 24px;
       color: $cwColor-black-xmedium;
       position: absolute;
-      right: 18px;
-      top: 20px;
-    }
-  }
-
-  &:hover {
-    &:after {
-      color: $cwColor-base-white;
+      right: 19px;
+      top: 21px;
     }
   }
 
@@ -88,6 +82,12 @@
     .oc-icon-option__label {
       color: $cwColor-base-white;
     }
+
+
+      &:after {
+        color: $cwColor-base-white;
+      }
+
   }
   &--checked {
     color: $cwColor-base-white;
@@ -105,16 +105,16 @@
 
     @include media($mobile) {
       position: relative;
-    }
 
-    &:after {
-      content: '\e08b';
-      font-family: 'coverwallet' !important;
-      font-size: 26px;
-      color: $cwColor-base-white;
-      position: absolute;
-      right: 18px;
-      top: 18px;
+      &:after {
+        content: '\e08b';
+        font-family: 'coverwallet' !important;
+        font-size: 26px;
+        color: $cwColor-base-white;
+        position: absolute;
+        right: 17px;
+        top: 17px;
+      }
     }
   }
 }
