@@ -1,20 +1,31 @@
-### References
+### Where
 
-* **Pivotal Story:** _link related pivotal story_
-* **Rollbar items:** _if there are Rollbar errors related to this pr please list them here_
+_Provide links as references with information regarding this changes_
 
-### What is the goal?
+* **Pivotal Story:** _Link to the PivotalTracker story_
+* **Rollbar Errors:** _If there are related Rollbar errors link them here_
+* **Related PRs:** _Provide links to related PRs if needed_
 
-_Provide a description of the overall goal (you can usually copy the one from the pivotal story)_
+### What
 
-### How is it being implemented?
+_Provide a description about the goal of these changes_
 
-_Provide a description of the implementation_
+### How
 
-**Caveats**
+_Describe the big-picture of the implementation_
 
-_If you find any, please describe all the special conditions._
+### Screenshots
 
-### Impact
+_If this PR is UI related provide related screenshots to your changes_
 
-_Describe the impact of this PR. Could it make the whole service unavailable? Does it only affect one view?_
+### Test
+
+_Provide instructions on how to test this changes_
+
+### Deployment
+
+_Provide information about these changes deployment_
+
+### Warnings
+
+_If there are any special warnings, things to have in mind and/or critical stuff regarding this changes please describe them here_
