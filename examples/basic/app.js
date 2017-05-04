@@ -1,3 +1,5 @@
+/* eslint no-console: 'off' */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import objectAssign from 'object-assign';
@@ -9,6 +11,7 @@ import {
   Loader,
   OnlyClickListOptions,
   OnlyClickSelect,
+  FlashNotification,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -94,6 +97,12 @@ const App = function App() {
   return (
     <div className="example">
       <h1>cw-components</h1>
+
+      <div className="clearfix">
+        <h2>Flash Notifications</h2>
+        <FlashNotification type="info" />
+      </div>
+
       <div className="clearfix">
         <h2>Default Keyboard input with text type</h2>
         <InputKeyboard type="text" value={0} />
@@ -277,7 +286,7 @@ const App = function App() {
           />
         </div>
 
-      <h4>List view with auto scroll, highlight and adition, 10 max visible and error message</h4>
+        <h4>List view with auto scroll, highlight and adition, 10 max visible and error message</h4>
 
         <div>
           <OnlyClickSelect

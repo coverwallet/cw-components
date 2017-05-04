@@ -1,4 +1,5 @@
 // This have no dependency from styleguide project
 // We use it for @import '..path_to_cw-components/main.scss' in other projects
 // to get only components css
+@import "colors";
 @import "components/components";
