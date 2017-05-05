@@ -11,14 +11,17 @@ const FlashNotification = (props) => {
 
   return (
     <div className={notificationClass}>
-      <aside className="flash-notification__icon"></aside>
+      <aside className="flash-notification__icon-container">
+        <i className="flash-notification__icon"></i>
+      </aside>
       <div className="flash-notification__content">
         <h4 className="flash-notification__title">{title}</h4>
-        <h5 className="flash-notification__description">Claro que si wapi yo soy el subtitle</h5>
+        {typeof subtitle !== 'undefined' && (<h5 className="flash-notification__description">{subtitle}</h5>)}
       </div>
       <div className="flash-notification__controls">
-        <a className="flash-notification__close">
-          <i className="styleguide-icon-employee"></i>
+        {props.children}
+        <a className="flash-notification__close" onClick={onClose}>
+          <i className="flash-notification__close-icon"></i>
         </a>
       </div>
     </div>
@@ -26,6 +29,7 @@ const FlashNotification = (props) => {
 };
 
 FlashNotification.propTypes = {
+  children: PropTypes.any,
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,

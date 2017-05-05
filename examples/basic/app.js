@@ -98,9 +98,38 @@ const App = function App() {
     <div className="example">
       <h1>cw-components</h1>
 
-      <div className="clearfix">
+      <div className="clearfix row">
         <h2>Flash Notifications</h2>
-        <FlashNotification type="info" />
+        <FlashNotification
+          type="info"
+          title="Great! Now see your email account"
+          onClose={() => console.log('Close not defined in demo mode')}
+        />
+      </div>
+
+      <div className="clearfix row">
+        <FlashNotification
+          type="success"
+          title="You're almost done"
+          onClose={() => console.log('Close not defined in demo mode')}
+        />
+      </div>
+
+      <div className="clearfix row">
+        <FlashNotification
+          type="error"
+          title="Your payment could not be completed"
+          onClose={() => console.log('Close not defined in demo mode')}
+        />
+      </div>
+
+      <div className="clearfix row">
+        <FlashNotification
+          type="info"
+          title="Your account need to be activated"
+          subtitle="Call (646) 844-9933 to purchase this policy"
+          onClose={() => console.log('Close not defined in demo mode')}
+        />
       </div>
 
       <div className="clearfix">
