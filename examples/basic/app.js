@@ -11,7 +11,7 @@ import {
   Loader,
   OnlyClickListOptions,
   OnlyClickSelect,
-  FlashNotification,
+  CwFlashNotification,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -100,7 +100,7 @@ const App = function App() {
 
       <div className="clearfix row">
         <h2>Flash Notifications</h2>
-        <FlashNotification
+        <CwFlashNotification
           type="info"
           title="Great! Now see your email account"
           onClose={() => console.log('Close not defined in demo mode')}
@@ -108,7 +108,7 @@ const App = function App() {
       </div>
 
       <div className="clearfix row">
-        <FlashNotification
+        <CwFlashNotification
           type="success"
           title="You're almost done"
           onClose={() => console.log('Close not defined in demo mode')}
@@ -116,7 +116,7 @@ const App = function App() {
       </div>
 
       <div className="clearfix row">
-        <FlashNotification
+        <CwFlashNotification
           type="error"
           title="Your payment could not be completed"
           onClose={() => console.log('Close not defined in demo mode')}
@@ -124,7 +124,7 @@ const App = function App() {
       </div>
 
       <div className="clearfix row">
-        <FlashNotification
+        <CwFlashNotification
           type="info"
           title="Your account need to be activated"
           subtitle="Call (646) 844-9933 to purchase this policy"

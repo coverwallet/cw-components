@@ -1,15 +1,15 @@
-.flash-notification {
+.cw-flash-notification {
   @include display(flex);
   min-height: 58px;
 
   &--info {
     background-color: $cwColor-blue-xlight;
 
-    .flash-notification__icon {
+    .cw-flash-notification__icon {
       @include cw-covericon-before(info, 0, $cwColor-blue-light)
     }
 
-    .flash-notification__close-icon {
+    .cw-flash-notification__close-icon {
       @include cw-covericon-before(onlyclick-no, 0, $cwColor-blue-light)
     }
   }
@@ -17,11 +17,11 @@
   &--success {
     background-color: $cwColor-green-xlight;
 
-    .flash-notification__icon {
+    .cw-flash-notification__icon {
       @include cw-covericon-before(onlyclick-yes, 0, $cwColor-green-light)
     }
 
-    .flash-notification__close-icon {
+    .cw-flash-notification__close-icon {
       @include cw-covericon-before(onlyclick-no, 0, $cwColor-green-light)
     }
   }
@@ -29,11 +29,11 @@
   &--error {
     background-color: $cwColor-red-xlight;
 
-    .flash-notification__icon {
+    .cw-flash-notification__icon {
       @include cw-covericon-before(onlyclick-minus, 0, $cwColor-red-medium)
     }
 
-    .flash-notification__close-icon {
+    .cw-flash-notification__close-icon {
       @include cw-covericon-before(onlyclick-no, 0, $cwColor-red-medium)
     }
   }
