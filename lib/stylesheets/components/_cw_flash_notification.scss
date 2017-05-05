@@ -1,0 +1,87 @@
+.cw-flash-notification {
+  @include display(flex);
+  min-height: 58px;
+
+  &--info {
+    background-color: $cwColor-blue-xlight;
+
+    .cw-flash-notification__icon {
+      @include cw-covericon-before(info, 0, $cwColor-blue-light)
+    }
+
+    .cw-flash-notification__close-icon {
+      @include cw-covericon-before(onlyclick-no, 0, $cwColor-blue-light)
+    }
+  }
+
+  &--success {
+    background-color: $cwColor-green-xlight;
+
+    .cw-flash-notification__icon {
+      @include cw-covericon-before(onlyclick-yes, 0, $cwColor-green-light)
+    }
+
+    .cw-flash-notification__close-icon {
+      @include cw-covericon-before(onlyclick-no, 0, $cwColor-green-light)
+    }
+  }
+
+  &--error {
+    background-color: $cwColor-red-xlight;
+
+    .cw-flash-notification__icon {
+      @include cw-covericon-before(onlyclick-minus, 0, $cwColor-red-medium)
+    }
+
+    .cw-flash-notification__close-icon {
+      @include cw-covericon-before(onlyclick-no, 0, $cwColor-red-medium)
+    }
+  }
+
+  &__icon-container {
+    @include flex(0 0 58px);
+    margin-top: 10px;
+    margin-left: 13px;
+  }
+
+  &__icon {
+    font-size: 35px;
+  }
+
+  &__content {
+    @include flex(1);
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-direction(column);
+  }
+
+  &__title {
+    width: 100%;
+    font-size: 16px;
+    line-height: 23px;
+    color: $cwColor-black-dark;
+    margin: 0;
+  }
+
+  &__description {
+    width: 100%;
+    font-size: 13px;
+    line-height: 19px;
+    color: $cwColor-black-xmedium;
+    margin: 0;
+  }
+
+  &__controls {
+    padding: 0 17px;
+  }
+
+  &__close {
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+    padding-top: 18px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
