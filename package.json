@@ -25,7 +25,7 @@
     "prepublish": "npm run build"
   },
   "authors": [
-    "CoverWallet"
+    "CoverWallet "
   ],
   "license": "MIT",
   "devDependencies": {
