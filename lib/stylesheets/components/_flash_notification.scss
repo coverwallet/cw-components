@@ -30,11 +30,11 @@
     background-color: $cwColor-red-xlight;
 
     .flash-notification__icon {
-      @include cw-covericon-before(onlyclick-minus, 0, $cwColor-base-red)
+      @include cw-covericon-before(onlyclick-minus, 0, $cwColor-red-medium)
     }
 
     .flash-notification__close-icon {
-      @include cw-covericon-before(onlyclick-no, 0, $cwColor-base-red)
+      @include cw-covericon-before(onlyclick-no, 0, $cwColor-red-medium)
     }
   }
 
