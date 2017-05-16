@@ -72,6 +72,14 @@
     margin: 0;
   }
 
+  &__text {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 23px;
+    color: $cwColor-black-dark;
+  }
+
   &__controls {
     padding: 0 17px;
   }
