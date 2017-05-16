@@ -103,7 +103,7 @@ const App = function App() {
         <CwFlashNotification
           type="info"
           title="Great! Now see your email account"
-          onClose={() => console.log('Close not defined in demo mode')}
+          onClose={() => console.log('Custom close event handler.')}
         />
       </div>
 
@@ -111,7 +111,7 @@ const App = function App() {
         <CwFlashNotification
           type="success"
           title="You're almost done"
-          onClose={() => console.log('Close not defined in demo mode')}
+          onClose={() => console.log('Custom close event handler.')}
         />
       </div>
 
@@ -119,7 +119,7 @@ const App = function App() {
         <CwFlashNotification
           type="error"
           title="Your payment could not be completed"
-          onClose={() => console.log('Close not defined in demo mode')}
+          onClose={() => console.log('Custom close event handler.')}
         />
       </div>
 
@@ -128,8 +128,17 @@ const App = function App() {
           type="info"
           title="Your account need to be activated"
           subtitle="Call (646) 844-9933 to purchase this policy"
-          onClose={() => console.log('Close not defined in demo mode')}
+          onClose={() => console.log('Custom close event handler.')}
         />
+      </div>
+
+      <div className="clearfix row">
+        <CwFlashNotification
+          type="info"
+          title="Your account need to be activated"
+        >
+          An additional info goes here.
+        </CwFlashNotification>
       </div>
 
       <div className="clearfix">
