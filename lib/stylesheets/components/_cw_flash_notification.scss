@@ -1,5 +1,6 @@
 .cw-flash-notification {
   @include display(flex);
+  align-items: center;
   min-height: 56px;
 
   &--info {
@@ -40,12 +41,12 @@
 
   &__icon-container {
     @include flex(0 0 42px);
-    margin-top: 10px;
-    margin-left: 13px;
+    padding: 0 15px;
   }
 
   &__icon {
     font-size: 30px;
+    line-height: 30px;
   }
 
   &__content {
@@ -54,6 +55,7 @@
     @include align-items(center);
     @include justify-content(center);
     @include flex-direction(column);
+    padding: 5px 0;
   }
 
   &__title {
@@ -89,7 +91,6 @@
     display: inline-block;
     height: 100%;
     text-align: center;
-    padding-top: 18px;
     font-size: 20px;
     cursor: pointer;
   }
