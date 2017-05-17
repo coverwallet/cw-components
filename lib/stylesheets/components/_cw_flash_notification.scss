@@ -46,7 +46,12 @@
 
   &__icon {
     font-size: 30px;
-    line-height: 30px;
+    line-height: 25px;
+    vertical-align: middle;
+  }
+
+  &__close-icon {
+    vertical-align: middle;
   }
 
   &__content {
