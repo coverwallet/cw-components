@@ -102,7 +102,7 @@ const App = function App() {
         <h2>Flash Notifications</h2>
         <CwFlashNotification
           type="info"
-          title="Great! Now see your email account"
+          title="Great! Now see your email account."
           onClose={() => console.log('Custom close event handler.')}
         />
       </div>
@@ -110,7 +110,7 @@ const App = function App() {
       <div className="clearfix row">
         <CwFlashNotification
           type="success"
-          title="You're almost done"
+          title="You're almost done."
           onClose={() => console.log('Custom close event handler.')}
         />
       </div>
@@ -118,7 +118,7 @@ const App = function App() {
       <div className="clearfix row">
         <CwFlashNotification
           type="error"
-          title="Your payment could not be completed"
+          title="Your payment could not be completed."
           onClose={() => console.log('Custom close event handler.')}
         />
       </div>
@@ -126,8 +126,8 @@ const App = function App() {
       <div className="clearfix row">
         <CwFlashNotification
           type="info"
-          title="Your account need to be activated"
-          subtitle="Call (646) 844-9933 to purchase this policy"
+          title="Your account need to be activated."
+          subtitle="Call (646) 844-9933 to purchase this policy."
           onClose={() => console.log('Custom close event handler.')}
         />
       </div>
@@ -135,9 +135,17 @@ const App = function App() {
       <div className="clearfix row">
         <CwFlashNotification
           type="info"
-          title="Your account need to be activated"
+          largeTitle="The start date of the original quote already passed. Please recalculate the quote in order to continue with the purchase."
+          onClose={() => console.log('Custom close event handler.')}
+        />
+      </div>
+
+      <div className="clearfix row">
+        <CwFlashNotification
+          type="info"
+          title="Your account need to be activated."
         >
-          An additional info goes here.
+          <h5 className="cw-flash-notification__description">An additional info goes here.</h5>
         </CwFlashNotification>
       </div>
 

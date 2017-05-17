@@ -1,6 +1,7 @@
 .cw-flash-notification {
   @include display(flex);
-  min-height: 58px;
+  @include align-items(center);
+  min-height: 56px;
 
   &--info {
     background-color: $cwColor-blue-xlight;
@@ -39,13 +40,18 @@
   }
 
   &__icon-container {
-    @include flex(0 0 58px);
-    margin-top: 10px;
-    margin-left: 13px;
+    @include flex(0 0 42px);
+    padding: 0 15px;
   }
 
   &__icon {
-    font-size: 35px;
+    font-size: 30px;
+    line-height: 25px;
+    vertical-align: middle;
+  }
+
+  &__close-icon {
+    vertical-align: middle;
   }
 
   &__content {
@@ -54,12 +60,25 @@
     @include align-items(center);
     @include justify-content(center);
     @include flex-direction(column);
+    padding: 5px 0;
+  }
+
+  &__children {
+    width: 100%;
   }
 
   &__title {
     width: 100%;
     font-size: 16px;
     line-height: 23px;
+    color: $cwColor-black-dark;
+    margin: 0;
+  }
+
+  &__title-large {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
     color: $cwColor-black-dark;
     margin: 0;
   }
@@ -72,23 +91,16 @@
     margin: 0;
   }
 
-  &__text {
-    width: 100%;
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 23px;
-    color: $cwColor-black-dark;
-  }
-
   &__controls {
-    padding: 0 17px;
+    padding: 0 15px;
   }
 
   &__close {
-    display: inline-block;
+    @include transform(translateY(-50%));
+    position: relative;
+    top: 50%;
     height: 100%;
     text-align: center;
-    padding-top: 18px;
     font-size: 20px;
     cursor: pointer;
   }
