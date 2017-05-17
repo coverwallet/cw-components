@@ -135,7 +135,7 @@ const App = function App() {
       <div className="clearfix row">
         <CwFlashNotification
           type="info"
-          title_small="The start date of the original quote already passed. Please recalculate the quote in order to continue with the purchase."
+          largeTitle="The start date of the original quote already passed. Please recalculate the quote in order to continue with the purchase."
           onClose={() => console.log('Custom close event handler.')}
         />
       </div>
@@ -145,7 +145,7 @@ const App = function App() {
           type="info"
           title="Your account need to be activated."
         >
-          An additional info goes here.
+          <h5 className="cw-flash-notification__description">An additional info goes here.</h5>
         </CwFlashNotification>
       </div>
 

@@ -63,6 +63,10 @@
     padding: 5px 0;
   }
 
+  &__children {
+    width: 100%;
+  }
+
   &__title {
     width: 100%;
     font-size: 16px;
@@ -71,7 +75,7 @@
     margin: 0;
   }
 
-  &__title-small {
+  &__title-large {
     width: 100%;
     font-size: 14px;
     line-height: 20px;
@@ -79,8 +83,7 @@
     margin: 0;
   }
 
-  &__description,
-  &__text {
+  &__description {
     width: 100%;
     font-size: 13px;
     line-height: 19px;
@@ -93,7 +96,9 @@
   }
 
   &__close {
-    display: inline-block;
+    @include transform(translateY(-50%));
+    position: relative;
+    top: 50%;
     height: 100%;
     text-align: center;
     font-size: 20px;
