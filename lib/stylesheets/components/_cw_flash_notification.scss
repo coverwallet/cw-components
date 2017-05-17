@@ -1,6 +1,6 @@
 .cw-flash-notification {
   @include display(flex);
-  min-height: 58px;
+  min-height: 56px;
 
   &--info {
     background-color: $cwColor-blue-xlight;
@@ -39,13 +39,13 @@
   }
 
   &__icon-container {
-    @include flex(0 0 58px);
+    @include flex(0 0 42px);
     margin-top: 10px;
     margin-left: 13px;
   }
 
   &__icon {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   &__content {
@@ -64,7 +64,16 @@
     margin: 0;
   }
 
-  &__description {
+  &__title-small {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    color: $cwColor-black-dark;
+    margin: 0;
+  }
+
+  &__description,
+  &__text {
     width: 100%;
     font-size: 13px;
     line-height: 19px;
@@ -72,16 +81,8 @@
     margin: 0;
   }
 
-  &__text {
-    width: 100%;
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 23px;
-    color: $cwColor-black-dark;
-  }
-
   &__controls {
-    padding: 0 17px;
+    padding: 0 15px;
   }
 
   &__close {
