@@ -1,6 +1,6 @@
 .cw-flash-notification {
   @include display(flex);
-  align-items: center;
+  @include align-items(center);
   min-height: 56px;
 
   &--info {

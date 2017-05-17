@@ -38,7 +38,7 @@ class CwFlashNotification extends React.Component {
           {title && <h4 className="cw-flash-notification__title">{title}</h4>}
           {title_small && <h5 className="cw-flash-notification__title-small">{title_small}</h5>}
           {subtitle && <h5 className="cw-flash-notification__description">{subtitle}</h5>}
-          <h5 className="cw-flash-notification__text">{this.props.children}</h5>
+          <div className="cw-flash-notification__text">{this.props.children}</div>
         </div>
         <div className="cw-flash-notification__controls">
           <a className="cw-flash-notification__close" onClick={handleClose}>
