@@ -18,7 +18,7 @@ class CwFlashNotification extends React.Component {
 
   render() {
     const { closed } = this.state;
-    const { type, title, subtitle, onClose } = this.props;
+    const { type, title, subtitle, largeTitle, onClose } = this.props;
     if (!onClose && closed) {
       return false;
     }
@@ -36,8 +36,9 @@ class CwFlashNotification extends React.Component {
         </aside>
         <div className="cw-flash-notification__content">
           {title && <h4 className="cw-flash-notification__title">{title}</h4>}
+          {largeTitle && <h5 className="cw-flash-notification__title-large">{largeTitle}</h5>}
           {subtitle && <h5 className="cw-flash-notification__description">{subtitle}</h5>}
-          <div className="cw-flash-notification__text">{this.props.children}</div>
+          <div className="cw-flash-notification__children">{this.props.children}</div>
         </div>
         <div className="cw-flash-notification__controls">
           <a className="cw-flash-notification__close" onClick={handleClose}>
@@ -53,6 +54,7 @@ CwFlashNotification.propTypes = {
   children: PropTypes.any,
   type: PropTypes.string.isRequired,
   title: PropTypes.string,
+  largeTitle: PropTypes.string,
   subtitle: PropTypes.string,
   onClose: PropTypes.func,
 };
