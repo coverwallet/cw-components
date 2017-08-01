@@ -267,8 +267,12 @@ const App = function App() {
       <div>
         <h2>Loader</h2>
 
-        <div className="box">
+        <div className="loader__example">
           <Loader />
+        </div>
+
+        <div className="loader__example">
+          <Loader subtitle="Calculating financing conditions"/>
         </div>
       </div>
 
