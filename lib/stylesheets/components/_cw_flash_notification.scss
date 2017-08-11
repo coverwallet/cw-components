@@ -1,4 +1,5 @@
 .cw-flash-notification {
+  position: relative;
   @include display(flex);
   @include align-items(center);
   min-height: 56px;
@@ -41,7 +42,11 @@
 
   &__icon-container {
     @include flex(0 0 42px);
-    padding: 0 15px;
+    padding: 0 10px;
+
+    @include media($mobile) {
+      display: none;
+    }
   }
 
   &__icon {
@@ -61,16 +66,24 @@
     @include justify-content(center);
     @include flex-direction(column);
     padding: 5px 0;
+
+    @include media($mobile) {
+      padding: 5px 34px 5px 10px;
+    }
   }
 
   &__children {
     width: 100%;
+    font-size: 14px;
+    line-height: 19px;
+    color: $cwColor-black-xmedium;
+    margin: 0;
   }
 
   &__title {
     width: 100%;
     font-size: 16px;
-    line-height: 23px;
+    line-height: 20px;
     color: $cwColor-black-dark;
     margin: 0;
   }
@@ -85,14 +98,21 @@
 
   &__description {
     width: 100%;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 19px;
     color: $cwColor-black-xmedium;
-    margin: 0;
+    margin: 4px 0 0 0;
   }
 
   &__controls {
     padding: 0 15px;
+
+    @include media($mobile) {
+      position: absolute;
+      top: 7px;
+      right: 10px;
+      padding: 0;
+    }
   }
 
   &__close {
