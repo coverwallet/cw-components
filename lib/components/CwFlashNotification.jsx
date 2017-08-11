@@ -18,7 +18,7 @@ class CwFlashNotification extends React.Component {
 
   render() {
     const { closed } = this.state;
-    const { type, title, subtitle, largeTitle, onClose } = this.props;
+    const { type, title, subtitle, subtitleMobile, largeTitle, largeTitleMobile, titleMobile, onClose } = this.props;
     if (!onClose && closed) {
       return false;
     }
@@ -35,9 +35,16 @@ class CwFlashNotification extends React.Component {
           <i className="cw-flash-notification__icon" />
         </aside>
         <div className="cw-flash-notification__content">
-          {title && <h4 className="cw-flash-notification__title">{title}</h4>}
-          {largeTitle && <h5 className="cw-flash-notification__title-large">{largeTitle}</h5>}
-          {subtitle && <h5 className="cw-flash-notification__description">{subtitle}</h5>}
+          {title && <h4 className="cw-flash-notification__title title-desktop">{title}</h4>}
+          {title && <h4 className="cw-flash-notification__title title-tablet">{titleMobile ? titleMobile : title}</h4>}
+          <div className="description-desktop">
+              {largeTitle && <h5 className="cw-flash-notification__title-large">{largeTitle}</h5>}
+              {subtitle && <h5 className="cw-flash-notification__description">{subtitle}</h5>}
+          </div>
+          <div className="description-tablet">
+              {largeTitle && <h5 className="cw-flash-notification__title-large">{largeTitleMobile ? largeTitleMobile : largeTitle}</h5>}
+              {subtitle && <h5 className="cw-flash-notification__description">{subtitleMobile ? subtitleMobile : subtitle}</h5>}
+          </div>
           <div className="cw-flash-notification__children">{this.props.children}</div>
         </div>
         <div className="cw-flash-notification__controls">
@@ -57,6 +64,9 @@ CwFlashNotification.propTypes = {
   largeTitle: PropTypes.string,
   subtitle: PropTypes.string,
   onClose: PropTypes.func,
+  subtitleMobile: PropTypes.func,
+  largeTitleMobile: PropTypes.func,
+  titleMobile: PropTypes.func,
 };
 
 export default CwFlashNotification;
