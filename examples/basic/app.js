@@ -152,7 +152,7 @@ const App = function App() {
           title="Your account need to be activated."
           titleMobile="Account activated"
         >
-            <h5 className="cw-flash-notification__description">An additional info goes here.</h5>
+            <h5 className="cw-flash-notification__description description-desktop">An additional info goes here.</h5>
             <h5 className="cw-flash-notification__description description-tablet">An additional info.</h5>
         </CwFlashNotification>
       </div>
