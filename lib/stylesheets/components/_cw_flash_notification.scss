@@ -124,4 +124,32 @@
     font-size: 20px;
     cursor: pointer;
   }
+
+  .description-desktop,
+  .title-desktop {
+    @include media($desktop) {
+      display: block;
+    }
+    @include media($tablet) {
+      display: none;
+    }
+  }
+
+  .description-tablet,
+  .title-tablet {
+    @include media($desktop) {
+      display: none;
+    }
+    @include media($tablet) {
+      display: block;
+    }
+  }
+
+  .description-tablet,
+  .description-desktop,
+  .title-tablet,
+  .title-desktop {
+    width: 100%;
+    text-align: left;
+  }
 }
