@@ -1,0 +1,4 @@
+// Bug solved: X icon appears when typing IE11
+input[type="text"]::-ms-clear {
+  display: none;
+}
