@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import BoxRadioInput from './BoxRadioInput';
 
 const calcInputWidth = (count, rows = 1) => `calc(${100 / Math.ceil(count / rows)}% - 6px)`;
