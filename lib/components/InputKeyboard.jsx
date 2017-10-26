@@ -51,11 +51,18 @@ class InputKeyboard extends React.Component {
 
   pressKey = (key) => {
     let value = String(this.state.value).replace(/,/g, '');
-    if (!value || value === 'NaN') {
-      value = `${key}`;
+    const maxLength = this.props.maxLength
+
+    if (maxLength && value.length >== maxLength) {
+      value = '';
     } else {
-      value = `${value}${key}`;
+      if (!value || value === 'NaN') {
+        value = `${key}`;
+      } else {
+        value = `${value}${key}`;
+      }
     }
+
     this.setNextValue(value);
   };
 
