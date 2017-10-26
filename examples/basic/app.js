@@ -13,6 +13,7 @@ import {
   OnlyClickSelect,
   CwFlashNotification,
   Checkbox,
+  RadioInputGroup,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -92,6 +93,19 @@ const BoxRadioGroupMonthsOptions = [
     label: 'Dec',
     value: 'Dec',
   },
+];
+
+const baseRadioGroupOptions = [
+  {
+    label: 'Yes',
+    value: 'Yes',
+  }, {
+    label: 'No',
+    value: 'No',
+  }, {
+    label: 'I am not sure yet',
+    value: 'I am not sure yet',
+  }
 ];
 
 const App = function App() {
@@ -217,6 +231,16 @@ const App = function App() {
             <Checkbox
               name="check_me"
               label="Check me"
+            />
+          </form>
+        </div>
+
+        <div className="clearfix">
+          <h3>Base Radio Group</h3>
+          <form className="form">
+            <RadioInputGroup
+              name="test_name"
+              options={baseRadioGroupOptions}
             />
           </form>
         </div>
