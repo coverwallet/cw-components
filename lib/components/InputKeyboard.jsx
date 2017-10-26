@@ -51,10 +51,10 @@ class InputKeyboard extends React.Component {
 
   pressKey = (key) => {
     let value = String(this.state.value).replace(/,/g, '');
-    const maxLength = this.props.maxLength
+    const maxLength = this.props.maxLength;
 
-    if (maxLength && value.length >== maxLength) {
-      value = '';
+    if (maxLength && value.length >= maxLength) {
+      return;
     } else {
       if (!value || value === 'NaN') {
         value = `${key}`;
@@ -95,7 +95,7 @@ class InputKeyboard extends React.Component {
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={autoFocus}
-          maxlength={maxLength}
+          maxLength={maxLength}
         />
         <Keyboard pressKey={this.pressKey} deleteKey={this.deleteKey} />
       </div>
@@ -114,7 +114,7 @@ InputKeyboard.propTypes = {
   commas: PropTypes.bool,
   autoFocus: PropTypes.bool,
   setValue: PropTypes.func,
-  maxLength: PropTypes.number
+  maxLength: PropTypes.number,
   width: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
