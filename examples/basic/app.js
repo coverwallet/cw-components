@@ -12,6 +12,7 @@ import {
   OnlyClickListOptions,
   OnlyClickSelect,
   CwFlashNotification,
+  Checkbox,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -208,6 +209,16 @@ const App = function App() {
         <div className="clearfix">
           <h3>Currency</h3>
           <NumberInput width="25%" currency />
+        </div>
+
+        <div className="clearfix">
+          <h3>Base Checkbox</h3>
+          <form className="form">
+            <Checkbox
+              name="check_me"
+              label="Check me"
+            />
+          </form>
         </div>
       </div>
 
