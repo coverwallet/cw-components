@@ -68,7 +68,7 @@ class InputKeyboard extends React.Component {
   };
 
   render() {
-    const { min, currency, commas, width, type, autoFocus } = this.props;
+    const { min, currency, commas, width, type, autoFocus, maxLength } = this.props;
     const inputClass = classNames(
       'input-keyboard__input',
       { 'input-keyboard__input--currency': currency },
@@ -88,6 +88,7 @@ class InputKeyboard extends React.Component {
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={autoFocus}
+          maxLength={maxLength}
         />
         <Keyboard pressKey={this.pressKey} deleteKey={this.deleteKey} />
       </div>
@@ -106,6 +107,7 @@ InputKeyboard.propTypes = {
   commas: PropTypes.bool,
   autoFocus: PropTypes.bool,
   setValue: PropTypes.func,
+  maxLength: PropTypes.number
   width: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
