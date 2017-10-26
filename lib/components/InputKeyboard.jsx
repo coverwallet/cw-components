@@ -88,7 +88,7 @@ class InputKeyboard extends React.Component {
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={autoFocus}
-          maxLength={maxLength}
+          maxlength={maxLength}
         />
         <Keyboard pressKey={this.pressKey} deleteKey={this.deleteKey} />
       </div>
