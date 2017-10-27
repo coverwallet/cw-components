@@ -64,9 +64,9 @@ CwFlashNotification.propTypes = {
   largeTitle: PropTypes.string,
   subtitle: PropTypes.string,
   onClose: PropTypes.func,
-  subtitleMobile: PropTypes.func,
-  largeTitleMobile: PropTypes.func,
-  titleMobile: PropTypes.func,
+  subtitleMobile: PropTypes.string,
+  largeTitleMobile: PropTypes.string,
+  titleMobile: PropTypes.string,
 };
 
 export default CwFlashNotification;
