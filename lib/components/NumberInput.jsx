@@ -72,7 +72,7 @@ class NumberInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, step, commas, percents, currency, type, width, onBlur, autoFocus } = this.props;
+    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus } = this.props;
     const inputClass = classNames(
       'number-input__input',
       { 'number-input__input--nan number-input__input--currency': currency },
@@ -81,7 +81,7 @@ class NumberInput extends React.Component {
     );
     return (
       <div className="number-input" style={{ width }}>
-        {currency && <span className="number-input__span--currency" />}
+        {currency && <span className={`number-input__currency number-input__currency--${currencyType}-icon`} />}
         <input
           ref="input"
           className={inputClass}
@@ -117,6 +117,7 @@ NumberInput.propTypes = {
   max: PropTypes.number,
   step: PropTypes.number,
   currency: PropTypes.bool,
+  currencyType: PropTypes.string,
   commas: PropTypes.bool,
   percents: PropTypes.bool,
   autoFocus: PropTypes.bool,

@@ -183,6 +183,11 @@ const App = function App() {
       </div>
 
       <div className="clearfix">
+        <h2>Currency Keyboard input with euro currencyType</h2>
+        <InputKeyboard currency currencyType="euro" />
+      </div>
+
+      <div className="clearfix">
         <h2>Long Keyboard input</h2>
         <InputKeyboard width="100%" />
       </div>
@@ -223,6 +228,11 @@ const App = function App() {
         <div className="clearfix">
           <h3>Currency</h3>
           <NumberInput width="25%" currency />
+        </div>
+
+        <div className="clearfix">
+          <h3>Currency with euro currencyType</h3>
+          <NumberInput width="25%" currency currencyType="euro" />
         </div>
 
         <div className="clearfix">
