@@ -16,7 +16,7 @@
     background-color: $cwColor-base-white;
 
     &--dollaricon {
-      @include cw-covericon-before(onlyclick-dollar, 0, $cwColor-blue-light);
+      @include cw-covericon-before(onlyclick-dollar, 0, $cwColor-black-light);
     }
 
     &--euroicon {
