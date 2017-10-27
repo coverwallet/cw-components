@@ -5,11 +5,11 @@ import { NumberInput } from '../../index';
 
 
 describe('NumberInput', () => {
-  it('should has span with class "number-input__currency--dollaricon"', () => {
-    expect(mount(<NumberInput currency />).find('.number-input__currency--dollaricon').length).toBe(1);
+  it('should has span with class "number-input__currency--dollar-icon"', () => {
+    expect(mount(<NumberInput currency />).find('.number-input__currency--dollar-icon').length).toBe(1);
   });
 
-  it('should has span with class "number-input__currency--euroicon"', () => {
-    expect(mount(<NumberInput currency currencyType="euro" />).find('.number-input__currency--euroicon').length).toBe(1);
+  it('should has span with class "number-input__currency--euro-icon"', () => {
+    expect(mount(<NumberInput currency currencyType="euro" />).find('.number-input__currency--euro-icon').length).toBe(1);
   });
 });

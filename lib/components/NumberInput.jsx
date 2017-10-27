@@ -81,7 +81,7 @@ class NumberInput extends React.Component {
     );
     return (
       <div className="number-input" style={{ width }}>
-        {currency && <span className={`number-input__currency number-input__currency--${currencyType}icon`} />}
+        {currency && <span className={`number-input__currency number-input__currency--${currencyType}-icon`} />}
         <input
           ref="input"
           className={inputClass}

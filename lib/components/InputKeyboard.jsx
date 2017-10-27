@@ -83,7 +83,7 @@ class InputKeyboard extends React.Component {
     );
     return (
       <div className="input-keyboard" style={{ width }}>
-        {currency && <span className={`input-keyboard__currency input-keyboard__currency--${currencyType}icon`} />}
+        {currency && <span className={`input-keyboard__currency input-keyboard__currency--${currencyType}-icon`} />}
         <input
           ref="input"
           type={commas ? 'text' : type}

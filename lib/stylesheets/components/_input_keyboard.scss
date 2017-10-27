@@ -15,11 +15,11 @@
     font-size: 28px;
     background-color: $cwColor-base-white;
 
-    &--dollaricon {
+    &--dollar-icon {
       @include cw-covericon-before(onlyclick-dollar, 0, $cwColor-black-light);
     }
 
-    &--euroicon {
+    &--euro-icon {
       @include coverwallet-general-before(euro-circle, 0, $cwColor-black-light);
     }
   }
