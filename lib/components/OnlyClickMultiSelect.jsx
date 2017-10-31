@@ -5,7 +5,6 @@ import OnlyClickOptionsList from './OnlyClickListOptions';
 class OnlyClickMultiSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.mobileWidth = 480;
     this.state = {
       values: props.values,
     };
