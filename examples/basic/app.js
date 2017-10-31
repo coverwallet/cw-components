@@ -11,6 +11,7 @@ import {
   Loader,
   OnlyClickListOptions,
   OnlyClickSelect,
+  OnlyClickMultiSelect,
   CwFlashNotification,
   Checkbox,
   RadioInputGroup,
@@ -378,6 +379,22 @@ const App = function App() {
         <div>
           <OnlyClickSelect
             placeholder="Search industry subcategory"
+            hint="Select your industry subcategory"
+            options={industries[0].subindustries.map(subindustry => objectAssign({},
+              subindustry,
+              { label: subindustry.name, value: subindustry.name }
+            ))}
+            onClick={(value) => console.log('You choose ', value)}
+            onDelete={(value) => console.log('You remove ', value)}
+            values={[industries[0].subindustries[0].name]}
+          />
+        </div>
+
+        <h4>MultiSelect List view</h4>
+
+        <div>
+          <OnlyClickMultiSelect
+            errorMessage="Required"
             hint="Select your industry subcategory"
             options={industries[0].subindustries.map(subindustry => objectAssign({},
               subindustry,
