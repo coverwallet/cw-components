@@ -73,6 +73,27 @@
     }
   }
 
+  .oc-option__checked-icon {
+    display: table-cell;
+    width: 30px;
+    @include cw-icon-before(circle-thin, 0px, $cwColor-black-light);
+
+    &::before, &.oc-option__checked-icon--checked:before {
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    &.oc-option__checked-icon--checked {
+      @include cw-icon-before(check-circle, 0px, $cwColor-base-white);
+
+      &:hover {
+        &:before {
+          color: $cwColor-base-white;
+        }
+      }
+    }
+  }
+
   .oc-option__search-term {
     font-weight: bold;
     background: transparent;

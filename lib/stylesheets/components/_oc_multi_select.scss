@@ -1,0 +1,20 @@
+.oc-multi-select {
+  .oc-list-options {
+    margin-top: 0;
+    border-width: 1px 1px 0 0;
+  }
+
+  .oc-multi-select__hint {
+    @include clearfix();
+    padding: 10px 1px 10px;
+    font-size: 14px;
+    line-height: 16px;
+    color: $cwColor-black-xmedium;
+  }
+
+  .oc-multi-select__error {
+    margin: 7px 0;
+    color: $cwColor-base-red;
+    font-size: 14px;
+  }
+}

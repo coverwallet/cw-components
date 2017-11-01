@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import OnlyClickOption from './OnlyClickListOption';
 
 function OnlyClickListOptions(props) {
-  const { options, selectedValues, typedValue, highlight, onClick } = props;
+  const { options, selectedValues, typedValue, highlight, listType, onClick } = props;
   return (
     <ul className="oc-list-options">
       {options.map((option, i) => (
@@ -12,6 +12,7 @@ function OnlyClickListOptions(props) {
           checked={selectedValues.indexOf(option.value) !== -1}
           typedValue={typedValue}
           highlight={highlight}
+          listType={listType}
           onClick={onClick}
           {...option}
         />
@@ -26,6 +27,7 @@ OnlyClickListOptions.propTypes = {
   selectedValues: PropTypes.arrayOf(PropTypes.string),
   typedValue: PropTypes.string,
   highlight: PropTypes.bool,
+  listType: PropTypes.string,
 };
 
 export default OnlyClickListOptions;

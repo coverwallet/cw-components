@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Highlighter from 'react-highlight-words';
 import { isIOS } from '../utils/deviceDetector';
 
-function OnlyClickListOption({ value, label, addition, checked, typedValue, highlight, onClick }) {
+function OnlyClickListOption({ value, label, addition, checked, typedValue, highlight, listType, onClick }) {
   const optionClass = classNames(
     'oc-options-list__item oc-list-option',
     { 'oc-list-option--checked': checked },
@@ -14,11 +14,16 @@ function OnlyClickListOption({ value, label, addition, checked, typedValue, high
   const messageClass = classNames(
     'oc-option__message'
   );
+  const multiSelectIconClass = classNames(
+    'oc-option__checked-icon',
+    { 'oc-option__checked-icon--checked': checked },
+  );
   return (
     <li
       className={optionClass}
       onClick={() => onClick(value)}
     >
+      {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
       <span className={messageClass}>
         {highlight ?
           <Highlighter
@@ -32,7 +37,7 @@ function OnlyClickListOption({ value, label, addition, checked, typedValue, high
           {addition}
         </div>}
       </span>
-      <span className="oc-option__next-icon" />
+      {listType !== 'multiSelect' && <span className="oc-option__next-icon" />}
     </li>
   );
 }
@@ -44,6 +49,7 @@ OnlyClickListOption.propTypes = {
   typedValue: PropTypes.string,
   checked: PropTypes.bool,
   highlight: PropTypes.bool,
+  listType: PropTypes.string,
   onClick: PropTypes.func,
 };
 
