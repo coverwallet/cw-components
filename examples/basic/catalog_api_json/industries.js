@@ -7,10 +7,12 @@ export default [
     "subindustries": [
       {
         "name": "All Other Business Support Services",
+        'tooltip_key': 1,
         "slug": "all-other-business-support-services"
       },
       {
         "name": "All Other Miscellaneous Waste Management Services",
+        'tooltip_key': 2,
         "slug": "all-other-miscellaneous-waste-management-services"
       },
       {

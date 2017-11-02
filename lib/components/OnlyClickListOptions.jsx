@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import OnlyClickOption from './OnlyClickListOption';
 
 function OnlyClickListOptions(props) {
-  const { options, selectedValues, typedValue, highlight, listType, onClick } = props;
+  const { options, selectedValues, typedValue, highlight, listType, onClick, onHelpClick } = props;
   return (
     <ul className="oc-list-options">
       {options.map((option, i) => (
@@ -14,6 +14,7 @@ function OnlyClickListOptions(props) {
           highlight={highlight}
           listType={listType}
           onClick={onClick}
+          onHelpClick={onHelpClick}
           {...option}
         />
       ))}
@@ -24,6 +25,7 @@ function OnlyClickListOptions(props) {
 OnlyClickListOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func,
+  onHelpClick: PropTypes.func,
   selectedValues: PropTypes.arrayOf(PropTypes.string),
   typedValue: PropTypes.string,
   highlight: PropTypes.bool,
