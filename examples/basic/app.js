@@ -398,10 +398,15 @@ const App = function App() {
             hint="Select your industry subcategory"
             options={industries[0].subindustries.map(subindustry => objectAssign({},
               subindustry,
-              { label: subindustry.name, value: subindustry.name }
+              {
+                label: subindustry.name,
+                value: subindustry.name,
+                tooltipKey: subindustry.tooltip_key,
+              }
             ))}
             onClick={(value) => console.log('You choose ', value)}
             onDelete={(value) => console.log('You remove ', value)}
+            onHelpIconClick={(key) => console.log('Some help info for: ', key)}
             values={[industries[0].subindustries[0].name]}
           />
         </div>

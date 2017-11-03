@@ -73,6 +73,21 @@
     }
   }
 
+  .oc-option__help-icon {
+    display: table-cell;
+    width: 20px;
+    @include cw-icon-before(question-circle, 0, $cwColor-base-blue);
+
+    &::before, &.oc-option__help-icon--checked:before {
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    &.oc-option__help-icon--checked:before {
+      color: $cwColor-base-white;
+    }
+  }
+
   .oc-option__checked-icon {
     display: table-cell;
     width: 30px;
