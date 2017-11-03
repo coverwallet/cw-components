@@ -58,7 +58,10 @@ OnlyClickListOption.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   addition: PropTypes.string,
-  tooltipKey: PropTypes.string,
+  tooltipKey: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   typedValue: PropTypes.string,
   checked: PropTypes.bool,
   highlight: PropTypes.bool,
