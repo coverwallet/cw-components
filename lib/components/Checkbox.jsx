@@ -13,6 +13,7 @@ const Checkbox = props => {
     setValue,
     getValue,
     onChange,
+    disabled,
   } = props;
   const inputId = id || name;
   const checkboxClassName = classNames('form-checkbox', className);
@@ -33,6 +34,7 @@ const Checkbox = props => {
           name={name}
           onChange={handleChange}
           checked={exists(getValue) ? getValue() : false}
+          disabled={disabled}
         />
         <label htmlFor={inputId} />
       </div>
@@ -54,6 +56,7 @@ Checkbox.propTypes = {
   setValue: PropTypes.func,
   getValue: PropTypes.func,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default Checkbox;
