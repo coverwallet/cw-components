@@ -1,5 +1,5 @@
 .form-group.form-group--checkbox .form-checkbox {
   input[type="checkbox"]:disabled + label {
-    cursor: default;
+    cursor: not-allowed;
   }
 }
