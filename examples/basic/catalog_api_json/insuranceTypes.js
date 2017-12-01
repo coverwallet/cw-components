@@ -8,7 +8,8 @@ export default [
     "tooltip_key": "insurance_type_business_owners_policy_(bop)",
     "display_order": 1,
     "icon_name": "business_owners_policy_bop",
-    "formatted_text": null
+    "formatted_text": null,
+    "recommendable": true
   },
   {
     "name": "General Liability",
@@ -19,7 +20,8 @@ export default [
     "tooltip_key": "insurance_type_general_liability",
     "display_order": 2,
     "icon_name": "general_liability",
-    "formatted_text": null
+    "formatted_text": null,
+    "recommendable": true
   },
   {
     "name": "Commercial Building and/or Property",
@@ -41,7 +43,8 @@ export default [
     "tooltip_key": "insurance_type_workers_compensation",
     "display_order": 4,
     "icon_name": "workers_compensation",
-    "formatted_text": null
+    "formatted_text": null,
+    "recommendable": true
   },
   {
     "name": "Disability Insurance",

@@ -432,7 +432,7 @@ const App = function App() {
           />
         </div>
 
-        <h4>With help icon</h4>
+        <h4>With help icon and recommendable options</h4>
 
         <div>
           <OnlyClickSelect
@@ -445,6 +445,7 @@ const App = function App() {
                 value: type.name,
                 iconClass: type.icon_name,
                 tooltipKey: type.tooltip_key,
+                recommendable: type.recommendable,
               },
             ))}
             onClick={(value) => console.log('You choose ', value)}

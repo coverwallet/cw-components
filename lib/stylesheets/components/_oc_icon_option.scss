@@ -47,12 +47,48 @@
       color: $cwColor-base-white;
     }
   }
+
+  &--recommendable {
+    position: relative;
+    @include cw-icon-before(star, 0, $cwColor-base-white);
+
+    &::before {
+      position: absolute;
+      font-size: 12px;
+      top: 2px;
+      left: 2px;
+      z-index: 2;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      top: -1px;
+      left: -1px;
+      border-top: 30px solid $cwColor-base-orange;
+      border-right: 30px solid $cwColor-base-white;
+      border-top-left-radius: 5px;
+      z-index: 1;
+    }
+
+    &:hover::after {
+      border-right-color: $cwColor-blue-light;
+    }
+  }
+
   &--checked {
     color: $cwColor-base-white;
     background-color: $cwColor-base-blue;
     .oc-icon-option__icon::before {
       color: $cwColor-base-white;
     }
+
+    &.oc-icon-option--recommendable::after {
+      border-right-color: $cwColor-base-blue;
+    }
+
     &:hover {
       color: $cwColor-base-white;
       background-color: $cwColor-base-blue;

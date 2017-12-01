@@ -4,10 +4,11 @@ import classNames from 'classnames';
 import { isIOS } from '../utils/deviceDetector';
 
 function OnlyClickIconOption(props) {
-  const { value, label, checked, iconClass, onClick } = props;
+  const { value, label, checked, recommendable, iconClass, onClick } = props;
   const optionClass = classNames(
     'oc-icon-option',
     { 'oc-icon-option--checked': checked },
+    { 'oc-icon-option--recommendable': recommendable },
     { 'oc-icon-option--no-touch': !isIOS() }
   );
   return (
@@ -30,6 +31,7 @@ OnlyClickIconOption.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   checked: PropTypes.bool,
+  recommendable: PropTypes.bool,
   iconClass: PropTypes.string,
   onClick: PropTypes.func,
 };
