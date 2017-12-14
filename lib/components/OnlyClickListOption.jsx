@@ -4,12 +4,25 @@ import classNames from 'classnames';
 import Highlighter from 'react-highlight-words';
 import { isIOS } from '../utils/deviceDetector';
 
-function OnlyClickListOption({ value, label, addition, checked, tooltipKey, typedValue, highlight, listType, onClick, onHelpClick }) {
+function OnlyClickListOption({
+  value,
+  label,
+  addition,
+  checked,
+  tooltipKey,
+  typedValue,
+  highlight,
+  listType,
+  onClick,
+  onHelpClick,
+  disabled,
+}) {
   const optionClass = classNames(
     'oc-options-list__item oc-list-option',
     { 'oc-list-option--checked': checked },
     { 'oc-list-option--no-touch': !isIOS() },
     { 'oc-list-option--with-addition': addition },
+    { 'oc-list-option--disabled': disabled },
   );
   const messageClass = classNames(
     'oc-option__message'
@@ -25,7 +38,8 @@ function OnlyClickListOption({ value, label, addition, checked, tooltipKey, type
   return (
     <li
       className={optionClass}
-      onClick={() => onClick(value)}
+      onClick={() => !disabled && onClick(value)}
+      disabled={disabled}
     >
       {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
       <span className={messageClass}>

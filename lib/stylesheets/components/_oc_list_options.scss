@@ -11,4 +11,8 @@
     cursor: pointer;
     box-sizing: border-box;
   }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
 }

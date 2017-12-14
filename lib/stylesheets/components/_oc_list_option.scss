@@ -37,6 +37,16 @@
     }
   }
 
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--disabled:not(&--checked) {
+    border: 1px solid $cwColor-black-light;
+    background-color: $cwColor-black-mlight;
+  }
+
   &--with-addition {
     padding: 7px 10px;
 
