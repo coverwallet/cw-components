@@ -1,11 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OnlyClickOption from './OnlyClickListOption';
+import classNames from 'classnames';
 
 function OnlyClickListOptions(props) {
-  const { options, selectedValues, typedValue, highlight, listType, onClick, onHelpClick } = props;
+  const {
+    options,
+    selectedValues,
+    typedValue,
+    highlight,
+    listType,
+    onClick,
+    onHelpClick,
+    disabled,
+  } = props;
+
   return (
-    <ul className="oc-list-options">
+    <ul
+      className={classNames('oc-list-options', {
+        'oc-list-options--disabled': disabled
+      })}
+    >
       {options.map((option, i) => (
         <OnlyClickOption
           key={option.value + i}
@@ -16,6 +31,7 @@ function OnlyClickListOptions(props) {
           onClick={onClick}
           onHelpClick={onHelpClick}
           {...option}
+          disabled={disabled}
         />
       ))}
     </ul>

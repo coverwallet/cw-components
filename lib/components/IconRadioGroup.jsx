@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IconRadioInput from './IconRadioInput';
+import classNames from 'classnames';
 
 class IconRadioGroup extends React.Component {
   constructor(props) {
@@ -26,9 +27,13 @@ class IconRadioGroup extends React.Component {
   };
 
   render() {
-    const { options, name, size } = this.props;
+    const { options, name, size, disabled } = this.props;
     return (
-      <div className="icons-radio-group">
+      <div
+        className={classNames('icons-radio-group', {
+          'icons-radio-group--disabled': disabled
+        })}
+      >
         {options.map((option, i) => (
           <IconRadioInput
             key={i}
@@ -39,6 +44,7 @@ class IconRadioGroup extends React.Component {
             checkedValue={this.getValue()}
             onChange={this.handleChange}
             size={size}
+            disabled={disabled}
           />
         ))}
       </div>

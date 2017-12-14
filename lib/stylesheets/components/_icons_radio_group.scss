@@ -7,6 +7,10 @@
     @include align-content(center);
     @include justify-content(center);
   }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
 }
 
 .icons-radio-input {
@@ -94,5 +98,15 @@
         color: $cwColor-base-white;
       }
     }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--disabled:not(&--checked) {
+    border: 1px solid $cwColor-black-light;
+    background-color: $cwColor-black-mlight;
   }
 }
