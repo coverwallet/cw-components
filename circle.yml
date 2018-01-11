@@ -1,0 +1,12 @@
+machine:
+  node:
+    version: 8.2.0
+dependencies:
+  cache_directories:
+    - node_modules
+  override:
+    - yarn
+
+test:
+  override:
+    - yarn test
