@@ -9,7 +9,9 @@
   box-sizing: border-box;
   font-size: 14px;
 
-  &:focus, &:active, &--clicked {
+  &:focus:not(&--disabled),
+  &:active:not(&--disabled),
+  &--clicked:not(&--disabled)  {
     @extend .animated, .pulse;
   }
 
@@ -38,7 +40,7 @@
     color: $cwColor-black-xmedium;
   }
 
-  &--no-touch:hover {
+  &--no-touch:hover:not(&--disabled) {
     color: $cwColor-black-dark;
     background-color: $cwColor-blue-light;
 
@@ -89,12 +91,22 @@
       border-right-color: $cwColor-base-blue;
     }
 
-    &:hover {
+    &:hover:not(.oc-icon-option--disabled) {
       color: $cwColor-base-white;
       background-color: $cwColor-base-blue;
       .oc-icon-option__icon::before {
         color: $cwColor-base-white;
       }
     }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    // pointer-events: none;
+  }
+
+  &--disabled:not(&--checked) {
+    border: 1px solid $cwColor-black-light;
+    background-color: $cwColor-black-mlight;
   }
 }

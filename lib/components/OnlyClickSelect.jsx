@@ -112,7 +112,7 @@ class OnlyClickSelect extends React.Component {
     const {
       type, options, placeholder, hint, errorMessage,
       highlight, maxVisible, onHelpIconClick,
-      disableFilter, disableInput,
+      disableFilter, disableInput, disableDelete
     } = this.props;
     const { values, typedValue } = this.state;
     const filteredOptions = disableFilter
@@ -125,10 +125,10 @@ class OnlyClickSelect extends React.Component {
             {values.map(value => (
               <span className="oc-selected-value" key={value}>
                 {value}
-                <span
+                {!disableDelete && <span
                   className="oc-selected-value__close-icon"
                   onClick={() => this.handleDelete(value)}
-                />
+                />}
               </span>
             ))}
             <div className="oc-select__input-container">
@@ -182,6 +182,7 @@ OnlyClickSelect.propTypes = {
   onDelete: PropTypes.func,
   onHelpIconClick: PropTypes.func,
   disableFilter: PropTypes.bool,
+  disableDelete: PropTypes.bool,
   autoFocus: PropTypes.bool,
   highlight: PropTypes.bool,
   disableInput: PropTypes.bool,

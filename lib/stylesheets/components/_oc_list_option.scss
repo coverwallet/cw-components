@@ -7,9 +7,10 @@
   font-size: 14px;
   line-height: 20px;
   background-color: $cwColor-base-white;
+  cursor: pointer;
 
   &--no-touch {
-    &:hover {
+    &:hover:not(.oc-list-option--disabled) {
       background: $cwColor-blue-light;
       color: $cwColor-base-white;
 
@@ -23,7 +24,7 @@
     background-color: $cwColor-base-blue;
     color: $cwColor-base-white;
 
-    &:hover {
+    &:hover:not(.oc-list-option--disabled) {
       background-color: $cwColor-base-blue;
       .oc-option__next-icon:before {
         color: $cwColor-base-white;
@@ -39,7 +40,6 @@
 
   &--disabled {
     cursor: not-allowed;
-    pointer-events: none;
   }
 
   &--disabled:not(&--checked) {
@@ -55,7 +55,9 @@
     }
   }
 
-  &:focus, &:active, &--clicked {
+  &:focus:not(&--disabled),
+  &:active:not(&--disabled),
+  &--clicked:not(&--disabled) {
     @extend .animated, .pulse;
     border: 1px solid $cwColor-black-xmedium;
   }
