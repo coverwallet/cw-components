@@ -5,6 +5,7 @@ import Highlighter from 'react-highlight-words';
 import { isIOS } from '../utils/deviceDetector';
 
 function OnlyClickListOption({
+  id,
   value,
   label,
   addition,
@@ -22,46 +23,24 @@ function OnlyClickListOption({
     { 'oc-list-option--checked': checked },
     { 'oc-list-option--no-touch': !isIOS() },
     { 'oc-list-option--with-addition': addition },
-    { 'oc-list-option--disabled': disabled },
+    { 'oc-list-option--disabled': disabled }
   );
-  const messageClass = classNames(
-    'oc-option__message'
-  );
-  const multiSelectIconClass = classNames(
-    'oc-option__checked-icon',
-    { 'oc-option__checked-icon--checked': checked },
-  );
-  const tooltipIconClass = classNames(
-    'oc-option__help-icon',
-    { 'oc-option__help-icon--checked': checked },
-  );
+  const messageClass = classNames('oc-option__message');
+  const multiSelectIconClass = classNames('oc-option__checked-icon', { 'oc-option__checked-icon--checked': checked });
+  const tooltipIconClass = classNames('oc-option__help-icon', { 'oc-option__help-icon--checked': checked });
   return (
-    <li
-      className={optionClass}
-      onClick={() => !disabled && onClick(value)}
-      disabled={disabled}
-    >
+    <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled}>
       {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
       <span className={messageClass}>
-        {highlight ?
-          <Highlighter
-            highlightClassName={'oc-option__search-term'}
-            searchWords={typedValue.trim().split(' ')}
-            textToHighlight={label}
-          /> :
+        {highlight ? (
+          <Highlighter highlightClassName={'oc-option__search-term'} searchWords={typedValue.trim().split(' ')} textToHighlight={label} />
+        ) : (
           label
-        }
-        {addition && <div className="oc-option__addition">
-          {addition}
-        </div>}
+        )}
+        {addition && <div className="oc-option__addition">{addition}</div>}
       </span>
       {tooltipKey && (
-        <span
-          className={tooltipIconClass}
-          id={tooltipKey}
-          onClick={onHelpClick && onHelpClick.bind(null, tooltipKey)}
-          tabIndex="-1"
-        />
+        <span className={tooltipIconClass} id={tooltipKey} onClick={onHelpClick && onHelpClick.bind(null, tooltipKey)} tabIndex="-1" />
       )}
       {listType !== 'multiSelect' && <span className="oc-option__next-icon" />}
     </li>
@@ -71,13 +50,12 @@ function OnlyClickListOption({
 OnlyClickListOption.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   addition: PropTypes.string,
-  tooltipKey: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  tooltipKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   typedValue: PropTypes.string,
   checked: PropTypes.bool,
+  disabled: PropTypes.bool,
   highlight: PropTypes.bool,
   listType: PropTypes.string,
   onClick: PropTypes.func,

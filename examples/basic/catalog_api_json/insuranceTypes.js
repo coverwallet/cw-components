@@ -32,7 +32,8 @@ export default [
     "tooltip_key": "insurance_type_commercial_building_and/or_property",
     "display_order": 3,
     "icon_name": "commercial_building_andor_property",
-    "formatted_text": null
+    "formatted_text": null,
+    "disabled": true
   },
   {
     "name": "Workers' Compensation",

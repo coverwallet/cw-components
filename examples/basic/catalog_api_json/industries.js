@@ -13,11 +13,13 @@ export default [
       {
         "name": "All Other Miscellaneous Waste Management Services",
         "tooltip_key": "all-other-miscellaneous-waste-management-services",
-        "slug": "all-other-miscellaneous-waste-management-services"
+        "slug": "all-other-miscellaneous-waste-management-services",
+        "disabled": true
       },
       {
         "name": "All Other Support Services",
-        "slug": "all-other-support-services"
+        "slug": "all-other-support-services",
+        "disabled": true
       },
       {
         "name": "All Other Travel Arrangement and Reservation Services",
@@ -202,6 +204,7 @@ export default [
     "slug": "construction-and-contractors",
     "icon_name": "construction_and_contractors",
     "formatted_text": null,
+    "disabled": true,
     "subindustries": [
       {
         "name": "All Other Specialty Trade Contractors",
