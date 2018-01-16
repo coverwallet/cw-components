@@ -25,9 +25,6 @@ PAGES=true ./node_modules/.bin/webpack --config ./webpack.config.js -p
 # move example files to root
 mv examples/* ./
 
-# add jekyll config
-echo "include: [__build__]" > _config.yml
-
 # create gh-pages branch
 git checkout -b gh-pages
 git add .
