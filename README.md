@@ -6,7 +6,7 @@ CoverWallet components
 
 ### To start local server
 1.  ```yarn start```
-2.  Open http://localhost:8002/basic/ in your browser
+2.  Open http://localhost:8002/ in your browser
 
 ### To build lib
 2.  ```yarn build```
@@ -34,7 +34,7 @@ CoverWallet components
 This still have some bug with fonts on coverwallet.github.io
 
 1. Run ```yarn gh-pages```
-2. Open http://coverwallet.github.io/cw-components/basic/
+2. Open https://coverwallet.github.io/cw-components/index.html
 
 ## To publish new version to npm
 

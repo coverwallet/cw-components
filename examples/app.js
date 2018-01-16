@@ -15,7 +15,7 @@ import {
   CwFlashNotification,
   Checkbox,
   RadioInputGroup,
-} from '../../lib/index';
+} from '../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
 
