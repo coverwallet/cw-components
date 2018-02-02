@@ -18,6 +18,7 @@ class InputKeyboard extends React.Component {
     super(props);
     this.state = {
       value: convertNextValue(exists(props.value) ? props.value : '', props),
+      negative: true,
     };
   }
 
@@ -96,6 +97,7 @@ class InputKeyboard extends React.Component {
           value={this.state.value}
           autoFocus={autoFocus}
           maxLength={maxLength}
+          style={{color: this.state.negative ? 'red' : ''}}
         />
         <Keyboard pressKey={this.pressKey} deleteKey={this.deleteKey} />
       </div>
