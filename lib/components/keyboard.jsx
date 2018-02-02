@@ -15,6 +15,8 @@ class Keyboard extends React.Component {
   }
 
   render() {
+    const { dashKey } = this.props;
+
     return (
       <table className="keyboard">
         <tbody>
@@ -28,7 +30,10 @@ class Keyboard extends React.Component {
             {[1, 2, 3].map(i => <td key={i} className="keyboard__number" onClick={() => this.click(i)}>{i}</td>)}
           </tr>
           <tr className="keyboard__row">
-            <td className="keyboard__number keyboard__number--0" colSpan="2" onClick={() => this.click(0)}>0</td>
+            {dashKey && (
+              <td className="keyboard__number" onClick={dashKey}>-</td>
+            )}
+            <td className="keyboard__number keyboard__number--0" colSpan={dashKey ? '1' : '2'} onClick={() => this.click(0)}>0</td>
             <td key="10" className="keyboard__delete keyboard__backspace" onClick={this.delete} />
           </tr>
         </tbody>
