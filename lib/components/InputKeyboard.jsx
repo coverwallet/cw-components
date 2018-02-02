@@ -21,7 +21,7 @@ class InputKeyboard extends React.Component {
     };
   }
 
-  isValueNegative = () => this.state.value < 0;
+  isValueNegative = () => this.state.value < 0 && this.props.negativeEnabled;
 
   componentWillReceiveProps(nextProps) {
     if (this.state.value !== nextProps.value) {
@@ -123,6 +123,7 @@ InputKeyboard.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
+  negativeEnabled: PropTypes.bool,
 };
 
 InputKeyboard.defaultProps = {
