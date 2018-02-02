@@ -77,7 +77,7 @@ class InputKeyboard extends React.Component {
   };
 
   render() {
-    const { min, currency, currencyType = 'dollar', commas, width, type, autoFocus, maxLength } = this.props;
+    const { min, currency, currencyType = 'dollar', commas, width, type, autoFocus, maxLength, negativeEnabled } = this.props;
     const inputClass = classNames(
       'input-keyboard__input',
       { 'input-keyboard__input--currency': currency },
@@ -93,7 +93,7 @@ class InputKeyboard extends React.Component {
           pattern={commas || type !== 'number' ? '[0-9,-]*' : '[0-9]*'}
           inputMode="numeric"
           lang="en"
-          min={min || 0}
+          min={negativeEnabled ? Number.MIN_SAFE_INTEGER : min || 0}
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={autoFocus}
