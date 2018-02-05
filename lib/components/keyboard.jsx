@@ -15,7 +15,7 @@ class Keyboard extends React.Component {
   }
 
   render() {
-    const { dashKey } = this.props;
+    const { dashKey, dashKeyActive } = this.props;
 
     return (
       <table className="keyboard">
@@ -31,7 +31,11 @@ class Keyboard extends React.Component {
           </tr>
           <tr className="keyboard__row">
             {dashKey && (
-              <td className="keyboard__number" onClick={dashKey}>-</td>
+              <td
+                className="keyboard__number"
+                style={{color: dashKeyActive ? 'red' : ''}}
+                onClick={dashKey}
+              >-</td>
             )}
             <td className="keyboard__number keyboard__number--0" colSpan={dashKey ? '1' : '2'} onClick={() => this.click(0)}>0</td>
             <td key="10" className="keyboard__delete keyboard__backspace" onClick={this.delete} />
@@ -45,6 +49,8 @@ class Keyboard extends React.Component {
 Keyboard.propTypes = {
   pressKey: PropTypes.func.isRequired,
   deleteKey: PropTypes.func.isRequired,
+  dashKey: PropTypes.func,
+  dashKeyActive: PropTypes.bool,
 };
 
 export default Keyboard;
