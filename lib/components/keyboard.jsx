@@ -32,8 +32,7 @@ class Keyboard extends React.Component {
           <tr className="keyboard__row">
             {dashKey && (
               <td
-                className="keyboard__number"
-                style={{color: dashKeyActive ? 'red' : ''}}
+                className={`keyboard__number ${dashKeyActive ? 'keyboard__number--active' : ''}`}
                 onClick={dashKey}
               >-</td>
             )}
