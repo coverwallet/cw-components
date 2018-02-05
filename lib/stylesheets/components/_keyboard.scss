@@ -31,11 +31,6 @@
       color: $cwColor-base-white;
     }
 
-    &--active {
-      background: $cwColor-base-blue;
-      color: $cwColor-base-white;
-    }
-
     &:focus, &:active, &--clicked {
       @extend .animated, .pulse;
     }

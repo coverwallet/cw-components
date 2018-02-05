@@ -184,6 +184,11 @@ const App = function App() {
       </div>
 
       <div className="clearfix">
+        <h2>Currency with commas and negative values enabled Keyboard input </h2>
+        <InputKeyboard currency negatives commas />
+      </div>
+
+      <div className="clearfix">
         <h2>Currency Keyboard input with euro currencyType</h2>
         <InputKeyboard currency currencyType="euro" />
       </div>

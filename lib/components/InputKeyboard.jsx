@@ -8,10 +8,20 @@ import exists from '../utils/exists';
 const convertNextValue = (value, props) => {
   let nextValue = String(value).replace(/,/g, '');
   nextValue = nextValue.indexOf('0') !== -1 ? nextValue : nextValue || '';
-  nextValue = props.type === 'number' && nextValue !== '' ? parseInt(nextValue, 0) : nextValue;
+  nextValue = convertNegativeValues(nextValue, props);
   nextValue = props.commas ? numberWithCommas(nextValue) : nextValue;
   return nextValue;
 };
+
+const convertNegativeValues = (nextValue, props) => {
+  let currentValue = nextValue;
+
+  if (nextValue !== '-') {
+    currentValue = props.type === 'number' && nextValue !== '' ? parseInt(nextValue, 10) : nextValue;
+  }
+
+  return nextValue;
+}
 
 class InputKeyboard extends React.Component {
   constructor(props) {
@@ -20,8 +30,6 @@ class InputKeyboard extends React.Component {
       value: convertNextValue(exists(props.value) ? props.value : '', props),
     };
   }
-
-  isValueNegative = () => this.state.value < 0 && this.props.negativeEnabled;
 
   componentWillReceiveProps(nextProps) {
     if (this.state.value !== nextProps.value) {
@@ -60,6 +68,12 @@ class InputKeyboard extends React.Component {
     } else {
       if (!value || value === 'NaN') {
         value = `${key}`;
+      } else if ( key === '-') {
+        if (value.indexOf(key) >= 0) {
+          value = value.substring(1, value.length);
+        } else {
+          value = `${key}${value}`;
+        }
       } else {
         value = `${value}${key}`;
       }
@@ -77,11 +91,12 @@ class InputKeyboard extends React.Component {
   };
 
   render() {
-    const { min, currency, currencyType = 'dollar', commas, width, type, autoFocus, maxLength, negativeEnabled } = this.props;
+    const { min, currency, currencyType = 'dollar', commas, width, type, autoFocus, maxLength, negatives } = this.props;
     const inputClass = classNames(
       'input-keyboard__input',
       { 'input-keyboard__input--currency': currency },
-      { 'input-keyboard__input--nan': commas || type !== 'number' }
+      { 'input-keyboard__input--nan': commas || type !== 'number' }, 
+      { 'input-keyboard__input--negative': this.state.value.indexOf('-') === 0 }
     );
     return (
       <div className="input-keyboard" style={{ width }}>
@@ -93,14 +108,17 @@ class InputKeyboard extends React.Component {
           pattern={commas || type !== 'number' ? '[0-9,-]*' : '[0-9]*'}
           inputMode="numeric"
           lang="en"
-          min={negativeEnabled ? Number.MIN_SAFE_INTEGER : min || 0}
+          min={negatives ? Number.MIN_SAFE_INTEGER : min || 0}
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={autoFocus}
           maxLength={maxLength}
-          style={{color: this.isValueNegative() ? 'red' : ''}}
         />
-        <Keyboard pressKey={this.pressKey} deleteKey={this.deleteKey} />
+        <Keyboard
+          pressKey={this.pressKey}
+          deleteKey={this.deleteKey}
+          dashKeyActive={this.props.negatives}
+        />
       </div>
     );
   }

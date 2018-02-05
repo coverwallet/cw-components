@@ -46,6 +46,10 @@
       padding-right: 10px;
     }
 
+    &--negative {
+      color: $cwColor-red-medium;
+    }
+
     &--currency {
       @include media($mobile) {
         padding-left: 35px;

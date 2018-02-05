@@ -30,13 +30,13 @@ class Keyboard extends React.Component {
             {[1, 2, 3].map(i => <td key={i} className="keyboard__number" onClick={() => this.click(i)}>{i}</td>)}
           </tr>
           <tr className="keyboard__row">
-            {dashKey && (
+            {dashKeyActive && (
               <td
-                className={`keyboard__number ${dashKeyActive ? 'keyboard__number--active' : ''}`}
-                onClick={dashKey}
+                className="keyboard__number"
+                onClick={() => this.click('-')}
               >-</td>
             )}
-            <td className="keyboard__number keyboard__number--0" colSpan={dashKey ? '1' : '2'} onClick={() => this.click(0)}>0</td>
+            <td className="keyboard__number keyboard__number--0" colSpan={dashKeyActive ? '1' : '2'} onClick={() => this.click(0)}>0</td>
             <td key="10" className="keyboard__delete keyboard__backspace" onClick={this.delete} />
           </tr>
         </tbody>
@@ -48,7 +48,6 @@ class Keyboard extends React.Component {
 Keyboard.propTypes = {
   pressKey: PropTypes.func.isRequired,
   deleteKey: PropTypes.func.isRequired,
-  dashKey: PropTypes.func,
   dashKeyActive: PropTypes.bool,
 };
 
