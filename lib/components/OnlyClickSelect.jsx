@@ -111,8 +111,8 @@ class OnlyClickSelect extends React.Component {
   render() {
     const {
       type, options, placeholder, hint, errorMessage,
-      highlight, maxVisible, onHelpIconClick,
-      disableFilter, disableInput, disableDelete
+      highlight, highlightSanitizer, maxVisible, onHelpIconClick,
+      disableFilter, disableInput, disableDelete,
     } = this.props;
     const { values, typedValue } = this.state;
     const filteredOptions = disableFilter
@@ -160,6 +160,7 @@ class OnlyClickSelect extends React.Component {
               onClick={this.handleClick}
               typedValue={typedValue}
               highlight={highlight}
+              highlightSanitizer={highlightSanitizer}
             />
           }
         </div>
@@ -185,6 +186,7 @@ OnlyClickSelect.propTypes = {
   disableDelete: PropTypes.bool,
   autoFocus: PropTypes.bool,
   highlight: PropTypes.bool,
+  highlightSanitizer: PropTypes.func,
   disableInput: PropTypes.bool,
   autoScroll: PropTypes.bool,
   scrollTop: PropTypes.number,

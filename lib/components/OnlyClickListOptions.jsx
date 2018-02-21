@@ -4,7 +4,17 @@ import OnlyClickOption from './OnlyClickListOption';
 import classNames from 'classnames';
 
 function OnlyClickListOptions(props) {
-  const { options, selectedValues, typedValue, highlight, listType, onClick, onHelpClick, disabled } = props;
+  const {
+    options,
+    selectedValues,
+    typedValue,
+    highlight,
+    highlightSanitizer,
+    listType,
+    onClick,
+    onHelpClick,
+    disabled,
+  } = props;
 
   return (
     <ul
@@ -18,6 +28,7 @@ function OnlyClickListOptions(props) {
           checked={selectedValues.indexOf(option.value) !== -1}
           typedValue={typedValue}
           highlight={highlight}
+          highlightSanitizer={highlightSanitizer}
           listType={listType}
           onClick={onClick}
           onHelpClick={onHelpClick}
@@ -36,7 +47,9 @@ OnlyClickListOptions.propTypes = {
   selectedValues: PropTypes.arrayOf(PropTypes.string),
   typedValue: PropTypes.string,
   highlight: PropTypes.bool,
+  highlightSanitizer: PropTypes.func,
   listType: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default OnlyClickListOptions;
