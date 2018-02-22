@@ -13,6 +13,7 @@ function OnlyClickListOption({
   tooltipKey,
   typedValue,
   highlight,
+  highlightSanitizer,
   listType,
   onClick,
   onHelpClick,
@@ -33,7 +34,12 @@ function OnlyClickListOption({
       {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
       <span className={messageClass}>
         {highlight ? (
-          <Highlighter highlightClassName={'oc-option__search-term'} searchWords={typedValue.trim().split(' ')} textToHighlight={label} />
+          <Highlighter
+            highlightClassName={'oc-option__search-term'}
+            searchWords={typedValue.trim().split(' ')}
+            textToHighlight={label}
+            sanitize={highlightSanitizer}
+          />
         ) : (
           label
         )}
@@ -57,6 +63,7 @@ OnlyClickListOption.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   highlight: PropTypes.bool,
+  highlightSanitizer: PropTypes.func,
   listType: PropTypes.string,
   onClick: PropTypes.func,
   onHelpClick: PropTypes.func,
