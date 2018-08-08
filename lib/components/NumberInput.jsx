@@ -63,7 +63,8 @@ class NumberInput extends React.Component {
   };
 
   handleMinus = () => {
-    const number = parseInt(String(this.refs.input.value).replace(/[,%]/g, ''), 10) || 0;
+    const inputValue = parseInt(String(this.refs.input.value).replace(/[,%]/g, ''), 10);
+    const number = inputValue || this.props.firstDecrement + 1 || 0;
     const step = this.props.step ? this.props.step : 1;
     const min = this.props.min ? this.props.min : 0;
     if ((number - step) >= min) {
@@ -117,6 +118,7 @@ NumberInput.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   firstIncrement: PropTypes.number,
+  firstDecrement: PropTypes.number,
   step: PropTypes.number,
   currency: PropTypes.bool,
   currencyType: PropTypes.string,

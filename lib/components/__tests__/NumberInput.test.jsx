@@ -25,4 +25,17 @@ describe('NumberInput', () => {
     wrapper.find('.number-input__plus').simulate('click');
     expect(wrapper.find('input').props().value).toBe(firstIncrement);
   });
+
+  it('should mantain the input empty when clicking minus if value is not set', () => {
+    const wrapper = mount(<NumberInput />);
+    wrapper.find('.number-input__minus').simulate('click');
+    expect(wrapper.find('input').props().value).toBe('');
+  });
+
+  it('should show firstDecrement when decrement for first time if it exists', () => {
+    const firstDecrement = 2017;
+    const wrapper = mount(<NumberInput firstDecrement={firstDecrement} />);
+    wrapper.find('.number-input__minus').simulate('click');
+    expect(wrapper.find('input').props().value).toBe(firstDecrement);
+  });
 });

@@ -214,8 +214,8 @@ const App = function App() {
         </div>
 
         <div className="clearfix">
-          <h3>First increment 2018</h3>
-          <NumberInput firstIncrement={2018} />
+          <h3>First increment 2018, First Decrement 2017</h3>
+          <NumberInput firstIncrement={2018} firstDecrement={2017} />
         </div>
 
         <div className="clearfix">
