@@ -214,6 +214,11 @@ const App = function App() {
         </div>
 
         <div className="clearfix">
+          <h3>First increment 2018</h3>
+          <NumberInput firstIncrement={2018} />
+        </div>
+
+        <div className="clearfix">
           <h3>Percents</h3>
           <NumberInput
             type="text"

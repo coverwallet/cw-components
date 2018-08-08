@@ -48,7 +48,8 @@ class NumberInput extends React.Component {
   };
 
   handlePlus = () => {
-    const number = parseInt(String(this.refs.input.value).replace(/[,%]/g, ''), 10) || 0;
+    const inputValue = parseInt(String(this.refs.input.value).replace(/[,%]/g, ''), 10);
+    const number = inputValue || this.props.firstIncrement - 1 || 0;
     const step = this.props.step ? this.props.step : 1;
     const max = this.props.max ? this.props.max : null;
     const nextValue = number + step;
@@ -72,7 +73,7 @@ class NumberInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus } = this.props;
+    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus, firstIncrement } = this.props;
     const inputClass = classNames(
       'number-input__input',
       { 'number-input__input--nan number-input__input--currency': currency },
@@ -115,6 +116,7 @@ NumberInput.propTypes = {
   type: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
+  firstIncrement: PropTypes.number,
   step: PropTypes.number,
   currency: PropTypes.bool,
   currencyType: PropTypes.string,
