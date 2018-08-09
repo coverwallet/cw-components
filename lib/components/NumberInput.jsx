@@ -74,7 +74,7 @@ class NumberInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus, firstIncrement } = this.props;
+    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus } = this.props;
     const inputClass = classNames(
       'number-input__input',
       { 'number-input__input--nan number-input__input--currency': currency },
