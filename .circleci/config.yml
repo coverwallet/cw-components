@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/coverwallet/quotes-frontend
+    parallelism: 1
+    shell: /bin/bash --login
+    docker:
+      - image: circleci/node:8.4.0-stretch-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dep-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run: yarn
+      - save_cache:
+          key: v1-dep-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths: ./node_modules
+      - run: yarn test
+      - run: yarn build
+      - run:
+          name: "Punisher Notifications"
+          command: ./script/punisher_notification.sh
+          when: on_fail
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build
