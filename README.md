@@ -38,9 +38,10 @@ This still have some bug with fonts on coverwallet.github.io
 
 ## To publish new version to npm
 
-1. Create a user at www.npmjs.com, if you haven't yet
-2. Make ```npm login```
-3. Ask to add you to collaborators for https://www.npmjs.com/package/cw-components
-4. Create a release version at github
-5. Run ```npm publish```
+1. Run ```npm version <update_type>``` as explained here https://docs.npmjs.com/getting-started/publishing-npm-packages#how-to-update-the-version-number
+2. Create a user at www.npmjs.com, if you haven't yet
+3. Make ```npm login```
+4. Ask to add you to collaborators for https://www.npmjs.com/package/cw-components
+5. Create a release version at github
+6. Run ```npm publish```
 
