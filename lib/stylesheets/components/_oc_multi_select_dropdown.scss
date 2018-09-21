@@ -62,9 +62,10 @@
     .oc-option__down-icon,
     .oc-option__up-icon {
       display: table-cell;
-      padding: 4px 0px 4px 10px;
+      padding:0px 0px 0px 10px;
       float: right;
       @include media($mobile) {
+        padding: 4px 0px 4px 10px;
         border-left: 2px solid $cwColor-gray-dark;
       }
 

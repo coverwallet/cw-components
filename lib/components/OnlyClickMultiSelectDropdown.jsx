@@ -37,6 +37,9 @@ class OnlyClickMultiSelectDropdown extends React.Component {
   handleNonMultiselectClick = value => {
     const { values } = this.state;
     this.setState({ values: [value] });
+    if (this.props.onClick) {
+      this.props.onClick(value);
+    }
   };
 
   handleDelete(value) {
