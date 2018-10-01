@@ -319,7 +319,7 @@ const App = function App() {
       </div>
 
       <div>
-        <h2>Icon Radio Group 3 options (not required)</h2>
+        <h2>Icon Radio Group 3 options (not required icon)</h2>
 
         <IconRadioGroup
           options={[...iconRadioGroupOptions, {
