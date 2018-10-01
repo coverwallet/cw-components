@@ -312,8 +312,23 @@ const App = function App() {
             value: 'Not sure',
             iconClass: 'styleguide-icon-onlyclick-notsure',
           }]}
-          name="test_radio_input"
+          name="test_radio_input2"
           value="Not sure"
+          onChange={(value) => console.log('You pick ', value)}
+        />
+      </div>
+
+      <div>
+        <h2>Icon Radio Group 3 options (not required icon)</h2>
+
+        <IconRadioGroup
+          options={[...iconRadioGroupOptions, {
+            label: 'Not required',
+            value: 'Not required',
+            iconClass: 'coverwallet-general-notrequired',
+          }]}
+          name="test_radio_input3"
+          value="Not required"
           onChange={(value) => console.log('You pick ', value)}
         />
       </div>
