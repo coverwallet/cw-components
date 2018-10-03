@@ -3,6 +3,24 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import exists from '../utils/exists';
 
+const removeThousandsSplitter = (str, thousandsSplitter) => {
+  const regex = new RegExp(`\\${thousandsSplitter}`, 'g');
+
+  return str.replace(regex, '');
+};
+
+const removeInvalidCharacters = (str, thousandsSplitter, decimalSplitter) => {
+  let validValue = String(str);
+  validValue = removeThousandsSplitter(validValue, thousandsSplitter);
+  const regex = new RegExp(`(\\d+(?:\\${decimalSplitter}\\d{0,2})?)`, 'g');
+  const match = validValue.match(regex);
+
+  return match ? match[0] : undefined;
+};
+
+const addThousandsSplitter = (value, thousandsSplitter) =>
+  String(value).replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSplitter);
+
 const convertNextValue = (value, props) => {
   let nextValue = removeInvalidCharacters(value, props.thousandsSplitter, props.decimalSplitter);
   if (!nextValue) {
@@ -15,23 +33,6 @@ const convertNextValue = (value, props) => {
     nextValue = props.min;
   }
   return addThousandsSplitter(nextValue, props.thousandsSplitter);
-};
-
-const removeInvalidCharacters = (str, thousandsSplitter, decimalSplitter) => {
-  let validValue = String(str);
-  validValue = removeThousandsSplitter(validValue, thousandsSplitter);  
-  const regex = new RegExp(`(\\d+(?:\\${decimalSplitter}\\d{0,2})?)`, 'g');
-  const match = validValue.match(regex);
-  return match ? match[0] : undefined;
-}
-
-const removeThousandsSplitter = (str, thousandsSplitter) => {
-  const regex = new RegExp(`\\${thousandsSplitter}`,'g');
-  return str.replace(regex, '');
-};
-
-const addThousandsSplitter = (value, thousandsSplitter) => {
-  return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSplitter);
 };
 
 class CurrencyInput extends React.Component {
