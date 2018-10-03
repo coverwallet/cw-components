@@ -22,7 +22,6 @@ const removeInvalidCharacters = (str, thousandsSplitter, decimalSplitter) => {
   validValue = removeThousandsSplitter(validValue, thousandsSplitter);  
   const regex = new RegExp(`(\\d+(?:\\${decimalSplitter}\\d{0,2})?)`, 'g');
   const match = validValue.match(regex);
-  console.log(match);
   return match ? match[0] : undefined;
 }
 

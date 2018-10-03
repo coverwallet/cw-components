@@ -15,7 +15,6 @@ describe('CurrencyInput', () => {
 
   it('should admit only 2 decimal values', () => {
     const wrapper = mount(<CurrencyInput value="23.123"/>);
-    //wrapper.find('.number-input__plus').simulate('click');
     expect(wrapper.find('input').props().value).toBe("23.12");
   });
 
