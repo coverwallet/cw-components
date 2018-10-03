@@ -12,7 +12,7 @@ const removeThousandsSplitter = (str, thousandsSplitter) => {
 const removeInvalidCharacters = (str, thousandsSplitter, decimalSplitter) => {
   let validValue = String(str);
   validValue = removeThousandsSplitter(validValue, thousandsSplitter);
-  const regex = new RegExp(`(\\d+(?:\\${decimalSplitter}\\d{0,2})?)`, 'g');
+  const regex = new RegExp(`(-?\\d*(?:\\${decimalSplitter}\\d{0,2})?)`, 'g');
   const match = validValue.match(regex);
 
   return match ? match[0] : undefined;
@@ -112,7 +112,7 @@ CurrencyInput.propTypes = {
 };
 
 CurrencyInput.defaultProps = {
-  min: 0,
+  min: Number.MIN_SAFE_INTEGER,
   max: Number.MAX_SAFE_INTEGER,
   decimalSplitter: '.',
   thousandsSplitter: ',',
