@@ -252,15 +252,15 @@ const App = function App() {
         <h2>Currency input</h2>
         <div className="clearfix">
           <h3>Default options</h3>
-          <CurrencyInput></CurrencyInput>
+          <CurrencyInput />
         </div>
         <div className="clearfix">
           <h3>Euro currencyType and decimals</h3>
-          <CurrencyInput 
+          <CurrencyInput
             currencyType="euro"
             decimalSplitter=","
             thousandsSplitter="."
-            ></CurrencyInput>
+          />
         </div>
       </div>
 
