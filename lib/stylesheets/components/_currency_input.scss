@@ -1,0 +1,36 @@
+.currency-input {
+  position: relative;
+  width: 100%;
+  
+  &__input {
+    width: 100%;
+    height: 40px;
+    padding-left: 35px;
+    padding-right: 10px;
+    text-align: right;
+    font-size: 13px;
+    color: $cwColor-base-bluegray;
+    background-color: $cwColor-base-white;
+    border: 1px solid $cwColor-black-light;
+    border-radius: 0;
+    box-sizing: border-box;
+  }
+  
+  &__icon {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    height: 30px;
+    width: 30px;
+    font-size: 28px;
+    background-color: $cwColor-base-white;
+    
+    &--dollar {
+      @include cw-covericon-before(onlyclick-dollar, 0, $cwColor-black-light);
+    }
+    
+    &--euro {
+      @include coverwallet-general-before(euro-circle, 0, $cwColor-black-light);
+    }
+  } 
+}
