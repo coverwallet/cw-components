@@ -3,26 +3,33 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import exists from '../utils/exists';
 
-const removeThousandsSplitter = (str, thousandsSplitter) => {
-  const regex = new RegExp(`\\${thousandsSplitter}`, 'g');
+const formatNumberWithDecimalSeparator = (number, decimalSeparator) => {
+  const [integers, decimals] = String(number).split('.');
+  const decimalSection = decimals ? `${decimalSeparator}${decimals}` : '';
+
+  return `${integers}${decimalSection}`;
+};
+
+const removeThousandsSeparator = (str, thousandsSeparator) => {
+  const regex = new RegExp(`\\${thousandsSeparator}`, 'g');
 
   return str.replace(regex, '');
 };
 
-const removeInvalidCharacters = (str, thousandsSplitter, decimalSplitter) => {
-  let validValue = String(str);
-  validValue = removeThousandsSplitter(validValue, thousandsSplitter);
-  const regex = new RegExp(`(-?\\d*(?:\\${decimalSplitter}\\d{0,2})?)`, 'g');
+const removeInvalidCharacters = (str, thousandsSeparator, decimalSeparator) => {
+  const validValue = removeThousandsSeparator(str, thousandsSeparator);
+  const regex = new RegExp(`(-?\\d*(?:\\${decimalSeparator}\\d{0,2})?)`, 'g');
   const match = validValue.match(regex);
 
   return match ? match[0] : undefined;
 };
 
-const addThousandsSplitter = (value, thousandsSplitter) =>
-  String(value).replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSplitter);
+const addThousandsSeparator = (value, thousandsSeparator) =>
+  String(value).replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
 
 const convertNextValue = (value, props) => {
-  let nextValue = removeInvalidCharacters(value, props.thousandsSplitter, props.decimalSplitter);
+  let nextValue = isNaN(value) ? value : formatNumberWithDecimalSeparator(value, props.decimalSeparator);
+  nextValue = removeInvalidCharacters(nextValue, props.thousandsSeparator, props.decimalSeparator);
   if (!nextValue) {
     return '';
   }
@@ -32,7 +39,7 @@ const convertNextValue = (value, props) => {
   if (Number(nextValue) < props.min) {
     nextValue = props.min;
   }
-  return addThousandsSplitter(nextValue, props.thousandsSplitter);
+  return addThousandsSeparator(nextValue, props.thousandsSeparator);
 };
 
 class CurrencyInput extends React.Component {
@@ -55,8 +62,12 @@ class CurrencyInput extends React.Component {
     const nextValue = convertNextValue(value, this.props);
     this.setState({ value: nextValue });
     if (this.props.setValue) {
-      this.props.setValue(Number(nextValue));
+      this.props.setValue(this.numberFromValue(nextValue));
     }
+  }
+
+  numberFromValue(value) {
+    return Number(removeThousandsSeparator(value, this.props.thousandsSeparator));
   }
 
   handleChange = e => {
@@ -91,6 +102,12 @@ class CurrencyInput extends React.Component {
   }
 }
 
+const differentPropsValueValidator = (props, propName, otherPropName, componentName) => {
+  if (props[propName] === props[otherPropName]) {
+    return new Error(`Invalid prop ${propName} supplied to ${componentName}. Values of ${propName} and ${otherPropName} must be different.`);
+  }
+};
+
 CurrencyInput.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
@@ -100,8 +117,8 @@ CurrencyInput.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   currencyType: PropTypes.string,
-  decimalSplitter: PropTypes.string,
-  thousandsSplitter: PropTypes.string,
+  decimalSeparator: (props, propName, componentName) => differentPropsValueValidator(props, propName, 'thousandsSeparator', componentName),
+  thousandsSeparator: (props, propName, componentName) => differentPropsValueValidator(props, propName, 'decimalSeparator', componentName),
   autoFocus: PropTypes.bool,
   onBlur: PropTypes.func,
   setValue: PropTypes.func,
@@ -114,8 +131,8 @@ CurrencyInput.propTypes = {
 CurrencyInput.defaultProps = {
   min: Number.MIN_SAFE_INTEGER,
   max: Number.MAX_SAFE_INTEGER,
-  decimalSplitter: '.',
-  thousandsSplitter: ',',
+  decimalSeparator: '.',
+  thousandsSeparator: ',',
 };
 
 export default CurrencyInput;
