@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import exists from '../utils/exists';
 
+const isNumeric = (value) => {
+  const regex = new RegExp('-?\\d*(\\.\\d{1,2})?', 'g');
+  const match = String(value).match(regex);
+  return match[0] === String(value);
+};
+
 const formatNumberWithDecimalSeparator = (number, decimalSeparator) => {
   const [integers, decimals] = String(number).split('.');
   const decimalSection = decimals ? `${decimalSeparator}${decimals}` : '';
@@ -28,7 +34,7 @@ const addThousandsSeparator = (value, thousandsSeparator) =>
   String(value).replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
 
 const convertNextValue = (value, props) => {
-  let nextValue = isNaN(value) ? value : formatNumberWithDecimalSeparator(value, props.decimalSeparator);
+  let nextValue = isNumeric(value) ? formatNumberWithDecimalSeparator(value, props.decimalSeparator) : value;
   nextValue = removeInvalidCharacters(nextValue, props.thousandsSeparator, props.decimalSeparator);
   if (!nextValue) {
     return '';
@@ -60,9 +66,11 @@ class CurrencyInput extends React.Component {
 
   setNextValue(value) {
     const nextValue = convertNextValue(value, this.props);
+    const numericValue = this.numberFromValue(nextValue);
+    const valueHasChanged = numericValue !== this.numberFromValue(this.state.value);
     this.setState({ value: nextValue });
-    if (this.props.setValue) {
-      this.props.setValue(this.numberFromValue(nextValue));
+    if (this.props.setValue && valueHasChanged) {
+      this.props.setValue(numericValue);
     }
   }
 
