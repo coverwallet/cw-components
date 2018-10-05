@@ -66,9 +66,11 @@ class CurrencyInput extends React.Component {
 
   setNextValue(value) {
     const nextValue = convertNextValue(value, this.props);
+    const numericValue = this.numberFromValue(nextValue);
+    const valueHasChanged = numericValue !== this.numberFromValue(this.state.value);
     this.setState({ value: nextValue });
-    if (this.props.setValue) {
-      this.props.setValue(this.numberFromValue(nextValue));
+    if (this.props.setValue && valueHasChanged) {
+      this.props.setValue(numericValue);
     }
   }
 
