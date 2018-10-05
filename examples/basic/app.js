@@ -15,6 +15,7 @@ import {
   CwFlashNotification,
   Checkbox,
   RadioInputGroup,
+  CurrencyInput,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -245,7 +246,28 @@ const App = function App() {
           <h3>Currency with euro currencyType</h3>
           <NumberInput width="25%" currency currencyType="euro" />
         </div>
+      </div>
 
+      <div className="clearfix">
+        <h2>Currency input</h2>
+        <div className="clearfix">
+          <h3>Default options</h3>
+          <CurrencyInput
+            width="25%"
+          />
+        </div>
+        <div className="clearfix">
+          <h3>Euro currencyType and decimals</h3>
+          <CurrencyInput
+            currencyType="euro"
+            decimalSplitter=","
+            thousandsSplitter="."
+            width="25%"
+          />
+        </div>
+      </div>
+
+      <div className="clearfix">
         <div className="clearfix">
           <h3>Base Checkbox</h3>
           <form className="form">
@@ -312,8 +334,23 @@ const App = function App() {
             value: 'Not sure',
             iconClass: 'styleguide-icon-onlyclick-notsure',
           }]}
-          name="test_radio_input"
+          name="test_radio_input2"
           value="Not sure"
+          onChange={(value) => console.log('You pick ', value)}
+        />
+      </div>
+
+      <div>
+        <h2>Icon Radio Group 3 options (not required icon)</h2>
+
+        <IconRadioGroup
+          options={[...iconRadioGroupOptions, {
+            label: 'Not required',
+            value: 'Not required',
+            iconClass: 'coverwallet-general-notrequired',
+          }]}
+          name="test_radio_input3"
+          value="Not required"
           onChange={(value) => console.log('You pick ', value)}
         />
       </div>
