@@ -14,11 +14,13 @@ function OnlyClickListOptions(props) {
     onClick,
     onHelpClick,
     disabled,
+    listClasses,
+    render,
   } = props;
 
   return (
     <ul
-      className={classNames('oc-list-options', {
+      className={classNames('oc-list-options', listClasses, {
         'oc-list-options--disabled': disabled,
       })}
     >
@@ -33,7 +35,9 @@ function OnlyClickListOptions(props) {
           onClick={onClick}
           onHelpClick={onHelpClick}
           {...option}
+          {...props}
           disabled={disabled || option.disabled}
+          render={render}
         />
       ))}
     </ul>
@@ -49,7 +53,9 @@ OnlyClickListOptions.propTypes = {
   highlight: PropTypes.bool,
   highlightSanitizer: PropTypes.func,
   listType: PropTypes.string,
+  listClasses: PropTypes.string,
   disabled: PropTypes.bool,
+  render: PropTypes.func,
 };
 
 export default OnlyClickListOptions;

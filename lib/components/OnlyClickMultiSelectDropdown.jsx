@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OnlyClickDropdownListOptions from './OnlyClickDropdownListOptions';
+import OnlyClickListOptions from './OnlyClickListOptions';
+import OnlyClickDropdownListOption from './OnlyClickDropdownListOption';
 
 class OnlyClickMultiSelectDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      openedItems: [],
       values: props.values,
     };
   }
@@ -15,11 +17,25 @@ class OnlyClickMultiSelectDropdown extends React.Component {
     this.setState(nextState);
   }
 
+  getOptions = () => {
+    const { options } = this.props;
+    const { openedItems } = this.state;
+    return options.map(option => ({ ...option, dropdownShowed: openedItems.includes(option.value) }));
+  };
+
+  handleDropdownClick = value => {
+    const { openedItems = [] } = this.state;
+    const valueIndex = openedItems.indexOf(value);
+    if (valueIndex !== -1) {
+      openedItems.splice(valueIndex, 1);
+    } else {
+      openedItems.push(value);
+    }
+    this.setState({ openedItems });
+  };
+
   propsChanged(nextProps) {
-    return (
-      this.props.values.length !== nextProps.values.length ||
-      this.props.options.length !== nextProps.options.length
-    );
+    return this.props.values.length !== nextProps.values.length || this.props.options.length !== nextProps.options.length;
   }
 
   handleMultiselectClick = value => {
@@ -32,7 +48,7 @@ class OnlyClickMultiSelectDropdown extends React.Component {
     } else {
       this.handleDelete(value);
     }
-  }
+  };
 
   handleNonMultiselectClick = value => {
     const { values } = this.state;
@@ -54,38 +70,28 @@ class OnlyClickMultiSelectDropdown extends React.Component {
     }
   }
 
-  handleDropdownClick = (value) => {
-    const { openedItems = [] } = this.state;
-    const valueIndex = openedItems.indexOf(value);
-    if (valueIndex !== -1) {
-      openedItems.splice(valueIndex, 1);
-    } else {
-      openedItems.push(value);
-    }
-    this.setState({ openedItems });
-  }
-
   render() {
-    const { options, hint, errorMessage, onHelpIconClick, openText, closeText, multiselect } = this.props;
-    const { values, openedItems } = this.state;
+    const { hint, errorMessage, onHelpIconClick, openText, closeText, multiselect } = this.props;
+    const { values } = this.state;
     const handleClick = multiselect ? this.handleMultiselectClick : this.handleNonMultiselectClick;
 
     return (
       <div className="oc-multi-select-dropdown">
         {hint && <div className="oc-multi-select-dropdown__hint">{hint}</div>}
         {errorMessage && <div className="oc-multi-select-dropdown__error">{errorMessage}</div>}
-          <OnlyClickDropdownListOptions
-            listType="multiSelect"
-            isDropdown
-            options={options}
-            selectedValues={values}
-            onClick={handleClick}
-            onHelpClick={onHelpIconClick}
-            onDropdownClick={this.handleDropdownClick}
-            openedElements={openedItems}
-            openDropdownText={openText}
-            closeDropdownText={closeText}
-          />
+        <OnlyClickListOptions
+          listType="multiSelect"
+          options={this.getOptions()}
+          selectedValues={values}
+          onClick={handleClick}
+          onHelpClick={onHelpIconClick}
+          onDropdownClick={this.handleDropdownClick}
+          openDropdownText={openText}
+          closeDropdownText={closeText}
+          listClasses="oc-multi-select-dropdown__list-items"
+          itemClasses="oc-multi-select-dropdown__item"
+          render={OnlyClickDropdownListOption}
+        />
       </div>
     );
   }
