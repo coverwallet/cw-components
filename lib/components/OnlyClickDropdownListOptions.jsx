@@ -23,7 +23,7 @@ function OnlyClickDropdownListOptions(props) {
 
   return (
     <ul
-      className={classNames('oc-list-options', {
+      className={classNames('oc-list-options', 'oc-multi-select-dropdown__list-items', {
         'oc-list-options--disabled': disabled,
       })}
     >

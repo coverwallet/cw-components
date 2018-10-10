@@ -34,32 +34,43 @@ function OnlyClickDropdownListOption({
   dropdownContent,
 }) {
   const optionClass = classNames(
-    'oc-options-list__item oc-list-option',
-    { 'oc-list-option--checked': checked },
+    'oc-list-option',
+    'oc-multi-select-dropdown__item',
     { 'oc-list-option--no-touch': !isIOS() },
     { 'oc-list-option--with-addition': addition },
-    { 'oc-list-option--disabled': disabled },
-    { 'oc-list-option--dropdown-opened': dropdownShowed },
+    { 'oc-list-option--disa__container--checkedbled': disabled },
   );
-  const messageClass = classNames('oc-option__message');
-  const multiSelectIconClass = classNames('oc-option__checked-icon', { 'oc-option__checked-icon--checked': checked });
-  const dropdownIconClass = classNames(dropdownShowed ? 'oc-option__up-icon' : 'oc-option__down-icon');
+  const containerClass = classNames(
+    'oc-dropdown-item', 'oc-dropdown-item__container',
+    { 'oc-dropdown-item__container--checked': checked },
+    { 'oc-dropdown-item__container--opened': dropdownShowed },
+  );
+  const contentClass = classNames('oc-dropdown-item__content');
+  const headClasses = classNames('oc-dropdown-item__head');
+  const dropdownClasses = classNames('oc-dropdown-item__head-info', 'oc-dropdown-item__dropdown-text');
+  const messageClass = classNames('oc-option__message', 'oc-dropdown-item__head-info');
+  const multiSelectIconClass = classNames('oc-dropdown-item__icon', 'oc-dropdown-item__head-info',
+  );
+
+  const dropdownIconClass = classNames(dropdownShowed ? 'oc-dropdown-item__up-icon' : 'oc-dropdown-item__down-icon');
   const dropdownText = dropdownShowed ? closeDropdownText : openDropdownText;
 
   return (
     <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled}>
-      <div className="oc-option__dropdown-head">
-        {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
-        <span className={messageClass}>
-          {label}
-          {addition && <div className="oc-option__addition">{addition}</div>}
-        </span>
-        <span onClick={handleDropdownClick(disabled, onDropdownClick, value)} className="oc-option__dropdown-text-block">
-          <span className="oc-option__dropdown-text">{dropdownText}</span><i className={dropdownIconClass} />
-        </span>
-      </div>
-      <div className="oc-option__dropdown-content">
-        {dropdownContent}
+      <div className={containerClass}>
+        <div className={headClasses}>
+          {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
+          <span className={messageClass}>
+            {label}
+            {addition && <div className="oc-option__addition">{addition}</div>}
+          </span>
+          <span onClick={handleDropdownClick(disabled, onDropdownClick, value)} className={dropdownClasses}>
+            <span>{dropdownText}</span><i className={dropdownIconClass} />
+          </span>
+        </div>
+        <div className={contentClass}>
+          {dropdownContent}
+        </div>
       </div>
     </li>
   );

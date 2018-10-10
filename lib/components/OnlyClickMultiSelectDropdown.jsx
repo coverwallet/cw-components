@@ -74,7 +74,6 @@ class OnlyClickMultiSelectDropdown extends React.Component {
       <div className="oc-multi-select-dropdown">
         {hint && <div className="oc-multi-select-dropdown__hint">{hint}</div>}
         {errorMessage && <div className="oc-multi-select-dropdown__error">{errorMessage}</div>}
-        <div className="oc-multi-select-dropdown__options-container">
           <OnlyClickDropdownListOptions
             listType="multiSelect"
             isDropdown
@@ -87,7 +86,6 @@ class OnlyClickMultiSelectDropdown extends React.Component {
             openDropdownText={openText}
             closeDropdownText={closeText}
           />
-        </div>
       </div>
     );
   }
