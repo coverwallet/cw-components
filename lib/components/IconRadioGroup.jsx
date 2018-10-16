@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IconRadioInput from './IconRadioInput';
 import classNames from 'classnames';
+import exists from '../utils/exists';
 
 class IconRadioGroup extends React.Component {
   constructor(props) {
@@ -9,6 +10,17 @@ class IconRadioGroup extends React.Component {
     this.state = {
       value: props.value,
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.value !== nextProps.value && exists(nextProps.value)) {
+      this.setState({
+        value: nextProps.value,
+      });
+      if (nextProps.onChange) {
+        nextProps.onChange(nextProps.value);
+      }
+    }
   }
 
   getValue() {
@@ -19,7 +31,7 @@ class IconRadioGroup extends React.Component {
     return value;
   }
 
-  handleChange = (value) => {
+  handleChange = value => {
     this.setState({ value });
     if (this.props.onChange) {
       this.props.onChange(value);
@@ -31,7 +43,7 @@ class IconRadioGroup extends React.Component {
     return (
       <div
         className={classNames('icons-radio-group', {
-          'icons-radio-group--disabled': disabled
+          'icons-radio-group--disabled': disabled,
         })}
       >
         {options.map((option, i) => (
@@ -59,6 +71,7 @@ IconRadioGroup.propTypes = {
   getValue: PropTypes.func,
   onChange: PropTypes.func,
   size: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default IconRadioGroup;
