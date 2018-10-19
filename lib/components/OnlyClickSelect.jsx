@@ -7,9 +7,8 @@ import OnlyClickIconOptions from './OnlyClickIconOptions';
 
 const filterOption = (option, typedValue) => {
   const text = typedValue.toLowerCase();
-  const cleanedText = text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-  const regexInput = new RegExp(cleanedText);
-  return regexInput.test(cleanedText);
+  const regexInput = new RegExp(text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'));
+  return regexInput.test(option.value.toLowerCase());
 };
 
 class OnlyClickSelect extends React.Component {
