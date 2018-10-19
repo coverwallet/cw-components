@@ -20,7 +20,7 @@ function OnlyClickListOption(props) {
     onHelpClick,
     itemClasses,
     disabled,
-    render,
+    optionComponent,
   } = props;
   const optionClass = classNames(
     'oc-options-list__item oc-list-option',
@@ -37,7 +37,9 @@ function OnlyClickListOption(props) {
 
   return (
     <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled}>
-      {!render ? (
+      {optionComponent ? (
+        <span>{optionComponent(props)}</span>
+      ) : (
         <span>
           {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
           <span className={messageClass}>
@@ -58,8 +60,6 @@ function OnlyClickListOption(props) {
           )}
           {listType !== 'multiSelect' && <span className="oc-option__next-icon" />}
         </span>
-      ) : (
-        <span>{render(props)}</span>
       )}
     </li>
   );
@@ -80,7 +80,7 @@ OnlyClickListOption.propTypes = {
   itemClasses: PropTypes.string,
   onClick: PropTypes.func,
   onHelpClick: PropTypes.func,
-  render: PropTypes.func,
+  optionComponent: PropTypes.func,
 };
 
 export default OnlyClickListOption;

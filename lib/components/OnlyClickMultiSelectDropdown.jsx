@@ -90,7 +90,7 @@ class OnlyClickMultiSelectDropdown extends React.Component {
           closeDropdownText={closeText}
           listClasses="oc-multi-select-dropdown__list-items"
           itemClasses="oc-multi-select-dropdown__item"
-          render={OnlyClickDropdownListOption}
+          optionComponent={OnlyClickDropdownListOption}
         />
       </div>
     );

@@ -15,7 +15,7 @@ function OnlyClickListOptions(props) {
     onHelpClick,
     disabled,
     listClasses,
-    render,
+    optionComponent,
   } = props;
 
   return (
@@ -37,7 +37,7 @@ function OnlyClickListOptions(props) {
           {...option}
           {...props}
           disabled={disabled || option.disabled}
-          render={render}
+          optionComponent={optionComponent}
         />
       ))}
     </ul>
@@ -55,7 +55,7 @@ OnlyClickListOptions.propTypes = {
   listType: PropTypes.string,
   listClasses: PropTypes.string,
   disabled: PropTypes.bool,
-  render: PropTypes.func,
+  optionComponent: PropTypes.func,
 };
 
 export default OnlyClickListOptions;
