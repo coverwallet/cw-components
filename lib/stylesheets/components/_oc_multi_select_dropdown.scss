@@ -103,6 +103,7 @@
     display: table-cell;
     width: 30px;
     @include cw-icon-before(circle-thin, 0px, $cwColor-base-blue);
+
     &::before {
       font-size: 18px;
       line-height: 20px;
