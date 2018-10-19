@@ -16,6 +16,7 @@ import {
   Checkbox,
   RadioInputGroup,
   CurrencyInput,
+  StickyFooter,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -112,6 +113,7 @@ const baseRadioGroupOptions = [
 
 const App = function App() {
   return (
+    <div>
     <div className="example">
       <h1>cw-components</h1>
 
@@ -501,6 +503,13 @@ const App = function App() {
           />
         </div>
       </div>
+      
+    </div>
+    <StickyFooter>
+        <div className="test">
+           Need help? give us a call (646) 844-9936 | Feedback is a gift. Click here to help us get better.
+        </div>
+      </StickyFooter>
     </div>
   );
 };
