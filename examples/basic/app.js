@@ -113,7 +113,6 @@ const baseRadioGroupOptions = [
 
 const App = function App() {
   return (
-    <div>
     <div className="example">
       <h1>cw-components</h1>
 
@@ -502,15 +501,14 @@ const App = function App() {
             onHelpIconClick={(key) => console.log('Some help info for: ', key)}
           />
         </div>
+        <StickyFooter>
+          <div >
+            Need help? give us a call (646) 844-9936 | Feedback is a gift. Click here to help us get better.
+          </div>
+        </StickyFooter>
       </div>
-      
     </div>
-    <StickyFooter>
-        <div className="test">
-           Need help? give us a call (646) 844-9936 | Feedback is a gift. Click here to help us get better.
-        </div>
-      </StickyFooter>
-    </div>
+
   );
 };
 
