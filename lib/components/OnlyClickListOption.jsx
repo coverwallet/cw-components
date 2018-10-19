@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Highlighter from 'react-highlight-words';
 import { isIOS } from '../utils/deviceDetector';
+import escapeSpecialCharacters from '../utils/string-helper';
 
 function OnlyClickListOption(props) {
   const {
@@ -46,7 +47,7 @@ function OnlyClickListOption(props) {
             {highlight ? (
               <Highlighter
                 highlightClassName={'oc-option__search-term'}
-                searchWords={typedValue.trim().split(' ')}
+                searchWords={escapeSpecialCharacters(typedValue.trim()).split(' ')}
                 textToHighlight={label}
                 sanitize={highlightSanitizer}
               />
