@@ -508,7 +508,6 @@ const App = function App() {
         </StickyFooter>
       </div>
     </div>
-
   );
 };
 
