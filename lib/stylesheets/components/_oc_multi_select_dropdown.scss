@@ -1,0 +1,139 @@
+.oc-multi-select-dropdown {
+  &__hint {
+    @include clearfix();
+    padding: 10px 1px 10px;
+    font-size: 14px;
+    line-height: 16px;
+    color: $cwColor-black-xmedium;
+  }
+
+  &__error {
+    margin: 7px 0;
+    color: $cwColor-base-red;
+    font-size: 14px;
+  }
+
+  &__list-items {
+    border: none;
+  }
+
+  &__item {
+    padding: 0 !important;
+    margin: 3px 0 !important;
+    border: 1px solid $cwColor-black-light !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.oc-dropdown-item {
+  $block: &;
+
+  &:hover {
+    &:not(#{$block}__container--checked) {
+      #{$block}__head {
+        background-color: $cwColor-gray-dark;
+      }
+    }
+  }
+
+  &__container {
+    color: $cwColor-black-dark;
+    padding: 0px;
+    border-width: 1px;
+    background-color: $cwColor-base-white;
+  }
+
+  &__container--checked {
+    background-color: $cwColor-base-blue;
+
+    & #{$block}__head {
+      color: $cwColor-base-white;
+    }
+
+    & #{$block}__dropdown-text {
+      color: $cwColor-base-white;
+    }
+
+    & #{$block}__icon {
+      @include cw-icon-before(check-circle, 0px, $cwColor-base-white);
+      &::before {
+        color: $cwColor-base-white;
+      }
+    }
+  }
+
+  &__container--opened {
+    &:not(#{$block}__container--checked) {
+      background: $cwColor-gray-xlight;
+    }
+
+    & #{$block}__content {
+      display: block;
+      background-color: $cwColor-base-white;
+    }
+  }
+
+  &__head {
+    padding: 7px 10px;
+    display: table;
+    width: 100%;
+  }
+
+  &__content {
+    padding: 7px 10px;
+    display: none;
+  }
+
+  &__head-info {
+    vertical-align: middle;
+  }
+
+  &__dropdown-text {
+    display: table-cell;
+    padding-left: 5px;
+    font-size: 12px;
+    text-align: right;
+    color: $cwColor-base-blue;
+    @include media($mobile) {
+      display: none;
+    }
+  }
+
+  &__icon {
+    display: table-cell;
+    width: 30px;
+    @include cw-icon-before(circle-thin, 0px, $cwColor-base-blue);
+
+    &::before {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
+  &__down-icon {
+    @extend .fa, .fa-angle-down;
+  }
+
+  &__up-icon {
+    @extend .fa, .fa-angle-up;
+  }
+
+  &__down-icon,
+  &__up-icon {
+    display: table-cell;
+    padding: 0px 0px 0px 10px;
+    float: right;
+    @include media($mobile) {
+      padding: 4px 0px 4px 10px;
+      border-left: 2px solid $cwColor-gray-dark;
+    }
+
+    &::before {
+      font-size: 16px;
+      line-height: 20px;
+      @include media($mobile) {
+        font-size: 34px;
+      }
+    }
+  }
+}
