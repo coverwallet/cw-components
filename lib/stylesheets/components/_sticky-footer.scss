@@ -9,13 +9,12 @@
   width: 100%;
   box-shadow: 1px -3px 5px 0 rgba(110, 110, 110, 0.14);
   border: solid 1px #f0f0f0;
-  font-family: 'OpenSans';
   font-size: 15px;
   z-index: 2;
 
   @include media ($mobile) {
     box-shadow: none;
-    background-color: #f9f9f9;
+    background-color: $gray-light-color;
     position: static;
     padding: 5px;
     border: none;
