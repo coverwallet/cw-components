@@ -1,0 +1,27 @@
+.sticky-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  color: $cwColor-black-xmedium;
+  width: 100%;
+  box-shadow: 1px -3px 5px 0 rgba(110, 110, 110, 0.14);
+  border: solid 1px #f0f0f0;
+  font-size: 15px;
+  z-index: 2;
+
+  @include media ($mobile) {
+    box-shadow: none;
+    background-color: $gray-light-color;
+    position: static;
+    padding: 5px;
+    border: none;
+  }
+
+  &__container {
+    text-align: center;
+    padding: 5px;
+  }
+}

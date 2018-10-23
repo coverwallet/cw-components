@@ -16,6 +16,7 @@ import {
   Checkbox,
   RadioInputGroup,
   CurrencyInput,
+  StickyFooter,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -500,6 +501,11 @@ const App = function App() {
             onHelpIconClick={(key) => console.log('Some help info for: ', key)}
           />
         </div>
+        <StickyFooter>
+          <div >
+            Need help? give us a call (646) 844-9936 | Feedback is a gift. Click here to help us get better.
+          </div>
+        </StickyFooter>
       </div>
     </div>
   );
