@@ -55,6 +55,11 @@
     }
   }
 
+  &__container{
+    display: table;
+    width: 100%;
+  }
+
   &:focus:not(&--disabled),
   &:active:not(&--disabled),
   &--clicked:not(&--disabled) {

@@ -41,7 +41,7 @@ function OnlyClickListOption(props) {
       {optionComponent ? (
         <span>{optionComponent(props)}</span>
       ) : (
-        <span>
+        <span className="oc-list-option__container">
           {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
           <span className={messageClass}>
             {highlight ? (
