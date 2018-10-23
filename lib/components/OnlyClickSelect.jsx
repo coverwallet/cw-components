@@ -4,9 +4,11 @@ import smoothScroll from 'smoothscroll';
 import _ from 'lodash';
 import OnlyClickOptionsList from './OnlyClickListOptions';
 import OnlyClickIconOptions from './OnlyClickIconOptions';
+import escapeSpecialCharacters from '../utils/string-helper';
 
 const filterOption = (option, typedValue) => {
-  const regexInput = new RegExp(typedValue.toLowerCase());
+  const text = typedValue.toLowerCase();
+  const regexInput = new RegExp(escapeSpecialCharacters(text));
   return regexInput.test(option.value.toLowerCase());
 };
 
