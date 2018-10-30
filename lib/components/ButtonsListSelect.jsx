@@ -92,6 +92,7 @@ ButtonsListSelect.defaultProps = {
   itemsToShowFirstRender: 6,
   itemsPerPage: 12,
   values: [],
+  selectedValues: [],
   viewMoreEnabled: true,
 };
 
