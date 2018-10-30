@@ -57,7 +57,7 @@ class ButtonsListSelect extends Component {
   }
 
   render() {
-    const { options, viewMoreEnabled, ...rest } = this.props;
+    const { options, selectedValues, viewMoreEnabled, ...rest } = this.props;
     const { isViewMoreEnabled } = this.state;
     const optionsToShow = this.getOptionsToRender();
 
@@ -65,6 +65,7 @@ class ButtonsListSelect extends Component {
       <div>
         <ButtonsListSelectOptions
           options={optionsToShow}
+          selectedValues={selectedValues}
           {...rest}
         />
         {isViewMoreEnabled &&
