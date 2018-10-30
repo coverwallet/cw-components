@@ -41,13 +41,25 @@ class ButtonsListSelect extends Component {
     return lastItemShown < this.props.options.length - 1;
   };
 
-  renderNext = () => {
-    const areOptionsLeft = this.areOptionsLeft.bind(this);
-    const calculateLastItemToShow = this.calculateLastItemToShow.bind(this);
+  updateSelectedValues = (value) => {
+    const { selectedValues } = this.state;
+    const valueIndex = selectedValues.indexOf(value);
 
+    return valueIndex > -1 ? [...selectedValues].splice(valueIndex, 1) : Array.from(new Set([...selectedValues, value]));
+  };
+
+  handleClick = (value) => {
+    this.setState(state => ({
+      selectedValues: this.updateSelectedValues(value),
+    }));
+
+    this.props.onClick(value);
+  };
+
+  renderNext = () => {
     this.setState(() => {
-      const lastItemToShow = calculateLastItemToShow();
-      const isViewMoreEnabled = areOptionsLeft(lastItemToShow);
+      const lastItemToShow = this.calculateLastItemToShow();
+      const isViewMoreEnabled = this.areOptionsLeft(lastItemToShow);
 
       return {
         lastItemToShow,
@@ -57,8 +69,8 @@ class ButtonsListSelect extends Component {
   }
 
   render() {
-    const { options, selectedValues, viewMoreEnabled, ...rest } = this.props;
-    const { isViewMoreEnabled } = this.state;
+    const { options, selectedValues: selectedValuesProp, viewMoreEnabled, onClick, ...rest } = this.props;
+    const { isViewMoreEnabled, selectedValues } = this.state;
     const optionsToShow = this.getOptionsToRender();
 
     return (
@@ -66,6 +78,7 @@ class ButtonsListSelect extends Component {
         <ButtonsListSelectOptions
           options={optionsToShow}
           selectedValues={selectedValues}
+          onClick={this.handleClick}
           {...rest}
         />
         {isViewMoreEnabled &&

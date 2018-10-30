@@ -523,6 +523,7 @@ const App = function App() {
           ))}
           onClick={(value) => console.log('You choose ', value)}
           onClickHelp={(value) => console.log('Clicked help of ', value)}
+          selectedValues={['Business Owners Policy (BOP)']}
         />
       </div>
     </div>
