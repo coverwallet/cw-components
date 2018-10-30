@@ -13,6 +13,7 @@ const ButtonsListSelectOptions = props => {
           key={option.value}
           value={option.value}
           label={option.label}
+          iconClass={option.iconClass}
           infoText={option.infoText}
           onClick={onClick}
           onClickHelp={onClickHelp}

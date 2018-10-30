@@ -8,18 +8,69 @@ class ButtonsListSelect extends Component {
     this.state = {
       values: props.values,
       selectedValues: props.selectedValues,
+      lastItemToShow: props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined,
+      isViewMoreEnabled: props.viewMoreEnabled,
     };
   }
 
+  getOptionsToRender = () => {
+    const { lastItemToShow, isViewMoreEnabled } = this.state;
+    const { options } = this.props;
+    return isViewMoreEnabled ? options.slice(0, lastItemToShow) : options;
+  };
+
+  calculateLastItemToShow = () => {
+    const { lastItemToShow } = this.state;
+    const { itemsPerPage, options } = this.props;
+    let result;
+
+    if (this.props.viewMoreEnabled) {
+      const optionsMaxIndex = options.length - 1;
+      const nextPageMaxIndex = lastItemToShow + itemsPerPage;
+
+      result = Math.min(nextPageMaxIndex, optionsMaxIndex);
+    }
+    return result;
+  };
+
+  areOptionsLeft = (lastItemShown) => {
+    if (!this.state.isViewMoreEnabled) {
+      return this.state.isViewMoreEnabled;
+    }
+
+    return lastItemShown < this.props.options.length - 1;
+  };
+
+  renderNext = () => {
+    const areOptionsLeft = this.areOptionsLeft.bind(this);
+    const calculateLastItemToShow = this.calculateLastItemToShow.bind(this);
+
+    this.setState(() => {
+      const lastItemToShow = calculateLastItemToShow();
+      const isViewMoreEnabled = areOptionsLeft(lastItemToShow);
+
+      return {
+        lastItemToShow,
+        isViewMoreEnabled,
+      };
+    });
+  }
+
   render() {
-    const { showMoreEnabled } = this.props;
+    const { options, viewMoreEnabled, ...rest } = this.props;
+    const { isViewMoreEnabled } = this.state;
+    const optionsToShow = this.getOptionsToRender();
 
     return (
       <div>
-        <ButtonsListSelectOptions {...this.props} />
-        {showMoreEnabled && <button>
-          View more
-        </button>}
+        <ButtonsListSelectOptions
+          options={optionsToShow}
+          {...rest}
+        />
+        {isViewMoreEnabled &&
+          <button onClick={this.renderNext}>
+            View more
+          </button>}
       </div>
     );
   }
@@ -31,14 +82,16 @@ ButtonsListSelect.propTypes = {
   selectedValues: PropTypes.arrayOf(PropTypes.string),
   onClick: PropTypes.func,
   onClickHelp: PropTypes.func,
-  showMoreEnabled: PropTypes.bool,
+  viewMoreEnabled: PropTypes.bool,
+  itemsToShowFirstRender: PropTypes.number,
   itemsPerPage: PropTypes.number,
 };
 
 ButtonsListSelect.defaultProps = {
-  itemsPerPage: 6,
+  itemsToShowFirstRender: 6,
+  itemsPerPage: 12,
   values: [],
-  showMoreEnabled: true,
+  viewMoreEnabled: true,
 };
 
 export default ButtonsListSelect;
