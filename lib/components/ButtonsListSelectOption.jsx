@@ -17,17 +17,19 @@ class ButtonsListSelectOption extends Component {
 
   onClickTitle = e => {
     this.setState({ selected: !this.state.selected });
+    this.props.onClick(e);
   };
 
   onClickTooltip = e => {
     this.setState({ opened: !this.state.opened });
+    this.props.onClickHelp(e);
   };
 
   render() {
     const { label, iconClass, infoText, accordion } = this.props;
     const { selected, opened } = this.state;
 
-    if (false || accordion) {
+    if (true || accordion) {
       return (
         <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle}>
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
