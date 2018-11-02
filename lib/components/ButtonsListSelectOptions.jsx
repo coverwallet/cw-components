@@ -25,10 +25,14 @@ const ButtonsListSelectOptions = props => {
 };
 
 ButtonsListSelectOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string,
+    label: PropTypes.string,
+  }).isRequired).isRequired,
   onClick: PropTypes.func,
   onClickHelp: PropTypes.func,
   selectedValues: PropTypes.arrayOf(PropTypes.string),
+  accordion: PropTypes.bool,
 };
 
 export default ButtonsListSelectOptions;

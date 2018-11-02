@@ -1,0 +1,25 @@
+.question-icon {
+  border-radius: 50%;
+  border: 1px solid gray;
+  width: 19px;
+  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  font-size: 12px;
+
+  &--light {
+    border-color: white;
+    color: white;
+
+  }
+
+  &--colored {
+    border-color: blue;;
+    color: white;
+    background: blue;
+  }
+}
+
+
