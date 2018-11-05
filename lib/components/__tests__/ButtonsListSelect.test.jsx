@@ -2,7 +2,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import insuranceTypes from '../../../examples/basic/catalog_api_json/insuranceTypes.js';
+import insuranceTypes from './data/insuranceTypes.json';
 import { ButtonsListSelect, ButtonsListSelectOption } from '../..';
 
 describe('Buttons List Select', () => {
