@@ -5,9 +5,9 @@ const ButtonsListSelectOption = props => {
   const { value, label, selected, iconClass, onClick, infoText, onClickHelp } = props;
 
   return (
-    <li>
+    <li onClick={() => onClick(value)}>
       <div>
-        <p onClick={() => onClick(value)}>
+        <p>
           <span className={iconClass}></span>
           {label}
         </p>

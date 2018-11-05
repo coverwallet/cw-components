@@ -6,7 +6,7 @@ class ButtonsListSelect extends Component {
   constructor(props) {
     super(props);
 
-    const lastItemToShow = props.viewMoreEnabled ? props.itemsToShowFirstRender: undefined;
+    const lastItemToShow = props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined;
 
     this.state = {
       values: props.values,
@@ -44,19 +44,29 @@ class ButtonsListSelect extends Component {
     return lastItemShown < this.props.options.length - 1;
   };
 
-  updateSelectedValues = (value) => {
-    const { selectedValues } = this.state;
-    const valueIndex = selectedValues.indexOf(value);
+  deselectValue = (selectedValues, valueIndex) => selectedValues.splice(valueIndex, 1) && selectedValues;
 
-    return valueIndex > -1 ? [...selectedValues].splice(valueIndex, 1) : Array.from(new Set([...selectedValues, value]));
+  selectValue = (selectedValues, value) => Array.from(new Set([...selectedValues, value]));
+
+  updateSelectedValues = (selectedValues, value) => {
+    const valueIndex = selectedValues.indexOf(value);
+    return valueIndex > -1 ? this.deselectValue(selectedValues, valueIndex) : this.selectValue(selectedValues, value);
   };
 
   handleClick = (value) => {
-    this.setState(state => ({
-      selectedValues: this.updateSelectedValues(value),
-    }));
+    this.setState((state, props) => {
+      const selectedValues = this.updateSelectedValues(state.selectedValues, value);
 
-    this.props.onClick(value);
+      if (selectedValues.includes(value)) {
+        props.onSelect(value);
+      } else {
+        props.onDeselect(value);
+      }
+
+      return {
+        selectedValues,
+      };
+    });
   };
 
   renderNext = () => {
@@ -74,7 +84,7 @@ class ButtonsListSelect extends Component {
   }
 
   render() {
-    const { options: optionsProp, selectedValues: selectedValuesProp, viewMoreEnabled, onClick, ...rest } = this.props;
+    const { options: optionsProp, selectedValues: selectedValuesProp, viewMoreEnabled, ...rest } = this.props;
     const { isViewMoreEnabled, selectedValues, options } = this.state;
 
     return (
@@ -98,7 +108,8 @@ ButtonsListSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   values: PropTypes.array,
   selectedValues: PropTypes.arrayOf(PropTypes.string),
-  onClick: PropTypes.func,
+  onSelect: PropTypes.func,
+  onDeselect: PropTypes.func,
   onClickHelp: PropTypes.func,
   viewMoreEnabled: PropTypes.bool,
   itemsToShowFirstRender: PropTypes.number,

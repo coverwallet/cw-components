@@ -521,7 +521,8 @@ const App = function App() {
               infoText: type.what_is_it,
             },
           ))}
-          onClick={(value) => console.log('You choose ', value)}
+          onSelect={(value) => console.log('You select ', value)}
+          onDeselect={(value) => console.log('You deselect ', value)}
           onClickHelp={(value) => console.log('Clicked help of ', value)}
           selectedValues={['Business Owners Policy (BOP)']}
         />

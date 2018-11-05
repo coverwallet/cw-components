@@ -10,18 +10,21 @@ describe('Buttons List Select', () => {
     it('does NOT render show more button if pagination is NOT enabled', () => {
       const component = renderComponent(PAGINATION_DISABLED_PROPS);
       const viewMoreButton = getViewMoreButton(component);
+
       expect(viewMoreButton.exists()).toBeFalsy();
     });
 
     it('renders all options if pagination is NOT enabled', () => {
       const component = renderComponent(PAGINATION_DISABLED_PROPS);
       const options = getOptions(component);
+
       expect(options.length).toEqual(DEFAULT_PROPS.options.length);
     });
 
     it('renders 6 options the first time by default', () => {
       const component = renderComponent();
       const options = getOptions(component);
+
       expect(options.length).toEqual(DEFAULT_OPTIONS_FIRST_PAGE);
     });
 
@@ -70,6 +73,11 @@ describe('Buttons List Select', () => {
   });
 
   describe('selected values', () => {
+    beforeEach(() => {
+      DEFAULT_ON_SELECT_CALLBACK.mockReset();
+      DEFAULT_ON_DESELECT_CALLBACK.mockReset();
+    });
+
     it(`set selected prop of option to true when its value is included
         in selectedValues`, () => {
       const testProps = setProps({ selectedValues: [DEFAULT_PROPS.options[0].value] });
@@ -88,16 +96,37 @@ describe('Buttons List Select', () => {
       expect(options.last().prop('selected')).toBeFalsy();
     });
 
-    xit('sets as selected an option when it is clicked', () => {
+    it('calls the onSelect prop when an option is clicked once', () => {
       const component = renderComponent();
-      const options = getOptions(component);
-      clickOption(options.first(), component);
-      expect(options.first().prop('selected')).toBeTruthy();
+      const firstOption = getOptions(component).first();
+      clickOption(firstOption, component);
+
+      expect(DEFAULT_ON_SELECT_CALLBACK).toBeCalledWith(firstOption.props().value);
+    });
+
+    it('does NOT call the onSelect prop twice when an option is clicked twice', () => {
+      const component = renderComponent();
+      const firstOption = getOptions(component).first();
+      clickOption(firstOption, component);
+      clickOption(firstOption, component);
+
+      expect(getNumberOfCalls(DEFAULT_ON_SELECT_CALLBACK)).toEqual(1);
+    });
+
+    it('calls the onDeselect prop when an option is clicked twice', () => {
+      const component = renderComponent();
+      const firstOption = getOptions(component).first();
+      clickOption(firstOption, component);
+      clickOption(firstOption, component);
+
+      expect(DEFAULT_ON_DESELECT_CALLBACK).toBeCalledWith(firstOption.props().value);
     });
   });
 
   const DEFAULT_OPTIONS_FIRST_PAGE = 6;
   const DEFAULT_OPTIONS_PER_PAGE = 12;
+  const DEFAULT_ON_SELECT_CALLBACK = jest.fn();
+  const DEFAULT_ON_DESELECT_CALLBACK = jest.fn();
   const DEFAULT_PROPS = {
     options: insuranceTypes.map((type) => Object.assign({},
       type,
@@ -108,6 +137,8 @@ describe('Buttons List Select', () => {
         infoText: type.what_is_it,
       },
     )),
+    onSelect: DEFAULT_ON_SELECT_CALLBACK,
+    onDeselect: DEFAULT_ON_DESELECT_CALLBACK,
   };
   const setProps = props => Object.assign({}, DEFAULT_PROPS, props);
   const PAGINATION_DISABLED_PROPS = Object.assign({}, DEFAULT_PROPS, { viewMoreEnabled: false });
@@ -122,4 +153,5 @@ describe('Buttons List Select', () => {
     option.simulate('click');
     component.update();
   };
+  const getNumberOfCalls = fn => fn.mock.calls.length;
 });
