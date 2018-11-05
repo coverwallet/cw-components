@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ButtonsListSelectOption from './ButtonsListSelectOption';
 
 const ButtonsListSelectOptions = props => {
-  const { options, selectedValues, onClick, onClickHelp } = props;
+  const { options, selectedOptions, onClick, onClickHelp } = props;
 
   return (
     <ul>
@@ -17,7 +17,7 @@ const ButtonsListSelectOptions = props => {
           infoText={option.infoText}
           onClick={onClick}
           onClickHelp={onClickHelp}
-          selected={selectedValues.includes(option.value)}
+          selected={selectedOptions.includes(option.value)}
         />
       ))}
     </ul>
@@ -28,7 +28,7 @@ ButtonsListSelectOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   onClick: PropTypes.func,
   onClickHelp: PropTypes.func,
-  selectedValues: PropTypes.arrayOf(PropTypes.string),
+  selectedOptions: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default ButtonsListSelectOptions;

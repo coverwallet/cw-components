@@ -80,7 +80,7 @@ describe('Buttons List Select', () => {
 
     it(`set selected prop of option to true when its value is included
         in selectedValues`, () => {
-      const testProps = setProps({ selectedValues: [DEFAULT_PROPS.options[0].value] });
+      const testProps = setProps({ selectedOptions: [DEFAULT_PROPS.options[0].value] });
       const component = renderComponent(testProps);
       const options = getOptions(component);
 
@@ -89,7 +89,7 @@ describe('Buttons List Select', () => {
 
     it(`does NOT set selected prop of option to false when its value is NOT included
         in selectedValues`, () => {
-      const testProps = setProps({ selectedValues: [DEFAULT_PROPS.options[0].value] });
+      const testProps = setProps({ selectedOptions: [DEFAULT_PROPS.options[0].value] });
       const component = renderComponent(testProps);
       const options = getOptions(component);
 
