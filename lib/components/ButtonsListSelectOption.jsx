@@ -5,6 +5,7 @@ import AccordionSelect from './AccordionSelect';
 import WideButton from './WideButton';
 import QuestionIcon from './QuestionIcon';
 import TextWithIcon from './TestWithIcon';
+import IconTooltip from './IconTooltip';
 
 class ButtonsListSelectOption extends Component {
   constructor(props) {
@@ -15,38 +16,40 @@ class ButtonsListSelectOption extends Component {
     };
   }
 
-  onClickTitle = e => {
+  onClickTitle = () => {
     this.setState({ selected: !this.state.selected });
-    this.props.onClick(e);
+    this.props.onClick(this.props.label);
   };
 
-  onClickTooltip = e => {
+  onClickTooltip = () => {
     this.setState({ opened: !this.state.opened });
-    this.props.onClickHelp(e);
+    this.props.onClickHelp(this.props.label);
   };
 
   render() {
     const { label, iconClass, infoText, accordion } = this.props;
     const { selected, opened } = this.state;
 
-    if (true || accordion) {
+    if (false) {
       return (
-        <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle}>
+        <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
           <div className="wide-button__separator" />
           {infoText && (
             <div className="wide-button__right-button" onClick={this.onClickTooltip}>
-              <QuestionIcon className="wide-button__title-item wide-button__title-item--bordered" />
+              <QuestionIcon accordion className="wide-button__title-item wide-button__title-item--bordered" />
             </div>
           )}
         </AccordionSelect>
       );
     } else {
       return (
-        <WideButton selected={selected} onClick={this.onClickTitle}>
+        <WideButton selected={selected}>
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
           <div className="wide-button__separator" />
-          <div className="wide-button__right-button" onClick={this.onClickTitle}>{this.props.iconToolTip}</div>
+          <div className="wide-button__right-button question-icon__tooltip">
+            <QuestionIcon infoText={infoText} className="wide-button__title-item wide-button__title-item--bordered" />
+          </div>
         </WideButton>
       );
     }

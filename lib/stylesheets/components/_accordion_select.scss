@@ -6,7 +6,6 @@
   border-radius: 10px;
   box-sizing: border-box;
   cursor: pointer;
-  overflow: hidden;
   background-color: white;
 
   &:focus:not(&--disabled),
@@ -33,7 +32,8 @@
     }
   }
 
-  &--selected {
+  &--selected,
+  &--selected:hover {
     border-color: $cwColor-blue;
 
     & #{$parent}__content--opened {
@@ -92,6 +92,7 @@
     align-items: center;
     font-size: 16px;
     box-sizing: border-box;
+    border-radius: 10px;
 
     &--space-between {
       justify-content: space-between;

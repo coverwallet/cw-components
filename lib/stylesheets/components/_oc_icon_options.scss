@@ -1,3 +1,18 @@
+.oc-icon-options__item-help-icon {
+  @include cw-icon-before(question-circle, 0, $cwColor-base-blue);
+  position: absolute;
+  cursor: pointer;
+  top: -6px;
+  right: -10px;
+  font-size: 18px;
+  padding-left: 5px;
+  z-index: 1;
+
+  @include media($tablet) {
+    display: none;
+  }
+}
+
 .oc-icon-options {
   @include display(flex);
   @include flex-wrap(wrap);
@@ -63,3 +78,4 @@
   }
 
 }
+
