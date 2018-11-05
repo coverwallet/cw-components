@@ -114,3 +114,24 @@
     }
   }
 }
+
+.buttons-list-select-options {
+  margin: 0;
+  padding: 0;
+}
+
+.button-view-more {
+  background-color: white;
+  color: $cwColor-blue;
+  border-color: $cwColor-blue;
+  font-size: 16px;
+  border-radius: 3px;
+  width: 120px;
+  padding: 16px 8px;
+  display: block;
+  margin: 20px auto;
+
+  @include media($mobile){
+    font-size: 14px;
+  }
+}

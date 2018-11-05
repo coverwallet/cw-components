@@ -7,7 +7,7 @@ const ButtonsListSelectOptions = props => {
   const { options, selectedValues, onClick, onClickHelp } = props;
 
   return (
-    <ul>
+    <ul className="buttons-list-select-options">
       {options.map(option => (
         <ButtonsListSelectOption
           key={option.value}
