@@ -5,16 +5,19 @@ import ButtonsListSelectOptions from './ButtonsListSelectOptions';
 class ButtonsListSelect extends Component {
   constructor(props) {
     super(props);
+
+    const lastItemToShow = props.viewMoreEnabled ? props.itemsToShowFirstRender: undefined;
+
     this.state = {
       values: props.values,
       selectedValues: props.selectedValues,
-      lastItemToShow: props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined,
+      lastItemToShow,
       isViewMoreEnabled: props.viewMoreEnabled,
+      options: this.getOptionsToRender(lastItemToShow, props.viewMoreEnabled),
     };
   }
 
-  getOptionsToRender = () => {
-    const { lastItemToShow, isViewMoreEnabled } = this.state;
+  getOptionsToRender = (lastItemToShow, isViewMoreEnabled) => {
     const { options } = this.props;
     return isViewMoreEnabled ? options.slice(0, lastItemToShow) : options;
   };
@@ -60,23 +63,24 @@ class ButtonsListSelect extends Component {
     this.setState(() => {
       const lastItemToShow = this.calculateLastItemToShow();
       const isViewMoreEnabled = this.areOptionsLeft(lastItemToShow);
+      const options = this.getOptionsToRender(lastItemToShow, isViewMoreEnabled);
 
       return {
         lastItemToShow,
         isViewMoreEnabled,
+        options,
       };
     });
   }
 
   render() {
-    const { options, selectedValues: selectedValuesProp, viewMoreEnabled, onClick, ...rest } = this.props;
-    const { isViewMoreEnabled, selectedValues } = this.state;
-    const optionsToShow = this.getOptionsToRender();
+    const { options: optionsProp, selectedValues: selectedValuesProp, viewMoreEnabled, onClick, ...rest } = this.props;
+    const { isViewMoreEnabled, selectedValues, options } = this.state;
 
     return (
       <div>
         <ButtonsListSelectOptions
-          options={optionsToShow}
+          options={options}
           selectedValues={selectedValues}
           onClick={this.handleClick}
           {...rest}
