@@ -1,14 +1,38 @@
 .wide-button {
   $parent: &;
-  border: 1px solid $cwColor-gray;
+  border: 1px solid $cwColor-gray-light;
   margin: 8px;
   list-style-type: none;
   border-radius: 10px;
   box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
+  background-color: white;
 
-  &:hover,
+  &:focus:not(&--disabled),
+  &:active:not(&--disabled),
+  &--clicked:not(&--disabled) {
+    @extend .animated, .pulse;
+    border: 1px solid $cwColor-blue;
+  }
+
+  &:hover {
+    & #{$parent}__separator {
+      border-color: white;
+    }
+
+    & #{$parent}__title {
+      background-color: $cwColor-blue-hover;
+    }
+
+    & #{$parent}__title-item {
+      color: white;
+      &--bordered {
+        border-color: white;
+      }
+    }
+  }
+
   &--selected {
     border-color: $cwColor-blue;
 
@@ -50,7 +74,7 @@
   &__separator {
     $parent: &;
     height: 48px;
-    border-left: 1px solid $cwColor-gray;
+    border-left: 1px solid $cwColor-gray-light;
   }
 
   &__tooltip-text {
@@ -80,7 +104,8 @@
     &--opened {
       display: block;
       padding: 24px;
-      border-top: 1px solid $cwColor-gray;
+      border-top: 1px solid $cwColor-gray-light;
+      background-color: $cwColor-gray-background;
     }
 
     &--selected {
