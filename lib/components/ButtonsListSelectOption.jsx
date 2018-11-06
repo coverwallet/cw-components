@@ -5,7 +5,6 @@ import AccordionSelect from './AccordionSelect';
 import WideButton from './WideButton';
 import QuestionIcon from './QuestionIcon';
 import TextWithIcon from './TestWithIcon';
-import IconTooltip from './IconTooltip';
 
 class ButtonsListSelectOption extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class ButtonsListSelectOption extends Component {
     const { label, iconClass, infoText, accordion } = this.props;
     const { selected, opened } = this.state;
 
-    if (false) {
+    if (accordion) {
       return (
         <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />

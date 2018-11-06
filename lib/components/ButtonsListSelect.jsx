@@ -5,16 +5,18 @@ import ButtonsListSelectOptions from './ButtonsListSelectOptions';
 class ButtonsListSelect extends Component {
   constructor(props) {
     super(props);
+
+    const lastItemToShow = props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined;
+
     this.state = {
-      values: props.values,
-      selectedValues: props.selectedValues,
-      lastItemToShow: props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined,
+      selectedOptions: props.selectedOptions,
+      lastItemToShow,
       isViewMoreEnabled: props.viewMoreEnabled,
+      options: this.getOptionsToRender(lastItemToShow, props.viewMoreEnabled),
     };
   }
 
-  getOptionsToRender = () => {
-    const { lastItemToShow, isViewMoreEnabled } = this.state;
+  getOptionsToRender = (lastItemToShow, isViewMoreEnabled) => {
     const { options } = this.props;
     return isViewMoreEnabled ? options.slice(0, lastItemToShow) : options;
   };
@@ -41,31 +43,55 @@ class ButtonsListSelect extends Component {
     return lastItemShown < this.props.options.length - 1;
   };
 
-  renderNext = () => {
-    const areOptionsLeft = this.areOptionsLeft.bind(this);
-    const calculateLastItemToShow = this.calculateLastItemToShow.bind(this);
+  deselectValue = (selectedOptions, valueIndex) => selectedOptions.splice(valueIndex, 1) && selectedOptions;
 
+  selectValue = (selectedOptions, value) => Array.from(new Set([...selectedOptions, value]));
+
+  updateselectedOptions = (selectedOptions, value) => {
+    const valueIndex = selectedOptions.indexOf(value);
+    return valueIndex > -1 ? this.deselectValue(selectedOptions, valueIndex) : this.selectValue(selectedOptions, value);
+  };
+
+  handleClick = (value) => {
+    this.setState((state, props) => {
+      const selectedOptions = this.updateselectedOptions(state.selectedOptions, value);
+
+      if (selectedOptions.includes(value)) {
+        props.onSelect(value);
+      } else {
+        props.onDeselect(value);
+      }
+
+      return {
+        selectedOptions,
+      };
+    });
+  };
+
+  renderNext = () => {
     this.setState(() => {
-      const lastItemToShow = calculateLastItemToShow();
-      const isViewMoreEnabled = areOptionsLeft(lastItemToShow);
+      const lastItemToShow = this.calculateLastItemToShow();
+      const isViewMoreEnabled = this.areOptionsLeft(lastItemToShow);
+      const options = this.getOptionsToRender(lastItemToShow, isViewMoreEnabled);
 
       return {
         lastItemToShow,
         isViewMoreEnabled,
+        options,
       };
     });
   }
 
   render() {
-    const { options, selectedValues, viewMoreEnabled, ...rest } = this.props;
-    const { isViewMoreEnabled } = this.state;
-    const optionsToShow = this.getOptionsToRender();
+    const { options: optionsProp, selectedOptions: selectedOptionsProp, viewMoreEnabled, ...rest } = this.props;
+    const { isViewMoreEnabled, selectedOptions, options } = this.state;
 
     return (
       <div>
         <ButtonsListSelectOptions
-          options={optionsToShow}
-          selectedValues={selectedValues}
+          options={options}
+          selectedOptions={selectedOptions}
+          onClick={this.handleClick}
           {...rest}
         />
         {isViewMoreEnabled &&
@@ -79,9 +105,9 @@ class ButtonsListSelect extends Component {
 
 ButtonsListSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
-  values: PropTypes.array,
-  selectedValues: PropTypes.arrayOf(PropTypes.string),
-  onClick: PropTypes.func,
+  selectedOptions: PropTypes.arrayOf(PropTypes.string),
+  onSelect: PropTypes.func,
+  onDeselect: PropTypes.func,
   onClickHelp: PropTypes.func,
   viewMoreEnabled: PropTypes.bool,
   itemsToShowFirstRender: PropTypes.number,
@@ -91,8 +117,8 @@ ButtonsListSelect.propTypes = {
 ButtonsListSelect.defaultProps = {
   itemsToShowFirstRender: 6,
   itemsPerPage: 12,
-  values: [],
-  selectedValues: [],
+  options: [],
+  selectedOptions: [],
   viewMoreEnabled: true,
 };
 
