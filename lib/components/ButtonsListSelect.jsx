@@ -47,14 +47,14 @@ class ButtonsListSelect extends Component {
 
   selectValue = (selectedOptions, value) => Array.from(new Set([...selectedOptions, value]));
 
-  updateselectedOptions = (selectedOptions, value) => {
+  updateSelectedOptions = (selectedOptions, value) => {
     const valueIndex = selectedOptions.indexOf(value);
     return valueIndex > -1 ? this.deselectValue(selectedOptions, valueIndex) : this.selectValue(selectedOptions, value);
   };
 
   handleClick = (value) => {
     this.setState((state, props) => {
-      const selectedOptions = this.updateselectedOptions(state.selectedOptions, value);
+      const selectedOptions = this.updateSelectedOptions(state.selectedOptions, value);
 
       if (selectedOptions.includes(value)) {
         props.onSelect(value);
