@@ -43,13 +43,13 @@ class ButtonsListSelect extends Component {
     return lastItemShown < this.props.options.length - 1;
   };
 
-  deselectValue = (selectedOptions, valueIndex) => selectedOptions.splice(valueIndex, 1) && selectedOptions;
+  deselectValue = (selectedOptions, value) => selectedOptions.find(option => option !== value);
 
   selectValue = (selectedOptions, value) => Array.from(new Set([...selectedOptions, value]));
 
   updateSelectedOptions = (selectedOptions, value) => {
     const valueIndex = selectedOptions.indexOf(value);
-    return valueIndex > -1 ? this.deselectValue(selectedOptions, valueIndex) : this.selectValue(selectedOptions, value);
+    return valueIndex > -1 ? this.deselectValue(selectedOptions, value) : this.selectValue(selectedOptions, value);
   };
 
   handleClick = (value) => {
