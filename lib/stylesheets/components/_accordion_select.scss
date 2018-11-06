@@ -24,6 +24,10 @@
       background-color: $cwColor-blue-hover;
     }
 
+    & #{$parent}__content--opened {
+      border-color: $cwColor-gray-background;
+    }
+
     & #{$parent}__title-item {
       color: white;
       &--bordered {
@@ -37,7 +41,7 @@
     border-color: $cwColor-blue;
 
     & #{$parent}__content--opened {
-      border-color: $cwColor-blue;
+      border-color: $cwColor-gray-background;
     }
 
     & #{$parent}__separator {
@@ -46,7 +50,7 @@
 
     & #{$parent},
     & #{$parent}__content--opened {
-      border-color: $cwColor-blue;
+      border-color: $cwColor-gray-background;
     }
 
     & #{$parent}__title {
@@ -112,6 +116,10 @@
     &--selected {
       border-color: $cwColor-blue;
     }
+  }
+
+  &__accordion {
+    overflow: hidden;
   }
 }
 
