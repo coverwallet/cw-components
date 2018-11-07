@@ -43,7 +43,7 @@ class ButtonsListSelect extends Component {
     return lastItemShown < this.props.options.length - 1;
   };
 
-  deselectValue = (selectedOptions, value) => selectedOptions.find(option => option !== value);
+  deselectValue = (selectedOptions, value) => selectedOptions.filter(option => option !== value);
 
   selectValue = (selectedOptions, value) => Array.from(new Set([...selectedOptions, value]));
 
