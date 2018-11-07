@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AccordionSelect from './AccordionSelect';
 import WideButton from './WideButton';
 import QuestionIcon from './QuestionIcon';
-import TextWithIcon from './TestWithIcon';
+import TextWithIcon from './TextWithIcon';
 
 class ButtonsListSelectOption extends Component {
   constructor(props) {
