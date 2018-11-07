@@ -57,7 +57,7 @@ class ButtonsListSelect extends Component {
   handleClick = (value) => {
     this.setState((state, props) => {
       const selectedOptions = state.selectedOptions.includes(value)
-        ? this.deselectValue(state.selectedOptions, value, props.onSelect)
+        ? this.deselectValue(state.selectedOptions, value, props.onDeselect)
         : this.selectValue(state.selectedOptions, value, props.onSelect);
 
       return {
