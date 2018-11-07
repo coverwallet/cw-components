@@ -68,7 +68,7 @@ class ButtonsListSelect extends Component {
     });
   };
 
-  renderNext = () => {
+  renderNextItems = () => {
     this.setState(() => {
       const lastItemToShow = this.calculateLastItemToShow();
       const isViewMoreEnabled = this.areOptionsLeft(lastItemToShow);
@@ -95,7 +95,7 @@ class ButtonsListSelect extends Component {
           {...rest}
         />
         {isViewMoreEnabled &&
-          <button onClick={this.renderNext}>
+          <button onClick={this.renderNextItems}>
             View more
           </button>}
       </div>
