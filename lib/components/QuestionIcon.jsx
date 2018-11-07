@@ -5,19 +5,11 @@ import classNames from 'classnames';
 const getQuestionIconClass = props => classNames('question-icon', { [`question-icon--${props.type}`]: props.type });
 
 function QuestionIcon({ accordion, infoText, className, ...props }) {
-  if (accordion) {
-    return (
-      <div className={`${getQuestionIconClass(props)} ${className}`} {...props}>
-        ?
-      </div>
-    );
-  } else {
-    return (
-      <div className={`${getQuestionIconClass(props)} ${className}`} {...props}>
-        ? <span className="question-icon__tooltip-text">{infoText}</span>
-      </div>
-    );
-  }
+  return (
+    <div className={`${getQuestionIconClass(props)} ${className}`} {...props}>
+      ? {!accordion && <span className="question-icon__tooltip-text">{infoText}</span>}
+    </div>
+  );
 }
 
 QuestionIcon.propTypes = {

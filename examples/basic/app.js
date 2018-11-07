@@ -525,6 +525,7 @@ const App = function App() {
           onDeselect={(value) => console.log('You deselect ', value)}
           onClickHelp={(value) => console.log('Clicked help of ', value)}
           selectedValues={['Business Owners Policy (BOP)']}
+          accordion
         />
       </div>
     </div>
