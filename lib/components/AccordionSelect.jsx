@@ -10,7 +10,9 @@ const AccordionSelect = ({ selected, opened, infoText, children, onClick }) => {
 
   return (
     <li className={`${addClassWithSelected('wide-button')} wide-button__accordion`}>
-      <div className={classNames('wide-button__title--space-between', addClassWithSelected('wide-button__title'))}>{children}</div>
+      <div className={classNames('wide-button__title--space-between', addClassWithSelected('wide-button__title'))}>
+        {children}
+      </div>
       <div
         className={`${addClassWithOpened('wide-button__content')} ${addClassWithSelected('wide-button__tooltip-text')}`}
         onClick={onClick}

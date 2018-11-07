@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OnlyClickIconOption from './OnlyClickIconOption';
-import IconTooltip from './IconTooltip';
 
 function OnlyClickIconOptions(props) {
-  const { selectedValues, onClick, onHelpClick, options } = props;
+  const { selectedValues, onClick, onHelpClick } = props;
   return (
     <div className="oc-icon-options">
-      {options.map(option => (
+      {props.options.map(option => (
         <div className="oc-icon-options__item oc-icon-option-container" key={option.value}>
           <OnlyClickIconOption
             checked={selectedValues.indexOf(option.value) !== -1}
@@ -15,7 +14,12 @@ function OnlyClickIconOptions(props) {
             {...option}
           />
           {option.tooltipKey && (
-            <IconTooltip onHelpClick={onHelpClick} tooltipKey={option.tooltipKey} />
+            <span
+              className="oc-icon-options__item-help-icon"
+              id={option.tooltipKey}
+              onClick={onHelpClick && onHelpClick.bind(null, option.tooltipKey)}
+              tabIndex="-1"
+            />
           )}
         </div>
       ))}
