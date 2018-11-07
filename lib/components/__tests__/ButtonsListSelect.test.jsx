@@ -123,18 +123,10 @@ describe('Buttons List Select', () => {
   const DEFAULT_ON_SELECT_CALLBACK = jest.fn();
   const DEFAULT_ON_DESELECT_CALLBACK = jest.fn();
   const EXAMPLE_INSURANCE_TYPE = {
-    name: 'Business Owners Policy (BOP)',
     label: 'Business Owners Policy (BOP)',
     value: 'Business Owners Policy (BOP)',
-    slug: 'business-owners-policy-bop',
-    notes: 'notes',
-    what_is_it: ' what_is_it',
-    why_get_it: 'why_get_it',
     tooltip_key: 'tooltip_key',
-    display_order: 1,
-    icon_name: 'business_owners_policy_bop',
     iconClass: 'business_owners_policy_bop',
-    formatted_text: null,
   };
 
   const createOptionsExample = () => (
