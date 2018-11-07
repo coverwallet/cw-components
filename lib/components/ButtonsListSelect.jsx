@@ -6,31 +6,30 @@ class ButtonsListSelect extends Component {
   constructor(props) {
     super(props);
 
-    const lastItemToShow = props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined;
+    const itemsToShow = props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined;
 
     this.state = {
       selectedOptions: props.selectedOptions,
-      lastItemToShow,
+      itemsToShow,
       isViewMoreEnabled: props.viewMoreEnabled,
-      options: this.getOptionsToRender(lastItemToShow, props.viewMoreEnabled),
+      options: this.getOptionsToRender(itemsToShow, props.viewMoreEnabled),
     };
   }
 
-  getOptionsToRender = (lastItemToShow, isViewMoreEnabled) => {
+  getOptionsToRender = (itemsToShow, isViewMoreEnabled) => {
     const { options } = this.props;
-    return isViewMoreEnabled ? options.slice(0, lastItemToShow) : options;
+    return isViewMoreEnabled ? options.slice(0, itemsToShow) : options;
   };
 
-  calculateLastItemToShow = () => {
-    const { lastItemToShow } = this.state;
+  calculateItemsToShow = () => {
+    const { itemsToShow } = this.state;
     const { itemsPerPage, options, viewMoreEnabled } = this.props;
     let result;
 
     if (viewMoreEnabled) {
-      const optionsMaxIndex = options.length - 1;
-      const nextPageMaxIndex = lastItemToShow + itemsPerPage;
+      const nextPageMaxIndex = itemsToShow + itemsPerPage;
 
-      result = Math.min(nextPageMaxIndex, optionsMaxIndex);
+      result = Math.min(nextPageMaxIndex, options.length);
     }
 
     return result;
@@ -68,12 +67,12 @@ class ButtonsListSelect extends Component {
 
   renderNextItems = () => {
     this.setState(() => {
-      const lastItemToShow = this.calculateLastItemToShow();
-      const isViewMoreEnabled = this.areOptionsLeft(lastItemToShow);
-      const options = this.getOptionsToRender(lastItemToShow, isViewMoreEnabled);
+      const itemsToShow = this.calculateItemsToShow();
+      const isViewMoreEnabled = this.areOptionsLeft(itemsToShow);
+      const options = this.getOptionsToRender(itemsToShow, isViewMoreEnabled);
 
       return {
-        lastItemToShow,
+        itemsToShow,
         isViewMoreEnabled,
         options,
       };
