@@ -17,12 +17,12 @@ class ButtonsListSelectOption extends Component {
 
   onClickTitle = () => {
     this.setState({ selected: !this.state.selected });
-    this.props.onClick(this.props.label);
+    this.props.onClick(this.props.value);
   };
 
   onClickTooltip = () => {
     this.setState({ opened: !this.state.opened });
-    this.props.onClickHelp(this.props.label);
+    this.props.onClickHelp(this.props.value);
   };
 
   render() {
@@ -33,7 +33,6 @@ class ButtonsListSelectOption extends Component {
       return (
         <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
-          <div className="wide-button__separator" />
           {infoText && (
             <div className="wide-button__right-button" onClick={this.onClickTooltip}>
               <QuestionIcon accordion className="wide-button__title-item wide-button__title-item--bordered" />
@@ -45,7 +44,6 @@ class ButtonsListSelectOption extends Component {
       return (
         <WideButton selected={selected}>
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
-          <div className="wide-button__separator" />
           <div className="wide-button__right-button question-icon__tooltip">
             <QuestionIcon infoText={infoText} className="wide-button__title-item wide-button__title-item--bordered" />
           </div>

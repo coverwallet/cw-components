@@ -16,7 +16,7 @@
   }
 
   &:hover {
-    & #{$parent}__separator {
+    & #{$parent}__right-button:before {
       border-color: white;
     }
 
@@ -44,7 +44,7 @@
       border-color: $cwColor-gray-background;
     }
 
-    & #{$parent}__separator {
+    & #{$parent}__right-button:before {
       border-color: white;
     }
 
@@ -73,12 +73,16 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-  }
+    position: relative;
 
-  &__separator {
-    $parent: &;
-    height: 48px;
-    border-left: 1px solid $cwColor-gray-light;
+    &:before {
+      content:'';
+      height: 48px;
+      border-left: 1px solid $cwColor-gray-light;
+      position: absolute;
+      top: 8px;
+      left: 0;
+    }
   }
 
   &__tooltip-text {
