@@ -44,24 +44,21 @@ class ButtonsListSelect extends Component {
     return lastItemShown < this.props.options.length - 1;
   };
 
-  deselectValue = (selectedOptions, value) => selectedOptions.filter(option => option !== value);
+  deselectValue = (selectedOptions, value, onDeselect) => {
+    onDeselect(value);
+    return selectedOptions.filter(option => option !== value);
+  }
 
-  selectValue = (selectedOptions, value) => Array.from(new Set([...selectedOptions, value]));
-
-  updateSelectedOptions = (selectedOptions, value) => {
-    const valueIndex = selectedOptions.indexOf(value);
-    return valueIndex > -1 ? this.deselectValue(selectedOptions, value) : this.selectValue(selectedOptions, value);
-  };
+  selectValue = (selectedOptions, value, onSelect) => {
+    onSelect(value);
+    return Array.from(new Set([...selectedOptions, value]));
+  }
 
   handleClick = (value) => {
     this.setState((state, props) => {
-      const selectedOptions = this.updateSelectedOptions(state.selectedOptions, value);
-
-      if (selectedOptions.includes(value)) {
-        props.onSelect(value);
-      } else {
-        props.onDeselect(value);
-      }
+      const selectedOptions = state.selectedOptions.includes(value)
+        ? this.deselectValue(state.selectedOptions, value, props.onSelect)
+        : this.selectValue(state.selectedOptions, value, props.onSelect);
 
       return {
         selectedOptions,
@@ -107,8 +104,8 @@ class ButtonsListSelect extends Component {
 ButtonsListSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedOptions: PropTypes.arrayOf(PropTypes.string),
-  onSelect: PropTypes.func,
-  onDeselect: PropTypes.func,
+  onSelect: PropTypes.func.isRequired,
+  onDeselect: PropTypes.func.isRequired,
   onClickHelp: PropTypes.func,
   viewMoreEnabled: PropTypes.bool,
   itemsToShowFirstRender: PropTypes.number,
