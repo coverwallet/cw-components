@@ -23,15 +23,16 @@ class ButtonsListSelect extends Component {
 
   calculateLastItemToShow = () => {
     const { lastItemToShow } = this.state;
-    const { itemsPerPage, options } = this.props;
+    const { itemsPerPage, options, viewMoreEnabled } = this.props;
     let result;
 
-    if (this.props.viewMoreEnabled) {
+    if (viewMoreEnabled) {
       const optionsMaxIndex = options.length - 1;
       const nextPageMaxIndex = lastItemToShow + itemsPerPage;
 
       result = Math.min(nextPageMaxIndex, optionsMaxIndex);
     }
+
     return result;
   };
 
