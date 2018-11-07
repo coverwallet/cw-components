@@ -127,6 +127,7 @@ describe('Buttons List Select', () => {
   const DEFAULT_OPTIONS_PER_PAGE = 12;
   const DEFAULT_ON_SELECT_CALLBACK = jest.fn();
   const DEFAULT_ON_DESELECT_CALLBACK = jest.fn();
+
   const DEFAULT_PROPS = {
     options: insuranceTypes.map((type) => Object.assign({},
       type,
@@ -140,18 +141,22 @@ describe('Buttons List Select', () => {
     onSelect: DEFAULT_ON_SELECT_CALLBACK,
     onDeselect: DEFAULT_ON_DESELECT_CALLBACK,
   };
+
   const setProps = props => Object.assign({}, DEFAULT_PROPS, props);
   const PAGINATION_DISABLED_PROPS = Object.assign({}, DEFAULT_PROPS, { viewMoreEnabled: false });
   const renderComponent = (props = DEFAULT_PROPS) => mount(<ButtonsListSelect {...props} />);
   const getOptions = component => component.find(ButtonsListSelectOption);
   const getViewMoreButton = component => component.find('button');
+
   const clickViewMore = component => {
     getViewMoreButton(component).simulate('click');
     component.update();
   };
+
   const clickOption = (option, component) => {
     option.simulate('click');
     component.update();
   };
+
   const getNumberOfCalls = fn => fn.mock.calls.length;
 });
