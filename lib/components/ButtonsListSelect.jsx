@@ -38,7 +38,7 @@ class ButtonsListSelect extends Component {
 
   areOptionsLeft = (lastItemShown) => {
     if (!this.state.isViewMoreEnabled) {
-      return this.state.isViewMoreEnabled;
+      return false;
     }
 
     return lastItemShown < this.props.options.length - 1;
