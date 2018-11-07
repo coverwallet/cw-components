@@ -36,8 +36,7 @@ describe('Buttons List Select', () => {
       expect(options.length).toEqual(ITEMS_PER_PAGE);
     });
 
-    it(`renders as many options as itemsToShowFirstRender + itemsPerPage
-the first time view more is clicked`, () => {
+    it('renders as many options as itemsToShowFirstRender + itemsPerPage the first time view more is clicked', () => {
       const expectedResult = DEFAULT_OPTIONS_FIRST_PAGE + DEFAULT_OPTIONS_PER_PAGE;
 
       const component = renderComponent();
@@ -47,8 +46,7 @@ the first time view more is clicked`, () => {
       expect(options.length).toEqual(expectedResult);
     });
 
-    it(`renders as many options as the sum of first render options
-  and options per page 2 times when clicking view more button for the second time`, () => {
+    it('renders as many options as the sum of first render options and options per page 2 times when clicking view more button for the second time', () => {
       const expectedResult = DEFAULT_OPTIONS_FIRST_PAGE + (DEFAULT_OPTIONS_PER_PAGE * 2);
 
       const component = renderComponent();
@@ -77,8 +75,7 @@ the first time view more is clicked`, () => {
       DEFAULT_ON_DESELECT_CALLBACK.mockReset();
     });
 
-    it(`set selected prop of option to true when its value is included
-        in selectedOptions`, () => {
+    it('set selected prop of option to true when its value is included in selectedOptions', () => {
       const testProps = setProps({ selectedOptions: [DEFAULT_PROPS.options[0].value] });
       const component = renderComponent(testProps);
       const options = getOptions(component);
@@ -86,8 +83,7 @@ the first time view more is clicked`, () => {
       expect(options.first().prop('selected')).toBeTruthy();
     });
 
-    it(`does NOT set selected prop of option to false when its value is NOT included
-        in selectedOptions`, () => {
+    it('does NOT set selected prop of option to false when its value is NOT included in selectedOptions', () => {
       const testProps = setProps({ selectedOptions: [DEFAULT_PROPS.options[0].value] });
       const component = renderComponent(testProps);
       const options = getOptions(component);
