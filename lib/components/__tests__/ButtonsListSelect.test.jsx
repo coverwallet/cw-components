@@ -153,7 +153,7 @@ describe('Buttons List Select', () => {
   const PAGINATION_DISABLED_PROPS = Object.assign({}, DEFAULT_PROPS, { isViewMoreEnabled: false });
   const renderComponent = (props = DEFAULT_PROPS) => mount(<ButtonsListSelect {...props} />);
   const getOptions = component => component.find(ButtonsListSelectOption);
-  const getViewMoreButton = component => component.find('button');
+  const getViewMoreButton = component => component.find('.button-view-more');
 
   const clickViewMore = component => {
     getViewMoreButton(component).simulate('click');
