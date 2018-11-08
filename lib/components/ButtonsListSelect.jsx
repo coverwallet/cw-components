@@ -6,27 +6,25 @@ class ButtonsListSelect extends Component {
   constructor(props) {
     super(props);
 
-    const itemsToShow = props.viewMoreEnabled ? props.itemsToShowFirstRender : undefined;
+    const itemsToShow = props.isViewMoreEnabled ? props.itemsToShowFirstRender : undefined;
 
     this.state = {
-      selectedOptions: props.selectedOptions,
       itemsToShow,
-      isViewMoreEnabled: props.viewMoreEnabled,
-      options: this.getOptionsToRender(itemsToShow, props.viewMoreEnabled),
+      isViewMoreShown: props.isViewMoreEnabled,
     };
   }
 
-  getOptionsToRender = (itemsToShow, isViewMoreEnabled) => {
+  getOptionsToRender = (itemsToShow, isViewMoreShown) => {
     const { options } = this.props;
-    return isViewMoreEnabled ? options.slice(0, itemsToShow) : options;
+    return isViewMoreShown ? options.slice(0, itemsToShow) : options;
   };
 
   calculateItemsToShow = () => {
     const { itemsToShow } = this.state;
-    const { itemsPerPage, options, viewMoreEnabled } = this.props;
+    const { itemsPerPage, options, isViewMoreEnabled } = this.props;
     let result;
 
-    if (viewMoreEnabled) {
+    if (isViewMoreEnabled) {
       const nextPageMaxIndex = itemsToShow + itemsPerPage;
 
       result = Math.min(nextPageMaxIndex, options.length);
@@ -36,52 +34,39 @@ class ButtonsListSelect extends Component {
   };
 
   areOptionsLeft = (lastItemShown) => {
-    if (!this.state.isViewMoreEnabled) {
+    if (!this.state.isViewMoreShown) {
       return false;
     }
 
     return lastItemShown < this.props.options.length - 1;
   };
 
-  deselectValue = (selectedOptions, value, onDeselect) => {
-    onDeselect(value);
-    return selectedOptions.filter(option => option !== value);
-  }
-
-  selectValue = (selectedOptions, value, onSelect) => {
-    onSelect(value);
-    return Array.from(new Set([...selectedOptions, value]));
-  }
-
   handleClick = (value) => {
-    this.setState((state, props) => {
-      const selectedOptions = state.selectedOptions.includes(value)
-        ? this.deselectValue(state.selectedOptions, value, props.onDeselect)
-        : this.selectValue(state.selectedOptions, value, props.onSelect);
+    const { selectedOptions, onSelect, onDeselect } = this.props;
 
-      return {
-        selectedOptions,
-      };
-    });
+    if (selectedOptions.includes(value)) {
+      onDeselect(value);
+    } else {
+      onSelect(value);
+    }
   };
 
-  renderNextItems = () => {
+  calculateNextRender = () => {
     this.setState(() => {
       const itemsToShow = this.calculateItemsToShow();
-      const isViewMoreEnabled = this.areOptionsLeft(itemsToShow);
-      const options = this.getOptionsToRender(itemsToShow, isViewMoreEnabled);
+      const isViewMoreShown = this.areOptionsLeft(itemsToShow);
 
       return {
         itemsToShow,
-        isViewMoreEnabled,
-        options,
+        isViewMoreShown,
       };
     });
   }
 
   render() {
-    const { options: optionsProp, selectedOptions: selectedOptionsProp, viewMoreEnabled, ...rest } = this.props;
-    const { isViewMoreEnabled, selectedOptions, options } = this.state;
+    const { onClickHelp, selectedOptions } = this.props;
+    const { isViewMoreShown, itemsToShow } = this.state;
+    const options = this.getOptionsToRender(itemsToShow, isViewMoreShown);
 
     return (
       <div>
@@ -89,10 +74,10 @@ class ButtonsListSelect extends Component {
           options={options}
           selectedOptions={selectedOptions}
           onClick={this.handleClick}
-          {...rest}
+          onClickHelp={onClickHelp}
         />
-        {isViewMoreEnabled &&
-          <button className="button-view-more" onClick={this.renderNextItems}>
+        {isViewMoreShown &&
+          <button className="button-view-more" onClick={this.calculateNextRender}>
             View more
           </button>}
       </div>
@@ -106,7 +91,7 @@ ButtonsListSelect.propTypes = {
   onSelect: PropTypes.func.isRequired,
   onDeselect: PropTypes.func.isRequired,
   onClickHelp: PropTypes.func,
-  viewMoreEnabled: PropTypes.bool,
+  isViewMoreEnabled: PropTypes.bool,
   itemsToShowFirstRender: PropTypes.number,
   itemsPerPage: PropTypes.number,
 };
@@ -116,7 +101,7 @@ ButtonsListSelect.defaultProps = {
   itemsPerPage: 12,
   options: [],
   selectedOptions: [],
-  viewMoreEnabled: true,
+  isViewMoreEnabled: true,
 };
 
 export default ButtonsListSelect;

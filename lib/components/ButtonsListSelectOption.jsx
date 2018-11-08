@@ -10,24 +10,21 @@ class ButtonsListSelectOption extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: !!props.selected,
       opened: !!props.opened,
     };
   }
 
   onClickTitle = () => {
-    this.setState({ selected: !this.state.selected });
     this.props.onClick(this.props.value);
   };
 
   onClickTooltip = () => {
-    this.setState({ opened: !this.state.opened });
     this.props.onClickHelp(this.props.value);
   };
 
   render() {
-    const { label, iconClass, infoText, accordion } = this.props;
-    const { selected, opened } = this.state;
+    const { label, iconClass, infoText, accordion, selected } = this.props;
+    const { opened } = this.state;
 
     if (accordion) {
       return (

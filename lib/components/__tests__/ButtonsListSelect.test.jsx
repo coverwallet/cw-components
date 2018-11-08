@@ -91,7 +91,7 @@ describe('Buttons List Select', () => {
       expect(options.last().prop('selected')).toBeFalsy();
     });
 
-    it('calls the onSelect prop when an option is clicked once', () => {
+    it('calls the onSelect prop when an option is clicked and NOT is selected', () => {
       const component = renderComponent();
       const firstOption = getOptions(component).first();
       clickTitleOption(firstOption, component);
@@ -99,19 +99,10 @@ describe('Buttons List Select', () => {
       expect(DEFAULT_ON_SELECT_CALLBACK).toBeCalledWith(firstOption.props().value);
     });
 
-    it('does NOT call the onSelect prop twice when an option is clicked twice', () => {
-      const component = renderComponent();
+    it('calls the onDeselect prop when an option is clicked and is selected', () => {
+      const testProps = setProps({ selectedOptions: [DEFAULT_PROPS.options[0].value] });
+      const component = renderComponent(testProps);
       const firstOption = getOptions(component).first();
-      clickTitleOption(firstOption, component);
-      clickTitleOption(firstOption, component);
-
-      expect(getNumberOfCalls(DEFAULT_ON_SELECT_CALLBACK)).toEqual(1);
-    });
-
-    it('calls the onDeselect prop when an option is clicked twice', () => {
-      const component = renderComponent();
-      const firstOption = getOptions(component).first();
-      clickTitleOption(firstOption, component);
       clickTitleOption(firstOption, component);
 
       expect(DEFAULT_ON_DESELECT_CALLBACK).toBeCalledWith(firstOption.props().value);
@@ -145,7 +136,7 @@ describe('Buttons List Select', () => {
 
 
   const setProps = props => Object.assign({}, DEFAULT_PROPS, props);
-  const PAGINATION_DISABLED_PROPS = Object.assign({}, DEFAULT_PROPS, { viewMoreEnabled: false });
+  const PAGINATION_DISABLED_PROPS = Object.assign({}, DEFAULT_PROPS, { isViewMoreEnabled: false });
   const renderComponent = (props = DEFAULT_PROPS) => mount(<ButtonsListSelect {...props} />);
   const getOptions = component => component.find(ButtonsListSelectOption);
   const getViewMoreButton = component => component.find('button');
