@@ -94,7 +94,7 @@ describe('Buttons List Select', () => {
     it('calls the onSelect prop when an option is clicked once', () => {
       const component = renderComponent();
       const firstOption = getOptions(component).first();
-      clickOption(firstOption, component);
+      clickTitleOption(firstOption, component);
 
       expect(DEFAULT_ON_SELECT_CALLBACK).toBeCalledWith(firstOption.props().value);
     });
@@ -102,8 +102,8 @@ describe('Buttons List Select', () => {
     it('does NOT call the onSelect prop twice when an option is clicked twice', () => {
       const component = renderComponent();
       const firstOption = getOptions(component).first();
-      clickOption(firstOption, component);
-      clickOption(firstOption, component);
+      clickTitleOption(firstOption, component);
+      clickTitleOption(firstOption, component);
 
       expect(getNumberOfCalls(DEFAULT_ON_SELECT_CALLBACK)).toEqual(1);
     });
@@ -111,8 +111,8 @@ describe('Buttons List Select', () => {
     it('calls the onDeselect prop when an option is clicked twice', () => {
       const component = renderComponent();
       const firstOption = getOptions(component).first();
-      clickOption(firstOption, component);
-      clickOption(firstOption, component);
+      clickTitleOption(firstOption, component);
+      clickTitleOption(firstOption, component);
 
       expect(DEFAULT_ON_DESELECT_CALLBACK).toBeCalledWith(firstOption.props().value);
     });
@@ -154,9 +154,8 @@ describe('Buttons List Select', () => {
     getViewMoreButton(component).simulate('click');
     component.update();
   };
-
-  const clickOption = (option, component) => {
-    option.simulate('click');
+  const clickTitleOption = (option, component) => {
+    option.find('TextWithIcon').find('.wide-button__title-item').simulate('click');
     component.update();
   };
 

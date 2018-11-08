@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import ButtonsListSelectOption from './ButtonsListSelectOption';
 
 const ButtonsListSelectOptions = props => {
-  const { options, selectedOptions, onClick, onClickHelp } = props;
+  const { options, selectedOptions, onClick, onClickHelp, accordion } = props;
 
   return (
-    <ul>
+    <ul className="buttons-list-select-options">
       {options.map(option => (
         <ButtonsListSelectOption
           key={option.value}
@@ -18,6 +18,7 @@ const ButtonsListSelectOptions = props => {
           onClick={onClick}
           onClickHelp={onClickHelp}
           selected={selectedOptions.includes(option.value)}
+          accordion={accordion || false}
         />
       ))}
     </ul>
@@ -25,9 +26,13 @@ const ButtonsListSelectOptions = props => {
 };
 
 ButtonsListSelectOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string,
+    label: PropTypes.string,
+  }).isRequired).isRequired,
   onClick: PropTypes.func,
   onClickHelp: PropTypes.func,
+  accordion: PropTypes.bool,
   selectedOptions: PropTypes.arrayOf(PropTypes.string),
 };
 

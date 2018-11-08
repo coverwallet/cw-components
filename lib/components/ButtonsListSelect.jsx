@@ -92,7 +92,7 @@ class ButtonsListSelect extends Component {
           {...rest}
         />
         {isViewMoreEnabled &&
-          <button onClick={this.renderNextItems}>
+          <button className="button-view-more" onClick={this.renderNextItems}>
             View more
           </button>}
       </div>
