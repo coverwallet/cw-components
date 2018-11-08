@@ -10,13 +10,13 @@ class ButtonsListSelect extends Component {
 
     this.state = {
       itemsToShow,
-      isViewMoreShown: props.isViewMoreEnabled,
+      isViewMoreRendered: props.isViewMoreEnabled,
     };
   }
 
-  getOptionsToRender = (itemsToShow, isViewMoreShown) => {
+  getOptionsToRender = (itemsToShow, isViewMoreRendered) => {
     const { options } = this.props;
-    return isViewMoreShown ? options.slice(0, itemsToShow) : options;
+    return isViewMoreRendered ? options.slice(0, itemsToShow) : options;
   };
 
   calculateItemsToShow = () => {
@@ -34,7 +34,7 @@ class ButtonsListSelect extends Component {
   };
 
   areOptionsLeft = (itemsToShow) => {
-    if (!this.state.isViewMoreShown) {
+    if (!this.state.isViewMoreRendered) {
       return false;
     }
 
@@ -54,19 +54,19 @@ class ButtonsListSelect extends Component {
   renderNextItems = () => {
     this.setState(() => {
       const itemsToShow = this.calculateItemsToShow();
-      const isViewMoreShown = this.areOptionsLeft(itemsToShow);
+      const isViewMoreRendered = this.areOptionsLeft(itemsToShow);
 
       return {
         itemsToShow,
-        isViewMoreShown,
+        isViewMoreRendered,
       };
     });
   }
 
   render() {
     const { onClickHelp, selectedOptions, accordion } = this.props;
-    const { isViewMoreShown, itemsToShow } = this.state;
-    const optionsToRender = this.getOptionsToRender(itemsToShow, isViewMoreShown);
+    const { isViewMoreRendered, itemsToShow } = this.state;
+    const optionsToRender = this.getOptionsToRender(itemsToShow, isViewMoreRendered);
 
     return (
       <div>
@@ -77,7 +77,7 @@ class ButtonsListSelect extends Component {
           onClickHelp={onClickHelp}
           accordion={accordion}
         />
-        {isViewMoreShown &&
+        {isViewMoreRendered &&
           <button className="button-view-more" onClick={this.renderNextItems}>
             View more
           </button>}
