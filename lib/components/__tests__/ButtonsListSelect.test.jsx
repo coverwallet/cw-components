@@ -2,7 +2,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { ButtonsListSelect, ButtonsListSelectOption } from '../..';
+import { ButtonsListSelect, ButtonsListSelectOption, AccordionSelect } from '../..';
 
 describe('Buttons List Select', () => {
   describe('pagination', () => {
@@ -123,6 +123,23 @@ describe('Buttons List Select', () => {
     });
   });
 
+  describe('accordion', () => {
+    it('renders Accordion if "accordion" prop is passed as true', () => {
+      const testProps = setProps({ accordion: true });
+      const component = renderComponent(testProps);
+      const accordion = getAccordion(component);
+
+      expect(accordion.exists()).toBeTruthy();
+    });
+
+    it('does NOT render Accordion if "accordion" prop is NOT passed OR passed as false', () => {
+      const component = renderComponent();
+      const accordion = getAccordion(component);
+
+      expect(accordion.exists()).toBeFalsy();
+    });
+  });
+
   const DEFAULT_OPTIONS_FIRST_PAGE = 2;
   const DEFAULT_OPTIONS_PER_PAGE = 3;
   const DEFAULT_ON_SELECT_CALLBACK = jest.fn();
@@ -154,15 +171,15 @@ describe('Buttons List Select', () => {
   const renderComponent = (props = DEFAULT_PROPS) => mount(<ButtonsListSelect {...props} />);
   const getOptions = component => component.find(ButtonsListSelectOption);
   const getViewMoreButton = component => component.find('.button-view-more');
+  const getAccordion = component => component.find('AccordionSelect');
 
   const clickViewMore = component => {
     getViewMoreButton(component).simulate('click');
     component.update();
   };
+
   const clickTitleOption = (option, component) => {
     option.find('TextWithIcon').find('.wide-button__title-item').simulate('click');
     component.update();
   };
-
-  const getNumberOfCalls = fn => fn.mock.calls.length;
 });
