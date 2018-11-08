@@ -524,7 +524,7 @@ const App = function App() {
           onSelect={(value) => console.log('You select ', value)}
           onDeselect={(value) => console.log('You deselect ', value)}
           onClickHelp={(value) => console.log('Clicked help of ', value)}
-          selectedValues={['Business Owners Policy (BOP)']}
+          selectedOptions={['Business Owners Policy (BOP)']}
           accordion
         />
       </div>
