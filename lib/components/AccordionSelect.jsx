@@ -9,7 +9,7 @@ const AccordionSelect = ({ selected, opened, infoText, children, onClick }) => {
   const addClassWithOpened = addModifierClass('opened', opened);
 
   return (
-    <li className={`${addClassWithSelected('wide-button')} wide-button__accordion`}>
+    <li className={`${addClassWithSelected('wide-button')} wide-button--accordion`}>
       <div className={classNames('wide-button__title--space-between', addClassWithSelected('wide-button__title'))}>
         {children}
       </div>
