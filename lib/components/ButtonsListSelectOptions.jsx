@@ -18,7 +18,7 @@ const ButtonsListSelectOptions = props => {
           onClick={onClick}
           onClickHelp={onClickHelp}
           selected={selectedOptions.includes(option.value)}
-          accordion={accordion || false}
+          accordion={accordion}
         />
       ))}
     </ul>

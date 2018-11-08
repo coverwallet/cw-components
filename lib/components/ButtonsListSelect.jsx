@@ -6,7 +6,7 @@ class ButtonsListSelect extends Component {
   constructor(props) {
     super(props);
 
-    const itemsToShow = props.isViewMoreEnabled ? props.itemsToShowFirstRender : undefined;
+    const itemsToShow = props.isViewMoreEnabled ? props.itemsToShowFirstRender : props.options.length;
 
     this.state = {
       itemsToShow,
@@ -33,12 +33,12 @@ class ButtonsListSelect extends Component {
     return result;
   };
 
-  areOptionsLeft = (lastItemShown) => {
+  areOptionsLeft = (itemsToShow) => {
     if (!this.state.isViewMoreShown) {
       return false;
     }
 
-    return lastItemShown < this.props.options.length - 1;
+    return itemsToShow < this.props.options.length;
   };
 
   handleClick = (value) => {
@@ -51,7 +51,7 @@ class ButtonsListSelect extends Component {
     }
   };
 
-  calculateNextRender = () => {
+  renderNextItems = () => {
     this.setState(() => {
       const itemsToShow = this.calculateItemsToShow();
       const isViewMoreShown = this.areOptionsLeft(itemsToShow);
@@ -64,20 +64,21 @@ class ButtonsListSelect extends Component {
   }
 
   render() {
-    const { onClickHelp, selectedOptions } = this.props;
+    const { onClickHelp, selectedOptions, accordion } = this.props;
     const { isViewMoreShown, itemsToShow } = this.state;
-    const options = this.getOptionsToRender(itemsToShow, isViewMoreShown);
+    const optionsToRender = this.getOptionsToRender(itemsToShow, isViewMoreShown);
 
     return (
       <div>
         <ButtonsListSelectOptions
-          options={options}
+          options={optionsToRender}
           selectedOptions={selectedOptions}
           onClick={this.handleClick}
           onClickHelp={onClickHelp}
+          accordion={accordion}
         />
         {isViewMoreShown &&
-          <button className="button-view-more" onClick={this.calculateNextRender}>
+          <button className="button-view-more" onClick={this.renderNextItems}>
             View more
           </button>}
       </div>
@@ -94,6 +95,7 @@ ButtonsListSelect.propTypes = {
   isViewMoreEnabled: PropTypes.bool,
   itemsToShowFirstRender: PropTypes.number,
   itemsPerPage: PropTypes.number,
+  accordion: PropTypes.bool,
 };
 
 ButtonsListSelect.defaultProps = {
