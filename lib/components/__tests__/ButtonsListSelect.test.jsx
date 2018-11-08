@@ -57,6 +57,20 @@ describe('Buttons List Select', () => {
       expect(options.length).toEqual(expectedResult);
     });
 
+    it('renders the "Show More" button although the options left are options.length - 1', () => {
+      const testProps = setProps({
+        options: EXAMPLE_OPTIONS.slice(0, 4),
+        itemsToShowFirstRender: 1,
+        itemsPerPage: 2,
+      });
+
+      const component = renderComponent(testProps);
+      clickViewMore(component);
+      const viewMoreButton = getViewMoreButton(component);
+
+      expect(viewMoreButton.exists()).toBeTruthy();
+    });
+
     it('hides the view more button when all the options are shown', () => {
       const itemsToShowFirstRender = Math.floor(DEFAULT_PROPS.options.length);
       const itemsPerPage = DEFAULT_PROPS.options.length - itemsToShowFirstRender;
