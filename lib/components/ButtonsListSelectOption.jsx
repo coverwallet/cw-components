@@ -28,31 +28,40 @@ class ButtonsListSelectOption extends Component {
     onClickHelp(value);
   };
 
+  renderAccordion() {
+    const { label, iconClass, infoText, selected } = this.props;
+    const { opened } = this.state;
+
+    return (
+      <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
+        <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
+        {infoText && (
+          <div className="wide-button__right-button" onClick={this.onClickTooltip}>
+            <QuestionIcon accordion className="wide-button__title-item wide-button__title-item--bordered" />
+          </div>
+        )}
+      </AccordionSelect>
+    );
+  }
+
+  renderWideButton() {
+    const { label, iconClass, infoText, selected } = this.props;
+
+    return (
+      <WideButton selected={selected}>
+        <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
+        <div className="wide-button__right-button question-icon__tooltip">
+          <QuestionIcon infoText={infoText} className="wide-button__title-item wide-button__title-item--bordered" />
+        </div>
+      </WideButton>
+    );
+  }
+
   render() {
     const { label, iconClass, infoText, accordion, selected } = this.props;
     const { opened } = this.state;
 
-    if (accordion) {
-      return (
-        <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
-          <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
-          {infoText && (
-            <div className="wide-button__right-button" onClick={this.onClickTooltip}>
-              <QuestionIcon accordion className="wide-button__title-item wide-button__title-item--bordered" />
-            </div>
-          )}
-        </AccordionSelect>
-      );
-    } else {
-      return (
-        <WideButton selected={selected}>
-          <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
-          <div className="wide-button__right-button question-icon__tooltip">
-            <QuestionIcon infoText={infoText} className="wide-button__title-item wide-button__title-item--bordered" />
-          </div>
-        </WideButton>
-      );
-    }
+    return accordion ? this.renderAccordion() : this.renderWideButton();
   }
 }
 
