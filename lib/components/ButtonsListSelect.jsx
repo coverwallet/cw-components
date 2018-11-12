@@ -77,7 +77,6 @@ class ButtonsListSelect extends Component {
           onClick={this.handleClick}
           onClickHelp={onClickHelp}
           accordion={accordion}
-          errorMessage={errorMessage}
         />
         {isViewMoreRendered &&
           <button className="button-view-more" onClick={this.renderNextItems}>
