@@ -526,6 +526,7 @@ const App = function App() {
           onClickHelp={(value) => console.log('Clicked help of ', value)}
           selectedOptions={['Business Owners Policy (BOP)']}
           accordion
+          errorMessage="If errorMessage prop is present, it will be displayed here"
         />
       </div>
     </div>

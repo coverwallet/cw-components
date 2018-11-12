@@ -140,6 +140,21 @@ describe('Buttons List Select', () => {
     });
   });
 
+  describe('error message', () => {
+    it('renders a error message if errorMessage prop is present', () => {
+      const testProps = setProps({ errorMessage: 'error message' });
+      const component = renderComponent(testProps);
+
+      expect(getErrorMessage(component).exists()).toBeTruthy();
+    });
+
+    it('does NOT render a error message if errorMessage prop is NOT present', () => {
+      const component = renderComponent();
+
+      expect(getErrorMessage(component).exists()).toBeFalsy();
+    });
+  });
+
   const DEFAULT_OPTIONS_FIRST_PAGE = 2;
   const DEFAULT_OPTIONS_PER_PAGE = 3;
   const DEFAULT_ON_SELECT_CALLBACK = jest.fn();
@@ -172,6 +187,7 @@ describe('Buttons List Select', () => {
   const getOptions = component => component.find(ButtonsListSelectOption);
   const getViewMoreButton = component => component.find('.button-view-more');
   const getAccordion = component => component.find('AccordionSelect');
+  const getErrorMessage = component => component.find('.error-message');
 
   const clickViewMore = component => {
     getViewMoreButton(component).simulate('click');
