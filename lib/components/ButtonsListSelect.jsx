@@ -70,6 +70,7 @@ class ButtonsListSelect extends Component {
 
     return (
       <div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <ButtonsListSelectOptions
           options={optionsToRender}
           selectedOptions={selectedOptions}
