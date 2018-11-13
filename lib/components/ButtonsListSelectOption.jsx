@@ -58,8 +58,7 @@ class ButtonsListSelectOption extends Component {
   }
 
   render() {
-    const { label, iconClass, infoText, accordion, selected } = this.props;
-    const { opened } = this.state;
+    const { accordion } = this.props;
 
     return accordion ? this.renderAccordion() : this.renderWideButton();
   }
