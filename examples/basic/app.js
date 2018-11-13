@@ -17,6 +17,7 @@ import {
   RadioInputGroup,
   CurrencyInput,
   StickyFooter,
+  ButtonsListSelect,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -108,7 +109,7 @@ const baseRadioGroupOptions = [
   }, {
     label: 'I am not sure yet',
     value: 'I am not sure yet',
-  }
+  },
 ];
 
 const App = function App() {
@@ -170,8 +171,8 @@ const App = function App() {
           title="Your account need to be activated."
           titleMobile="Account activated"
         >
-            <h5 className="cw-flash-notification__description description-desktop">An additional info goes here.</h5>
-            <h5 className="cw-flash-notification__description description-tablet">An additional info.</h5>
+          <h5 className="cw-flash-notification__description description-desktop">An additional info goes here.</h5>
+          <h5 className="cw-flash-notification__description description-tablet">An additional info.</h5>
         </CwFlashNotification>
       </div>
 
@@ -382,7 +383,7 @@ const App = function App() {
         </div>
 
         <div className="loader__example">
-          <Loader subtitle="Calculating financing conditions"/>
+          <Loader subtitle="Calculating financing conditions" />
         </div>
       </div>
 
@@ -507,7 +508,29 @@ const App = function App() {
           </div>
         </StickyFooter>
       </div>
+
+      <div>
+        <h2>Buttons List Select</h2>
+        <ButtonsListSelect
+          options={insuranceTypes.map((type) => objectAssign({},
+            type,
+            {
+              label: type.name,
+              value: type.name,
+              iconClass: type.icon_name,
+              infoText: type.what_is_it,
+            },
+          ))}
+          onSelect={(value) => console.log('You select ', value)}
+          onDeselect={(value) => console.log('You deselect ', value)}
+          onClickHelp={(value) => console.log('Clicked help of ', value)}
+          selectedOptions={['Business Owners Policy (BOP)']}
+          accordion
+          errorMessage="If errorMessage prop is present, it will be displayed here"
+        />
+      </div>
     </div>
+
   );
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "cw-components",
-  "version": "2.9.9",
+  "version": "2.10.0",
   "description": "CoverWallet components",
   "main": "./build/lib/index.js",
   "repository": {
@@ -15,7 +15,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --content-base examples/ --port 8002",
     "test": "jest",
-    "build": "babel ./lib -d build/lib",
+    "build": "babel ./lib -d build/lib --ignore './lib/components/__tests__'",
     "build-watch": "npm run styleguide-fonts & babel -w -d build/lib ./lib",
     "copy-fonts": "cp -R node_modules/cw-styleguide/fonts examples/basic",
     "copy-images": "cp -R node_modules/cw-styleguide/images examples/basic",
