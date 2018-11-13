@@ -39,9 +39,13 @@ This still have some bug with fonts on coverwallet.github.io
 ## To publish new version to npm
 
 1. Run ```npm version <update_type>``` as explained here https://docs.npmjs.com/getting-started/publishing-npm-packages#how-to-update-the-version-number
-2. Create a user at www.npmjs.com, if you haven't yet
+2. Create a user at www.npmjs.com, if you haven't yet (or you can request access to cowerwallet's account)
 3. Make ```npm login```
 4. Ask to add you to collaborators for https://www.npmjs.com/package/cw-components
 5. Create a release version at github
 6. Run ```npm publish```
 
+## To test in a mobile device
+1. Run ```yarn start```
+2. In another tab, run ```yarn sync```
+3. In your mobile browser, enter the ```External URL``` printed in the terminal
