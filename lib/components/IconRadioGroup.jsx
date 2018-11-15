@@ -56,7 +56,7 @@ class IconRadioGroup extends React.Component {
             checkedValue={this.getValue()}
             onChange={this.handleChange}
             size={size}
-            disabled={disabled}
+            disabled={disabled || option.disabled}
           />
         ))}
       </div>

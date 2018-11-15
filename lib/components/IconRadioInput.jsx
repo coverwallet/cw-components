@@ -70,6 +70,7 @@ IconRadioInput.propTypes = {
   checkedValue: PropTypes.any,
   onChange: PropTypes.func.isRequired,
   size: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default IconRadioInput;
