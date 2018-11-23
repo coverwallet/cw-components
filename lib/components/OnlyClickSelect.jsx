@@ -98,6 +98,15 @@ class OnlyClickSelect extends React.Component {
     }
   };
 
+  handleKeyPress = (e) => {
+    const { onEnterKeyPress } = this.props;
+
+    if (onEnterKeyPress && e.key === 'Enter') {
+      const { value } = e.target;
+      onEnterKeyPress(value);
+    }
+  };
+
   handleDelete(value) {
     const { values } = this.state;
     if (values.indexOf(value) !== -1) {
@@ -141,6 +150,7 @@ class OnlyClickSelect extends React.Component {
                 placeholder={placeholder}
                 value={typedValue}
                 onChange={this.handleChange}
+                onKeyPress={this.handleKeyPress}
                 disabled={disableInput}
               />
             </div>
@@ -184,6 +194,7 @@ OnlyClickSelect.propTypes = {
   onClick: PropTypes.func,
   onDelete: PropTypes.func,
   onHelpIconClick: PropTypes.func,
+  onEnterKeyPress: PropTypes.func,
   disableFilter: PropTypes.bool,
   disableDelete: PropTypes.bool,
   autoFocus: PropTypes.bool,
