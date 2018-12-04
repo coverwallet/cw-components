@@ -50,7 +50,7 @@ class IconRadioInput extends React.Component {
       { 'icons-radio-input--small': size === 'small' },
       { 'icons-radio-input--disabled': disabled },
       { 'icons-radio-input--no-icon': !iconClass },
-      { [className]: className },
+      className,
     );
     const inputId = `${name}${value}`;
     return (

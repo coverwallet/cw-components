@@ -47,7 +47,7 @@ class IconRadioGroup extends React.Component {
           {
             'icons-radio-group--disabled': disabled,
           },
-          { [className]: className },
+          className,
         )}
       >
         {options.map((option, i) => (
