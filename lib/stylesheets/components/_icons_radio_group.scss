@@ -114,4 +114,10 @@
     border: 1px solid $cwColor-black-light;
     background-color: $cwColor-black-mlight;
   }
+
+  &--no-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
