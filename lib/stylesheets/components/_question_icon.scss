@@ -7,17 +7,25 @@
   justify-content: center;
   align-items: center;
   color: gray;
-  font-size: 12px;
+  font-size: 14px;
 
   &--light {
-    border-color: white;
-    color: white;
+    border-color: $cwColor-base-white;
+    color: $cwColor-base-white;
   }
 
   &--colored {
-    border-color: blue;
-    color: white;
-    background: blue;
+    border-color: $cwColor-blue;
+    color: $cwColor-base-white;
+    font-weight: 800;
+    background: $cwColor-blue;
+  }
+
+  &--colored-inverted {
+    color: $cwColor-blue;
+    border-color: $cwColor-base-white;
+    font-weight: 800;
+    background: $cwColor-base-white;
   }
 
   &__tooltip {
