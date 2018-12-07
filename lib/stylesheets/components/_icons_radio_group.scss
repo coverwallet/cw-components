@@ -44,7 +44,7 @@
     margin: 1%;
   }
 
-  .icons-radio-input__icon {
+  &__icon {
     font-family: 'coverwallet-general';
     font-size: 25px;
     padding-top: 7px;
@@ -61,18 +61,21 @@
     }
   }
 
-  .icons-radio-input__input {
+  &__input {
     display: none;
   }
 
-  .icons-radio-input__label {
-    margin-top: 4px;
+  &__label {
     color: $cwColor-black-dark;
     font-size: 11px;
     line-height: 12px;
 
     @include media($mobile) {
       font-size: 10px;
+    }
+
+    &--top-separation {
+      margin-top: 4px;
     }
   }
 
@@ -110,5 +113,11 @@
   &--disabled:not(&--checked) {
     border: 1px solid $cwColor-black-light;
     background-color: $cwColor-black-mlight;
+  }
+
+  &--no-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
