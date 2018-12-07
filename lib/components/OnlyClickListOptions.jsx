@@ -16,6 +16,7 @@ function OnlyClickListOptions(props) {
     disabled,
     listClasses,
     optionComponent,
+    animatedSelection,
   } = props;
 
   return (
@@ -38,6 +39,7 @@ function OnlyClickListOptions(props) {
           {...props}
           disabled={disabled || option.disabled}
           optionComponent={optionComponent}
+          animatedSelection={animatedSelection}
         />
       ))}
     </ul>
@@ -51,6 +53,7 @@ OnlyClickListOptions.propTypes = {
   selectedValues: PropTypes.arrayOf(PropTypes.string),
   typedValue: PropTypes.string,
   highlight: PropTypes.bool,
+  animatedSelection: PropTypes.bool,
   highlightSanitizer: PropTypes.func,
   listType: PropTypes.string,
   listClasses: PropTypes.string,

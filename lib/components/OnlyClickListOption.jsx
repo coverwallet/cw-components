@@ -22,10 +22,12 @@ function OnlyClickListOption(props) {
     itemClasses,
     disabled,
     optionComponent,
+    animatedSelection = true,
   } = props;
   const optionClass = classNames(
-    'oc-options-list__item oc-list-option',
     itemClasses,
+    'oc-options-list__item oc-list-option',
+    { 'oc-list-option--animate-selection': animatedSelection },
     { 'oc-list-option--checked': checked },
     { 'oc-list-option--no-touch': !isIOS() },
     { 'oc-list-option--with-addition': addition },
@@ -76,6 +78,7 @@ OnlyClickListOption.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   highlight: PropTypes.bool,
+  animatedSelection: PropTypes.bool,
   highlightSanitizer: PropTypes.func,
   listType: PropTypes.string,
   itemClasses: PropTypes.string,
