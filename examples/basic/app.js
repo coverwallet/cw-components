@@ -419,6 +419,7 @@ const App = function App() {
             ))}
             onClick={(value) => console.log('You choose ', value)}
             onDelete={(value) => console.log('You remove ', value)}
+            onEnterKeyPress={(value) => console.log('You pressed the Enter key')}
             autoFocus
           />
         </div>
@@ -435,6 +436,7 @@ const App = function App() {
             ))}
             onClick={(value) => console.log('You choose ', value)}
             onDelete={(value) => console.log('You remove ', value)}
+            onEnterKeyPress={(value) => console.log('You pressed the Enter key')}
             values={[industries[0].subindustries[0].name]}
           />
         </div>
@@ -473,6 +475,7 @@ const App = function App() {
             onChange={(value) => console.log('You typed ', value)}
             onClick={(value) => console.log('You choose ', value)}
             onDelete={(value) => console.log('You remove ', value)}
+            onEnterKeyPress={(value) => console.log('You pressed the Enter key')}
             values={[industries[0].subindustries[0].name]}
             maxVisible={10}
             disableFilter
@@ -499,6 +502,7 @@ const App = function App() {
             ))}
             onClick={(value) => console.log('You choose ', value)}
             onDelete={(value) => console.log('You remove ', value)}
+            onEnterKeyPress={(value) => console.log('You pressed the Enter key')}
             onHelpIconClick={(key) => console.log('Some help info for: ', key)}
           />
         </div>

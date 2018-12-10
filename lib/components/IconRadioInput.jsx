@@ -33,7 +33,15 @@ class IconRadioInput extends React.Component {
   }
 
   render() {
-    const { name, value, label, size, disabled } = this.props;
+    const {
+      name,
+      value,
+      label,
+      size,
+      disabled,
+      iconClass,
+      className,
+    } = this.props;
     const { checked } = this.state;
     const buttonClass = classNames(
       'icons-radio-input',
@@ -41,6 +49,8 @@ class IconRadioInput extends React.Component {
       { 'icons-radio-input--no-touch': !isIOS() },
       { 'icons-radio-input--small': size === 'small' },
       { 'icons-radio-input--disabled': disabled },
+      { 'icons-radio-input--no-icon': !iconClass },
+      className,
     );
     const inputId = `${name}${value}`;
     return (
@@ -56,7 +66,13 @@ class IconRadioInput extends React.Component {
           checked={checked}
           disabled={disabled}
         />
-        <div className="icons-radio-input__label">{this.props.label}</div>
+        <div
+          className={classNames('icons-radio-input__label', {
+            'icons-radio-input__label--top-separation': iconClass,
+          })}
+        >
+          {label}
+        </div>
       </label>
     );
   }
@@ -70,6 +86,8 @@ IconRadioInput.propTypes = {
   checkedValue: PropTypes.any,
   onChange: PropTypes.func.isRequired,
   size: PropTypes.string,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default IconRadioInput;

@@ -16,6 +16,7 @@ function OnlyClickListOptions(props) {
     disabled,
     listClasses,
     optionComponent,
+    animatedSelection,
   } = props;
 
   return (
@@ -27,7 +28,7 @@ function OnlyClickListOptions(props) {
       {options.map((option, i) => (
         <OnlyClickOption
           key={option.value + i}
-          checked={selectedValues.indexOf(option.value) !== -1}
+          checked={selectedValues ? selectedValues.indexOf(option.value) !== -1 : false}
           typedValue={typedValue}
           highlight={highlight}
           highlightSanitizer={highlightSanitizer}
@@ -38,6 +39,7 @@ function OnlyClickListOptions(props) {
           {...props}
           disabled={disabled || option.disabled}
           optionComponent={optionComponent}
+          animatedSelection={animatedSelection}
         />
       ))}
     </ul>
@@ -51,6 +53,7 @@ OnlyClickListOptions.propTypes = {
   selectedValues: PropTypes.arrayOf(PropTypes.string),
   typedValue: PropTypes.string,
   highlight: PropTypes.bool,
+  animatedSelection: PropTypes.bool,
   highlightSanitizer: PropTypes.func,
   listType: PropTypes.string,
   listClasses: PropTypes.string,
