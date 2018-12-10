@@ -6,7 +6,7 @@
   border-radius: 10px;
   box-sizing: border-box;
   cursor: pointer;
-  background-color: white;
+  background-color: $cwColor-base-white;
 
   &:focus:not(&--disabled),
   &:active:not(&--disabled),
@@ -18,7 +18,7 @@
   @include media($desktop) {
     &:hover {
       & #{$parent}__right-button:before {
-        border-color: white;
+        border-color: $cwColor-base-white;
       }
 
       & #{$parent}__title {
@@ -30,9 +30,9 @@
       }
 
       & #{$parent}__title-item {
-        color: white;
+        color: $cwColor-base-white;
         &--bordered {
-          border-color: white;
+          border-color: $cwColor-base-white;
         }
       }
     }
@@ -47,7 +47,7 @@
     }
 
     & #{$parent}__right-button:before {
-      border-color: white;
+      border-color: $cwColor-base-white;
     }
 
     & #{$parent},
@@ -60,9 +60,9 @@
     }
 
     & #{$parent}__title-item {
-      color: white;
+      color: $cwColor-base-white;
       &--bordered {
-        border-color: white;
+        border-color: $cwColor-base-white;
       }
     }
   }
@@ -141,12 +141,12 @@
 
   @include media($desktop) {
     &:hover {
-      color: white;
+      color: $cwColor-base-white;
     }
   }
 
   &--selected {
-    color: white;
+    color: $cwColor-base-white;
   }
 
   &__icon {
@@ -166,17 +166,30 @@
 }
 
 .button-view-more {
-  background-color: white;
-  color: $cwColor-blue;
-  border-color: $cwColor-blue;
-  font-size: 16px;
-  border-radius: 3px;
-  width: 120px;
-  padding: 16px 8px;
+  background-color: $cwColor-base-white;
+  color: $cwColor-gray;
+  border: 1px solid $cwColor-gray-light;
+  font-size: .875em;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
   display: block;
-  margin: 20px auto;
+  margin: 8px auto;
 
   @include media($mobile) {
     font-size: 14px;
+  }
+
+  &:hover {
+    border-color: $cwColor-blue;
+    background: $cwColor-blue;
+    color: $cwColor-base-white;
+  }
+
+  &__arrow {
+    display: inline-block;
+    margin-left: 6px;
+    transform: scaleX(1.2) translateY(1px);
   }
 }

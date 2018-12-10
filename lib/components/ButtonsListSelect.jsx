@@ -80,7 +80,8 @@ class ButtonsListSelect extends Component {
         />
         {isViewMoreRendered &&
           <button className="button-view-more" onClick={this.renderNextItems}>
-            View more
+            View more insurances
+            <span className="button-view-more__arrow fa fa-angle-down"></span>
           </button>}
       </div>
     );
