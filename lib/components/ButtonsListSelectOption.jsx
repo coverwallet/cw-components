@@ -37,7 +37,7 @@ class ButtonsListSelectOption extends Component {
         <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
         {infoText && (
           <div className="wide-button__right-button" onClick={this.onClickTooltip}>
-            <QuestionIcon accordion className="wide-button__title-item wide-button__title-item--bordered" />
+            <QuestionIcon accordion type={selected ? 'colored-inverted' : 'colored'} />
           </div>
         )}
       </AccordionSelect>
@@ -51,7 +51,7 @@ class ButtonsListSelectOption extends Component {
       <WideButton selected={selected}>
         <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
         <div className="wide-button__right-button question-icon__tooltip">
-          <QuestionIcon infoText={infoText} className="wide-button__title-item wide-button__title-item--bordered" />
+          <QuestionIcon infoText={infoText} type={selected ? 'colored-inverted' : 'colored'} />
         </div>
       </WideButton>
     );
