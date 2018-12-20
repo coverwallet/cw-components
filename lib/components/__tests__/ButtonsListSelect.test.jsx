@@ -155,10 +155,30 @@ describe('Buttons List Select', () => {
     });
   });
 
+  describe('help button', () => {
+    it('calls onOpenHelp the first time is clicked', () => {
+      const component = renderComponent();
+      const firstOption = getOptions(component).first();
+      clickHelpButton(component);
+
+      expect(DEFAULT_ON_OPEN_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component));
+    });
+
+    it('calls onCloseHelp the second time is clicked', () => {
+      const component = renderComponent();
+      const firstOption = getOptions(component).first();
+      clickHelpButton(component);
+
+      expect(DEFAULT_ON_OPEN_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component));
+    });
+  });
+
   const DEFAULT_OPTIONS_FIRST_PAGE = 2;
   const DEFAULT_OPTIONS_PER_PAGE = 3;
   const DEFAULT_ON_SELECT_CALLBACK = jest.fn();
   const DEFAULT_ON_DESELECT_CALLBACK = jest.fn();
+  const DEFAULT_ON_OPEN_HELP = jest.fn();
+  const DEFAULT_ON_CLOSE_HELP = jest.fn();
   const EXAMPLE_INSURANCE_TYPE = {
     label: 'Business Owners Policy (BOP)',
     value: 'Business Owners Policy (BOP)',
@@ -178,6 +198,8 @@ describe('Buttons List Select', () => {
     onDeselect: DEFAULT_ON_DESELECT_CALLBACK,
     itemsToShowFirstRender: DEFAULT_OPTIONS_FIRST_PAGE,
     itemsPerPage: DEFAULT_OPTIONS_PER_PAGE,
+    onOpenHelp: DEFAULT_ON_OPEN_HELP,
+    onCloseHelp: DEFAULT_ON_CLOSE_HELP,
   };
 
 
@@ -188,6 +210,8 @@ describe('Buttons List Select', () => {
   const getViewMoreButton = component => component.find('.button-view-more');
   const getAccordion = component => component.find('AccordionSelect');
   const getErrorMessage = component => component.find('.error-message');
+  const getHelpButton = (component, index) => component.find('QuestionIcon').at(index).parent();
+  const getHelpIcon = component => component.find('QuestionIcon').at(0).text();
 
   const clickViewMore = component => {
     getViewMoreButton(component).simulate('click');
@@ -196,6 +220,11 @@ describe('Buttons List Select', () => {
 
   const clickTitleOption = (option, component) => {
     option.find('TextWithIcon').find('.wide-button__title-item').simulate('click');
+    component.update();
+  };
+
+  const clickHelpButton = (component, index = 0) => {
+    getHelpButton(component, index).simulate('click');
     component.update();
   };
 });
