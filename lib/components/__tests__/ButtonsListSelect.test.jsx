@@ -158,14 +158,27 @@ describe('Buttons List Select', () => {
 
   describe('help button', () => {
     describe('on open', () => {
-      it('calls onOpenHelp if accordion is closed', () => {
+      it('calls onOpenHelp if accordion when clicked AND is closed', () => {
         const component = renderComponent();
         const firstOption = getOptions(component).first();
         clickHelpButton(component);
         const infoText = getOptionInfoText(component);
 
         expect(DEFAULT_ON_OPEN_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component).trim());
-        expect(isTextRendered(component, infoText)).toBeTruthy();
+        expect(isHelpRendered(component, infoText)).toBeTruthy();
+      });
+    });
+
+    describe('on close', () => {
+      it('calls onCloseHelp when clicked AND is opened', () => {
+        const component = renderComponent();
+        const firstOption = getOptions(component).first();
+        clickHelpButton(component);
+        clickHelpButton(component);
+        const infoText = getOptionInfoText(component);
+
+        expect(DEFAULT_ON_CLOSE_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component).trim());
+        expect(isHelpRendered(component, infoText)).toBeFalsy();
       });
     });
   });
@@ -187,7 +200,7 @@ describe('Buttons List Select', () => {
     [0, 1, 2, 3, 4, 5, 6, 7].map(key => (
       { ...EXAMPLE_INSURANCE_TYPE,
         value: EXAMPLE_INSURANCE_TYPE.value + key,
-        infoText: EXAMPLE_INSURANCE_TYPE.value + key,
+        infoText: `${EXAMPLE_INSURANCE_TYPE.value + key}tooltip`,
       }
     ))
   );
@@ -232,8 +245,6 @@ describe('Buttons List Select', () => {
     component.update();
   };
 
-  const isTextRendered = (component, text) =>
-    !!component.findWhere(
-      node => node && node.length && node.type() && node.text() === text,
-    ).length;
+  const isHelpRendered = (component, text) =>
+    component.find('.wide-button__content--opened').length && component.find('.wide-button__content--opened').text() === text;
 });

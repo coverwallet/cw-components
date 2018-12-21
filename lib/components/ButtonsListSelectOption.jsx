@@ -22,12 +22,14 @@ class ButtonsListSelectOption extends Component {
 
   onClickTooltip = () => {
     const { opened } = this.state;
-    const { onOpenHelp, value } = this.props;
+    const { onOpenHelp, onCloseHelp, value } = this.props;
 
     this.setState({ opened: !opened });
 
     if (!opened) {
       onOpenHelp(value, '?');
+    } else {
+      onCloseHelp(value, '?');
     }
   };
 
@@ -77,6 +79,7 @@ ButtonsListSelectOption.propTypes = {
   iconClass: PropTypes.string,
   onClick: PropTypes.func,
   onOpenHelp: PropTypes.func,
+  onCloseHelp: PropTypes.func,
   iconToolTip: PropTypes.func,
 };
 

@@ -64,7 +64,7 @@ class ButtonsListSelect extends Component {
   }
 
   render() {
-    const { onOpenHelp, selectedOptions, accordion, errorMessage } = this.props;
+    const { onOpenHelp, onCloseHelp, selectedOptions, accordion, errorMessage } = this.props;
     const { isViewMoreRendered, itemsToShow } = this.state;
     const optionsToRender = this.getOptionsToRender(itemsToShow, isViewMoreRendered);
 
@@ -76,6 +76,7 @@ class ButtonsListSelect extends Component {
           selectedOptions={selectedOptions}
           onClick={this.handleClick}
           onOpenHelp={onOpenHelp}
+          onCloseHelp={onCloseHelp}
           accordion={accordion}
         />
         {isViewMoreRendered &&
@@ -94,6 +95,7 @@ ButtonsListSelect.propTypes = {
   onSelect: PropTypes.func.isRequired,
   onDeselect: PropTypes.func.isRequired,
   onOpenHelp: PropTypes.func,
+  onCloseHelp: PropTypes.func,
   isViewMoreEnabled: PropTypes.bool,
   itemsToShowFirstRender: PropTypes.number,
   itemsPerPage: PropTypes.number,
