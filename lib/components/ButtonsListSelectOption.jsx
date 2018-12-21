@@ -22,10 +22,13 @@ class ButtonsListSelectOption extends Component {
 
   onClickTooltip = () => {
     const { opened } = this.state;
-    const { onClickHelp, value } = this.props;
+    const { onOpenHelp, value } = this.props;
 
     this.setState({ opened: !opened });
-    onClickHelp(value);
+
+    if (!opened) {
+      onOpenHelp(value, '?');
+    }
   };
 
   renderAccordion() {
@@ -73,7 +76,7 @@ ButtonsListSelectOption.propTypes = {
   accordion: PropTypes.bool,
   iconClass: PropTypes.string,
   onClick: PropTypes.func,
-  onClickHelp: PropTypes.func,
+  onOpenHelp: PropTypes.func,
   iconToolTip: PropTypes.func,
 };
 
