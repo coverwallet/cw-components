@@ -133,7 +133,8 @@ describe('Buttons List Select', () => {
     });
 
     it('does NOT render Accordion if "accordion" prop is NOT passed OR passed as false', () => {
-      const component = renderComponent();
+      const testProps = setProps({ accordion: false });
+      const component = renderComponent(testProps);
       const accordion = getAccordion(component);
 
       expect(accordion.exists()).toBeFalsy();
@@ -155,10 +156,39 @@ describe('Buttons List Select', () => {
     });
   });
 
+  describe('help button', () => {
+    describe('on open', () => {
+      it('calls onOpenHelp if accordion when clicked AND is closed', () => {
+        const component = renderComponent();
+        const firstOption = getOptions(component).first();
+        clickHelpButton(component);
+        const infoText = getOptionInfoText(component);
+
+        expect(DEFAULT_ON_OPEN_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component).trim());
+        expect(isHelpRendered(component, infoText)).toBeTruthy();
+      });
+    });
+
+    describe('on close', () => {
+      it('calls onCloseHelp when clicked AND is opened', () => {
+        const component = renderComponent();
+        const firstOption = getOptions(component).first();
+        clickHelpButton(component);
+        clickHelpButton(component);
+        const infoText = getOptionInfoText(component);
+
+        expect(DEFAULT_ON_CLOSE_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component).trim());
+        expect(isHelpRendered(component, infoText)).toBeFalsy();
+      });
+    });
+  });
+
   const DEFAULT_OPTIONS_FIRST_PAGE = 2;
   const DEFAULT_OPTIONS_PER_PAGE = 3;
   const DEFAULT_ON_SELECT_CALLBACK = jest.fn();
   const DEFAULT_ON_DESELECT_CALLBACK = jest.fn();
+  const DEFAULT_ON_OPEN_HELP = jest.fn();
+  const DEFAULT_ON_CLOSE_HELP = jest.fn();
   const EXAMPLE_INSURANCE_TYPE = {
     label: 'Business Owners Policy (BOP)',
     value: 'Business Owners Policy (BOP)',
@@ -167,7 +197,12 @@ describe('Buttons List Select', () => {
   };
 
   const createOptionsExample = () => (
-    [0, 1, 2, 3, 4, 5, 6, 7].map(key => ({ ...EXAMPLE_INSURANCE_TYPE, value: EXAMPLE_INSURANCE_TYPE.value + key }))
+    [0, 1, 2, 3, 4, 5, 6, 7].map(key => (
+      { ...EXAMPLE_INSURANCE_TYPE,
+        value: EXAMPLE_INSURANCE_TYPE.value + key,
+        infoText: `${EXAMPLE_INSURANCE_TYPE.value + key}tooltip`,
+      }
+    ))
   );
 
   const EXAMPLE_OPTIONS = createOptionsExample();
@@ -178,6 +213,9 @@ describe('Buttons List Select', () => {
     onDeselect: DEFAULT_ON_DESELECT_CALLBACK,
     itemsToShowFirstRender: DEFAULT_OPTIONS_FIRST_PAGE,
     itemsPerPage: DEFAULT_OPTIONS_PER_PAGE,
+    onOpenHelp: DEFAULT_ON_OPEN_HELP,
+    onCloseHelp: DEFAULT_ON_CLOSE_HELP,
+    accordion: true,
   };
 
 
@@ -188,6 +226,9 @@ describe('Buttons List Select', () => {
   const getViewMoreButton = component => component.find('.button-view-more');
   const getAccordion = component => component.find('AccordionSelect');
   const getErrorMessage = component => component.find('.error-message');
+  const getHelpButton = (component, index = 0) => component.find('QuestionIcon').at(index).parent();
+  const getHelpIcon = component => component.find('QuestionIcon').at(0).text();
+  const getOptionInfoText = (component, index = 0) => component.find('ButtonsListSelectOption').at(index).props().infoText;
 
   const clickViewMore = component => {
     getViewMoreButton(component).simulate('click');
@@ -198,4 +239,12 @@ describe('Buttons List Select', () => {
     option.find('TextWithIcon').find('.wide-button__title-item').simulate('click');
     component.update();
   };
+
+  const clickHelpButton = (component, index = 0) => {
+    getHelpButton(component, index).simulate('click');
+    component.update();
+  };
+
+  const isHelpRendered = (component, text) =>
+    component.find('.wide-button__content--opened').length && component.find('.wide-button__content--opened').text() === text;
 });
