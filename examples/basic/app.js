@@ -527,7 +527,8 @@ const App = function App() {
           ))}
           onSelect={(value) => console.log('You select ', value)}
           onDeselect={(value) => console.log('You deselect ', value)}
-          onClickHelp={(value) => console.log('Clicked help of ', value)}
+          onOpenHelp={(value) => console.log('Opened help of ', value)}
+          onCloseHelp={(value) => console.log('Closed help of ', value)}
           selectedOptions={['Business Owners Policy (BOP)']}
           accordion
           errorMessage="If errorMessage prop is present, it will be displayed here"
