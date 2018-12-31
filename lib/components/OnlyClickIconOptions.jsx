@@ -2,8 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OnlyClickIconOption from './OnlyClickIconOption';
 
+const noOp = () => {};
+
 function OnlyClickIconOptions(props) {
-  const { selectedValues, onClick, onHelpClick } = props;
+  const {
+    selectedValues,
+    onClick,
+    onHelpClick,
+    onMouseEnter = noOp,
+    onMouseOut = noOp,
+  } = props;
   return (
     <div className="oc-icon-options">
       {props.options.map(option => (
@@ -18,6 +26,8 @@ function OnlyClickIconOptions(props) {
               className="oc-icon-options__item-help-icon"
               id={option.tooltipKey}
               onClick={onHelpClick && onHelpClick.bind(null, option.tooltipKey)}
+              onMouseEnter={onMouseEnter}
+              onMouseOut={onMouseOut}
               tabIndex="-1"
             />
           )}
