@@ -27,7 +27,9 @@ function OnlyClickIconOptions(props) {
               id={option.tooltipKey}
               onClick={onHelpClick && onHelpClick.bind(null, option.tooltipKey)}
               onMouseEnter={onMouseEnter}
+              onFocus={onMouseEnter}
               onMouseOut={onMouseOut}
+              onBlur={onMouseOut}
               tabIndex="-1"
             />
           )}
