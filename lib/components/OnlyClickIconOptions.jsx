@@ -41,6 +41,8 @@ OnlyClickIconOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func,
   onHelpClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseOut: PropTypes.func,
   selectedValues: PropTypes.arrayOf(PropTypes.string),
 };
 
