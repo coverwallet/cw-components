@@ -9,8 +9,8 @@ function OnlyClickIconOptions(props) {
     selectedValues,
     onClick,
     onHelpClick,
-    onMouseEnter = noOp,
-    onMouseOut = noOp,
+    onTooltipEnter = noOp,
+    onTooltipOut = noOp,
   } = props;
   return (
     <div className="oc-icon-options">
@@ -26,10 +26,10 @@ function OnlyClickIconOptions(props) {
               className="oc-icon-options__item-help-icon"
               id={option.tooltipKey}
               onClick={onHelpClick && onHelpClick.bind(null, option.tooltipKey)}
-              onMouseEnter={onMouseEnter}
-              onFocus={onMouseEnter}
-              onMouseOut={onMouseOut}
-              onBlur={onMouseOut}
+              onMouseEnter={onTooltipEnter}
+              onFocus={onTooltipEnter}
+              onMouseOut={onTooltipOut}
+              onBlur={onTooltipOut}
               tabIndex="-1"
             />
           )}
@@ -43,8 +43,8 @@ OnlyClickIconOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func,
   onHelpClick: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseOut: PropTypes.func,
+  onTooltipEnter: PropTypes.func,
+  onTooltipOut: PropTypes.func,
   selectedValues: PropTypes.arrayOf(PropTypes.string),
 };
 
