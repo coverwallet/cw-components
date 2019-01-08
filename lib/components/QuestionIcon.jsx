@@ -7,7 +7,7 @@ const getQuestionIconClass = props => classNames('question-icon', { [`question-i
 function QuestionIcon({ accordion, infoText, className, ...props }) {
   return (
     <div className={`${getQuestionIconClass(props)} ${className}`} {...props}>
-      ? {!accordion && <span className="question-icon__tooltip-text">{infoText}</span>}
+      {!accordion && <span className="question-icon__tooltip-text">{infoText}</span>}
     </div>
   );
 }

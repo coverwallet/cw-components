@@ -1,13 +1,20 @@
 .question-icon {
   border-radius: 50%;
-  border: 1px solid gray;
-  width: 19px;
-  height: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: gray;
   font-size: 14px;
+
+  &:before {
+    content: "\F059";
+    font-family: FontAwesome;
+    font-size: 18px;
+  }
+
+  .wide-button:hover & {
+    color: $cwColor-base-white;
+  }
 
   &--light {
     border-color: $cwColor-base-white;
@@ -15,17 +22,11 @@
   }
 
   &--colored {
-    border-color: $cwColor-blue;
-    color: $cwColor-base-white;
-    font-weight: 800;
-    background: $cwColor-blue;
+    color: $cwColor-blue;
   }
 
   &--colored-inverted {
-    color: $cwColor-blue;
-    border-color: $cwColor-base-white;
-    font-weight: 800;
-    background: $cwColor-base-white;
+    color: $cwColor-base-white;
   }
 
   &__tooltip {
