@@ -152,6 +152,12 @@
     font-size: 32px;
     padding-right: 15px;
     color: $dark-medium-color;
+
+    @include media($desktop) {
+      .wide-button:hover & {
+        color: $cwColor-base-white;
+      }
+    }
   }
 
   @include media($desktop) {

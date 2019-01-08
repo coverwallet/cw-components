@@ -12,10 +12,6 @@
     font-size: 18px;
   }
 
-  .wide-button:hover & {
-    color: $cwColor-base-white;
-  }
-
   &--light {
     border-color: $cwColor-base-white;
     color: $cwColor-base-white;
@@ -53,6 +49,12 @@
 
   &__tooltip:hover &__tooltip-text {
     visibility: visible;
+  }
+
+  @include media($desktop) {
+    .wide-button:hover & {
+      color: $cwColor-base-white;
+    }
   }
 }
 
