@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 const TextWithIcon = ({ iconClass, label, className = '', ...props }) => (
-  <p {...props} className={`title-with-icon ${className}`}>
-    <span className={`${iconClass} title-with-icon__icon`} />
+  <p {...props} className={`title-with-icon ${className} ${iconClass}`}>
     {label}
   </p>
 );

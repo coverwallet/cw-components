@@ -164,7 +164,7 @@ describe('Buttons List Select', () => {
         clickHelpButton(component);
         const infoText = getOptionInfoText(component);
 
-        expect(DEFAULT_ON_OPEN_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component).trim());
+        expect(DEFAULT_ON_OPEN_HELP).toBeCalledWith(firstOption.props().value, '?');
         expect(isHelpRendered(component, infoText)).toBeTruthy();
       });
     });
@@ -177,7 +177,7 @@ describe('Buttons List Select', () => {
         clickHelpButton(component);
         const infoText = getOptionInfoText(component);
 
-        expect(DEFAULT_ON_CLOSE_HELP).toBeCalledWith(firstOption.props().value, getHelpIcon(component).trim());
+        expect(DEFAULT_ON_CLOSE_HELP).toBeCalledWith(firstOption.props().value, '?');
         expect(isHelpRendered(component, infoText)).toBeFalsy();
       });
     });
@@ -227,7 +227,6 @@ describe('Buttons List Select', () => {
   const getAccordion = component => component.find('AccordionSelect');
   const getErrorMessage = component => component.find('.error-message');
   const getHelpButton = (component, index = 0) => component.find('QuestionIcon').at(index).parent();
-  const getHelpIcon = component => component.find('QuestionIcon').at(0).text();
   const getOptionInfoText = (component, index = 0) => component.find('ButtonsListSelectOption').at(index).props().infoText;
 
   const clickViewMore = component => {
