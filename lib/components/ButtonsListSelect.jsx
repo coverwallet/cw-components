@@ -63,6 +63,16 @@ class ButtonsListSelect extends Component {
     });
   }
 
+  viewMoreClicked = () => {
+    const { onViewMoreClick } = this.props;
+
+    this.renderNextItems();
+
+    if (onViewMoreClick) {
+      onViewMoreClick();
+    }
+  };
+
   render() {
     const { onOpenHelp, onCloseHelp, selectedOptions, accordion, errorMessage } = this.props;
     const { isViewMoreRendered, itemsToShow } = this.state;
@@ -80,7 +90,7 @@ class ButtonsListSelect extends Component {
           accordion={accordion}
         />
         {isViewMoreRendered &&
-          <button className="button-view-more" onClick={this.renderNextItems}>
+          <button className="button-view-more" onClick={this.viewMoreClicked}>
             View more insurances
             <span className="button-view-more__arrow fa fa-angle-down"></span>
           </button>}
@@ -96,6 +106,7 @@ ButtonsListSelect.propTypes = {
   onDeselect: PropTypes.func.isRequired,
   onOpenHelp: PropTypes.func,
   onCloseHelp: PropTypes.func,
+  onViewMoreClick: PropTypes.func,
   isViewMoreEnabled: PropTypes.bool,
   itemsToShowFirstRender: PropTypes.number,
   itemsPerPage: PropTypes.number,
