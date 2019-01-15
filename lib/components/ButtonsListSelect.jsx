@@ -74,7 +74,14 @@ class ButtonsListSelect extends Component {
   };
 
   render() {
-    const { onOpenHelp, onCloseHelp, selectedOptions, accordion, errorMessage } = this.props;
+    const {
+      onOpenHelp,
+      onCloseHelp,
+      selectedOptions,
+      accordion,
+      errorMessage,
+      viewMoreButtonText,
+    } = this.props;
     const { isViewMoreRendered, itemsToShow } = this.state;
     const optionsToRender = this.getOptionsToRender(itemsToShow, isViewMoreRendered);
 
@@ -91,7 +98,7 @@ class ButtonsListSelect extends Component {
         />
         {isViewMoreRendered &&
           <button className="button-view-more" onClick={this.viewMoreClicked}>
-            View more insurances
+            {viewMoreButtonText || 'View more'}
             <span className="button-view-more__arrow fa fa-angle-down"></span>
           </button>}
       </div>
@@ -112,6 +119,7 @@ ButtonsListSelect.propTypes = {
   itemsPerPage: PropTypes.number,
   accordion: PropTypes.bool,
   errorMessage: PropTypes.string,
+  viewMoreButtonText: PropTypes.string,
 };
 
 ButtonsListSelect.defaultProps = {
