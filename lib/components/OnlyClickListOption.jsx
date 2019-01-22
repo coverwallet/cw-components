@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Highlighter from 'react-highlight-words';
 import { isIOS } from '../utils/deviceDetector';
+import escapeSpecialCharacters from '../utils/string-helper';
 
 function OnlyClickListOption(props) {
   const {
@@ -21,10 +22,12 @@ function OnlyClickListOption(props) {
     itemClasses,
     disabled,
     optionComponent,
+    animatedSelection = true,
   } = props;
   const optionClass = classNames(
-    'oc-options-list__item oc-list-option',
     itemClasses,
+    'oc-options-list__item oc-list-option',
+    { 'oc-list-option--animate-selection': animatedSelection },
     { 'oc-list-option--checked': checked },
     { 'oc-list-option--no-touch': !isIOS() },
     { 'oc-list-option--with-addition': addition },
@@ -40,13 +43,13 @@ function OnlyClickListOption(props) {
       {optionComponent ? (
         <span>{optionComponent(props)}</span>
       ) : (
-        <span>
+        <span className="oc-list-option__container">
           {listType === 'multiSelect' && <span className={multiSelectIconClass} />}
           <span className={messageClass}>
             {highlight ? (
               <Highlighter
                 highlightClassName={'oc-option__search-term'}
-                searchWords={typedValue.trim().split(' ')}
+                searchWords={escapeSpecialCharacters(typedValue.trim()).split(' ')}
                 textToHighlight={label}
                 sanitize={highlightSanitizer}
               />
@@ -75,6 +78,7 @@ OnlyClickListOption.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   highlight: PropTypes.bool,
+  animatedSelection: PropTypes.bool,
   highlightSanitizer: PropTypes.func,
   listType: PropTypes.string,
   itemClasses: PropTypes.string,

@@ -7,7 +7,9 @@
     "describe": true,
     "equal": true,
     "expect": true,
-    "it": true
+    "it": true,
+    "jest": true,
+    "beforeEach": true
   },
   "rules": {
     "max-len": [1, 140, 2],

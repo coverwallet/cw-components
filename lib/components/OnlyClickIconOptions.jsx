@@ -2,8 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OnlyClickIconOption from './OnlyClickIconOption';
 
+const noOp = () => {};
+
 function OnlyClickIconOptions(props) {
-  const { selectedValues, onClick, onHelpClick } = props;
+  const {
+    selectedValues,
+    onClick,
+    onHelpClick,
+    onTooltipEnter = noOp,
+    onTooltipOut = noOp,
+  } = props;
   return (
     <div className="oc-icon-options">
       {props.options.map(option => (
@@ -18,6 +26,10 @@ function OnlyClickIconOptions(props) {
               className="oc-icon-options__item-help-icon"
               id={option.tooltipKey}
               onClick={onHelpClick && onHelpClick.bind(null, option.tooltipKey)}
+              onMouseEnter={onTooltipEnter}
+              onFocus={onTooltipEnter}
+              onMouseOut={onTooltipOut}
+              onBlur={onTooltipOut}
               tabIndex="-1"
             />
           )}
@@ -31,6 +43,8 @@ OnlyClickIconOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func,
   onHelpClick: PropTypes.func,
+  onTooltipEnter: PropTypes.func,
+  onTooltipOut: PropTypes.func,
   selectedValues: PropTypes.arrayOf(PropTypes.string),
 };
 
