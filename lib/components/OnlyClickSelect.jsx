@@ -81,10 +81,16 @@ class OnlyClickSelect extends React.Component {
 
   handleClick = (value) => {
     const { values } = this.state;
+    const { onClick, resetTypedValue } = this.props;
     if (values.indexOf(value) === -1) {
       this.setState({ values: [...values, value] });
-      if (this.props.onClick) {
-        this.props.onClick(value);
+
+      if (resetTypedValue) {
+        this.setState({ typedValue: '' });
+      }
+
+      if (onClick) {
+        onClick(value);
       }
     } else {
       this.handleDelete(value);
@@ -191,6 +197,7 @@ OnlyClickSelect.propTypes = {
   autoScroll: PropTypes.bool,
   scrollTop: PropTypes.number,
   maxVisible: PropTypes.number,
+  resetTypedValue: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {

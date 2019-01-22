@@ -414,11 +414,12 @@ const App = function App() {
             type="icons"
             options={industries.map((industry) => objectAssign({},
               industry,
-              { label: industry.name, value: industry.name, iconClass: industry.icon_name }
+              { label: industry.name, value: industry.name, iconClassForCheckedState: 'administrative_services_and_building_maintenance', textContent: 'AK' }
             ))}
             onClick={(value) => console.log('You choose ', value)}
             onDelete={(value) => console.log('You remove ', value)}
             autoFocus
+            resetTypedValue
           />
         </div>
 
