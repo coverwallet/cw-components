@@ -23,7 +23,7 @@ function OnlyClickListOption(props) {
     disabled,
     optionComponent,
     animatedSelection = true,
-    withArrow = true,
+    continueOnClick = true,
   } = props;
   const optionClass = classNames(
     itemClasses,
@@ -38,7 +38,7 @@ function OnlyClickListOption(props) {
   const messageClass = classNames('oc-option__message');
   const multiSelectIconClass = classNames('oc-option__checked-icon', { 'oc-option__checked-icon--checked': checked });
   const tooltipIconClass = classNames('oc-option__help-icon', { 'oc-option__help-icon--checked': checked });
-  const hasNextIcon = listType !== 'multiSelect' && withArrow;
+  const hasNextIcon = listType !== 'multiSelect' && continueOnClick;
 
   return (
     <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled}>
@@ -87,7 +87,7 @@ OnlyClickListOption.propTypes = {
   onClick: PropTypes.func,
   onHelpClick: PropTypes.func,
   optionComponent: PropTypes.func,
-  withArrow: PropTypes.bool,
+  continueOnClick: PropTypes.bool,
 };
 
 export default OnlyClickListOption;

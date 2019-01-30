@@ -404,6 +404,21 @@ const App = function App() {
       <hr />
 
       <div>
+        <h2>Only Click List Options (with no arrow)</h2>
+
+        <div>
+          <OnlyClickListOptions
+            options={iconRadioGroupOptions}
+            onClick={(value) => console.log('You choose ', value)}
+            selectedValues={['Yes']}
+            continueOnClick={false}
+          />
+        </div>
+      </div>
+
+      <hr />
+
+      <div>
         <h2>Only Click Select</h2>
 
         <h4>Icons view with auto focus</h4>
