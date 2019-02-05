@@ -13,8 +13,6 @@ const filterOption = (option, typedValue) => {
   return regexInput.test(option.value.toLowerCase());
 };
 
-const addModifierClass = (modifier, modValue) => classname => classNames(classname, { [`${classname}--${modifier}`]: modValue });
-
 class OnlyClickSelect extends React.Component {
   constructor(props) {
     super(props);
