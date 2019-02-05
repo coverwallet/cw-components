@@ -148,6 +148,10 @@ class OnlyClickSelect extends React.Component {
     } = this.props;
     const { values, typedValue } = this.state;
     const filteredOptions = disableFilter ? _.take(options, maxVisible) : this.getFilteredOptions(typedValue);
+    const optionsContainerClassName = classNames(
+      'oc-select__options-container',
+      { 'oc-select__options-container--scrollable': scrollable },
+    );
     return (
       <div className="oc-select">
         <div className="oc-select__search-container">
@@ -174,7 +178,7 @@ class OnlyClickSelect extends React.Component {
         </div>
         {hint && <div className="oc-select__hint">{hint}</div>}
         {errorMessage && <div className="oc-select__error">{errorMessage}</div>}
-        <div className={classNames('oc-select__options-container', { 'oc-select__options-container--scrollable': scrollable })}>
+        <div className={optionsContainerClassName}>
           {type === 'icons' ? (
             <OnlyClickIconOptions
               options={filteredOptions}
