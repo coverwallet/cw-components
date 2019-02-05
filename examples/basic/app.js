@@ -500,6 +500,29 @@ const App = function App() {
           />
         </div>
 
+        <h4>List view with auto scroll, highlight and adition, error message and scroll in the list</h4>
+
+        <div>
+          <OnlyClickSelect
+            placeholder="Search industry subcategory"
+            errorMessage="Required"
+            options={industries[0].subindustries.map(subindustry => objectAssign({},
+              subindustry,
+              { label: subindustry.name, value: subindustry.name, addition: subindustry.name }
+            ))}
+            onChange={(value) => console.log('You typed ', value)}
+            onClick={(value) => console.log('You choose ', value)}
+            onDelete={(value) => console.log('You remove ', value)}
+            onEnterKeyPress={(value) => console.log('You pressed the Enter key')}
+            values={[industries[0].subindustries[0].name]}
+            maxVisible={10}
+            disableFilter
+            autoScroll
+            highlight
+            scrollable
+          />
+        </div>
+
         <h4>With help icon and recommendable options</h4>
 
         <div>

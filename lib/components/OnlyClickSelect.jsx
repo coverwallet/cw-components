@@ -5,12 +5,15 @@ import _ from 'lodash';
 import OnlyClickOptionsList from './OnlyClickListOptions';
 import OnlyClickIconOptions from './OnlyClickIconOptions';
 import escapeSpecialCharacters from '../utils/string-helper';
+import classNames from 'classnames';
 
 const filterOption = (option, typedValue) => {
   const text = typedValue.toLowerCase();
   const regexInput = new RegExp(escapeSpecialCharacters(text));
   return regexInput.test(option.value.toLowerCase());
 };
+
+const addModifierClass = (modifier, modValue) => classname => classNames(classname, { [`${classname}--${modifier}`]: modValue });
 
 class OnlyClickSelect extends React.Component {
   constructor(props) {
@@ -29,12 +32,14 @@ class OnlyClickSelect extends React.Component {
 
   getFilteredOptions(typedValue) {
     const { options, maxVisible } = this.props;
-    return _(options).filter((option) => {
-      if (this.props.filterOption) {
-        return this.props.filterOption(option, typedValue);
-      }
-      return filterOption(option, typedValue);
-    }).take(maxVisible)
+    return _(options)
+      .filter(option => {
+        if (this.props.filterOption) {
+          return this.props.filterOption(option, typedValue);
+        }
+        return filterOption(option, typedValue);
+      })
+      .take(maxVisible)
       .value();
   }
 
@@ -65,14 +70,14 @@ class OnlyClickSelect extends React.Component {
   shouldScroll() {
     const searchBox = this.refs['search-box'];
     const pixelsToElement = searchBox.getBoundingClientRect().top;
-    return (this.props.autoScroll && (pixelsToElement < 0));
+    return this.props.autoScroll && pixelsToElement < 0;
   }
 
   shouldFocus() {
-    return (this.props.autoFocus && window && (window.innerWidth > this.mobileWidth));
+    return this.props.autoFocus && window && window.innerWidth > this.mobileWidth;
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const value = e.target.value;
     this.setState({ typedValue: value }, () => {
       if (this.props.onChange) {
@@ -81,7 +86,7 @@ class OnlyClickSelect extends React.Component {
     });
   };
 
-  handleClick = (value) => {
+  handleClick = value => {
     const { values } = this.state;
     const { onClick, resetTypedValue } = this.props;
     if (values.indexOf(value) === -1) {
@@ -104,7 +109,7 @@ class OnlyClickSelect extends React.Component {
     }
   };
 
-  handleKeyPress = (e) => {
+  handleKeyPress = e => {
     const { onEnterKeyPress } = this.props;
 
     if (onEnterKeyPress && e.key === 'Enter') {
@@ -127,14 +132,24 @@ class OnlyClickSelect extends React.Component {
 
   render() {
     const {
-      type, options, placeholder, hint, errorMessage,
-      highlight, highlightSanitizer, maxVisible, onHelpIconClick,
-      disableFilter, disableInput, disableDelete, onTooltipEnter, onTooltipOut,
+      type,
+      options,
+      placeholder,
+      hint,
+      errorMessage,
+      highlight,
+      highlightSanitizer,
+      maxVisible,
+      onHelpIconClick,
+      disableFilter,
+      disableInput,
+      disableDelete,
+      onTooltipEnter,
+      onTooltipOut,
+      scrollable,
     } = this.props;
     const { values, typedValue } = this.state;
-    const filteredOptions = disableFilter
-      ? _.take(options, maxVisible)
-      : this.getFilteredOptions(typedValue);
+    const filteredOptions = disableFilter ? _.take(options, maxVisible) : this.getFilteredOptions(typedValue);
     return (
       <div className="oc-select">
         <div className="oc-select__search-container">
@@ -142,10 +157,7 @@ class OnlyClickSelect extends React.Component {
             {values.map(value => (
               <span className="oc-selected-value" key={value}>
                 {value}
-                {!disableDelete && <span
-                  className="oc-selected-value__close-icon"
-                  onClick={() => this.handleDelete(value)}
-                />}
+                {!disableDelete && <span className="oc-selected-value__close-icon" onClick={() => this.handleDelete(value)} />}
               </span>
             ))}
             <div className="oc-select__input-container">
@@ -164,8 +176,8 @@ class OnlyClickSelect extends React.Component {
         </div>
         {hint && <div className="oc-select__hint">{hint}</div>}
         {errorMessage && <div className="oc-select__error">{errorMessage}</div>}
-        <div className="oc-select__options-container">
-          {type === 'icons' ?
+        <div className={classNames('oc-select__options-container', { 'oc-select__options-container--scrollable': scrollable })}>
+          {type === 'icons' ? (
             <OnlyClickIconOptions
               options={filteredOptions}
               selectedValues={values}
@@ -173,7 +185,8 @@ class OnlyClickSelect extends React.Component {
               onTooltipEnter={onTooltipEnter}
               onTooltipOut={onTooltipOut}
               onHelpClick={onHelpIconClick}
-            /> :
+            />
+          ) : (
             <OnlyClickOptionsList
               options={filteredOptions}
               selectedValues={values}
@@ -182,7 +195,7 @@ class OnlyClickSelect extends React.Component {
               highlight={highlight}
               highlightSanitizer={highlightSanitizer}
             />
-          }
+          )}
         </div>
       </div>
     );
@@ -215,6 +228,7 @@ OnlyClickSelect.propTypes = {
   scrollTop: PropTypes.number,
   maxVisible: PropTypes.number,
   resetTypedValue: PropTypes.bool,
+  scrollable: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {
