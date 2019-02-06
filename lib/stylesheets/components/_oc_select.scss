@@ -19,6 +19,20 @@
     position: relative;
     will-change: transform;
 
+    &:after {
+     
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $dark-medium-color;
+    position: absolute;
+    content: '';
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    }
+
     @include media($mobile) {
       font-size: 15px;
     }

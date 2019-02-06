@@ -148,10 +148,9 @@ class OnlyClickSelect extends React.Component {
     } = this.props;
     const { values, typedValue } = this.state;
     const filteredOptions = disableFilter ? _.take(options, maxVisible) : this.getFilteredOptions(typedValue);
-    const optionsContainerClassName = classNames(
-      'oc-select__options-container',
-      { 'oc-select__options-container--scrollable': scrollable },
-    );
+    const optionsContainerClassName = classNames('oc-select__options-container', {
+      'oc-select__options-container--scrollable': scrollable,
+    });
     return (
       <div className="oc-select">
         <div className="oc-select__search-container">
