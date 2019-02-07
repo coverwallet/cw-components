@@ -527,7 +527,6 @@ const App = function App() {
 
         <div>
           <OnlyClickSelect
-            placeholder="Search industry subcategory"
             options={industries[0].subindustries.map(subindustry => objectAssign({},
               subindustry,
               { label: subindustry.name, value: subindustry.name, addition: subindustry.name }
@@ -544,6 +543,7 @@ const App = function App() {
             typedvalue={''}
             scrollable
             disableInput
+            dropdown
           />
         </div>
 
