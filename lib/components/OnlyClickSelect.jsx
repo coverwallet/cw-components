@@ -20,6 +20,7 @@ class OnlyClickSelect extends React.Component {
     this.state = {
       values: props.values,
       typedValue: props.defaultValue || '',
+      openDropdown: !props.dropdown,
     };
   }
 
@@ -63,6 +64,10 @@ class OnlyClickSelect extends React.Component {
 
   handleFocus = () => {
     this.refs['text-input'].focus();
+  };
+
+  toggleDropdown = () => {
+    this.setState({ openDropdown: !this.state.openDropdown });
   };
 
   shouldScroll() {
@@ -109,15 +114,18 @@ class OnlyClickSelect extends React.Component {
 
   handleKeyPress = e => {
     const { onEnterKeyPress } = this.props;
-
+    e.preventDefault();
+    e.stopPropagation();
     if (onEnterKeyPress && e.key === 'Enter') {
       const { value } = e.target;
       onEnterKeyPress(value);
     }
   };
 
-  handleDelete(value) {
+  handleDelete(value, e) {
     const { values } = this.state;
+    e.preventDefault();
+    e.stopPropagation();
     if (values.indexOf(value) !== -1) {
       this.setState({
         values: values.filter(val => value !== val),
@@ -145,27 +153,36 @@ class OnlyClickSelect extends React.Component {
       onTooltipEnter,
       onTooltipOut,
       scrollable,
+      dropdown,
     } = this.props;
+
     const { values, typedValue } = this.state;
     const filteredOptions = disableFilter ? _.take(options, maxVisible) : this.getFilteredOptions(typedValue);
-    const optionsContainerClassName = classNames(
-      'oc-select__options-container',
-      { 'oc-select__options-container--scrollable': scrollable },
-    );
+    const optionsContainerClassName = classNames('oc-select__options-container', {
+      'oc-select__options-container--scrollable': scrollable,
+      'oc-select__options-container--dropdown': dropdown,
+    });
+    const optionSearchClassName = classNames('oc-select__search', { 'oc-select__search--dropdown': dropdown });
+    const optionInputClassName = classNames('oc-select__input', { 'oc-select__input--hidden': dropdown });
+
     return (
       <div className="oc-select">
         <div className="oc-select__search-container">
-          <div className="oc-select__search" ref="search-box" onClick={this.handleFocus}>
+          <div
+            className={optionSearchClassName}
+            ref="search-box"
+            onClick={dropdown ? this.toggleDropdown : this.handleFocus}
+          >
             {values.map(value => (
               <span className="oc-selected-value" key={value}>
                 {value}
-                {!disableDelete && <span className="oc-selected-value__close-icon" onClick={() => this.handleDelete(value)} />}
+                {!disableDelete && <span className="oc-selected-value__close-icon" onClick={e => this.handleDelete(value, e)} />}
               </span>
             ))}
             <div className="oc-select__input-container">
               <input
                 ref="text-input"
-                className="oc-select__input"
+                className={optionInputClassName}
                 type="text"
                 placeholder={placeholder}
                 value={typedValue}
@@ -178,27 +195,29 @@ class OnlyClickSelect extends React.Component {
         </div>
         {hint && <div className="oc-select__hint">{hint}</div>}
         {errorMessage && <div className="oc-select__error">{errorMessage}</div>}
-        <div className={optionsContainerClassName}>
-          {type === 'icons' ? (
-            <OnlyClickIconOptions
-              options={filteredOptions}
-              selectedValues={values}
-              onClick={this.handleClick}
-              onTooltipEnter={onTooltipEnter}
-              onTooltipOut={onTooltipOut}
-              onHelpClick={onHelpIconClick}
-            />
-          ) : (
-            <OnlyClickOptionsList
-              options={filteredOptions}
-              selectedValues={values}
-              onClick={this.handleClick}
-              typedValue={typedValue}
-              highlight={highlight}
-              highlightSanitizer={highlightSanitizer}
-            />
-          )}
-        </div>
+        {this.state.openDropdown && (
+          <div className={optionsContainerClassName}>
+            {type === 'icons' ? (
+              <OnlyClickIconOptions
+                options={filteredOptions}
+                selectedValues={values}
+                onClick={this.handleClick}
+                onTooltipEnter={onTooltipEnter}
+                onTooltipOut={onTooltipOut}
+                onHelpClick={onHelpIconClick}
+              />
+            ) : (
+              <OnlyClickOptionsList
+                options={filteredOptions}
+                selectedValues={values}
+                onClick={this.handleClick}
+                typedValue={typedValue}
+                highlight={highlight}
+                highlightSanitizer={highlightSanitizer}
+              />
+            )}
+          </div>
+        )}
       </div>
     );
   }
@@ -231,6 +250,7 @@ OnlyClickSelect.propTypes = {
   maxVisible: PropTypes.number,
   resetTypedValue: PropTypes.bool,
   scrollable: PropTypes.bool,
+  dropdown: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {
