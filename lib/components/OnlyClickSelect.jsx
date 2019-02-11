@@ -176,7 +176,6 @@ class OnlyClickSelect extends React.Component {
             {shouldRenderInput && (
               <div className="oc-select__input-container">
                 <input
-                  key="text-input"
                   ref="text-input"
                   className="oc-select__input"
                   type="text"
