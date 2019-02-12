@@ -4,11 +4,11 @@
     border-width: 1px 1px 0 0;
   }
 
-  &__search-container {
+  .oc-select__search-container {
     @include clearfix();
   }
 
-  &__search {
+  .oc-select__search {
     @include display(flex);
     @include flex-wrap(wrap);
     z-index: 1;
@@ -20,7 +20,7 @@
     will-change: transform;
     min-height: 50px;
 
-    &--dropdown {
+    .oc-select__search--dropdown {
       cursor: pointer;
 
       &:after {
@@ -42,13 +42,13 @@
     }
   }
 
-  &__input-container {
+  .oc-select__input-container {
     @include display(inline-flex);
     width: 250px;
     max-width: 100%;
   }
 
-  &__input {
+  .oc-select__input {
     padding-right: 20px;
     width: 100%;
     background-color: $cwColor-base-white;
@@ -61,7 +61,7 @@
     margin-bottom: 6px;
   }
 
-  &__hint {
+  .oc-select__hint {
     @include clearfix();
     padding: 10px 1px 10px;
     font-size: 14px;
@@ -69,14 +69,14 @@
     color: $cwColor-black-xmedium;
   }
 
-  &__error {
+  .oc-select__error {
     margin: 7px 0;
     color: $cwColor-base-red;
     font-size: 14px;
   }
 
-  &__options-container {
-    &--scrollable {
+  .oc-select__options-container {
+    .oc-select__options-container--scrollable {
       height: auto;
       max-height: 200px;
       overflow-x: hidden;
