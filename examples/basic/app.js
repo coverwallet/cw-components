@@ -545,6 +545,7 @@ const App = function App() {
             scrollable
             disableInput
             dropdown
+            openedDropdown={false}
           />
         </div>
 

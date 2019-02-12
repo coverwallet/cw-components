@@ -20,12 +20,12 @@ class OnlyClickSelect extends React.Component {
     this.state = {
       values: props.values,
       typedValue: props.defaultValue || '',
-      openDropdown: !props.dropdown,
+      openDropdown: props.openedDropdown,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextState = { values: nextProps.values };
+    const nextState = { values: nextProps.values, openDropdown: nextProps.openedDropdown };
     this.setState(nextState);
   }
 
@@ -152,9 +152,10 @@ class OnlyClickSelect extends React.Component {
       onTooltipOut,
       scrollable,
       dropdown,
+      openedDropdown,
     } = this.props;
 
-    const { values, typedValue } = this.state;
+    const { values, typedValue, openDropdown } = this.state;
     const filteredOptions = disableFilter ? _.take(options, maxVisible) : this.getFilteredOptions(typedValue);
     const optionsContainerClassName = classNames('oc-select__options-container', {
       'oc-select__options-container--scrollable': scrollable,
@@ -191,7 +192,7 @@ class OnlyClickSelect extends React.Component {
         </div>
         {hint && <div className="oc-select__hint">{hint}</div>}
         {errorMessage && <div className="oc-select__error">{errorMessage}</div>}
-        {this.state.openDropdown && (
+        {(!dropdown || openDropdown) && (
           <div className={optionsContainerClassName}>
             {type === 'icons' ? (
               <OnlyClickIconOptions
@@ -247,6 +248,7 @@ OnlyClickSelect.propTypes = {
   resetTypedValue: PropTypes.bool,
   scrollable: PropTypes.bool,
   dropdown: PropTypes.bool,
+  openedDropdown: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {
