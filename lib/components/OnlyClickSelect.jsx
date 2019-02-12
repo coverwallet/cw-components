@@ -20,7 +20,7 @@ class OnlyClickSelect extends React.Component {
     this.state = {
       values: props.values,
       typedValue: props.defaultValue || '',
-      openDropdown: props.openedDropdown,
+      openDropdown: props.dropdown && props.openedDropdown,
     };
   }
 
