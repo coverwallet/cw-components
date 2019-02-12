@@ -20,7 +20,7 @@
     will-change: transform;
     min-height: 50px;
 
-    .oc-select__search--dropdown {
+    &--dropdown {
       cursor: pointer;
 
       &:after {
@@ -76,7 +76,7 @@
   }
 
   .oc-select__options-container {
-    .oc-select__options-container--scrollable {
+    &--scrollable {
       height: auto;
       max-height: 200px;
       overflow-x: hidden;
