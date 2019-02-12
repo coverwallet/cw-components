@@ -20,12 +20,12 @@ class OnlyClickSelect extends React.Component {
     this.state = {
       values: props.values,
       typedValue: props.defaultValue || '',
-      openDropdown: !props.dropdown,
+      openDropdown: props.dropdown && props.openedDropdown,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextState = { values: nextProps.values };
+    const nextState = { values: nextProps.values, openDropdown: nextProps.openedDropdown };
     this.setState(nextState);
   }
 
@@ -114,8 +114,6 @@ class OnlyClickSelect extends React.Component {
 
   handleKeyPress = e => {
     const { onEnterKeyPress } = this.props;
-    e.preventDefault();
-    e.stopPropagation();
     if (onEnterKeyPress && e.key === 'Enter') {
       const { value } = e.target;
       onEnterKeyPress(value);
@@ -154,48 +152,47 @@ class OnlyClickSelect extends React.Component {
       onTooltipOut,
       scrollable,
       dropdown,
+      openedDropdown,
     } = this.props;
 
-    const { values, typedValue } = this.state;
+    const { values, typedValue, openDropdown } = this.state;
     const filteredOptions = disableFilter ? _.take(options, maxVisible) : this.getFilteredOptions(typedValue);
     const optionsContainerClassName = classNames('oc-select__options-container', {
       'oc-select__options-container--scrollable': scrollable,
       'oc-select__options-container--dropdown': dropdown,
     });
     const optionSearchClassName = classNames('oc-select__search', { 'oc-select__search--dropdown': dropdown });
-    const optionInputClassName = classNames('oc-select__input', { 'oc-select__input--hidden': dropdown });
+    const shouldRenderInput = !dropdown || values.length === 0;
 
     return (
       <div className="oc-select">
         <div className="oc-select__search-container">
-          <div
-            className={optionSearchClassName}
-            ref="search-box"
-            onClick={dropdown ? this.toggleDropdown : this.handleFocus}
-          >
+          <div className={optionSearchClassName} ref="search-box" onClick={dropdown ? this.toggleDropdown : this.handleFocus}>
             {values.map(value => (
               <span className="oc-selected-value" key={value}>
                 {value}
                 {!disableDelete && <span className="oc-selected-value__close-icon" onClick={e => this.handleDelete(value, e)} />}
               </span>
             ))}
-            <div className="oc-select__input-container">
-              <input
-                ref="text-input"
-                className={optionInputClassName}
-                type="text"
-                placeholder={placeholder}
-                value={typedValue}
-                onChange={this.handleChange}
-                onKeyPress={this.handleKeyPress}
-                disabled={disableInput}
-              />
-            </div>
+            {shouldRenderInput && (
+              <div className="oc-select__input-container">
+                <input
+                  ref="text-input"
+                  className="oc-select__input"
+                  type="text"
+                  placeholder={placeholder}
+                  value={typedValue}
+                  onChange={this.handleChange}
+                  onKeyPress={this.handleKeyPress}
+                  disabled={disableInput}
+                />
+              </div>
+            )}
           </div>
         </div>
         {hint && <div className="oc-select__hint">{hint}</div>}
         {errorMessage && <div className="oc-select__error">{errorMessage}</div>}
-        {this.state.openDropdown && (
+        {(!dropdown || openDropdown) && (
           <div className={optionsContainerClassName}>
             {type === 'icons' ? (
               <OnlyClickIconOptions
@@ -251,6 +248,7 @@ OnlyClickSelect.propTypes = {
   resetTypedValue: PropTypes.bool,
   scrollable: PropTypes.bool,
   dropdown: PropTypes.bool,
+  openedDropdown: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {
