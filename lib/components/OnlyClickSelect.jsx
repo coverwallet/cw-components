@@ -25,7 +25,7 @@ class OnlyClickSelect extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextState = { values: nextProps.values, openDropdown: nextProps.openedDropdown };
+    const nextState = { values: nextProps.values, openDropdown: nextProps.dropdown && nextProps.openedDropdown };
     this.setState(nextState);
   }
 
