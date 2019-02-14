@@ -37,6 +37,15 @@
       }
     }
 
+    &--smallInput {
+      min-height: 38px;
+      padding: 2px 11px;
+    }
+
+    &--grayBorder {
+      border-color: $cwColor-gray-light;
+    }
+
     @include media($mobile) {
       font-size: 15px;
     }
