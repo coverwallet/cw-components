@@ -153,6 +153,9 @@ class OnlyClickSelect extends React.Component {
       scrollable,
       dropdown,
       openedDropdown,
+      smallInput,
+      grayBorder,
+      noArrows,
     } = this.props;
 
     const { values, typedValue, openDropdown } = this.state;
@@ -161,7 +164,12 @@ class OnlyClickSelect extends React.Component {
       'oc-select__options-container--scrollable': scrollable,
       'oc-select__options-container--dropdown': dropdown,
     });
-    const optionSearchClassName = classNames('oc-select__search', { 'oc-select__search--dropdown': dropdown });
+    const optionSearchClassName = classNames(
+      'oc-select__search',
+      { 'oc-select__search--dropdown': dropdown },
+      { 'oc-select__search--smallInput': smallInput },
+      { 'oc-select__search--grayBorder': grayBorder }
+    );
     const shouldRenderInput = !dropdown || values.length === 0;
 
     return (
@@ -211,6 +219,7 @@ class OnlyClickSelect extends React.Component {
                 typedValue={typedValue}
                 highlight={highlight}
                 highlightSanitizer={highlightSanitizer}
+                withArrows={!noArrows}
               />
             )}
           </div>
@@ -249,6 +258,9 @@ OnlyClickSelect.propTypes = {
   scrollable: PropTypes.bool,
   dropdown: PropTypes.bool,
   openedDropdown: PropTypes.bool,
+  smallInput: PropTypes.bool,
+  grayBorder: PropTypes.bool,
+  noArrows: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {
