@@ -167,8 +167,12 @@ class OnlyClickSelect extends React.Component {
     const optionSearchClassName = classNames(
       'oc-select__search',
       { 'oc-select__search--dropdown': dropdown },
-      { 'oc-select__search--smallInput': smallInput },
-      { 'oc-select__search--grayBorder': grayBorder }
+      { 'oc-select__search--small-input': smallInput },
+      { 'oc-select__search--gray-border': grayBorder }
+    );
+    const inputClassName = classNames(
+      'oc-select__input',
+      { 'oc-select__input--no-margin': smallInput }
     );
     const shouldRenderInput = !dropdown || values.length === 0;
 
@@ -186,7 +190,7 @@ class OnlyClickSelect extends React.Component {
               <div className="oc-select__input-container">
                 <input
                   ref="text-input"
-                  className="oc-select__input"
+                  className={inputClassName}
                   type="text"
                   placeholder={placeholder}
                   value={typedValue}

@@ -37,12 +37,12 @@
       }
     }
 
-    &--smallInput {
+    &--small-input {
       min-height: 38px;
-      padding: 2px 11px;
+      padding: 0px 11px;
     }
 
-    &--grayBorder {
+    &--gray-border {
       border-color: $cwColor-gray-light;
     }
 
@@ -68,6 +68,11 @@
     outline: 0;
     margin-top: 6px;
     margin-bottom: 6px;
+
+    &--no-margin {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
   }
 
   .oc-select__hint {
