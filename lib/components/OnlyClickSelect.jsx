@@ -122,8 +122,10 @@ class OnlyClickSelect extends React.Component {
 
   handleDelete(value, e) {
     const { values } = this.state;
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (values.indexOf(value) !== -1) {
       this.setState({
         values: values.filter(val => value !== val),
