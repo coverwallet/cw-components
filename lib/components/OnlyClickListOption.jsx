@@ -24,6 +24,7 @@ function OnlyClickListOption(props) {
     optionComponent,
     animatedSelection = true,
     withArrow = true,
+    scrollable,
   } = props;
   const optionClass = classNames(
     itemClasses,
@@ -32,7 +33,8 @@ function OnlyClickListOption(props) {
     { 'oc-list-option--checked': checked },
     { 'oc-list-option--no-touch': !isIOS() },
     { 'oc-list-option--with-addition': addition },
-    { 'oc-list-option--disabled': disabled }
+    { 'oc-list-option--disabled': disabled },
+    { 'oc-options-list__item--scrollable': scrollable }
   );
 
   const messageClass = classNames('oc-option__message');
@@ -88,6 +90,7 @@ OnlyClickListOption.propTypes = {
   onHelpClick: PropTypes.func,
   optionComponent: PropTypes.func,
   withArrow: PropTypes.bool,
+  scrollable: PropTypes.bool,
 };
 
 export default OnlyClickListOption;
