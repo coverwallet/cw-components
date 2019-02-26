@@ -94,6 +94,8 @@
       height: auto;
       max-height: 200px;
       overflow-x: hidden;
+      background-color: $cwColor-base-white;
+      border: 1px solid $cwColor-black-light;
     }
   }
 }

@@ -18,6 +18,7 @@ function OnlyClickListOptions(props) {
     optionComponent,
     animatedSelection,
     withArrows,
+    scrollable,
   } = props;
 
   return (
@@ -62,6 +63,7 @@ OnlyClickListOptions.propTypes = {
   disabled: PropTypes.bool,
   optionComponent: PropTypes.func,
   withArrows: PropTypes.bool,
+  scrollable: PropTypes.bool,
 };
 
 export default OnlyClickListOptions;

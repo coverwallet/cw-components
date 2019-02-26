@@ -226,6 +226,7 @@ class OnlyClickSelect extends React.Component {
                 highlight={highlight}
                 highlightSanitizer={highlightSanitizer}
                 withArrows={!noArrows}
+                scrollable={scrollable}
               />
             )}
           </div>
