@@ -31,6 +31,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
+    alias: {
+      images: path.resolve(__dirname, 'lib/images'),
+    },
   },
   module: {
     loaders: [{
