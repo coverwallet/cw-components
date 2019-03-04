@@ -1,8 +1,8 @@
 import React from 'react';
-import fireResistive from '../images/constructionTypes/fireResistive.png';
-import frame from '../images/constructionTypes/frame.png';
-import joistedMasonry from '../images/constructionTypes/joistedMasonry.png';
-import noncombustible from '../images/constructionTypes/noncombustible.png';
+import fireResistive from '../images/constructionTypes/fire-resistive.svg';
+import frame from '../images/constructionTypes/frame.svg';
+import joistedMasonry from '../images/constructionTypes/joisted-masonry.svg';
+import noncombustible from '../images/constructionTypes/non-combustible.svg';
 
 const ConstructionTypesDescription = () => (
   <div className="need-help-modal">
