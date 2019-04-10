@@ -26,9 +26,9 @@ class ButtonsListSelectOption extends Component {
 
     this.setState({ opened: !opened });
 
-    if (!opened) {
+    if (!opened && onOpenHelp) {
       onOpenHelp(value, '?');
-    } else {
+    } else if (opened && onCloseHelp) {
       onCloseHelp(value, '?');
     }
   };
