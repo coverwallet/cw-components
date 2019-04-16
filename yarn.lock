@@ -1828,9 +1828,10 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-"cw-styleguide@git+https://github.com/coverwallet/styleguide.git#2.8.3":
-  version "2.8.1"
-  resolved "git+https://github.com/coverwallet/styleguide.git#0e77eea4fea66b0a882a5e00ba590aeeb829a233"
+"cw-styleguide@git+https://github.com/coverwallet/styleguide.git#v2.8.7":
+  version "2.8.7"
+  uid "5f2a810a758d8101c68ab062378f8c1c82619276"
+  resolved "git+https://github.com/coverwallet/styleguide.git#5f2a810a758d8101c68ab062378f8c1c82619276"
   dependencies:
     bower "^1.8.2"
 
