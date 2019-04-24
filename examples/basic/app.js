@@ -259,6 +259,14 @@ const App = function App() {
           />
         </div>
         <div className="clearfix">
+          <h3>Disabled</h3>
+          <CurrencyInput
+            disabled
+            value="100"
+            width="25%"
+          />
+        </div>
+        <div className="clearfix">
           <h3>Euro currencyType and decimals</h3>
           <CurrencyInput
             currencyType="euro"
