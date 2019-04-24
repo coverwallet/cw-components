@@ -83,7 +83,7 @@ class CurrencyInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, currencyType = 'dollar', width, onBlur, autoFocus } = this.props;
+    const { name, min, max, currencyType = 'dollar', width, onBlur, autoFocus, disabled = false } = this.props;
     const inputClass = classNames(
       'currency-input__input',
     );
@@ -104,6 +104,7 @@ class CurrencyInput extends React.Component {
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={autoFocus}
+          disabled={disabled}
         />
       </div>
     );
@@ -134,6 +135,7 @@ CurrencyInput.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
+  disabled: PropTypes.bool,
 };
 
 CurrencyInput.defaultProps = {
