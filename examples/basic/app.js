@@ -262,6 +262,7 @@ const App = function App() {
           <h3>Disabled</h3>
           <CurrencyInput
             disabled
+            value="100"
             width="25%"
           />
         </div>
