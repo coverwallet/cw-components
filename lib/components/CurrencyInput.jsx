@@ -83,7 +83,7 @@ class CurrencyInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, currencyType = 'dollar', width, onBlur, autoFocus, disabled = false } = this.props;
+    const { name, min, max, currencyType = 'dollar', width, onBlur, autoFocus, disabled } = this.props;
     const inputClass = classNames(
       'currency-input__input',
     );
@@ -143,6 +143,7 @@ CurrencyInput.defaultProps = {
   max: Number.MAX_SAFE_INTEGER,
   decimalSeparator: '.',
   thousandsSeparator: ',',
+  disabled: false,
 };
 
 export default CurrencyInput;
