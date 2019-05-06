@@ -18,6 +18,7 @@ import {
   CurrencyInput,
   StickyFooter,
   ButtonsListSelect,
+  Toggle,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -285,6 +286,13 @@ const App = function App() {
               name="check_me"
               label="Check me"
             />
+          </form>
+        </div>
+
+        <div className="clearfix">
+          <h3>Base Toggle</h3>
+          <form className="form">
+            <Toggle label="Toggle me" />
           </form>
         </div>
 
@@ -557,7 +565,7 @@ const App = function App() {
           />
         </div>
 
-         <h4>List view with auto scroll, highlight and adition, with small input, gray border and drop-down list with no arrows and dropdown</h4>
+        <h4>List view with auto scroll, highlight and adition, with small input, gray border and drop-down list with no arrows and dropdown</h4>
 
         <div>
           <OnlyClickSelect
