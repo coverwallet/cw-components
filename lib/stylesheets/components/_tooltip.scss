@@ -1,0 +1,103 @@
+@import "~cw-styleguide/bower_components/material-design-lite/src/tooltip/tooltip";
+
+:root {
+  --min-width-tooltip: 350px;
+  --shift-tooltip: 0.7;
+}
+
+.mdl-tooltip {
+  background-color: $gray-light-color;
+  color: $cwColor-gray;
+  line-height: 22px;
+  min-width: var(--min-width-tooltip);
+  max-width: var(--min-width-tooltip);
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 19px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.2),0 1px 5px 0 rgba(0,0,0,0.12);
+  text-align: left;
+  margin-left: calc(-1 * var(--min-width-tooltip) * var(--shift-tooltip) + 22px) !important;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-left: -0.5em;
+    top: 3px;
+    left: calc(100% * var(--shift-tooltip));
+    box-sizing: border-box;
+    border: 0.7em solid #eeeeee;
+    border-color: transparent transparent $gray-light-color $gray-light-color;
+    transform-origin: 0 0;
+    transform: rotate(-225deg);
+    box-shadow: -2px 2px 3px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &.is-active {
+    animation: none;
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // @include media("<=mobile") {
+  //   display: none;
+  // }
+}
+
+@keyframes pulseTopTooltip {
+  from {
+    transform: scale3d(0.95, 0.95, 0.95);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.help-icon {
+  @include cw-icon-before(question-circle, 0, $cwColor-blue);
+  position: relative;
+  cursor: pointer;
+  top: -5px;
+  left: 10px;
+  font-size: 18px;
+  padding-left: 5px;
+
+  &__subtotal {
+    right: 4px;
+    float: right;
+    @include cw-icon-before(question-circle, 0, $cwColor-blue);
+    position: relative;
+    cursor: pointer;
+    top: -5px;
+    font-size: 18px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--pulled-right {
+    @media screen and (min-width: 1500px) {
+      right: initial !important;
+      left: initial;
+      margin-left: 900px;
+    }
+  }
+
+}
+
+
+.icon-pull-right-container {
+  .help-icon {
+    left: auto;
+    right: 25px;
+    top: 20px;
+
+    &--pulled-right {
+      margin-top: 10px;
+    }
+  }
+}
+
