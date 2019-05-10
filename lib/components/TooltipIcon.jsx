@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Tooltip from './Tooltip';
 
 function TooltipIcon(props) {
-  const { id, containerClassName, iconClassName, tooltipClassName, text, children } = props;
+  const { id, containerClassName, iconClassName, tooltipClassName, text, children, position } = props;
   const iconId = id || uniqueId('tooltip-icon-');
   const iconClass = classNames(
     'help-icon',
@@ -15,7 +15,7 @@ function TooltipIcon(props) {
   return (
     <span className={containerClassName}>
       <span className={iconClass} id={iconId} tabIndex="-1" />
-      <Tooltip for={iconId} className={tooltipClassName} text={text}>{children}</Tooltip>
+      <Tooltip for={iconId} className={tooltipClassName} text={text} position={position} >{children}</Tooltip>
     </span>
   );
 }
@@ -30,6 +30,7 @@ TooltipIcon.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  position: PropTypes.string,
 };
 
 export default TooltipIcon;

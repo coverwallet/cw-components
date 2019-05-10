@@ -1,37 +1,56 @@
 @import "~cw-styleguide/bower_components/material-design-lite/src/tooltip/tooltip";
 
-:root {
-  --min-width-tooltip: 350px;
-  --shift-tooltip: 0.7;
-}
+$tooltip-width: 350px;
+$tooltip-chevron-shift: 0.7;
+$chevron-size: 0.8em;
+$sqrt2: 1.41421356237;
+$delta: 0.1em;
 
 .mdl-tooltip {
   background-color: $gray-light-color;
   color: $cwColor-gray;
   line-height: 22px;
-  min-width: var(--min-width-tooltip);
-  max-width: var(--min-width-tooltip);
+  min-width: $tooltip-width;
+  max-width: $tooltip-width;
   border-radius: 10px;
   font-size: 13px;
   line-height: 19px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.2),0 1px 5px 0 rgba(0,0,0,0.12);
   text-align: left;
-  margin-left: calc(-1 * var(--min-width-tooltip) * var(--shift-tooltip) + 22px) !important;
+  margin-left: -1 * $tooltip-width * $tooltip-chevron-shift !important;
 
   &::before {
     content: "";
     position: absolute;
     width: 0;
     height: 0;
-    margin-left: -0.5em;
-    top: 3px;
-    left: calc(100% * var(--shift-tooltip));
+    margin-left: -1 * $chevron-size / $sqrt2;
     box-sizing: border-box;
-    border: 0.7em solid #eeeeee;
+    border: $chevron-size solid #eeeeee;
     border-color: transparent transparent $gray-light-color $gray-light-color;
-    transform-origin: 0 0;
-    transform: rotate(-225deg);
-    box-shadow: -2px 2px 3px 0 rgba(0, 0, 0, 0.05);
+    transform-origin: 50% 50%;
+  }
+
+  &.mdl-tooltip--bottom, &.mdl-tooltip--top {
+    &::before {
+      left: 100% * $tooltip-chevron-shift;
+    }
+  }
+
+  &.mdl-tooltip--bottom {
+    &::before {
+      top: -1 * $chevron-size + $delta;
+      transform: rotate(135deg);
+      box-shadow: -2px 2px 1px 0 rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &.mdl-tooltip--top {
+    &::before {
+      bottom: -1 * $chevron-size + $delta;
+      transform: rotate(-45deg);
+      box-shadow: -2px 2px 1px 0 rgba(0, 0, 0, 0.1);
+    }
   }
 
   &.is-active {
@@ -39,19 +58,6 @@
     transform: scale(1);
     opacity: 1;
     visibility: visible;
-  }
-
-  // @include media("<=mobile") {
-  //   display: none;
-  // }
-}
-
-@keyframes pulseTopTooltip {
-  from {
-    transform: scale3d(0.95, 0.95, 0.95);
-  }
-  to {
-    transform: scale3d(1, 1, 1);
   }
 }
 
@@ -88,7 +94,6 @@
 
 }
 
-
 .icon-pull-right-container {
   .help-icon {
     left: auto;
@@ -100,4 +105,3 @@
     }
   }
 }
-

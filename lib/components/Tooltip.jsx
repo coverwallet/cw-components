@@ -6,6 +6,10 @@ import 'cw-styleguide/bower_components/material-design-lite/src/tooltip/tooltip'
 
 
 class Tooltip extends Component {
+  static defaultProps = {
+    position: 'bottom',
+  }
+
   componentDidMount() {
     this.updateTooltips();
   }
@@ -21,14 +25,18 @@ class Tooltip extends Component {
   }
 
   render() {
-    const { for: htmlFor, text, children, className } = this.props;
+    const { for: htmlFor, text, children, className, position } = this.props;
     const tooltipClass = classNames(
-      'mdl-tooltip mdl-tooltip--large mdl-tooltip--bottom is-active',
+      'mdl-tooltip',
+      {
+        'mdl-tooltip--bottom': position === 'bottom',
+        'mdl-tooltip--top': position === 'top',
+      },
       className,
     );
 
     return (
-      <div className={tooltipClass} htmlFor={htmlFor} style={({ marginLeft: '23px' })}>
+      <div className={tooltipClass} htmlFor={htmlFor}>
         {text || children}
       </div>
     );
@@ -43,6 +51,7 @@ Tooltip.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  position: PropTypes.oneOf(['top', 'bottom']),
 };
 
 export default Tooltip;
