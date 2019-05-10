@@ -19,7 +19,6 @@ import {
   StickyFooter,
   ButtonsListSelect,
   Toggle,
-  Tooltip,
   TooltipIcon,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
