@@ -19,6 +19,7 @@ import {
   StickyFooter,
   ButtonsListSelect,
   Toggle,
+  TooltipIcon,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -294,6 +295,22 @@ const App = function App() {
           <form className="form">
             <Toggle label="Toggle me" />
           </form>
+        </div>
+
+        <div className="clearfix">
+          <h3>
+            Tooltip on bottom
+            <TooltipIcon text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+          </h3>
+        </div>
+
+        <div className="clearfix">
+          <h3>
+            Tooltip on top
+            <TooltipIcon position="top">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </TooltipIcon>
+          </h3>
         </div>
 
         <div className="clearfix">
