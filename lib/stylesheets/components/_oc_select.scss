@@ -6,6 +6,10 @@
 
   .oc-select__search-container {
     @include clearfix();
+
+    &--hidden {
+      display: none;
+    }
   }
 
   .oc-select__search {
