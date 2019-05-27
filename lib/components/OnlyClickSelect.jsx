@@ -158,6 +158,7 @@ class OnlyClickSelect extends React.Component {
       smallInput,
       grayBorder,
       noArrows,
+      hideInput,
     } = this.props;
 
     const { values, typedValue, openDropdown } = this.state;
@@ -180,7 +181,7 @@ class OnlyClickSelect extends React.Component {
 
     return (
       <div className="oc-select">
-        <div className="oc-select__search-container">
+        {!hideInput && (<div className="oc-select__search-container">
           <div className={optionSearchClassName} ref="search-box" onClick={dropdown ? this.toggleDropdown : this.handleFocus}>
             {values.map(value => (
               <span className="oc-selected-value" key={value}>
@@ -203,7 +204,7 @@ class OnlyClickSelect extends React.Component {
               </div>
             )}
           </div>
-        </div>
+        </div>)}
         {hint && <div className="oc-select__hint">{hint}</div>}
         {errorMessage && <div className="oc-select__error">{errorMessage}</div>}
         {(!dropdown || openDropdown) && (
