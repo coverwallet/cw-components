@@ -459,7 +459,7 @@ const App = function App() {
         <div>
           <OnlyClickSelect
             placeholder="or type it here"
-            
+            hint="Select your industry"
             type="icons"
             options={industries.map((industry) => objectAssign({},
               industry,
