@@ -1,10 +1,31 @@
-@import "~cw-styleguide/bower_components/material-design-lite/src/tooltip/tooltip";
-
 $tooltip-width: 350px;
 $tooltip-chevron-shift: 0.7;
 $chevron-size: 0.8em;
 $sqrt2: 1.41421356237;
 $delta: 0.1em;
+
+
+.mdl-tooltip {
+  transform: scale(0);
+  transform-origin: top center;
+  will-change: transform;
+  z-index: 999;
+  border-radius: 2px;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 14px;
+  max-width: 170px;
+  position: fixed;
+  top: -500px;
+  left: -500px;
+  padding: 8px;
+  text-align: center;
+}
+
+.mdl-tooltip--large {
+  line-height: 14px;
+  padding: 16px;
+}
 
 .mdl-tooltip {
   background-color: $gray-light-color;
@@ -18,6 +39,17 @@ $delta: 0.1em;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.2),0 1px 5px 0 rgba(0,0,0,0.12);
   text-align: left;
   margin-left: -1 * $tooltip-width * $tooltip-chevron-shift !important;
+
+  transform: scale(0);
+  transform-origin: top center;
+  will-change: transform;
+  z-index: 999;
+  display: inline-block;
+  font-weight: 500;
+  position: fixed;
+  top: -500px;
+  left: -500px;
+  padding: 8px;
 
   &::before {
     content: "";
