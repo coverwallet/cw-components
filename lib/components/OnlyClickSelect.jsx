@@ -167,14 +167,11 @@ class OnlyClickSelect extends React.Component {
       'oc-select__options-container--scrollable': scrollable,
       'oc-select__options-container--dropdown': dropdown,
     });
-    const searchContainerClassName = classNames('oc-select__search-container', {
-      'oc-select__search-container--hidden': hideInput,
-    });
     const optionSearchClassName = classNames(
       'oc-select__search',
       { 'oc-select__search--dropdown': dropdown },
       { 'oc-select__search--small-input': smallInput },
-      { 'oc-select__search--gray-border': grayBorder },
+      { 'oc-select__search--gray-border': grayBorder }
     );
     const inputClassName = classNames(
       'oc-select__input',
@@ -184,7 +181,7 @@ class OnlyClickSelect extends React.Component {
 
     return (
       <div className="oc-select">
-        <div className={searchContainerClassName}>
+        {!hideInput && (<div className="oc-select__search-container">
           <div className={optionSearchClassName} ref="search-box" onClick={dropdown ? this.toggleDropdown : this.handleFocus}>
             {values.map(value => (
               <span className="oc-selected-value" key={value}>
@@ -207,7 +204,7 @@ class OnlyClickSelect extends React.Component {
               </div>
             )}
           </div>
-        </div>
+        </div>)}
         {hint && <div className="oc-select__hint">{hint}</div>}
         {errorMessage && <div className="oc-select__error">{errorMessage}</div>}
         {(!dropdown || openDropdown) && (
@@ -272,7 +269,6 @@ OnlyClickSelect.propTypes = {
   smallInput: PropTypes.bool,
   grayBorder: PropTypes.bool,
   noArrows: PropTypes.bool,
-  hideInput: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {
