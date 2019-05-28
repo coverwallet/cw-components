@@ -71,12 +71,20 @@ class OnlyClickSelect extends React.Component {
   };
 
   shouldScroll() {
+    const { hideInput } = this.props;
+    if (hideInput) {
+      return false;
+    }
     const searchBox = this.refs['search-box'];
     const pixelsToElement = searchBox.getBoundingClientRect().top;
     return this.props.autoScroll && pixelsToElement < 0;
   }
 
   shouldFocus() {
+    const { hideInput } = this.props;
+    if (hideInput) {
+      return false;
+    }
     return this.props.autoFocus && window && window.innerWidth > this.mobileWidth;
   }
 
@@ -91,7 +99,7 @@ class OnlyClickSelect extends React.Component {
 
   handleClick = value => {
     const { values } = this.state;
-    const { onClick, resetTypedValue } = this.props;
+    const { onClick, resetTypedValue, hideInput } = this.props;
     if (values.indexOf(value) === -1) {
       this.setState({ values: [...values, value] });
 
@@ -269,6 +277,7 @@ OnlyClickSelect.propTypes = {
   smallInput: PropTypes.bool,
   grayBorder: PropTypes.bool,
   noArrows: PropTypes.bool,
+  hideInput: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {
