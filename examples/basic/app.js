@@ -470,6 +470,7 @@ const App = function App() {
             onEnterKeyPress={(value) => console.log('You pressed the Enter key')}
             autoFocus
             resetTypedValue
+            hideInput
           />
         </div>
 
