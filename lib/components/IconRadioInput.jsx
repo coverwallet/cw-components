@@ -40,6 +40,7 @@ class IconRadioInput extends React.Component {
       size,
       disabled,
       iconClass,
+      recommendable,
       className,
     } = this.props;
     const { checked } = this.state;
@@ -50,6 +51,7 @@ class IconRadioInput extends React.Component {
       { 'icons-radio-input--small': size === 'small' },
       { 'icons-radio-input--disabled': disabled },
       { 'icons-radio-input--no-icon': !iconClass },
+      { 'icons-radio-input--recommendable': recommendable },
       className,
     );
     const inputId = `${name}${value}`;
@@ -87,6 +89,7 @@ IconRadioInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   size: PropTypes.string,
   disabled: PropTypes.bool,
+  recommendable: PropTypes.bool,
   className: PropTypes.string,
 };
 
