@@ -57,6 +57,7 @@ class IconRadioGroup extends React.Component {
             label={option.label}
             name={name}
             value={option.value}
+            recommendable={option.recommendable}
             checkedValue={this.getValue()}
             onChange={this.handleChange}
             size={size}
