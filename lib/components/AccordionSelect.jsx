@@ -17,7 +17,10 @@ const AccordionSelect = ({ selected, opened, infoText, children, onClick }) => {
         className={`${addClassWithOpened('wide-button__content')} ${addClassWithSelected('wide-button__tooltip-text')}`}
         onClick={onClick}
       >
-        {infoText && <p className="wide-button__tooltip-text">{infoText}</p>}
+        {infoText && <p
+          className="wide-button__tooltip-text"
+          dangerouslySetInnerHTML={{ __html: infoText }}
+        />}
       </div>
     </li>
   );
