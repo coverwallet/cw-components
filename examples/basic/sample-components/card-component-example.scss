@@ -1,0 +1,39 @@
+
+.lob-card {
+    @include display(flex);
+    @include justify-content(flex-start);
+    @include flex-wrap(nowrap);
+    @include align-items(center);
+    height: 100%;
+    font-weight: 100;
+  
+    &__info-section {
+      width: 80%;
+    }
+  
+    &__icon-container {
+      font-size: 50px;
+    }
+  
+    &__price-section {
+      width: 20%;
+      text-align: center;
+    }
+  
+    &__name {
+      display: inline-block;
+    }
+  
+    &__title {
+      font-size: 20px;
+    }
+  
+    &__subtitle {
+      font-size: 12px;
+    }
+  
+    &__price {
+      font-size: 24px;
+    }
+  }
+  

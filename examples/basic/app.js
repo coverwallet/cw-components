@@ -20,10 +20,11 @@ import {
   ButtonsListSelect,
   Toggle,
   TooltipIcon,
+  CardGroup,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
-
+import ContentSample from './sample-components/card-component-example';
 import './app.scss';
 
 const iconRadioGroupOptions = [
@@ -114,11 +115,23 @@ const baseRadioGroupOptions = [
   },
 ];
 
+
+const getItems = () => [
+    (<ContentSample
+      iconClass="oc-icon-option__icon administrative_services_and_building_maintenance"
+      title="Business Owners Policy (BOP)"
+      subtitle="General liability + Property bundle"
+      tooltip="iuhiu"
+      price="~$ 76"
+      priceDescription="per month"
+      phone="Call (98) 9789 7987"
+    />), (<div>Add your content here</div>),
+];
+
 const App = function App() {
   return (
     <div className="example">
       <h1>cw-components</h1>
-
       <div className="clearfix row">
         <h2>Flash Notifications</h2>
         <CwFlashNotification
@@ -677,6 +690,13 @@ const App = function App() {
           selectedOptions={['Business Owners Policy (BOP)']}
           accordion
           errorMessage="If errorMessage prop is present, it will be displayed here"
+        />
+      </div>
+
+      <div>
+        <h2>Card Group</h2>
+        <CardGroup
+          items={getItems()}
         />
       </div>
     </div>
