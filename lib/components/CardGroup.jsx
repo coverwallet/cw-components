@@ -1,24 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const Card = ({ children }) => (
-  <div className="card-group__item">{children}</div>
-);
-
-Card.propTypes = {
-  children: PropTypes.any,
+const CardGroup = ({ items, className }) => {
+  const CardClasses = classNames('card-group', className);
+  return (
+    <div className={CardClasses}>
+      {items.map(item => (
+        <div className="card-group__item">{item}</div>
+      ))}
+    </div>
+  );
 };
-
-const CardGroup = ({ items }) => (
-  <div className="card-group">
-    {items.map(item => (
-      <Card>{item}</Card>
-    ))}
-  </div>
-);
 
 CardGroup.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  className: PropTypes.string,
 };
 
 export default CardGroup;
