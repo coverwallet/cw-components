@@ -4,28 +4,35 @@ import classNames from 'classnames';
 import exists from '../utils/exists';
 
 class NumPadMobile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: (exists(props.value) ? props.value : ''),
+    };
+  }
   render() {
-    const { name, type, showRequired, placeholder, onBlur, getValue, maxLength, disabled } = this.props;
+    const { name, type, placeholder, onBlur, getValue, maxLength, disabled, width } = this.props;
     const inputClass = classNames(
-      'form-input form-input--long ',
-      this.props.inputClass,
-      { required: this.props.showRequired() },
+      'number-input__input',
+      { 'number-input__input--nan': type !== 'number' },
     );
     return (
-      <input
-        ref="input"
-        name={name}
-        type={type}
-        inputmode="decimal"
-        pattern="[0-9]*"
-        className={inputClass}
-        placeholder={placeholder}
-        onBlur={e => (onBlur ? onBlur(e) : null)}
-        onChange={e => this.setValue(e.target.value)}
-        value={exists(getValue()) ? getValue() : ''}
-        maxLength={maxLength}
-        disabled={disabled}
-      />
+      <div className="number-input" style={{ width }}>
+        <input
+          ref="input"
+          name={name}
+          type={type}
+          inputMode="decimal"
+          pattern="[0-9]*"
+          className={inputClass}
+          placeholder={placeholder}
+          onBlur={e => (onBlur ? onBlur(e) : null)}
+          onChange={e => this.setValue(e.target.value)}
+          value={this.state.value}
+          maxLength={maxLength}
+          disabled={disabled}
+        />
+      </div>
     );
   }
 }
@@ -43,8 +50,10 @@ NumPadMobile.propTypes = {
   placeholder: PropTypes.string,
   getValue: PropTypes.func,
   disabled: PropTypes.bool,
-  inputClass: PropTypes.string,
-  showRequired: PropTypes.func,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 NumPadMobile.defaultProps = {
