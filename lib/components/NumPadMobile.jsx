@@ -11,9 +11,16 @@ class NumPadMobile extends React.Component {
     };
   }
 
-  setValue(nextValue) {
+  setNextValue(nextValue) {
     this.setState({ value: nextValue });
+    if (this.props.setValue) {
+      this.props.setValue(nextValue);
+    }
   }
+
+  handleChange = (e) => {
+    this.setNextValue(e.target.value);
+  };
 
   render() {
     const { name, type, placeholder, onBlur, getValue, maxLength, disabled, width } = this.props;
@@ -32,7 +39,7 @@ class NumPadMobile extends React.Component {
           className={inputClass}
           placeholder={placeholder}
           onBlur={e => (onBlur ? onBlur(e) : null)}
-          onChange={e => this.setValue(e.target.value)}
+          onChange={this.handleChange}
           value={this.state.value}
           maxLength={maxLength}
           disabled={disabled}
