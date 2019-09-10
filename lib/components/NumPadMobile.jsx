@@ -10,6 +10,11 @@ class NumPadMobile extends React.Component {
       value: (exists(props.value) ? props.value : ''),
     };
   }
+
+  setValue(nextValue) {
+    this.setState({ value: nextValue });
+  }
+
   render() {
     const { name, type, placeholder, onBlur, getValue, maxLength, disabled, width } = this.props;
     const inputClass = classNames(
