@@ -21,6 +21,7 @@ import {
   Toggle,
   TooltipIcon,
   CardGroup,
+  NumPadMobile,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -214,6 +215,11 @@ const App = function App() {
       <div className="clearfix">
         <h2>Long Keyboard input</h2>
         <InputKeyboard width="100%" />
+      </div>
+
+      <div className="clearfix">
+        <h2>Numpad in mobile (only for mobile)</h2>
+        <NumPadMobile type="text" value={0} />
       </div>
 
       <hr />
