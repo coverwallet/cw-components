@@ -11,15 +11,12 @@ class NumPadMobile extends React.Component {
     };
   }
 
-  setNextValue(nextValue) {
+  handleChange = (e) => {
+    const nextValue = e.target.value;
     this.setState({ value: nextValue });
     if (this.props.onChange) {
       this.props.onChange(nextValue);
     }
-  }
-
-  handleChange = (e) => {
-    this.setNextValue(e.target.value);
   };
 
   render() {
