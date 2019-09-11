@@ -13,8 +13,8 @@ class NumPadMobile extends React.Component {
 
   setNextValue(nextValue) {
     this.setState({ value: nextValue });
-    if (this.props.setValue) {
-      this.props.setValue(nextValue);
+    if (this.props.onChange) {
+      this.props.onChange(nextValue);
     }
   }
 
@@ -58,7 +58,7 @@ NumPadMobile.propTypes = {
   type: PropTypes.string,
   maxLength: PropTypes.number,
   onBlur: PropTypes.func,
-  setValue: PropTypes.func,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string,
   getValue: PropTypes.func,
   disabled: PropTypes.bool,
