@@ -87,7 +87,7 @@ class NumberInput extends React.Component {
         <input
           ref="input"
           className={inputClass}
-          type={(commas || currency) && showNumpadKeyboard ? 'text' : type}
+          type={(commas || currency || showNumpadKeyboard) ? 'text' : type}
           pattern={(commas || percents || currency) && !showNumpadKeyboard ? '.*' : '[0-9]*'}
           inputMode={showNumpadKeyboard ? 'decimal' : 'numeric'}
           lang="en"

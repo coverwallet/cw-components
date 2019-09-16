@@ -95,7 +95,7 @@ class InputKeyboard extends React.Component {
     const inputClass = classNames(
       'input-keyboard__input',
       { 'input-keyboard__input--currency': currency },
-      { 'input-keyboard__input--nan': commas || type !== 'number' }, 
+      { 'input-keyboard__input--nan': commas || type !== 'number' },
       { 'input-keyboard__input--negative': this.state.value.indexOf('-') === 0 }
     );
     return (
@@ -105,7 +105,7 @@ class InputKeyboard extends React.Component {
           ref="input"
           type={(commas || showNumpadKeyboard) ? 'text' : type}
           className={inputClass}
-          pattern={(commas || type !== 'number') && !showNumpadKeyboard ? '[0-9,-]*' : '[0-9]*'}
+          pattern={(commas || type !== 'number' || showNumpadKeyboard) ? '[0-9,-]*' : '[0-9]*'}
           inputMode={showNumpadKeyboard ? 'decimal' : 'numeric'}
           lang="en"
           min={negatives ? Number.MIN_SAFE_INTEGER : min || 0}
