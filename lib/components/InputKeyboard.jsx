@@ -91,11 +91,11 @@ class InputKeyboard extends React.Component {
   };
 
   render() {
-    const { min, currency, currencyType = 'dollar', commas, width, type, autoFocus, maxLength, negatives } = this.props;
+    const { min, currency, currencyType = 'dollar', commas, width, type, autoFocus, maxLength, negatives, showNumpadKeyboard } = this.props;
     const inputClass = classNames(
       'input-keyboard__input',
       { 'input-keyboard__input--currency': currency },
-      { 'input-keyboard__input--nan': commas || type !== 'number' }, 
+      { 'input-keyboard__input--nan': commas || type !== 'number' },
       { 'input-keyboard__input--negative': this.state.value.indexOf('-') === 0 }
     );
     return (
@@ -103,10 +103,10 @@ class InputKeyboard extends React.Component {
         {currency && <span className={`input-keyboard__currency input-keyboard__currency--${currencyType}-icon`} />}
         <input
           ref="input"
-          type={commas ? 'text' : type}
+          type={(commas || showNumpadKeyboard) ? 'text' : type}
           className={inputClass}
-          pattern={commas || type !== 'number' ? '[0-9,-]*' : '[0-9]*'}
-          inputMode="numeric"
+          pattern={(commas || type !== 'number' || showNumpadKeyboard) ? '[0-9,-]*' : '[0-9]*'}
+          inputMode={showNumpadKeyboard ? 'decimal' : 'numeric'}
           lang="en"
           min={negatives ? Number.MIN_SAFE_INTEGER : min || 0}
           onChange={this.handleChange}
@@ -142,6 +142,7 @@ InputKeyboard.propTypes = {
     PropTypes.number,
   ]),
   negativeEnabled: PropTypes.bool,
+  showNumpadKeyboard: PropTypes.bool,
 };
 
 InputKeyboard.defaultProps = {

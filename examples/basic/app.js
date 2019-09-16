@@ -21,7 +21,6 @@ import {
   Toggle,
   TooltipIcon,
   CardGroup,
-  NumPadMobile,
 } from '../../lib/index';
 import industries from './catalog_api_json/industries';
 import insuranceTypes from './catalog_api_json/insuranceTypes';
@@ -118,15 +117,15 @@ const baseRadioGroupOptions = [
 
 
 const getItems = () => [
-    (<ContentSample
-      iconClass="oc-icon-option__icon administrative_services_and_building_maintenance"
-      title="Business Owners Policy (BOP)"
-      subtitle="General liability + Property bundle"
-      tooltip="iuhiu"
-      price="~$ 76"
-      priceDescription="per month"
-      phone="Call (98) 9789 7987"
-    />), (<div>Add your content here</div>),
+  (<ContentSample
+    iconClass="oc-icon-option__icon administrative_services_and_building_maintenance"
+    title="Business Owners Policy (BOP)"
+    subtitle="General liability + Property bundle"
+    tooltip="iuhiu"
+    price="~$ 76"
+    priceDescription="per month"
+    phone="Call (98) 9789 7987"
+  />), (<div>Add your content here</div>),
 ];
 
 const App = function App() {
@@ -217,11 +216,6 @@ const App = function App() {
         <InputKeyboard width="100%" />
       </div>
 
-      <div className="clearfix">
-        <h2>Numpad in mobile (only for mobile)</h2>
-        <NumPadMobile type="text" value={0} />
-      </div>
-
       <hr />
 
       <div className="clearfix">
@@ -296,7 +290,75 @@ const App = function App() {
             width="25%"
           />
         </div>
+
+        <div className="clearfix">
+          <h2>Numpad in mobile (only for mobile)</h2>
+
+          <div className="clearfix">
+            <h3>Currency with commas and negative values enabled Keyboard input </h3>
+            <InputKeyboard currency negatives commas showNumpadKeyboard />
+          </div>
+
+          <div className="clearfix">
+            <h3>Currency with commas Keyboard input</h3>
+            <InputKeyboard currency commas showNumpadKeyboard />
+          </div>
+
+          <div className="clearfix">
+            <h3>Currency Keyboard input with euro currencyType</h3>
+            <InputKeyboard currency currencyType="euro" showNumpadKeyboard />
+          </div>
+
+          <div className="clearfix">
+            <h3>Long Keyboard input</h3>
+            <InputKeyboard width="100%" showNumpadKeyboard />
+          </div>
+
+          <div className="clearfix">
+            <h3>Euro currencyType and decimals</h3>
+            <CurrencyInput
+              currencyType="euro"
+              decimalSplitter=","
+              thousandsSplitter="."
+              width="25%"
+              showNumpadKeyboard
+            />
+          </div>
+
+          <div className="clearfix">
+            <h3>Currency with euro currencyType</h3>
+            <NumberInput width="25%" currency currencyType="euro" showNumpadKeyboard />
+          </div>
+
+          <div className="clearfix">
+            <h3>Max 20, Min -5, Step 5</h3>
+            <NumberInput min={-5} max={20} step={5} showNumpadKeyboard />
+          </div>
+
+          <div className="clearfix">
+            <h3>First increment 2018, First Decrement 2017</h3>
+            <NumberInput firstIncrement={2018} firstDecrement={2017} showNumpadKeyboard />
+          </div>
+
+          <div className="clearfix">
+            <h3>Percents</h3>
+            <NumberInput
+              type="text"
+              step={10}
+              min={0}
+              max={100}
+              value={0}
+              setValue={(value) => console.log('Changed to ', value)}
+              percents
+              showNumpadKeyboard
+            />
+          </div>
+
+          <h2>END Numpad in mobile (only for mobile)</h2>
+        </div>
       </div>
+
+      <hr />
 
       <div className="clearfix">
         <div className="clearfix">
