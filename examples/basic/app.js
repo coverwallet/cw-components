@@ -296,22 +296,22 @@ const App = function App() {
 
           <div className="clearfix">
             <h3>Currency with commas and negative values enabled Keyboard input </h3>
-            <InputKeyboard currency negatives commas showMobileNumpad />
+            <InputKeyboard currency negatives commas showNumpadKeyboard />
           </div>
 
           <div className="clearfix">
             <h3>Currency with commas Keyboard input</h3>
-            <InputKeyboard currency commas showMobileNumpad />
+            <InputKeyboard currency commas showNumpadKeyboard />
           </div>
 
           <div className="clearfix">
             <h3>Currency Keyboard input with euro currencyType</h3>
-            <InputKeyboard currency currencyType="euro" showMobileNumpad />
+            <InputKeyboard currency currencyType="euro" showNumpadKeyboard />
           </div>
 
           <div className="clearfix">
             <h3>Long Keyboard input</h3>
-            <InputKeyboard width="100%" showMobileNumpad />
+            <InputKeyboard width="100%" showNumpadKeyboard />
           </div>
 
           <div className="clearfix">
@@ -321,23 +321,23 @@ const App = function App() {
               decimalSplitter=","
               thousandsSplitter="."
               width="25%"
-              showMobileNumpad
+              showNumpadKeyboard
             />
           </div>
 
           <div className="clearfix">
             <h3>Currency with euro currencyType</h3>
-            <NumberInput width="25%" currency currencyType="euro" showMobileNumpad />
+            <NumberInput width="25%" currency currencyType="euro" showNumpadKeyboard />
           </div>
 
           <div className="clearfix">
             <h3>Max 20, Min -5, Step 5</h3>
-            <NumberInput min={-5} max={20} step={5} showMobileNumpad />
+            <NumberInput min={-5} max={20} step={5} showNumpadKeyboard />
           </div>
 
           <div className="clearfix">
             <h3>First increment 2018, First Decrement 2017</h3>
-            <NumberInput firstIncrement={2018} firstDecrement={2017} showMobileNumpad />
+            <NumberInput firstIncrement={2018} firstDecrement={2017} showNumpadKeyboard />
           </div>
 
           <div className="clearfix">
@@ -350,7 +350,7 @@ const App = function App() {
               value={0}
               setValue={(value) => console.log('Changed to ', value)}
               percents
-              showMobileNumpad
+              showNumpadKeyboard
             />
           </div>
 

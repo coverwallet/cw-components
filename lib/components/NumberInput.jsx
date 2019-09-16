@@ -74,7 +74,7 @@ class NumberInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus, showMobileNumpad } = this.props;
+    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus, showNumpadKeyboard } = this.props;
     const inputClass = classNames(
       'number-input__input',
       { 'number-input__input--nan number-input__input--currency': currency },
@@ -87,9 +87,9 @@ class NumberInput extends React.Component {
         <input
           ref="input"
           className={inputClass}
-          type={(commas || currency) && showMobileNumpad ? 'text' : type}
-          pattern={(commas || percents || currency) && !showMobileNumpad ? '.*' : '[0-9]*'}
-          inputMode={showMobileNumpad ? 'decimal' : 'numeric'}
+          type={(commas || currency) && showNumpadKeyboard ? 'text' : type}
+          pattern={(commas || percents || currency) && !showNumpadKeyboard ? '.*' : '[0-9]*'}
+          inputMode={showNumpadKeyboard ? 'decimal' : 'numeric'}
           lang="en"
           name={name}
           min={min}
@@ -131,7 +131,7 @@ NumberInput.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  showMobileNumpad: PropTypes.bool,
+  showNumpadKeyboard: PropTypes.bool,
 };
 
 NumberInput.defaultProps = {

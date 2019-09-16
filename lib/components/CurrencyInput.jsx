@@ -83,7 +83,7 @@ class CurrencyInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, currencyType = 'dollar', width, onBlur, autoFocus, disabled, showMobileNumpad } = this.props;
+    const { name, min, max, currencyType = 'dollar', width, onBlur, autoFocus, disabled, showNumpadKeyboard } = this.props;
     const inputClass = classNames(
       'currency-input__input',
     );
@@ -94,8 +94,8 @@ class CurrencyInput extends React.Component {
           ref="input"
           className={inputClass}
           type="text"
-          pattern={showMobileNumpad ? '[0-9]*' : '.*'}
-          inputMode={showMobileNumpad ? 'decimal' : 'numeric'}
+          pattern={showNumpadKeyboard ? '[0-9]*' : '.*'}
+          inputMode={showNumpadKeyboard ? 'decimal' : 'numeric'}
           lang="en"
           name={name}
           min={min}
@@ -136,7 +136,7 @@ CurrencyInput.propTypes = {
     PropTypes.number,
   ]),
   disabled: PropTypes.bool,
-  showMobileNumpad: PropTypes.bool,
+  showNumpadKeyboard: PropTypes.bool,
 };
 
 CurrencyInput.defaultProps = {
