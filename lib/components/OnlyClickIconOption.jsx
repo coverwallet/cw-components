@@ -22,7 +22,7 @@ function OnlyClickIconOption(props) {
   );
 
   return (
-    <div id={id} className={optionClass} onClick={() => !disabled && onClick(value)} >
+    <div id={id} className={optionClass} onMouseDown={() => !disabled && onClick(value)} >
       <div className="oc-icon-option__content-container">
         <div className="oc-icon-option__content">
           <div className="oc-icon-option__icon-container">
