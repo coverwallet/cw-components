@@ -63,7 +63,7 @@ function OnlyClickListOption(props) {
             {addition && <div className="oc-option__addition">{addition}</div>}
           </span>
           {tooltipKey && (
-            <span className={tooltipIconClass} id={tooltipKey} onMouseDown={onHelpClick && onHelpClick.bind(null, tooltipKey)} tabIndex="-1" />
+            <span className={tooltipIconClass} id={tooltipKey} onClick={onHelpClick && onHelpClick.bind(null, tooltipKey)} tabIndex="-1" />
           )}
           {hasNextIcon && <span className="oc-option__next-icon" />}
         </span>
