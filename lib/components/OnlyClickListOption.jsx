@@ -43,7 +43,7 @@ function OnlyClickListOption(props) {
   const hasNextIcon = listType !== 'multiSelect' && withArrow;
 
   return (
-    <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled}>
+    <li id={id} className={optionClass} onMouseDown={() => !disabled && onClick(value)} disabled={disabled}>
       {optionComponent ? (
         <span>{optionComponent(props)}</span>
       ) : (
@@ -63,7 +63,7 @@ function OnlyClickListOption(props) {
             {addition && <div className="oc-option__addition">{addition}</div>}
           </span>
           {tooltipKey && (
-            <span className={tooltipIconClass} id={tooltipKey} onClick={onHelpClick && onHelpClick.bind(null, tooltipKey)} tabIndex="-1" />
+            <span className={tooltipIconClass} id={tooltipKey} onMouseDown={onHelpClick && onHelpClick.bind(null, tooltipKey)} tabIndex="-1" />
           )}
           {hasNextIcon && <span className="oc-option__next-icon" />}
         </span>
