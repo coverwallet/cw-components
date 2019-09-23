@@ -12,15 +12,17 @@ const filterOption = (option, typedValue) => {
   return regexInput.test(option.value.toLowerCase());
 };
 
-class SelectWithManualInputDraft extends React.Component {
+class SelectWithManualInput extends React.Component {
   state = {
     typedValue: '',
     isShowSelectOptions: false,
   };
 
   getFilteredOptions(typedValue) {
-    const { options, maxVisible } = this.props;
-    return _(options)
+    const { options, selectedOptions, maxVisible } = this.props;
+    const availableOptions = options.filter(option => !selectedOptions.includes(option.value));
+
+    return _(availableOptions)
       .filter(option => filterOption(option, typedValue))
       .take(maxVisible)
       .value();
@@ -50,12 +52,12 @@ class SelectWithManualInputDraft extends React.Component {
     this.setState({ isShowSelectOptions: true });
   };
 
-  handleBlur = e => {
-    if (!this.state.isShowSelectOptions) return;
-    this.setState({ isShowSelectOptions: false });
-    if (this.props.onBlur) {
-      this.props.onBlur(e);
-    }
+  handleBlur = () => {
+    const { typedValue } = this.state;
+    if (!typedValue) return;
+    const { selectedOptions } = this.props;
+    this.handleChange([...selectedOptions, typedValue]);
+    this.setState({ isShowSelectOptions: false, typedValue: '' });
   };
 
   handleSelectOption = optionSelected => {
@@ -63,21 +65,20 @@ class SelectWithManualInputDraft extends React.Component {
     let newSelectedOptions = [];
 
     if (selectedOptions.includes(optionSelected)) {
-      this.setState({ isShowSelectOptions: false, typedValue: '' });
       newSelectedOptions = selectedOptions.filter(option => option !== optionSelected);
     } else {
       newSelectedOptions = [...selectedOptions, optionSelected];
     }
+    this.setState({ isShowSelectOptions: false, typedValue: '' });
     this.handleChange(newSelectedOptions);
   };
 
   handleKeyPress = e => {
-    const { value } = e.target;
-    if (!value) return;
     if (e.key === 'Enter') {
+      const { typedValue } = this.state;
       const { selectedOptions } = this.props;
-      this.handleChange([...selectedOptions, value]);
-      this.setState({ typedValue: '' });
+      this.handleChange([...selectedOptions, typedValue]);
+      this.setState({ typedValue: '', isShowSelectOptions: false });
     }
   };
 
@@ -148,7 +149,7 @@ class SelectWithManualInputDraft extends React.Component {
   }
 }
 
-SelectWithManualInputDraft.propTypes = {
+SelectWithManualInput.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedOptions: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func,
@@ -159,14 +160,13 @@ SelectWithManualInputDraft.propTypes = {
   autoFocus: PropTypes.bool,
   highlight: PropTypes.bool,
   maxVisible: PropTypes.number,
-  hideableOptions: PropTypes.bool,
   animatedSelection: PropTypes.bool,
 };
 
-SelectWithManualInputDraft.defaultProps = {
+SelectWithManualInput.defaultProps = {
   defaultValue: '',
   selectedOptions: [],
   maxVisible: 1000,
 };
 
-export default SelectWithManualInputDraft;
+export default SelectWithManualInput;
