@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import smoothScroll from 'smoothscroll';
 import _ from 'lodash';
 import OnlyClickOptionsList from './OnlyClickListOptions';
-import OnlyClickIconOptions from './OnlyClickIconOptions';
 import escapeSpecialCharacters from '../utils/string-helper';
 
 const filterOption = (option, typedValue) => {
@@ -154,15 +152,12 @@ SelectWithManualInput.propTypes = {
   onClick: PropTypes.func,
   onDelete: PropTypes.func,
   onBlur: PropTypes.func,
-  onEnterKeyPress: PropTypes.func,
-  autoFocus: PropTypes.bool,
   highlight: PropTypes.bool,
   maxVisible: PropTypes.number,
   animatedSelection: PropTypes.bool,
 };
 
 SelectWithManualInput.defaultProps = {
-  defaultValue: '',
   selectedOptions: [],
   maxVisible: 1000,
 };
