@@ -30,6 +30,15 @@ class SelectWithManualInput extends React.Component {
     this.refs['text-input'].focus();
   };
 
+  applyNotSelectionChange = () => {
+    const { typedValue } = this.state;
+    this.setState({ isShowSelectOptions: false, typedValue: '' });
+
+    if (!typedValue) return;
+    const { selectedOptions } = this.props;
+    this.handleChange([...selectedOptions, typedValue]);
+  }
+
   handleChange = selectedOptions => {
     const { onChange } = this.props;
     onChange(_.uniq(selectedOptions));
@@ -50,11 +59,7 @@ class SelectWithManualInput extends React.Component {
   };
 
   handleBlur = () => {
-    const { typedValue } = this.state;
-    if (!typedValue) return;
-    const { selectedOptions } = this.props;
-    this.handleChange([...selectedOptions, typedValue]);
-    this.setState({ isShowSelectOptions: false, typedValue: '' });
+    this.applyNotSelectionChange();
   };
 
   handleSelectOption = optionSelected => {
@@ -72,14 +77,8 @@ class SelectWithManualInput extends React.Component {
 
   handleKeyPress = e => {
     if (e.key === 'Enter') {
-      const { typedValue } = this.state;
-      const { selectedOptions } = this.props;
-      this.handleChange([...selectedOptions, typedValue]);
-      this.setState({ typedValue: '', isShowSelectOptions: false });
+      this.applyNotSelectionChange();
     }
-  };
-
-  handleKeyDown = e => {
     if (e.key === 'Escape') {
       this.setState({ isShowSelectOptions: false });
     }
@@ -121,7 +120,7 @@ class SelectWithManualInput extends React.Component {
                 value={typedValue}
                 onChange={this.handleInputTyping}
                 onKeyPress={this.handleKeyPress}
-                onKeyDown={this.handleKeyDown}
+                onKeyDown={this.handleKeyPress}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
               />
