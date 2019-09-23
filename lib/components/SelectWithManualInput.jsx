@@ -18,7 +18,7 @@ class SelectWithManualInput extends React.Component {
     isShowSelectOptions: false,
   };
 
-  getFilteredOptions(typedValue) {
+  getFilteredOptions = typedValue => {
     const { options, selectedOptions, maxVisible } = this.props;
     const availableOptions = options.filter(option => !selectedOptions.includes(option.value));
 
@@ -41,11 +41,10 @@ class SelectWithManualInput extends React.Component {
     const { typedValue } = this.state;
     const { value } = e.target;
 
+    this.setState({ typedValue: value });
     if (typedValue !== value) {
       this.setState({ isShowSelectOptions: true });
     }
-
-    this.setState({ typedValue: value });
   };
 
   handleFocus = () => {
@@ -88,10 +87,9 @@ class SelectWithManualInput extends React.Component {
     }
   };
 
-  handleDelete(optionToDelete) {
+  handleDelete = optionToDelete => {
     const { selectedOptions, onDelete } = this.props;
     const updatedSelectedOptions = selectedOptions.filter(optionSelected => optionSelected !== optionToDelete);
-
 
     this.handleChange(updatedSelectedOptions);
     if (onDelete) {
