@@ -59,7 +59,7 @@ class SelectWithManualInput extends React.Component {
   };
 
   handleBlur = () => {
-    this.applyNotSelectionChange();
+    setTimeout(this.applyNotSelectionChange, 150);
   };
 
   handleSelectOption = optionSelected => {
@@ -109,7 +109,7 @@ class SelectWithManualInput extends React.Component {
             {selectedOptions.map(optionSelected => (
               <span className="oc-selected-value" key={optionSelected}>
                 {optionSelected}
-                <span className="oc-selected-value__close-icon" onMouseDown={() => this.handleDelete(optionSelected)} />
+                <span className="oc-selected-value__close-icon" onClick={() => this.handleDelete(optionSelected)} />
               </span>
             ))}
             <div className="oc-select__input-container">

@@ -43,7 +43,7 @@ function OnlyClickListOption(props) {
   const hasNextIcon = listType !== 'multiSelect' && withArrow;
 
   return (
-    <li id={id} className={optionClass} onMouseDown={() => !disabled && onClick(value)} disabled={disabled}>
+    <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled}>
       {optionComponent ? (
         <span>{optionComponent(props)}</span>
       ) : (
