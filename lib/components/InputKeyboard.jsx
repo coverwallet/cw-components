@@ -91,7 +91,7 @@ class InputKeyboard extends React.Component {
   };
 
   render() {
-    const { min, currency, currencyType = 'dollar', commas, width, onBlur, type, autoFocus, maxLength, negatives, showNumpadKeyboard } = this.props;
+    const { min, currency, currencyType = 'dollar', commas, width, onBlur, type, autoFocus, maxLength, negatives, showNumpadKeyboard, name } = this.props;
     const inputClass = classNames(
       'input-keyboard__input',
       { 'input-keyboard__input--currency': currency },
@@ -103,6 +103,7 @@ class InputKeyboard extends React.Component {
         {currency && <span className={`input-keyboard__currency input-keyboard__currency--${currencyType}-icon`} />}
         <input
           ref="input"
+          name={name}
           type={(commas || showNumpadKeyboard) ? 'text' : type}
           className={inputClass}
           pattern={(commas || type !== 'number' || showNumpadKeyboard) ? '[0-9,-]*' : '[0-9]*'}
@@ -132,6 +133,7 @@ InputKeyboard.propTypes = {
   ]),
   type: PropTypes.string,
   min: PropTypes.number,
+  name: PropTypes.string,
   currency: PropTypes.bool,
   currencyType: PropTypes.string,
   commas: PropTypes.bool,
