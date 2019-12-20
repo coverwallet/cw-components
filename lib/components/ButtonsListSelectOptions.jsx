@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ButtonsListSelectOption from './ButtonsListSelectOption';
 
 const ButtonsListSelectOptions = props => {
-  const { options, selectedOptions, onClick, onOpenHelp, onCloseHelp, accordion } = props;
+  const { options, selectedOptions, onClick, onOpenHelp, onCloseHelp, accordion, showCheckbox } = props;
 
   return (
     <ul className="buttons-list-select-options">
@@ -20,6 +20,7 @@ const ButtonsListSelectOptions = props => {
           onCloseHelp={onCloseHelp}
           selected={selectedOptions.includes(option.value)}
           accordion={accordion}
+          showCheckbox={showCheckbox}
         />
       ))}
     </ul>
@@ -35,6 +36,7 @@ ButtonsListSelectOptions.propTypes = {
   onOpenHelp: PropTypes.func,
   onCloseHelp: PropTypes.func,
   accordion: PropTypes.bool,
+  showCheckbox: PropTypes.bool,
   selectedOptions: PropTypes.arrayOf(PropTypes.string),
 };
 

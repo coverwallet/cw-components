@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import AccordionSelect from './AccordionSelect';
 import WideButton from './WideButton';
 import QuestionIcon from './QuestionIcon';
+import CheckboxIcon from './CheckboxIcon';
 import TextWithIcon from './TextWithIcon';
 
 class ButtonsListSelectOption extends Component {
@@ -34,11 +34,12 @@ class ButtonsListSelectOption extends Component {
   };
 
   renderAccordion() {
-    const { label, iconClass, infoText, selected } = this.props;
+    const { label, iconClass, infoText, selected, showCheckbox } = this.props;
     const { opened } = this.state;
 
     return (
       <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
+        {showCheckbox && <CheckboxIcon checked={selected} />}
         <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
         {infoText && (
           <div className="wide-button__right-button" onClick={this.onClickTooltip}>
@@ -76,6 +77,7 @@ ButtonsListSelectOption.propTypes = {
   selected: PropTypes.bool,
   opened: PropTypes.bool,
   accordion: PropTypes.bool,
+  showCheckbox: PropTypes.bool,
   iconClass: PropTypes.string,
   onClick: PropTypes.func,
   onOpenHelp: PropTypes.func,
