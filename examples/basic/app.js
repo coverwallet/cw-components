@@ -762,6 +762,23 @@ const App = function App() {
       </div>
 
       <div>
+        <h2>Buttons List Select with checkboxes</h2>
+        <ButtonsListSelect
+          options={insuranceTypes.map((type) => objectAssign({},
+            type,
+            {
+              label: type.name,
+              value: type.name,
+              infoText: type.what_is_it,
+            },
+          ))}
+          selectedOptions={['Business Owners Policy (BOP)']}
+          accordion
+          showCheckbox
+        />
+      </div>
+
+      <div>
         <h2>Card Group</h2>
         <CardGroup
           items={getItems()}

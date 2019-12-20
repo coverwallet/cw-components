@@ -81,6 +81,7 @@ class ButtonsListSelect extends Component {
       accordion,
       errorMessage,
       viewMoreButtonText,
+      showCheckbox,
     } = this.props;
     const { isViewMoreRendered, itemsToShow } = this.state;
     const optionsToRender = this.getOptionsToRender(itemsToShow, isViewMoreRendered);
@@ -95,6 +96,7 @@ class ButtonsListSelect extends Component {
           onOpenHelp={onOpenHelp}
           onCloseHelp={onCloseHelp}
           accordion={accordion}
+          showCheckbox={showCheckbox}
         />
         {isViewMoreRendered &&
           <button className="button-view-more" onClick={this.viewMoreClicked}>
@@ -118,6 +120,7 @@ ButtonsListSelect.propTypes = {
   itemsToShowFirstRender: PropTypes.number,
   itemsPerPage: PropTypes.number,
   accordion: PropTypes.bool,
+  showCheckbox: PropTypes.bool,
   errorMessage: PropTypes.string,
   viewMoreButtonText: PropTypes.string,
 };
@@ -128,6 +131,7 @@ ButtonsListSelect.defaultProps = {
   options: [],
   selectedOptions: [],
   isViewMoreEnabled: true,
+  showCheckbox: false,
 };
 
 export default ButtonsListSelect;

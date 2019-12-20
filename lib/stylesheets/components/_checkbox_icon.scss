@@ -1,0 +1,24 @@
+.checkbox-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  font-size: 14px;
+  width: 35px;
+
+  &:before,
+  &--checked:before {
+    font-size: 20px;
+    line-height: 24px;
+    width: 100%;
+    text-align: right;
+  }
+
+  &--checked {
+    @include cw-icon-before(check-circle, 0px, $cwColor-base-white);
+  }
+
+  &--unchecked {
+    @include cw-icon-before(circle-thin, 0px, $cwColor-blue);
+  }
+}
