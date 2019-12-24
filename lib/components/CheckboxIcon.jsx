@@ -7,12 +7,17 @@ const getCheckboxIconClass = checked => classNames('checkbox-icon', {
   'checkbox-icon--unchecked': !checked,
 });
 
-const CheckboxIcon = ({ checked }) => (
-  <div className={getCheckboxIconClass(checked)}></div>
+const CheckboxIcon = ({ checked, onClick }) => (
+  <div className={getCheckboxIconClass(checked)} onClick={onClick}></div>
 );
 
 CheckboxIcon.propTypes = {
   checked: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
+CheckboxIcon.defaultProps = {
+  onClick: () => {},
 };
 
 export default CheckboxIcon;
