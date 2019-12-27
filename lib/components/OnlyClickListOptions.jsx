@@ -43,6 +43,7 @@ function OnlyClickListOptions(props) {
           optionComponent={optionComponent}
           animatedSelection={animatedSelection}
           withArrow={withArrows}
+          dataCy={option.dataCy}
         />
       ))}
     </ul>

@@ -42,6 +42,7 @@ class IconRadioInput extends React.Component {
       iconClass,
       recommendable,
       className,
+      dataCy,
     } = this.props;
     const { checked } = this.state;
     const buttonClass = classNames(
@@ -67,6 +68,7 @@ class IconRadioInput extends React.Component {
           value={value}
           checked={checked}
           disabled={disabled}
+          data-cy={dataCy}
         />
         <div
           className={classNames('icons-radio-input__label', {
@@ -91,6 +93,7 @@ IconRadioInput.propTypes = {
   disabled: PropTypes.bool,
   recommendable: PropTypes.bool,
   className: PropTypes.string,
+  dataCy: PropTypes.string,
 };
 
 export default IconRadioInput;

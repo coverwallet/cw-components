@@ -12,6 +12,7 @@ const RadioInput = props => {
     value,
     onChange,
     checked,
+    dataCy,
   } = props;
   const inputId = id || `${name}${value}`;
   const checkboxClassName = classNames('form-checkbox', className);
@@ -31,6 +32,7 @@ const RadioInput = props => {
           onChange={handleChange}
           value={value}
           checked={checked}
+          data-cy={dataCy}
         />
         <label htmlFor={inputId} />
       </div>
@@ -52,6 +54,7 @@ RadioInput.propTypes = {
   value: PropTypes.any.isRequired,
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
+  dataCy: PropTypes.string,
 };
 
 export default RadioInput;

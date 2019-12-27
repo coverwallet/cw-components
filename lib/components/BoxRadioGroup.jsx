@@ -4,7 +4,7 @@ import BoxRadioInput from './BoxRadioInput';
 
 const calcInputWidth = (count, rows = 1) => `calc(${100 / Math.ceil(count / rows)}% - 6px)`;
 
-class IconRadioGroup extends React.Component {
+class BoxRadioGroup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +39,7 @@ class IconRadioGroup extends React.Component {
         width={elementWidth}
         checkedValue={this.getValue()}
         onChange={this.handleChange}
+        dataCy={option.dataCy}
       />
     ));
     return (
@@ -49,7 +50,7 @@ class IconRadioGroup extends React.Component {
   }
 }
 
-IconRadioGroup.propTypes = {
+BoxRadioGroup.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   style: PropTypes.object,
   name: PropTypes.string,
@@ -59,4 +60,4 @@ IconRadioGroup.propTypes = {
   rows: PropTypes.number,
 };
 
-export default IconRadioGroup;
+export default BoxRadioGroup;

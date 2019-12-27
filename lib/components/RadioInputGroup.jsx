@@ -37,6 +37,7 @@ class RadioInputGroup extends React.Component {
         checkedValue={this.getValue()}
         onChange={this.handleChange}
         checked={option.value === currentValue}
+        dataCy={option.dataCy}
       />
     ));
     return (

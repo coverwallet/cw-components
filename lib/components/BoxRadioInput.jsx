@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { isIOS } from '../utils/deviceDetector';
 
-class IconRadioInput extends React.Component {
+class BoxRadioInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ class IconRadioInput extends React.Component {
   };
 
   render() {
-    const { name, value, label, width } = this.props;
+    const { name, value, label, width, dataCy } = this.props;
     const { checked } = this.state;
     const buttonClass = classNames(
       'box-radio-input',
@@ -40,6 +40,7 @@ class IconRadioInput extends React.Component {
           onChange={this.handleChange}
           value={value}
           checked={checked}
+          data-cy={dataCy}
         />
         <div className="box-radio-input__label">{label}</div>
       </label>
@@ -47,7 +48,7 @@ class IconRadioInput extends React.Component {
   }
 }
 
-IconRadioInput.propTypes = {
+BoxRadioInput.propTypes = {
   label: PropTypes.string,
   width: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -60,6 +61,7 @@ IconRadioInput.propTypes = {
     PropTypes.number,
   ]),
   onChange: PropTypes.func.isRequired,
+  dataCy: PropTypes.string,
 };
 
-export default IconRadioInput;
+export default BoxRadioInput;
