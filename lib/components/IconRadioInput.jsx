@@ -42,6 +42,7 @@ class IconRadioInput extends React.Component {
       iconClass,
       recommendable,
       className,
+      localIcon,
     } = this.props;
     const { checked } = this.state;
     const buttonClass = classNames(
@@ -56,7 +57,9 @@ class IconRadioInput extends React.Component {
     );
     const inputId = `${name}${value}`;
     return (
+      
       <label className={buttonClass} htmlFor={inputId}>
+        {localIcon && (<div className="icons-radio-input__icon">{localIcon()}</div>) }
         {this.renderIcon()}
         <input
           id={inputId}
