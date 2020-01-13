@@ -62,7 +62,7 @@ class IconRadioGroup extends React.Component {
             onChange={this.handleChange}
             size={size}
             disabled={disabled || option.disabled}
-            localIcon={option.localIcon}
+            icon={option.icon}
           />
         ))}
       </div>
