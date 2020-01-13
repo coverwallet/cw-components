@@ -59,7 +59,11 @@ class IconRadioInput extends React.Component {
     return (
       
       <label className={buttonClass} htmlFor={inputId}>
-        {localIcon && (<div className="icons-radio-input__icon">{localIcon()}</div>) }
+        {localIcon && (
+          <div className="icons-radio-input__icon">
+            {localIcon()}
+          </div>
+        )}
         {this.renderIcon()}
         <input
           id={inputId}
