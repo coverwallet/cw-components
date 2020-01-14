@@ -21,11 +21,14 @@ class IconRadioInput extends React.Component {
     }
   };
 
+  anyIconGiven = () => this.props.iconClass || this.props.icon;
+
+
   renderIcon() {
-    if (this.props.iconClass) {
+    if (this.anyIconGiven()) {
       return (
         <div className="icons-radio-input__icon">
-          <span className={this.props.iconClass} />
+          {this.props.icon ? this.props.icon() : (<span className={this.props.iconClass} />)}
         </div>
       );
     }
@@ -42,6 +45,7 @@ class IconRadioInput extends React.Component {
       iconClass,
       recommendable,
       className,
+      icon,
     } = this.props;
     const { checked } = this.state;
     const buttonClass = classNames(
@@ -50,12 +54,13 @@ class IconRadioInput extends React.Component {
       { 'icons-radio-input--no-touch': !isIOS() },
       { 'icons-radio-input--small': size === 'small' },
       { 'icons-radio-input--disabled': disabled },
-      { 'icons-radio-input--no-icon': !iconClass },
+      { 'icons-radio-input--no-icon': !iconClass && !icon },
       { 'icons-radio-input--recommendable': recommendable },
       className,
     );
     const inputId = `${name}${value}`;
     return (
+      
       <label className={buttonClass} htmlFor={inputId}>
         {this.renderIcon()}
         <input
