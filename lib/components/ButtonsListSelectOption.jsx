@@ -39,8 +39,10 @@ class ButtonsListSelectOption extends Component {
 
     return (
       <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
-        {showCheckbox && <CheckboxIcon checked={selected} onClick={this.onClickTitle} />}
-        <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
+        <div onClick={this.onClickTitle} className="wide-button__title-container">
+          {showCheckbox && <CheckboxIcon checked={selected} />}
+          <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} />
+        </div>
         {infoText && (
           <div className="wide-button__right-button" onClick={this.onClickTooltip}>
             <QuestionIcon accordion type={selected ? 'colored-inverted' : 'colored'} />
