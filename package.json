@@ -47,7 +47,7 @@
     "eslint-plugin-import": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^1.2.1",
     "eslint-plugin-react": "^5.2.2",
-    "file-loader": "^0.8.5",
+    "file-loader": "^5.1.0",
     "html-webpack-plugin": "^2.10.0",
     "jest": "^19.0.2",
     "node-sass": "^3.4.2",
