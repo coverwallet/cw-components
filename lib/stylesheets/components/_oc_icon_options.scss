@@ -14,11 +14,11 @@
 }
 
 .oc-icon-options {
-  @include display(flex);
-  @include flex-wrap(wrap);
-  @include align-items(stretch);
-  @include align-content(space-between);
-  @include justify-content(flex-start);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: space-between;
+  justify-content: flex-start;
   margin: 5px -10px 0 -10px;
 
   @include media($mobile) {
@@ -26,7 +26,7 @@
   }
 
   .oc-icon-option-container {
-    @include display(flex);
+    display: flex;
     width: 15.31111%;
     box-sizing: border-box;
     margin: 0 0.6777777%;

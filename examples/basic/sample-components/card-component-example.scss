@@ -1,9 +1,9 @@
 
 .lob-card {
-    @include display(flex);
-    @include justify-content(flex-start);
-    @include flex-wrap(nowrap);
-    @include align-items(center);
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;
     height: 100%;
     font-weight: 100;
   

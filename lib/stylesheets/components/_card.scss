@@ -1,7 +1,7 @@
 .card-group {
-  @include display(flex);
-  @include flex-direction(column);
-  @include flex-wrap(wrap);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 
   &__item {
     background-color: #fff;

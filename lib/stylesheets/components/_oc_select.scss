@@ -9,8 +9,8 @@
   }
 
   .oc-select__search {
-    @include display(flex);
-    @include flex-wrap(wrap);
+    display: flex;
+    flex-wrap: wrap;
     z-index: 1;
     padding: 6px 11px;
     border: 1px solid $cwColor-base-blue;
@@ -52,7 +52,7 @@
   }
 
   .oc-select__input-container {
-    @include display(inline-flex);
+    display: inline-flex;
     width: 250px;
     max-width: 100%;
   }
