@@ -75,7 +75,8 @@ class CurrencyInput extends React.Component {
   }
 
   numberFromValue(value) {
-    return Number(removeThousandsSeparator(value, this.props.thousandsSeparator));
+    const validValue = removeThousandsSeparator(value, this.props.thousandsSeparator);
+    return isNumeric(validValue) && validValue > 0 ? Number(validValue) : validValue;
   }
 
   handleChange = e => {
