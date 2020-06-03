@@ -285,8 +285,8 @@ const App = function App() {
           <h3>Euro currencyType and decimals</h3>
           <CurrencyInput
             currencyType="euro"
-            decimalSplitter=","
-            thousandsSplitter="."
+            decimalSeparator=","
+            thousandsSeparator="."
             width="25%"
           />
         </div>
@@ -318,8 +318,8 @@ const App = function App() {
             <h3>Euro currencyType and decimals</h3>
             <CurrencyInput
               currencyType="euro"
-              decimalSplitter=","
-              thousandsSplitter="."
+              decimalSeparator=","
+              thousandsSeparator="."
               width="25%"
               showNumpadKeyboard
             />
