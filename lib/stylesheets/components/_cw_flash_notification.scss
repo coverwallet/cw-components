@@ -1,7 +1,7 @@
 .cw-flash-notification {
   position: relative;
-  @include display(flex);
-  @include align-items(center);
+  display: flex;
+  align-items: center;
   min-height: 56px;
 
   &--info {
@@ -41,7 +41,7 @@
   }
 
   &__icon-container {
-    @include flex(0 0 42px);
+    flex: 0 0 42px;
     padding: 0 10px;
 
     @include media($mobile) {
@@ -60,11 +60,11 @@
   }
 
   &__content {
-    @include flex(1);
-    @include display(flex);
-    @include align-items(center);
-    @include justify-content(center);
-    @include flex-direction(column);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     padding: 5px 0;
 
     @include media($mobile) {
