@@ -13,12 +13,12 @@ class CwFlashNotification extends React.Component {
   closeNotification = () => {
     this.setState({
       closed: true,
-    })
+    });
   };
 
   render() {
     const { closed } = this.state;
-    const { type, title, subtitle, subtitleMobile, largeTitle, largeTitleMobile, titleMobile, onClose } = this.props;
+    const { type, title, subtitle, subtitleMobile, largeTitle, largeTitleMobile, titleMobile, onClose, dataTest } = this.props;
     if (!onClose && closed) {
       return false;
     }
@@ -30,7 +30,7 @@ class CwFlashNotification extends React.Component {
     const handleClose = onClose || this.closeNotification;
 
     return (
-      <div className={notificationClass}>
+      <div className={notificationClass} data-test={dataTest}>
         <aside className="cw-flash-notification__icon-container">
           <i className="cw-flash-notification__icon" />
         </aside>
@@ -67,6 +67,7 @@ CwFlashNotification.propTypes = {
   subtitleMobile: PropTypes.string,
   largeTitleMobile: PropTypes.string,
   titleMobile: PropTypes.string,
+  dataTest: PropTypes.string,
 };
 
 export default CwFlashNotification;
