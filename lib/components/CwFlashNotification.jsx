@@ -13,7 +13,7 @@ class CwFlashNotification extends React.Component {
   closeNotification = () => {
     this.setState({
       closed: true,
-    })
+    });
   };
 
   render() {
