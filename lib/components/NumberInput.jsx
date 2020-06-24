@@ -74,7 +74,22 @@ class NumberInput extends React.Component {
   };
 
   render() {
-    const { name, min, max, step, commas, percents, currency, currencyType = 'dollar', type, width, onBlur, autoFocus, showNumpadKeyboard } = this.props;
+    const {
+      name,
+      min,
+      max,
+      step,
+      commas,
+      percents,
+      currency,
+      currencyType = 'dollar',
+      type,
+      width,
+      onBlur,
+      autoFocus,
+      showNumpadKeyboard,
+      placeholder,
+    } = this.props;
     const inputClass = classNames(
       'number-input__input',
       { 'number-input__input--nan number-input__input--currency': currency },
@@ -99,6 +114,7 @@ class NumberInput extends React.Component {
           onChange={this.handleChange}
           value={this.state.value}
           autoFocus={autoFocus}
+          placeholder={placeholder}
         />
         {percents && <span className="number-input__percents">%</span> }
         {!currency && <span className="number-input__minus" onClick={this.handleMinus} />}
@@ -128,6 +144,10 @@ NumberInput.propTypes = {
   onBlur: PropTypes.func,
   setValue: PropTypes.func,
   width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  placeholder: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
