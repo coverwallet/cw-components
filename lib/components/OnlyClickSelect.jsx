@@ -31,15 +31,14 @@ class OnlyClickSelect extends React.Component {
 
   getFilteredOptions(typedValue) {
     const { options, maxVisible } = this.props;
-    return _(options)
-      .filter(option => {
-        if (this.props.filterOption) {
-          return this.props.filterOption(option, typedValue);
-        }
-        return filterOption(option, typedValue);
-      })
-      .take(maxVisible)
-      .value();
+    const filteredOptions = options.filter(option => {
+      if (this.props.filterOption) {
+        return this.props.filterOption(option, typedValue);
+      }
+      return filterOption(option, typedValue);
+    });
+
+    return take(filteredOptions, maxVisible);
   }
 
   propsChanged(nextProps) {

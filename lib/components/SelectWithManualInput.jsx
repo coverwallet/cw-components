@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uniq from 'lodash/uniq';
+import take from 'lodash/take';
 import OnlyClickOptionsList from './OnlyClickListOptions';
 import escapeSpecialCharacters from '../utils/string-helper';
 
@@ -20,10 +21,11 @@ class SelectWithManualInput extends React.Component {
     const { options, selectedOptions, maxVisible } = this.props;
     const availableOptions = options.filter(option => !selectedOptions.includes(option.value));
 
-    return _(availableOptions)
-      .filter(option => filterOption(option, typedValue))
-      .take(maxVisible)
-      .value();
+    const filteredOptions = availableOptions.filter(option =>
+      filterOption(option, typedValue)
+    );
+
+    return take(filteredOptions, maxVisible);
   }
 
   setFocusOnInput = () => {
