@@ -80,6 +80,7 @@ IconRadioGroup.propTypes = {
   size: PropTypes.string,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  innerRef: PropTypes.func,
 };
 
 export default IconRadioGroup;

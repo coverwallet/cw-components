@@ -98,6 +98,7 @@ IconRadioInput.propTypes = {
   disabled: PropTypes.bool,
   recommendable: PropTypes.bool,
   className: PropTypes.string,
+  innerRef: PropTypes.func,
 };
 
 export default IconRadioInput;
