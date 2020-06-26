@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import uniq from 'lodash/uniq';
 import OnlyClickOptionsList from './OnlyClickListOptions';
 import escapeSpecialCharacters from '../utils/string-helper';
 
@@ -41,7 +41,7 @@ class SelectWithManualInput extends React.Component {
 
   handleChange = selectedOptions => {
     const { onChange } = this.props;
-    onChange(_.uniq(selectedOptions));
+    onChange(uniq(selectedOptions));
   }
 
   handleInputTyping = e => {
