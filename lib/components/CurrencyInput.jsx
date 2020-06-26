@@ -80,7 +80,7 @@ class CurrencyInput extends React.Component {
   }
 
   handleChange = e => {
-    this.setNextValue(e.target.value,e);
+    this.setNextValue(e.target.value);
   };
 
   render() {
