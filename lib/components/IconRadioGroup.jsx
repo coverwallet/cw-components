@@ -39,7 +39,7 @@ class IconRadioGroup extends React.Component {
   };
 
   render() {
-    const { options, name, size, disabled, className } = this.props;
+    const { options, name, size, disabled, className, innerRef } = this.props;
     return (
       <div
         className={classNames(
@@ -52,6 +52,7 @@ class IconRadioGroup extends React.Component {
       >
         {options.map((option, i) => (
           <IconRadioInput
+            innerRef={innerRef}
             key={i}
             iconClass={option.iconClass}
             label={option.label}
@@ -79,6 +80,7 @@ IconRadioGroup.propTypes = {
   size: PropTypes.string,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  innerRef: PropTypes.func,
 };
 
 export default IconRadioGroup;
