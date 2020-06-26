@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import smoothScroll from 'smoothscroll';
-import _ from 'lodash';
+import take from 'lodash/take';
 import OnlyClickOptionsList from './OnlyClickListOptions';
 import OnlyClickIconOptions from './OnlyClickIconOptions';
 import escapeSpecialCharacters from '../utils/string-helper';
@@ -31,15 +31,14 @@ class OnlyClickSelect extends React.Component {
 
   getFilteredOptions(typedValue) {
     const { options, maxVisible } = this.props;
-    return _(options)
-      .filter(option => {
-        if (this.props.filterOption) {
-          return this.props.filterOption(option, typedValue);
-        }
-        return filterOption(option, typedValue);
-      })
-      .take(maxVisible)
-      .value();
+    const filteredOptions = options.filter(option => {
+      if (this.props.filterOption) {
+        return this.props.filterOption(option, typedValue);
+      }
+      return filterOption(option, typedValue);
+    });
+
+    return take(filteredOptions, maxVisible);
   }
 
   propsChanged(nextProps) {
@@ -170,7 +169,7 @@ class OnlyClickSelect extends React.Component {
     } = this.props;
 
     const { values, typedValue, openDropdown } = this.state;
-    const filteredOptions = disableFilter ? _.take(options, maxVisible) : this.getFilteredOptions(typedValue);
+    const filteredOptions = disableFilter ? take(options, maxVisible) : this.getFilteredOptions(typedValue);
     const optionsContainerClassName = classNames('oc-select__options-container', {
       'oc-select__options-container--scrollable': scrollable,
       'oc-select__options-container--dropdown': dropdown,
