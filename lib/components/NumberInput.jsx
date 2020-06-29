@@ -98,6 +98,7 @@ class NumberInput extends React.Component {
       { 'number-input__input--nan': commas || type !== 'number' },
       { 'number-input__input--percents': percents },
     );
+
     return (
       <div className="number-input" style={{ width }}>
         {currency && <span className={`number-input__currency number-input__currency--${currencyType}-icon`} />}
