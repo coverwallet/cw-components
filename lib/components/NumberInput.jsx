@@ -89,13 +89,16 @@ class NumberInput extends React.Component {
       autoFocus,
       showNumpadKeyboard,
       placeholder,
+      disabled,
     } = this.props;
+
     const inputClass = classNames(
       'number-input__input',
       { 'number-input__input--nan number-input__input--currency': currency },
       { 'number-input__input--nan': commas || type !== 'number' },
       { 'number-input__input--percents': percents },
     );
+
     return (
       <div className="number-input" style={{ width }}>
         {currency && <span className={`number-input__currency number-input__currency--${currencyType}-icon`} />}
@@ -115,10 +118,11 @@ class NumberInput extends React.Component {
           value={this.state.value}
           autoFocus={autoFocus}
           placeholder={placeholder}
+          disabled={disabled}
         />
-        {percents && <span className="number-input__percents">%</span> }
-        {!currency && <span className="number-input__minus" onClick={this.handleMinus} />}
-        {!currency && <span className="number-input__plus" onClick={this.handlePlus} />}
+        {percents && <span className="number-input__percents">%</span>}
+        {!currency && !disabled && <span className="number-input__minus" onClick={this.handleMinus} />}
+        {!currency && !disabled && <span className="number-input__plus" onClick={this.handlePlus} />}
       </div>
     );
   }
@@ -151,6 +155,7 @@ NumberInput.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
+  disabled: PropTypes.bool,
   showNumpadKeyboard: PropTypes.bool,
 };
 
