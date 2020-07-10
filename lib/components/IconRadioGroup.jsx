@@ -17,9 +17,6 @@ class IconRadioGroup extends React.Component {
       this.setState({
         value: nextProps.value,
       });
-      if (nextProps.onChange) {
-        nextProps.onChange(nextProps.value);
-      }
     }
   }
 
