@@ -15,7 +15,9 @@ class ButtonsListSelectOption extends Component {
   }
 
   onClickTitle = () => {
-    const { onClick, value } = this.props;
+    const { onClick, value, disabled } = this.props;
+
+    if (disabled) return;
 
     onClick(value);
   };
@@ -34,11 +36,11 @@ class ButtonsListSelectOption extends Component {
   };
 
   renderAccordion() {
-    const { label, iconClass, infoText, selected, showCheckbox } = this.props;
+    const { label, iconClass, infoText, selected, showCheckbox, disabled } = this.props;
     const { opened } = this.state;
 
     return (
-      <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} >
+      <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} disabled={disabled}>
         <div onClick={this.onClickTitle} className="wide-button__title-container">
           {showCheckbox && <CheckboxIcon checked={selected} />}
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} />
@@ -78,6 +80,7 @@ ButtonsListSelectOption.propTypes = {
   infoText: PropTypes.string,
   selected: PropTypes.bool,
   opened: PropTypes.bool,
+  disabled: PropTypes.bool,
   accordion: PropTypes.bool,
   showCheckbox: PropTypes.bool,
   iconClass: PropTypes.string,
