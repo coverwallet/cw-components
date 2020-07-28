@@ -12,6 +12,7 @@ const ButtonsListSelectOptions = props => {
         <ButtonsListSelectOption
           key={option.value}
           value={option.value}
+          disabled={option.disabled}
           label={option.label}
           iconClass={option.iconClass}
           infoText={option.infoText}

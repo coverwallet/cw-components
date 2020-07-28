@@ -21,6 +21,15 @@
     border: 1px solid $cwColor-blue;
   }
 
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--disabled:not(&--selected) {
+    border: 1px solid $cwColor-black-light;
+    background-color: $cwColor-black-mlight;
+  }
+
   @include media($desktop) {
     &:hover {
       & #{$parent}__right-button {
