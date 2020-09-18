@@ -41,7 +41,7 @@ class InputKeyboard extends React.Component {
 
   setNextValue(value) {
     const nextValue = convertNextValue(value, this.props);
-    if (this.props.onChange){
+    if (this.props.onChange) {
       this.props.onChange(value);
     }
     this.setState({ value: nextValue });
@@ -151,6 +151,7 @@ InputKeyboard.propTypes = {
   ]),
   negativeEnabled: PropTypes.bool,
   showNumpadKeyboard: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 InputKeyboard.defaultProps = {
