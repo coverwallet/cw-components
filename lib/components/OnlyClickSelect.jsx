@@ -143,6 +143,17 @@ class OnlyClickSelect extends React.Component {
     }
   }
 
+  selectedValueLabel = (value) => {
+    const { options, showOptionLabel } = this.props;
+    if (showOptionLabel) {
+      const option = options.find((o) => o.value === value);
+
+      if (!!option) return option.label;
+    }
+
+    return value;
+  };
+
   render() {
     const {
       type,
@@ -166,6 +177,7 @@ class OnlyClickSelect extends React.Component {
       grayBorder,
       noArrows,
       hideInput,
+      showOptionLabel,
     } = this.props;
 
     const { values, typedValue, openDropdown } = this.state;
@@ -191,8 +203,8 @@ class OnlyClickSelect extends React.Component {
         {!hideInput && (<div className="oc-select__search-container">
           <div className={optionSearchClassName} ref="search-box" onClick={dropdown ? this.toggleDropdown : this.handleFocus}>
             {values.map(value => (
-              <span className="oc-selected-value" key={value}>
-                {value}
+              <span className="oc-selected-value" key={this.selectedValueLabel(value)}>
+                {this.selectedValueLabel(value)}
                 {!disableDelete && <span className="oc-selected-value__close-icon" onClick={e => this.handleDelete(value, e)} />}
               </span>
             ))}
@@ -277,6 +289,7 @@ OnlyClickSelect.propTypes = {
   grayBorder: PropTypes.bool,
   noArrows: PropTypes.bool,
   hideInput: PropTypes.bool,
+  showOptionLabel: PropTypes.bool,
 };
 
 OnlyClickSelect.defaultProps = {

@@ -730,6 +730,7 @@ const App = function App() {
             onDelete={(value) => console.log('You remove ', value)}
             onEnterKeyPress={(value) => console.log('You pressed the Enter key')}
             onHelpIconClick={(key) => console.log('Some help info for: ', key)}
+            showOptionLabel
           />
         </div>
         <StickyFooter>
