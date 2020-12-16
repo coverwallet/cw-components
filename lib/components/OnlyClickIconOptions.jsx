@@ -11,6 +11,7 @@ function OnlyClickIconOptions(props) {
     onHelpClick,
     onTooltipEnter = noOp,
     onTooltipOut = noOp,
+    dataTest = '',
   } = props;
   return (
     <div className="oc-icon-options">
@@ -20,6 +21,7 @@ function OnlyClickIconOptions(props) {
             checked={selectedValues.indexOf(option.value) !== -1}
             onClick={onClick}
             {...option}
+            dataTest={dataTest}
           />
           {option.tooltipKey && (
             <span
@@ -46,6 +48,7 @@ OnlyClickIconOptions.propTypes = {
   onTooltipEnter: PropTypes.func,
   onTooltipOut: PropTypes.func,
   selectedValues: PropTypes.arrayOf(PropTypes.string),
+  dataTest: PropTypes.string,
 };
 
 export default OnlyClickIconOptions;

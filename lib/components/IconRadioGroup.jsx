@@ -36,7 +36,7 @@ class IconRadioGroup extends React.Component {
   };
 
   render() {
-    const { options, name, size, disabled, className, innerRef } = this.props;
+    const { options, name, size, disabled, className, innerRef, dataTest = '' } = this.props;
     return (
       <div
         className={classNames(
@@ -61,6 +61,7 @@ class IconRadioGroup extends React.Component {
             size={size}
             disabled={disabled || option.disabled}
             icon={option.icon}
+            dataTest={`${dataTest}-${option.value}-${String(option.label).toLowerCase()}`}
           />
         ))}
       </div>
@@ -78,6 +79,7 @@ IconRadioGroup.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   innerRef: PropTypes.func,
+  dataTest: PropTypes.string,
 };
 
 export default IconRadioGroup;

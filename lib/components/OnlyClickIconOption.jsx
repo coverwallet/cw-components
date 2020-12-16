@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { isIOS } from '../utils/deviceDetector';
 
 function OnlyClickIconOption(props) {
-  const { id, value, label, checked, disabled, recommendable, iconClass, onClick, textContent, iconClassForCheckedState } = props;
+  const { id, value, label, checked, disabled, recommendable, iconClass, onClick, textContent, iconClassForCheckedState, dataTest } = props;
   const optionClass = classNames(
     'oc-icon-option',
     { 'oc-icon-option--checked': checked },
@@ -21,8 +21,10 @@ function OnlyClickIconOption(props) {
     { [finalIconClass]: finalIconClass },
   );
 
+  const dataTestValue = `${dataTest}-${String(value).toLowerCase().replace(' ', '-')}`;
+
   return (
-    <div id={id} className={optionClass} onClick={() => !disabled && onClick(value)} >
+    <div id={id} className={optionClass} onClick={() => !disabled && onClick(value)} data-test={dataTestValue}>
       <div className="oc-icon-option__content-container">
         <div className="oc-icon-option__content">
           <div className="oc-icon-option__icon-container">
@@ -50,6 +52,7 @@ OnlyClickIconOption.propTypes = {
   onClick: PropTypes.func,
   textContent: PropTypes.string,
   iconClassForCheckedState: PropTypes.string,
+  dataTest: PropTypes.string,
 };
 
 export default OnlyClickIconOption;
