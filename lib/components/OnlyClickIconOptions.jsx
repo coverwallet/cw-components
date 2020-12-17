@@ -11,7 +11,7 @@ function OnlyClickIconOptions(props) {
     onHelpClick,
     onTooltipEnter = noOp,
     onTooltipOut = noOp,
-    dataTest = '',
+    dataTest,
   } = props;
   return (
     <div className="oc-icon-options">

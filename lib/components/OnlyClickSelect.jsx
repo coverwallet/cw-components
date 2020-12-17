@@ -178,7 +178,7 @@ class OnlyClickSelect extends React.Component {
       noArrows,
       hideInput,
       showOptionLabel,
-      dataTest = '',
+      dataTest,
     } = this.props;
 
     const { values, typedValue, openDropdown } = this.state;
@@ -300,6 +300,7 @@ OnlyClickSelect.defaultProps = {
   defaultValue: '',
   values: [],
   maxVisible: 1000,
+  dataTest: '',
 };
 
 export default OnlyClickSelect;
