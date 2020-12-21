@@ -178,6 +178,7 @@ class OnlyClickSelect extends React.Component {
       noArrows,
       hideInput,
       showOptionLabel,
+      dataTest,
     } = this.props;
 
     const { values, typedValue, openDropdown } = this.state;
@@ -219,6 +220,7 @@ class OnlyClickSelect extends React.Component {
                   onChange={this.handleChange}
                   onKeyPress={this.handleKeyPress}
                   disabled={disableInput}
+                  data-test={dataTest}
                 />
               </div>
             )}
@@ -236,6 +238,7 @@ class OnlyClickSelect extends React.Component {
                 onTooltipEnter={onTooltipEnter}
                 onTooltipOut={onTooltipOut}
                 onHelpClick={onHelpIconClick}
+                dataTest={dataTest}
               />
             ) : (
               <OnlyClickOptionsList
@@ -290,12 +293,14 @@ OnlyClickSelect.propTypes = {
   noArrows: PropTypes.bool,
   hideInput: PropTypes.bool,
   showOptionLabel: PropTypes.bool,
+  dataTest: PropTypes.string,
 };
 
 OnlyClickSelect.defaultProps = {
   defaultValue: '',
   values: [],
   maxVisible: 1000,
+  dataTest: '',
 };
 
 export default OnlyClickSelect;
