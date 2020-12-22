@@ -35,6 +35,14 @@ class IconRadioGroup extends React.Component {
     }
   };
 
+  getDataTest = (name, option = {}) => {
+    let optionValue = option.value;
+    if (typeof optionValue === 'boolean') {
+      optionValue = optionValue ? 'Yes' : 'No';
+    }
+    return `${String(name).replace(/_/g, '-')}-${optionValue}`
+  };
+
   render() {
     const { options, name, size, disabled, className, innerRef, dataTest } = this.props;
     return (
@@ -61,7 +69,7 @@ class IconRadioGroup extends React.Component {
             size={size}
             disabled={disabled || option.disabled}
             icon={option.icon}
-            dataTest={dataTest || `${String(name).replace(/_/g, '-')}-${option.label}`}
+            dataTest={dataTest || this.getDataTest(name, option)}
           />
         ))}
       </div>
