@@ -63,7 +63,7 @@ class IconRadioInput extends React.Component {
     const inputId = `${name}${value}`;
     return (
 
-      <label className={buttonClass} htmlFor={inputId}>
+      <label className={buttonClass} htmlFor={inputId} data-test={dataTest}>
         {this.renderIcon()}
         <input
           ref={innerRef}
@@ -75,7 +75,6 @@ class IconRadioInput extends React.Component {
           value={value}
           checked={checked}
           disabled={disabled}
-          data-test={dataTest}
         />
         <div
           className={classNames('icons-radio-input__label', {

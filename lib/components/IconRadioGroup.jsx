@@ -61,7 +61,7 @@ class IconRadioGroup extends React.Component {
             size={size}
             disabled={disabled || option.disabled}
             icon={option.icon}
-            dataTest={`${dataTest}-${option.value}-${String(option.label).toLowerCase()}`}
+            dataTest={dataTest || `${String(name).replace(/_/g, '-')}-${option.label}`}
           />
         ))}
       </div>
