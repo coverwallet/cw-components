@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OnlyClickOption from './OnlyClickListOption';
 import classNames from 'classnames';
+import getDataTest from '../utils/dataTestHelper';
 
 function OnlyClickListOptions(props) {
   const {
@@ -44,7 +45,7 @@ function OnlyClickListOptions(props) {
           optionComponent={optionComponent}
           animatedSelection={animatedSelection}
           withArrow={withArrows}
-          dataTest={dataTest}
+          dataTest={dataTest || getDataTest(option.value)}
         />
       ))}
     </ul>
