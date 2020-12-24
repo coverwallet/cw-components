@@ -47,7 +47,7 @@ class OnlyClickMultiSelect extends React.Component {
   }
 
   render() {
-    const { options, hint, errorMessage, onHelpIconClick } = this.props;
+    const { options, hint, errorMessage, onHelpIconClick, dataTest } = this.props;
     const { values } = this.state;
     return (
       <div className="oc-multi-select">
@@ -60,6 +60,7 @@ class OnlyClickMultiSelect extends React.Component {
             selectedValues={values}
             onClick={this.handleClick}
             onHelpClick={onHelpIconClick}
+            dataTest={dataTest}
           />
         </div>
       </div>
@@ -75,10 +76,12 @@ OnlyClickMultiSelect.propTypes = {
   onClick: PropTypes.func,
   onDelete: PropTypes.func,
   onHelpIconClick: PropTypes.func,
+  dataTest: PropTypes.string,
 };
 
 OnlyClickMultiSelect.defaultProps = {
   values: [],
+  dataTest: '',
 };
 
 export default OnlyClickMultiSelect;
