@@ -374,7 +374,7 @@ const App = function App() {
         <div className="clearfix">
           <h3>Base Toggle</h3>
           <form className="form">
-            <Toggle label="Toggle me" />
+            <Toggle label="Toggle me" dataTest='provided-data-test'/>
           </form>
         </div>
 
