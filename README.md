@@ -4,7 +4,7 @@ CoverWallet components
 
 ## Package usage
 
-Node version is >= 10
+Node version is >= 8.10.0
 
 ### To start local server
 1.  ```yarn start```
