@@ -50,7 +50,7 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.10.0",
     "jest": "^19.0.2",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.14.1",
     "object-assign": "^4.0.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
