@@ -25,6 +25,7 @@ function OnlyClickListOption(props) {
     animatedSelection = true,
     withArrow = true,
     scrollable,
+    dataTest,
   } = props;
   const optionClass = classNames(
     itemClasses,
@@ -43,7 +44,7 @@ function OnlyClickListOption(props) {
   const hasNextIcon = listType !== 'multiSelect' && withArrow;
 
   return (
-    <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled}>
+    <li id={id} className={optionClass} onClick={() => !disabled && onClick(value)} disabled={disabled} data-test={dataTest}>
       {optionComponent ? (
         <span>{optionComponent(props)}</span>
       ) : (
@@ -91,6 +92,7 @@ OnlyClickListOption.propTypes = {
   optionComponent: PropTypes.func,
   withArrow: PropTypes.bool,
   scrollable: PropTypes.bool,
+  dataTest: PropTypes.string,
 };
 
 export default OnlyClickListOption;

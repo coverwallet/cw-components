@@ -4,13 +4,13 @@ import classNames from 'classnames';
 
 const addModifierClass = (modifier, modValue) => classname => classNames(classname, { [`${classname}--${modifier}`]: modValue });
 
-const AccordionSelect = ({ selected, opened, infoText, children, onClick, disabled }) => {
+const AccordionSelect = ({ selected, opened, infoText, children, onClick, disabled, dataTest }) => {
   const addClassWithSelected = addModifierClass('selected', selected);
   const addClassWithOpened = addModifierClass('opened', opened);
   const addClassWithDisabled = addModifierClass('disabled', disabled);
 
   return (
-    <li className={`${addClassWithSelected('wide-button')} wide-button--accordion ${addClassWithDisabled('wide-button')}`}>
+    <li className={`${addClassWithSelected('wide-button')} wide-button--accordion ${addClassWithDisabled('wide-button')}`} data-test={dataTest}>
       <div className={classNames('wide-button__title--space-between', addClassWithSelected('wide-button__title'))}>
         {children}
       </div>
@@ -31,6 +31,7 @@ AccordionSelect.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.any,
   disabled: PropTypes.bool,
+  dataTest: PropTypes.string,
 };
 
 export default AccordionSelect;

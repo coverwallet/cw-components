@@ -36,11 +36,11 @@ class ButtonsListSelectOption extends Component {
   };
 
   renderAccordion() {
-    const { label, iconClass, infoText, selected, showCheckbox, disabled } = this.props;
+    const { label, iconClass, infoText, selected, showCheckbox, disabled, dataTest } = this.props;
     const { opened } = this.state;
 
     return (
-      <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} disabled={disabled}>
+      <AccordionSelect infoText={infoText} opened={opened} selected={selected} onClick={this.onClickTitle} disabled={disabled} dataTest={dataTest}>
         <div onClick={this.onClickTitle} className="wide-button__title-container">
           {showCheckbox && <CheckboxIcon checked={selected} />}
           <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} />
@@ -55,10 +55,10 @@ class ButtonsListSelectOption extends Component {
   }
 
   renderWideButton() {
-    const { label, iconClass, infoText, selected } = this.props;
+    const { label, iconClass, infoText, selected, dataTest } = this.props;
 
     return (
-      <WideButton selected={selected}>
+      <WideButton selected={selected} dataTest={dataTest}>
         <TextWithIcon className="wide-button__title-item" label={label} iconClass={iconClass} onClick={this.onClickTitle} />
         <div className="wide-button__right-button question-icon__tooltip">
           <QuestionIcon infoText={infoText} type={selected ? 'colored-inverted' : 'colored'} />
@@ -88,6 +88,7 @@ ButtonsListSelectOption.propTypes = {
   onOpenHelp: PropTypes.func,
   onCloseHelp: PropTypes.func,
   iconToolTip: PropTypes.func,
+  dataTest: PropTypes.string,
 };
 
 export default ButtonsListSelectOption;

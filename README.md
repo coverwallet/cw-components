@@ -4,6 +4,8 @@ CoverWallet components
 
 ## Package usage
 
+Node version is >= 10.15.0
+
 ### To start local server
 1.  ```yarn start```
 2.  Open http://localhost:8002/basic/ in your browser

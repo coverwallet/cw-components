@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ButtonsListSelectOption from './ButtonsListSelectOption';
+import getDataTest from '../utils/dataTestHelper';
 
 const ButtonsListSelectOptions = props => {
-  const { options, selectedOptions, onClick, onOpenHelp, onCloseHelp, accordion, showCheckbox } = props;
+  const { options, selectedOptions, onClick, onOpenHelp, onCloseHelp, accordion, showCheckbox, dataTest } = props;
 
   return (
     <ul className="buttons-list-select-options">
@@ -22,6 +23,7 @@ const ButtonsListSelectOptions = props => {
           selected={selectedOptions.includes(option.value)}
           accordion={accordion}
           showCheckbox={showCheckbox}
+          dataTest={dataTest || getDataTest(option.value)}
         />
       ))}
     </ul>
@@ -39,6 +41,7 @@ ButtonsListSelectOptions.propTypes = {
   accordion: PropTypes.bool,
   showCheckbox: PropTypes.bool,
   selectedOptions: PropTypes.arrayOf(PropTypes.string),
+  dataTest: PropTypes.string,
 };
 
 export default ButtonsListSelectOptions;

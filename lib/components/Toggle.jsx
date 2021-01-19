@@ -12,12 +12,12 @@ class Toggle extends Component {
   };
 
   render() {
-    const { value, disabled, id, label } = this.props;
+    const { value, disabled, id, label, dataTest } = this.props;
     const inputId = id || `toggle-${uniqueId()}`;
 
     return (
       <div className="cw-toggle">
-        <label className="cw-toggle__switch">
+        <label className="cw-toggle__switch" data-test={dataTest}>
           <input
             id={inputId}
             className="cw-toggle__input"
@@ -44,6 +44,7 @@ Toggle.propTypes = {
   value: PropTypes.bool,
   disabled: PropTypes.bool,
   onToggle: PropTypes.func,
+  dataTest: PropTypes.string,
 };
 
 export default Toggle;

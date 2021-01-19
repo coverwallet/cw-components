@@ -4,6 +4,14 @@ import IconRadioInput from './IconRadioInput';
 import classNames from 'classnames';
 import exists from '../utils/exists';
 
+const getDataTest = (name, option = {}) => {
+  let optionValue = option.value;
+  if (typeof optionValue === 'boolean') {
+    optionValue = optionValue ? 'Yes' : 'No';
+  }
+  return `${String(name).replace(/_/g, '-')}-${optionValue}`;
+};
+
 class IconRadioGroup extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +44,7 @@ class IconRadioGroup extends React.Component {
   };
 
   render() {
-    const { options, name, size, disabled, className, innerRef } = this.props;
+    const { options, name, size, disabled, className, innerRef, dataTest } = this.props;
     return (
       <div
         className={classNames(
@@ -61,6 +69,7 @@ class IconRadioGroup extends React.Component {
             size={size}
             disabled={disabled || option.disabled}
             icon={option.icon}
+            dataTest={dataTest || getDataTest(name, option)}
           />
         ))}
       </div>
@@ -78,6 +87,11 @@ IconRadioGroup.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   innerRef: PropTypes.func,
+  dataTest: PropTypes.string,
+};
+
+IconRadioGroup.defaultProps = {
+  dataTest: '',
 };
 
 export default IconRadioGroup;
